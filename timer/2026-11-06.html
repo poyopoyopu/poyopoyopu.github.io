@@ -74,6 +74,9 @@ function vib(p){try{if(navigator.vibrate)navigator.vibrate(p);}catch(e){}}
 function beepSeq(notes){if(!state.sound)return;try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.resume)actx.resume();var t0=actx.currentTime+0.05;notes.forEach(function(n){var o=actx.createOscillator(),g=actx.createGain();o.type="square";o.frequency.value=n[0];o.connect(g);g.connect(actx.destination);g.gain.setValueAtTime(0.12,t0+n[1]);g.gain.exponentialRampToValueAtTime(0.001,t0+n[1]+n[2]);o.start(t0+n[1]);o.stop(t0+n[1]+n[2]+0.02);});}catch(e){}}
 function beepWarn(){beepSeq([[1046,0,0.15],[1046,0.28,0.15]]);vib([120,80,120]);}
 function beepGo(){beepSeq([[784,0,0.15],[988,0.2,0.15],[1175,0.4,0.15],[1568,0.6,0.55]]);vib([200,100,200,100,400]);}
+function beepPre3(){beepSeq([[880,0,0.12],[880,0.24,0.12],[880,0.48,0.12]]);vib([100,60,100]);}
+var manualAt=0;
+["touchstart","wheel","pointerdown"].forEach(function(ev){window.addEventListener(ev,function(){manualAt=Date.now();},{passive:true});});
 function toSec(t){var p=t.split(":");return (+p[0])*3600+(+p[1])*60;}
 function fmt(s){if(s<0)s=0;var h=Math.floor(s/3600),m=Math.floor(s%3600/60),ss=s%60;function z(x){return (x<10?"0":"")+x;}return h>0?h+":"+z(m)+":"+z(ss):z(m)+":"+z(ss);}
 function render(){
@@ -90,6 +93,7 @@ function render(){
     nb.classList.toggle("soon",d<=60);
     nb.innerHTML="<div class='lab'>"+(e.arr?"次の到着":"次の発車")+"（"+e.run+"）</div><div class='row'><div><div class='stop'>"+STOPS[e.stop]+"</div><div class='time'>"+e.t+(e.arr?" 着":" 発")+"</div></div><div class='cd'>"+fmt(d)+"</div></div>";
     var key=e.t+e.stop;
+    if(state.sound&&e.stop===2&&!e.arr&&d<=180&&d>175&&!beeped[key+"p3"]){beeped[key+"p3"]=1;beepPre3();}
     if(state.sound&&d<=60&&d>55&&!beeped[key+"m"]){beeped[key+"m"]=1;beepWarn();}
     if(state.sound&&d<=2&&!beeped[key+"z"]){beeped[key+"z"]=1;beepGo();}
     var nx=EV[ni+1];
@@ -101,6 +105,17 @@ function render(){
     html+="<div class='dt-ev "+cls+"'><div class='t'>"+e.t+"</div><div class='s'>"+STOPS[e.stop]+(e.arr?" <span class='arr'>到着</span>":"")+"</div><div class='r'>"+e.run+"</div></div>";
   });
   document.getElementById("list").innerHTML=html;
+  if(ni>=0&&!document.hidden&&Date.now()-manualAt>15000){
+    var rows=document.getElementById("list").children;
+    var row=rows[ni];
+    if(row){
+      var r=row.getBoundingClientRect();
+      var sh=document.querySelector(".dt-sticky").offsetHeight;
+      if(r.top<sh+2||r.bottom>window.innerHeight){
+        window.scrollTo({top:window.scrollY+r.top-sh-6,behavior:"smooth"});
+      }
+    }
+  }
 }
 document.getElementById("soundBtn").addEventListener("click",function(){state.sound=!state.sound;if(state.sound)beepGo();render();});
 document.getElementById("lockBtn").addEventListener("click",function(){
