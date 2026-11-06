@@ -24,7 +24,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,s
 .dt-next .cd{font-size:52px;font-weight:800;text-align:right;font-variant-numeric:tabular-nums;line-height:1.1}
 .dt-next.soon{background:var(--soon);border-color:var(--soon);color:#fff}
 .dt-next.soon .lab{color:#fff}
-.dt-after{margin:8px 2px 12px;font-size:14px;color:var(--muted)}
+.dt-sticky{position:sticky;top:0;background:var(--bg);padding:6px 0 2px;z-index:5}
+.dt-after{margin:8px 2px 6px;font-size:14px;color:var(--muted)}
 .dt-list{border-top:1px solid var(--border)}
 .dt-ev{display:flex;gap:10px;padding:7px 4px;border-bottom:1px solid var(--border);font-size:15px;align-items:baseline}
 .dt-ev .t{font-weight:700;font-variant-numeric:tabular-nums;min-width:52px}
@@ -40,8 +41,10 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,s
   <div class="dt-head"><div class="dt-title">発車タイマー（11/6・青）</div><div class="dt-clock">現在 <span id="clock">--:--:--</span></div></div>
   <div class="dt-bar"><button id="lockBtn">画面ロック防止オフ</button><button id="soundBtn">音オフ</button></div>
   <div class="dt-note" id="lockNote"></div>
-  <div class="dt-next" id="nextBox"><div class="lab">次の発車</div><div class="stop">読み込み中</div></div>
-  <div class="dt-after" id="afterBox"></div>
+  <div class="dt-sticky">
+    <div class="dt-next" id="nextBox"><div class="lab">次の発車</div><div class="stop">読み込み中</div></div>
+    <div class="dt-after" id="afterBox"></div>
+  </div>
   <div class="dt-list" id="list"></div>
 </div>
 <script>
