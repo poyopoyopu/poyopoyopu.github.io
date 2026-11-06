@@ -13,8 +13,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,s
 .dt-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
 .dt-title{font-weight:700;font-size:15px}
 .dt-clock{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
-.dt-bar{display:flex;justify-content:flex-end;margin-bottom:10px}
+.dt-bar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:4px}
 .dt-bar button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;cursor:pointer}
+.dt-note{font-size:12px;color:var(--muted);text-align:right;min-height:16px;margin-bottom:6px}
 .dt-next{border:2px solid var(--accent);border-radius:16px;padding:14px 16px;background:var(--surface)}
 .dt-next .lab{font-size:13px;color:var(--muted)}
 .dt-next .stop{font-size:26px;font-weight:800;line-height:1.2}
@@ -37,7 +38,8 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,s
 <body>
 <div class="dt">
   <div class="dt-head"><div class="dt-title">発車タイマー（11/6・青）</div><div class="dt-clock">現在 <span id="clock">--:--:--</span></div></div>
-  <div class="dt-bar"><button id="soundBtn">音オフ</button></div>
+  <div class="dt-bar"><button id="lockBtn">画面ロック防止オフ</button><button id="soundBtn">音オフ</button></div>
+  <div class="dt-note" id="lockNote"></div>
   <div class="dt-next" id="nextBox"><div class="lab">次の発車</div><div class="stop">読み込み中</div></div>
   <div class="dt-after" id="afterBox"></div>
   <div class="dt-list" id="list"></div>
@@ -54,6 +56,17 @@ var EV=[
 ];
 var state={sound:false};
 var actx=null,beeped={};
+var lockOn=false,wakeLock=null;
+function applyLock(){
+  if(!lockOn)return;
+  if(!("wakeLock" in navigator)){document.getElementById("lockNote").textContent="この端末・ブラウザはロック防止に未対応です";lockOn=false;render();return;}
+  navigator.wakeLock.request("screen").then(function(wl){
+    wakeLock=wl;
+    document.getElementById("lockNote").textContent="画面はついたままになります（電池の減りは早くなります）";
+    wl.addEventListener("release",function(){wakeLock=null;if(lockOn&&!document.hidden){setTimeout(applyLock,300);}});
+  }).catch(function(){document.getElementById("lockNote").textContent="ロック防止を開始できませんでした。もう一度押してみてください";});
+}
+document.addEventListener("visibilitychange",function(){if(!document.hidden&&lockOn&&!wakeLock)applyLock();});
 function vib(p){try{if(navigator.vibrate)navigator.vibrate(p);}catch(e){}}
 function beepSeq(notes){if(!state.sound)return;try{actx=actx||new (window.AudioContext||window.webkitAudioContext)();if(actx.resume)actx.resume();var t0=actx.currentTime+0.05;notes.forEach(function(n){var o=actx.createOscillator(),g=actx.createGain();o.type="square";o.frequency.value=n[0];o.connect(g);g.connect(actx.destination);g.gain.setValueAtTime(0.12,t0+n[1]);g.gain.exponentialRampToValueAtTime(0.001,t0+n[1]+n[2]);o.start(t0+n[1]);o.stop(t0+n[1]+n[2]+0.02);});}catch(e){}}
 function beepWarn(){beepSeq([[1046,0,0.15],[1046,0.28,0.15]]);vib([120,80,120]);}
@@ -64,6 +77,7 @@ function render(){
   var now=new Date();var ns=now.getHours()*3600+now.getMinutes()*60+now.getSeconds();
   document.getElementById("clock").textContent=fmt(ns);
   document.getElementById("soundBtn").textContent=state.sound?"音オン":"音オフ";
+  document.getElementById("lockBtn").textContent=lockOn?"画面ロック防止オン":"画面ロック防止オフ";
   var ni=-1;
   for(var i=0;i<EV.length;i++){if(toSec(EV[i].t)>ns){ni=i;break;}}
   var nb=document.getElementById("nextBox"),ab=document.getElementById("afterBox");
@@ -86,6 +100,12 @@ function render(){
   document.getElementById("list").innerHTML=html;
 }
 document.getElementById("soundBtn").addEventListener("click",function(){state.sound=!state.sound;if(state.sound)beepGo();render();});
+document.getElementById("lockBtn").addEventListener("click",function(){
+  lockOn=!lockOn;
+  if(lockOn){applyLock();}
+  else{if(wakeLock){wakeLock.release();wakeLock=null;}document.getElementById("lockNote").textContent="";}
+  render();
+});
 render();setInterval(render,500);
 </script>
 </body>
