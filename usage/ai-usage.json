@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-11T19:38:51+09:00",
- "updated_label": "11/11 19:38",
+ "updated_at": "2026-11-11T19:49:57+09:00",
+ "updated_label": "11/11 19:49",
  "services": [
   {
    "id": "codex",
@@ -20,8 +20,22 @@
    "name": "Claude Code",
    "window_label": "週間",
    "remaining_pct": 14,
-   "reset_epoch": 1794517200,
-   "reset_label": "11/13 06:00",
+   "reset_epoch": 1794517199,
+   "reset_label": "11/13 05:59",
+   "tickets": [
+    {
+     "label": "フル",
+     "short": "フル",
+     "expires_md": "12/11",
+     "expires_epoch": 1797001200
+    },
+    {
+     "label": "Fable",
+     "short": "F",
+     "expires_md": "11/17",
+     "expires_epoch": 1794927600
+    }
+   ],
    "sub": {
     "label": "5時間枠",
     "remaining_pct": 100,
