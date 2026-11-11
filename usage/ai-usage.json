@@ -1,15 +1,17 @@
 {
- "updated_at": "2026-11-11T19:31:45+09:00",
- "updated_label": "11/11 19:31",
+ "updated_at": "2026-11-11T19:38:51+09:00",
+ "updated_label": "11/11 19:38",
  "services": [
   {
    "id": "codex",
    "name": "チャッピー",
    "window_label": "30日枠",
    "remaining_pct": 34,
-   "reset_epoch": 1796681237,
+   "reset_epoch": 1796681236,
    "reset_label": "12/8 07:07",
    "reset_credits": 1,
+   "reset_credit_expires_epoch": 1796155632,
+   "reset_credit_expires_label": "12/2 05:07",
    "sub": null,
    "stale": false
   },
@@ -18,8 +20,8 @@
    "name": "Claude Code",
    "window_label": "週間",
    "remaining_pct": 14,
-   "reset_epoch": 1794517199,
-   "reset_label": "11/13 05:59",
+   "reset_epoch": 1794517200,
+   "reset_label": "11/13 06:00",
    "sub": {
     "label": "5時間枠",
     "remaining_pct": 100,
