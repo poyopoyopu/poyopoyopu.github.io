@@ -1,0 +1,40 @@
+{
+ "updated_at": "2026-11-11T19:17:09+09:00",
+ "updated_label": "11/11 19:17",
+ "services": [
+  {
+   "id": "codex",
+   "name": "Codex",
+   "window_label": "30日枠",
+   "remaining_pct": 34,
+   "reset_epoch": 1796681236,
+   "reset_label": "12/8 07:07",
+   "sub": null,
+   "stale": false
+  },
+  {
+   "id": "claude_code",
+   "name": "Claude Code",
+   "window_label": "週間",
+   "remaining_pct": 14,
+   "reset_epoch": 1794517199,
+   "reset_label": "11/13 05:59",
+   "sub": {
+    "label": "5時間枠",
+    "remaining_pct": 100,
+    "reset_epoch": null
+   },
+   "stale": false
+  },
+  {
+   "id": "muse",
+   "name": "Muse",
+   "window_label": "週間",
+   "remaining_pct": 0,
+   "reset_epoch": 1794539580,
+   "reset_label": "11/13 12:13",
+   "sub": null,
+   "stale": false
+  }
+ ]
+}
