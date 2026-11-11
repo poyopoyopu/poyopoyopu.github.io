@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-11T19:17:09+09:00",
- "updated_label": "11/11 19:17",
+ "updated_at": "2026-11-11T19:31:02+09:00",
+ "updated_label": "11/11 19:31",
  "services": [
   {
    "id": "codex",
@@ -17,8 +17,8 @@
    "name": "Claude Code",
    "window_label": "週間",
    "remaining_pct": 14,
-   "reset_epoch": 1794517199,
-   "reset_label": "11/13 05:59",
+   "reset_epoch": 1794517200,
+   "reset_label": "11/13 06:00",
    "sub": {
     "label": "5時間枠",
     "remaining_pct": 100,
