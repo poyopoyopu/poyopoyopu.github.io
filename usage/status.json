@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794399093,
+ "updated_at_epoch": 1794403356,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.26,
-  "load5": 0.55,
-  "load15": 0.51,
+  "load1": 0.37,
+  "load5": 0.35,
+  "load15": 0.31,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7091,
-   "available_mb": 844,
-   "used_pct": 89
+   "used_mb": 7324,
+   "available_mb": 610,
+   "used_pct": 92
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 11.9,
-   "free_gb": 148.2,
+   "used_gb": 12.0,
+   "free_gb": 148.1,
    "used_pct": 7
   },
   "boot_epoch": 1794398081,
-  "uptime_hours": 0.3
+  "uptime_hours": 1.5
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-11T19:55:53+09:00"
+  "ai_usage_updated_at": "2026-11-11T22:21:16+09:00"
  },
  "jobs": {
   "jobs": [
@@ -62,8 +62,8 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794322170,
+    "last_status": "succeeded"
    },
    {
     "id": "comed-monitor-watch-daily",
@@ -238,8 +238,8 @@
     "title": "お台場サイト GA4週次チェック",
     "schedule": "毎週火曜 09:44",
     "group": "お台場",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794274761,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-limited-watch-daily",
@@ -302,8 +302,8 @@
     "title": "楽天キャンペーン巡回・自動エントリー",
     "schedule": "毎月 1・5・10・15・20・25・30日 09:44",
     "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794271908,
+    "last_status": "failed"
    },
    {
     "id": "the-cabs-sale-reminder-20261114",
@@ -354,6 +354,7 @@
     "last_status": null
    }
   ],
-  "count": 40
+  "count": 40,
+  "snapshot_epoch": 1794403353
  }
 }
