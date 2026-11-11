@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-12T07:27:25+09:00",
- "updated_label": "11/12 07:27",
+ "updated_at": "2026-11-12T07:28:00+09:00",
+ "updated_label": "11/12 07:28",
  "date": "2026-11-12",
  "date_label": "11/12（木）",
  "shift": {
@@ -25,7 +25,8 @@
   "code": "T01",
   "name": "基本ルート",
   "time": "12:00–18:00",
-  "shuttle": false
+  "shuttle": false,
+  "note": "アトラス特別便は運休"
  },
  "teleport": {
   "level": "空き",
