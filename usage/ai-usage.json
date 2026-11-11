@@ -1,12 +1,12 @@
 {
- "updated_at": "2026-11-11T19:55:53+09:00",
- "updated_label": "11/11 19:55",
+ "updated_at": "2026-11-11T22:21:16+09:00",
+ "updated_label": "11/11 22:21",
  "services": [
   {
    "id": "codex",
    "name": "チャッピー",
    "window_label": "30日枠",
-   "remaining_pct": 34,
+   "remaining_pct": 30,
    "reset_epoch": 1796681236,
    "reset_label": "12/8 07:07",
    "reset_credits": 1,
@@ -38,8 +38,8 @@
    ],
    "sub": {
     "label": "5時間枠",
-    "remaining_pct": 100,
-    "reset_epoch": null
+    "remaining_pct": 96,
+    "reset_epoch": 1794415199
    },
    "stale": false
   },
