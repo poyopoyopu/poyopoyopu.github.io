@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-11T19:55:39+09:00",
+ "updated_at": "2026-11-11T19:55:53+09:00",
  "updated_label": "11/11 19:55",
  "services": [
   {
@@ -13,15 +13,15 @@
    "reset_credit_expires_epoch": 1796155632,
    "reset_credit_expires_label": "12/2 05:07",
    "sub": null,
-   "stale": true
+   "stale": false
   },
   {
    "id": "claude_code",
    "name": "クロちゃん",
    "window_label": "週間",
    "remaining_pct": 14,
-   "reset_epoch": 1794517200,
-   "reset_label": "11/13 06:00",
+   "reset_epoch": 1794517199,
+   "reset_label": "11/13 05:59",
    "tickets": [
     {
      "label": "フル",
@@ -53,8 +53,5 @@
    "sub": null,
    "stale": false
   }
- ],
- "errors": [
-  "codex: RemoteDisconnected: Remote end closed connection without response"
  ]
 }
