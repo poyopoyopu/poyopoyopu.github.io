@@ -1,16 +1,16 @@
 {
- "updated_at_epoch": 1794434891,
+ "updated_at_epoch": 1794435752,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.23,
-  "load5": 0.17,
-  "load15": 0.1,
+  "load1": 1.98,
+  "load5": 0.72,
+  "load15": 0.35,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7378,
-   "available_mb": 557,
+   "used_mb": 7415,
+   "available_mb": 520,
    "used_pct": 93
   },
   "disk_home": {
@@ -20,7 +20,7 @@
    "used_pct": 7
   },
   "boot_epoch": 1794433715,
-  "uptime_hours": 0.3
+  "uptime_hours": 0.6
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-12T06:33:08+09:00"
+  "ai_usage_updated_at": "2026-11-12T07:21:18+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,7 +46,7 @@
     "title": "AI使用量の定期収集",
     "schedule": "3時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794434658,
+    "last_run_epoch": 1794435669,
     "last_status": "running"
    },
    {
@@ -215,7 +215,7 @@
     "schedule": "毎日 06:00",
     "group": "お台場",
     "last_run_epoch": 1794434657,
-    "last_status": "running"
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -335,7 +335,7 @@
     "schedule": "毎日 07:00",
     "group": "ドリル",
     "last_run_epoch": 1794434208,
-    "last_status": "running"
+    "last_status": "succeeded"
    },
    {
     "id": "unko-drill-numbers-check-20261205",
@@ -355,6 +355,6 @@
    }
   ],
   "count": 40,
-  "snapshot_epoch": 1794434863
+  "snapshot_epoch": 1794435749
  }
 }
