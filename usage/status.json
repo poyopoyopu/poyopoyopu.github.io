@@ -1,0 +1,359 @@
+{
+ "updated_at_epoch": 1794398987,
+ "vm": {
+  "name": "ムーちゃんのVM（Museの作業マシン）",
+  "hostname": "htch-runtime",
+  "cpus": 4,
+  "load1": 0.49,
+  "load5": 0.7,
+  "load15": 0.55,
+  "memory": {
+   "total_mb": 7934,
+   "used_mb": 7504,
+   "available_mb": 430,
+   "used_pct": 95
+  },
+  "disk_home": {
+   "total_gb": 161.0,
+   "used_gb": 11.9,
+   "free_gb": 148.2,
+   "used_pct": 7
+  },
+  "boot_epoch": 1794398081,
+  "uptime_hours": 0.3
+ },
+ "tools": {
+  "claude_code": null,
+  "codex": "codex-cli 0.167.0"
+ },
+ "pages": {
+  "ok": false,
+  "http": null,
+  "error": "The read operation timed out"
+ },
+ "jobs": {
+  "jobs": [
+   {
+    "id": "affiliate-asp-weekly-check",
+    "title": "アフィリエイトASP週次チェック",
+    "schedule": "毎週金曜 10:44",
+    "group": "ASP",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "ai-usage-collect",
+    "title": "AI使用量の定期収集",
+    "schedule": "3時間ごと",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "art-sns-daily-post",
+    "title": "ART SNS毎日投稿（Threads＋Instagram）",
+    "schedule": "毎日 20:44",
+    "group": "ART",
+    "last_run_epoch": 1794397582,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "chat-log-drive-nightly",
+    "title": "会話ログを毎晩Driveへ保存",
+    "schedule": "毎日 23:44",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "comed-monitor-watch-daily",
+    "title": "治験・通院モニター募集チェック",
+    "schedule": "毎日 09:44",
+    "group": "見張り",
+    "last_run_epoch": 1794358054,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "daft-punk-lego-watch",
+    "title": "ダフトパンク LEGO オンライン監視",
+    "schedule": "毎週月曜 09:44",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "flows-event-day-reminder-20261227",
+    "title": "flows 当日リマインド",
+    "schedule": "2026-12-27 09:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "flows-event-eve-reminder-20261226",
+    "title": "flows 前日リマインド",
+    "schedule": "2026-12-26 20:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "kimishima-1124-ticket-watch",
+    "title": "君島大空 追加席・リセール監視",
+    "schedule": "毎日 09:44",
+    "group": "見張り",
+    "last_run_epoch": 1794358107,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "kimishima-watch-stop-20261125",
+    "title": "君島大空 見張りの終了処理",
+    "schedule": "2026-11-25 09:44（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "lottery-watch-daily",
+    "title": "ネット抽選チェック",
+    "schedule": "毎日 07:44",
+    "group": "見張り",
+    "last_run_epoch": 1794350808,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "morning-brief-daily",
+    "title": "モーニングブリーフ",
+    "schedule": "毎日 07:50",
+    "group": "基盤",
+    "last_run_epoch": 1794354147,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "nearby-event-watch-weekly",
+    "title": "近場イベント見張り（お台場周辺）",
+    "schedule": "毎週水曜 09:44",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "ningen-note-weekly",
+    "title": "人間の取扱説明書 週次レポート",
+    "schedule": "毎週日曜 20:44",
+    "group": "ポッドキャスト",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "ningen-torisetu-radio-daily",
+    "title": "人間の取扱説明書 候補提示",
+    "schedule": "毎週 月・水・金 07:44",
+    "group": "ポッドキャスト",
+    "last_run_epoch": 1794350929,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "ningen-x-posts-daily",
+    "title": "人間の取扱説明書 投稿生成",
+    "schedule": "毎週 月・水・金 08:44",
+    "group": "ポッドキャスト",
+    "last_run_epoch": 1794354935,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "note-draft-daily",
+    "title": "note下書きの毎日生産",
+    "schedule": "毎日 10:44",
+    "group": "note",
+    "last_run_epoch": 1794361476,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "note-muse-case-drill-20261113",
+    "title": "紹介記事の下書き⑥資格ドリル",
+    "schedule": "2026-11-13 10:44（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "note-muse-case-sns-ops-20261115",
+    "title": "紹介記事の下書き⑦SNS運用",
+    "schedule": "2026-11-15 10:44（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "note-pipeline-weekly",
+    "title": "note週次チェック",
+    "schedule": "毎週日曜 19:44",
+    "group": "note",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "odaiba-a8-judgment-20261202",
+    "title": "お台場サイト A8判断ライン確認",
+    "schedule": "2026-12-02 09:44（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "odaiba-ariake-garden-decision-20261116",
+    "title": "有明ガーデン 判断リマインド",
+    "schedule": "2026-11-16 09:44（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "odaiba-forecast-daily-draft",
+    "title": "お台場混雑予報 原稿",
+    "schedule": "毎日 06:00",
+    "group": "お台場",
+    "last_run_epoch": 1794346789,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "odaiba-forecast-evening-preview",
+    "title": "お台場混雑予報 前日配信",
+    "schedule": "毎日 19:44",
+    "group": "お台場",
+    "last_run_epoch": 1794394236,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "odaiba-forecast-weekly-outlook",
+    "title": "お台場混雑予報 今週の予報",
+    "schedule": "毎週月曜 08:44",
+    "group": "お台場",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "odaiba-ga4-weekly-check",
+    "title": "お台場サイト GA4週次チェック",
+    "schedule": "毎週火曜 09:44",
+    "group": "お台場",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "odaiba-limited-watch-daily",
+    "title": "お台場限定品チェック",
+    "schedule": "毎日 07:44",
+    "group": "見張り",
+    "last_run_epoch": 1794350754,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "odaiba-pr-premerge-check-1044",
+    "title": "お台場サイト PRチェック（10:44）",
+    "schedule": "毎週水曜 10:44",
+    "group": "お台場",
+    "last_run_epoch": 1794361782,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "odaiba-pr-premerge-check-1144",
+    "title": "お台場サイト PRチェック（11:44）",
+    "schedule": "毎週水曜 11:44",
+    "group": "お台場",
+    "last_run_epoch": 1794365094,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "otsu4-progress-watch",
+    "title": "ドリル・台本 進捗見張り",
+    "schedule": "毎週 月・水・金 09:44",
+    "group": "ドリル",
+    "last_run_epoch": 1794358215,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "ouj-2027s1-application-reminder",
+    "title": "放送大学 出願リマインド",
+    "schedule": "2026-12-01 09:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "poikatsu-daily-snapshot",
+    "title": "ポイ活 日次スナップショット",
+    "schedule": "毎日 06:30",
+    "group": "ポイ活",
+    "last_run_epoch": 1794345950,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "poikatsu-deals-daily-refresh",
+    "title": "ポイ活 案件リフレッシュ",
+    "schedule": "毎日 07:30",
+    "group": "ポイ活",
+    "last_run_epoch": 1794349616,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "rakuten-campaign-patrol-1st",
+    "title": "楽天キャンペーン巡回・自動エントリー",
+    "schedule": "毎月 1・5・10・15・20・25・30日 09:44",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "the-cabs-sale-reminder-20261114",
+    "title": "the cabs 一般発売リマインド",
+    "schedule": "2026-11-14 09:55（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "unkan-2027-2nd-exam-watch",
+    "title": "運行管理者試験 案内チェック",
+    "schedule": "毎週 月・木 09:44",
+    "group": "ドリル",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "unkan-law-check-monthly",
+    "title": "運行ドリル法改正チェック",
+    "schedule": "毎月1日 08:44",
+    "group": "ドリル",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "unko-drill-daily-post",
+    "title": "運行管理ドリル 今日の1問",
+    "schedule": "毎日 07:00",
+    "group": "ドリル",
+    "last_run_epoch": 1794348175,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "unko-drill-numbers-check-20261205",
+    "title": "運行ドリル 数字チェック",
+    "schedule": "2026-12-05 09:44（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "unko-drill-sns-weekly-check",
+    "title": "運行管理ドリル SNS週次検証",
+    "schedule": "毎週日曜 21:00",
+    "group": "ドリル",
+    "last_run_epoch": null,
+    "last_status": null
+   }
+  ],
+  "count": 40
+ }
+}
