@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-11T22:21:16+09:00",
- "updated_label": "11/11 22:21",
+ "updated_at": "2026-11-12T06:33:08+09:00",
+ "updated_label": "11/12 06:33",
  "services": [
   {
    "id": "codex",
@@ -38,8 +38,8 @@
    ],
    "sub": {
     "label": "5時間枠",
-    "remaining_pct": 96,
-    "reset_epoch": 1794415199
+    "remaining_pct": 100,
+    "reset_epoch": null
    },
    "stale": false
   },
