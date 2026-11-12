@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-12T14:17:21+09:00",
- "updated_label": "11/12 14:17",
+ "updated_at": "2026-11-12T16:19:45+09:00",
+ "updated_label": "11/12 16:19",
  "date": "2026-11-12",
  "date_label": "11/12（木）",
  "shift": {
@@ -48,12 +48,52 @@
  },
  "weather": {
   "text": "晴れ時々くもり",
-  "tmax": 17,
+  "tmax": 18,
   "tmin": 9,
   "pop": 0,
   "advice": "長袖＋薄手の上着（朝晩は冷える）"
  },
  "look": "jacket",
+ "tomorrow": {
+  "date": "2026-11-13",
+  "date_label": "11/13（金）",
+  "route": {
+   "kind": "run",
+   "code": "T01",
+   "name": "基本ルート",
+   "time": "12:00–18:00",
+   "shuttle": false,
+   "note": "アトラス特別便は運休"
+  },
+  "venues": {
+   "venues": [
+    {
+     "short": "トヨタアリーナ",
+     "events": []
+    },
+    {
+     "short": "Zepp",
+     "events": [
+      "siruko Fan Meeting Tour 2026 しるこの部屋"
+     ]
+    },
+    {
+     "short": "SGC",
+     "events": [
+      "SONG KANG FANMEETING"
+     ]
+    }
+   ]
+  },
+  "weather": {
+   "text": "晴れ時々くもり",
+   "tmax": 18,
+   "tmin": 10,
+   "pop": 0,
+   "advice": "長袖＋薄手の上着（朝晩は冷える）"
+  },
+  "look": "jacket"
+ },
  "event": {
   "type": "postcard",
   "image": "postcard_shionomisaki",
@@ -68,11 +108,5 @@
   "dest_name": "潮岬灯台",
   "souvenirs": [],
   "count": 0
- },
- "stale": [
-  "route"
- ],
- "errors": [
-  "route: The read operation timed out"
- ]
+ }
 }
