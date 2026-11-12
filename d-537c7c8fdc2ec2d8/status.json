@@ -1,17 +1,17 @@
 {
- "updated_at_epoch": 1794444115,
+ "updated_at_epoch": 1794447753,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.19,
-  "load5": 0.21,
-  "load15": 0.18,
+  "load1": 0.62,
+  "load5": 0.61,
+  "load15": 0.3,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7406,
-   "available_mb": 528,
-   "used_pct": 93
+   "used_mb": 6672,
+   "available_mb": 1262,
+   "used_pct": 84
   },
   "disk_home": {
    "total_gb": 161.0,
@@ -19,17 +19,17 @@
    "free_gb": 148.0,
    "used_pct": 8
   },
-  "boot_epoch": 1794441590,
-  "uptime_hours": 0.7
+  "boot_epoch": 1794447487,
+  "uptime_hours": 0.1
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
   "codex": "codex-cli 0.167.0"
  },
  "pages": {
-  "ok": false,
-  "http": null,
-  "error": "Expecting value: line 1 column 1 (char 0)"
+  "ok": true,
+  "http": 200,
+  "ai_usage_updated_at": "2026-11-12T10:41:17+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,7 +46,7 @@
     "title": "AI使用量の定期収集",
     "schedule": "3時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794435669,
+    "last_run_epoch": 1794447626,
     "last_status": "running"
    },
    {
@@ -70,7 +70,7 @@
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794358054,
+    "last_run_epoch": 1794444281,
     "last_status": "succeeded"
    },
    {
@@ -102,7 +102,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794358107,
+    "last_run_epoch": 1794444280,
     "last_status": "succeeded"
    },
    {
@@ -118,7 +118,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794350808,
+    "last_run_epoch": 1794437077,
     "last_status": "succeeded"
    },
    {
@@ -126,7 +126,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1794354147,
+    "last_run_epoch": 1794437428,
     "last_status": "succeeded"
    },
    {
@@ -246,7 +246,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794350754,
+    "last_run_epoch": 1794437077,
     "last_status": "succeeded"
    },
    {
@@ -294,7 +294,7 @@
     "title": "ポイ活 案件リフレッシュ",
     "schedule": "毎日 07:30",
     "group": "ポイ活",
-    "last_run_epoch": 1794349616,
+    "last_run_epoch": 1794436015,
     "last_status": "succeeded"
    },
    {
@@ -318,8 +318,8 @@
     "title": "運行管理者試験 案内チェック",
     "schedule": "毎週 月・木 09:44",
     "group": "ドリル",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794444278,
+    "last_status": "succeeded"
    },
    {
     "id": "unkan-law-check-monthly",
@@ -355,6 +355,6 @@
    }
   ],
   "count": 40,
-  "snapshot_epoch": 1794435749
+  "snapshot_epoch": 1794447736
  }
 }
