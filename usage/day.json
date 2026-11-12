@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-12T07:40:45+09:00",
- "updated_label": "11/12 07:40",
+ "updated_at": "2026-11-12T09:01:56+09:00",
+ "updated_label": "11/12 09:01",
  "date": "2026-11-12",
  "date_label": "11/12（木）",
  "shift": {
@@ -53,5 +53,11 @@
   "pop": 0,
   "advice": "長袖＋薄手の上着（朝晩は冷える）"
  },
- "look": "jacket"
+ "look": "jacket",
+ "event": {
+  "type": "postcard",
+  "image": "postcard_shionomisaki",
+  "title": "潮岬灯台（和歌山）",
+  "body": "本州のいちばん南まで来ちゃった。おっちゃんが来る時の下見はバッチリ。灯台は9時から登れるよ"
+ }
 }
