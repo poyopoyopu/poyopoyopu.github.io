@@ -1,17 +1,17 @@
 {
- "updated_at_epoch": 1794489389,
+ "updated_at_epoch": 1794522304,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.11,
-  "load5": 0.08,
-  "load15": 0.16,
+  "load1": 0.37,
+  "load5": 0.3,
+  "load15": 0.28,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7456,
-   "available_mb": 478,
-   "used_pct": 94
+   "used_mb": 7194,
+   "available_mb": 740,
+   "used_pct": 91
   },
   "disk_home": {
    "total_gb": 161.0,
@@ -19,8 +19,8 @@
    "free_gb": 147.4,
    "used_pct": 8
   },
-  "boot_epoch": 1794484092,
-  "uptime_hours": 1.5
+  "boot_epoch": 1794520531,
+  "uptime_hours": 0.5
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -44,9 +44,9 @@
    {
     "id": "ai-usage-collect",
     "title": "AI使用量の定期収集",
-    "schedule": "3時間ごと",
+    "schedule": "12時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794468069,
+    "last_run_epoch": 1794522129,
     "last_status": "running"
    },
    {
@@ -54,7 +54,7 @@
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1794397582,
+    "last_run_epoch": 1794483872,
     "last_status": "succeeded"
    },
    {
@@ -62,7 +62,7 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1794408414,
+    "last_run_epoch": 1794494692,
     "last_status": "succeeded"
    },
    {
@@ -138,30 +138,6 @@
     "last_status": null
    },
    {
-    "id": "ningen-note-weekly",
-    "title": "人間の取扱説明書 週次レポート",
-    "schedule": "毎週日曜 20:44",
-    "group": "ポッドキャスト",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "ningen-torisetu-radio-daily",
-    "title": "人間の取扱説明書 候補提示",
-    "schedule": "毎週 月・水・金 07:44",
-    "group": "ポッドキャスト",
-    "last_run_epoch": 1794350929,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "ningen-x-posts-daily",
-    "title": "人間の取扱説明書 投稿生成",
-    "schedule": "毎週 月・水・金 08:44",
-    "group": "ポッドキャスト",
-    "last_run_epoch": 1794354935,
-    "last_status": "succeeded"
-   },
-   {
     "id": "note-draft-daily",
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
@@ -214,15 +190,15 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794434921,
-    "last_status": "succeeded"
+    "last_run_epoch": 1794522130,
+    "last_status": "running"
    },
    {
     "id": "odaiba-forecast-evening-preview",
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1794394236,
+    "last_run_epoch": 1794480261,
     "last_status": "succeeded"
    },
    {
@@ -318,8 +294,8 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1794434806,
-    "last_status": "succeeded"
+    "last_run_epoch": 1794520608,
+    "last_status": "running"
    },
    {
     "id": "unko-drill-numbers-check-20261205",
@@ -338,7 +314,7 @@
     "last_status": null
    }
   ],
-  "count": 38,
-  "snapshot_epoch": 1794468131
+  "count": 35,
+  "snapshot_epoch": 1794522291
  }
 }
