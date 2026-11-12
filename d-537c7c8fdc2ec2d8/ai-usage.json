@@ -1,0 +1,57 @@
+{
+ "updated_at": "2026-11-12T09:41:26+09:00",
+ "updated_label": "11/12 09:41",
+ "services": [
+  {
+   "id": "codex",
+   "name": "チャッピー",
+   "window_label": "30日枠",
+   "remaining_pct": 30,
+   "reset_epoch": 1796681236,
+   "reset_label": "12/8 07:07",
+   "reset_credits": 1,
+   "reset_credit_expires_epoch": 1796155632,
+   "reset_credit_expires_label": "12/2 05:07",
+   "sub": null,
+   "stale": false
+  },
+  {
+   "id": "claude_code",
+   "name": "クロちゃん",
+   "window_label": "週間",
+   "remaining_pct": 13,
+   "reset_epoch": 1794517199,
+   "reset_label": "11/13 05:59",
+   "tickets": [
+    {
+     "label": "フル",
+     "short": "フル",
+     "expires_md": "12/11",
+     "expires_epoch": 1797001200
+    },
+    {
+     "label": "Fable",
+     "short": "F",
+     "expires_md": "11/17",
+     "expires_epoch": 1794927600
+    }
+   ],
+   "sub": {
+    "label": "5時間枠",
+    "remaining_pct": 97,
+    "reset_epoch": 1794458399
+   },
+   "stale": false
+  },
+  {
+   "id": "muse",
+   "name": "ムーちゃん",
+   "window_label": "週間",
+   "remaining_pct": 0,
+   "reset_epoch": 1794539580,
+   "reset_label": "11/13 12:13",
+   "sub": null,
+   "stale": false
+  }
+ ]
+}
