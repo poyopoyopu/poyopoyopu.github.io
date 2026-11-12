@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794468139,
+ "updated_at_epoch": 1794489389,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.91,
-  "load5": 1.22,
-  "load15": 0.82,
+  "load1": 0.11,
+  "load5": 0.08,
+  "load15": 0.16,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7346,
-   "available_mb": 589,
-   "used_pct": 93
+   "used_mb": 7456,
+   "available_mb": 478,
+   "used_pct": 94
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 12.1,
-   "free_gb": 148.0,
+   "used_gb": 12.7,
+   "free_gb": 147.4,
    "used_pct": 8
   },
-  "boot_epoch": 1794462029,
-  "uptime_hours": 1.7
+  "boot_epoch": 1794484092,
+  "uptime_hours": 1.5
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -282,22 +282,6 @@
     "last_status": null
    },
    {
-    "id": "poikatsu-daily-snapshot",
-    "title": "ポイ活 日次スナップショット",
-    "schedule": "毎日 06:30",
-    "group": "ポイ活",
-    "last_run_epoch": 1794432349,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "poikatsu-deals-daily-refresh",
-    "title": "ポイ活 案件リフレッシュ",
-    "schedule": "毎日 07:30",
-    "group": "ポイ活",
-    "last_run_epoch": 1794436015,
-    "last_status": "succeeded"
-   },
-   {
     "id": "rakuten-campaign-patrol-1st",
     "title": "楽天キャンペーン巡回・自動エントリー",
     "schedule": "毎月 1・5・10・15・20・25・30日 09:44",
@@ -354,7 +338,7 @@
     "last_status": null
    }
   ],
-  "count": 40,
+  "count": 38,
   "snapshot_epoch": 1794468131
  }
 }
