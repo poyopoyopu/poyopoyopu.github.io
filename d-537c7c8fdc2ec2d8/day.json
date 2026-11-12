@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-12T14:14:37+09:00",
- "updated_label": "11/12 14:14",
+ "updated_at": "2026-11-12T14:17:21+09:00",
+ "updated_label": "11/12 14:17",
  "date": "2026-11-12",
  "date_label": "11/12（木）",
  "shift": {
@@ -64,8 +64,15 @@
  "room": {
   "away": true,
   "status": "お出かけ中（潮岬灯台）",
+  "return_label": "11/14に帰る予定",
   "dest_name": "潮岬灯台",
   "souvenirs": [],
   "count": 0
- }
+ },
+ "stale": [
+  "route"
+ ],
+ "errors": [
+  "route: The read operation timed out"
+ ]
 }
