@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-14T07:50:09+09:00",
- "updated_label": "11/14 07:50",
+ "updated_at": "2026-11-14T08:07:57+09:00",
+ "updated_label": "11/14 08:07",
  "date": "2026-11-14",
  "date_label": "11/14（土）",
  "shift": {
@@ -17,7 +17,11 @@
   }
  },
  "route": {
-  "kind": "none"
+  "kind": "run",
+  "code": "ATLAS",
+  "name": "特別運航便",
+  "time": "",
+  "shuttle": false
  },
  "venues": {
   "venues": [
@@ -53,7 +57,11 @@
   "date": "2026-11-15",
   "date_label": "11/15（日）",
   "route": {
-   "kind": "none"
+   "kind": "run",
+   "code": "ATLAS",
+   "name": "特別運航便",
+   "time": "",
+   "shuttle": false
   },
   "venues": {
    "venues": [
