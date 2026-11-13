@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794522304,
+ "updated_at_epoch": 1794610251,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.37,
-  "load5": 0.3,
-  "load15": 0.28,
+  "load1": 1.73,
+  "load5": 0.76,
+  "load15": 0.35,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7194,
-   "available_mb": 740,
-   "used_pct": 91
+   "used_mb": 7272,
+   "available_mb": 662,
+   "used_pct": 92
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 12.7,
-   "free_gb": 147.4,
-   "used_pct": 8
+   "used_gb": 14.2,
+   "free_gb": 146.0,
+   "used_pct": 9
   },
-  "boot_epoch": 1794520531,
-  "uptime_hours": 0.5
+  "boot_epoch": 1794607662,
+  "uptime_hours": 0.7
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-12T16:21:20+09:00"
+  "ai_usage_updated_at": "2026-11-13T07:28:21+09:00"
  },
  "jobs": {
   "jobs": [
@@ -38,15 +38,15 @@
     "title": "アフィリエイトASP週次チェック",
     "schedule": "毎週金曜 10:44",
     "group": "ASP",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794534247,
+    "last_status": "succeeded"
    },
    {
     "id": "ai-usage-collect",
     "title": "AI使用量の定期収集",
     "schedule": "12時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794522129,
+    "last_run_epoch": 1794587199,
     "last_status": "running"
    },
    {
@@ -54,7 +54,7 @@
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1794483872,
+    "last_run_epoch": 1794570272,
     "last_status": "succeeded"
    },
    {
@@ -62,7 +62,7 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1794494692,
+    "last_run_epoch": 1794581092,
     "last_status": "succeeded"
    },
    {
@@ -70,7 +70,7 @@
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794444412,
+    "last_run_epoch": 1794530681,
     "last_status": "succeeded"
    },
    {
@@ -102,7 +102,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794444839,
+    "last_run_epoch": 1794530680,
     "last_status": "succeeded"
    },
    {
@@ -118,7 +118,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794437312,
+    "last_run_epoch": 1794523477,
     "last_status": "succeeded"
    },
    {
@@ -126,7 +126,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1794437820,
+    "last_run_epoch": 1794523828,
     "last_status": "succeeded"
    },
    {
@@ -142,16 +142,8 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1794447889,
+    "last_run_epoch": 1794534260,
     "last_status": "succeeded"
-   },
-   {
-    "id": "note-muse-case-drill-20261113",
-    "title": "紹介記事の下書き⑥資格ドリル",
-    "schedule": "2026-11-13 10:44（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
    },
    {
     "id": "note-muse-case-sns-ops-20261115",
@@ -198,7 +190,7 @@
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1794480261,
+    "last_run_epoch": 1794566661,
     "last_status": "succeeded"
    },
    {
@@ -222,7 +214,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794437144,
+    "last_run_epoch": 1794523477,
     "last_status": "succeeded"
    },
    {
@@ -246,7 +238,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週 月・水・金 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1794358215,
+    "last_run_epoch": 1794530699,
     "last_status": "succeeded"
    },
    {
@@ -314,7 +306,7 @@
     "last_status": null
    }
   ],
-  "count": 35,
-  "snapshot_epoch": 1794522291
+  "count": 34,
+  "snapshot_epoch": 1794589255
  }
 }
