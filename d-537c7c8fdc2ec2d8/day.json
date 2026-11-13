@@ -1,62 +1,57 @@
 {
- "updated_at": "2026-11-13T07:25:12+09:00",
- "updated_label": "11/13 07:25",
- "date": "2026-11-13",
- "date_label": "11/13（金）",
+ "updated_at": "2026-11-14T07:50:09+09:00",
+ "updated_label": "11/14 07:50",
+ "date": "2026-11-14",
+ "date_label": "11/14（土）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "11:00",
-   "no": "7"
+   "kind": "off"
   },
   "tomorrow": {
-   "kind": "off"
+   "kind": "unknown"
   },
   "next_off": {
    "date": "2026-11-14",
    "label": "11/14（土）",
-   "in_days": 1
+   "in_days": 0
   }
  },
  "route": {
-  "kind": "run",
-  "code": "T01",
-  "name": "基本ルート",
-  "time": "12:00–18:00",
-  "shuttle": false,
-  "note": "アトラス特別便は運休"
+  "kind": "none"
  },
  "venues": {
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": []
+    "events": [
+     "B.PREMIER公式戦 アルバルク東京 vs 広島ドラゴンフライズ"
+    ]
    },
    {
     "short": "Zepp",
     "events": [
-     "siruko Fan Meeting Tour 2026 しるこの部屋"
+     "日食なつこ"
     ]
    },
    {
     "short": "SGC",
     "events": [
-     "SONG KANG FANMEETING"
+     "布袋寅泰 HOTEI the LIVE 2026「45th Celebration GIGS」STAY WILD TOUR"
     ]
    }
   ]
  },
  "weather": {
-  "text": "晴れ時々くもり",
+  "text": "くもり",
   "tmax": 18,
-  "tmin": 9,
-  "pop": 0,
-  "advice": "長袖＋薄手の上着（朝晩は冷える）"
+  "tmin": 12,
+  "pop": 4,
+  "advice": "長袖＋薄手の上着"
  },
- "look": "jacket",
+ "look": "off",
  "tomorrow": {
-  "date": "2026-11-14",
-  "date_label": "11/14（土）",
+  "date": "2026-11-15",
+  "date_label": "11/15（日）",
   "route": {
    "kind": "none"
   },
@@ -64,39 +59,41 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": [
-      "B.PREMIER公式戦 アルバルク東京 vs 広島ドラゴンフライズ"
-     ]
+     "events": []
     },
     {
      "short": "Zepp",
      "events": [
-      "日食なつこ"
+      "Perfect Sounds Progressive Tracks＋Live on November 15th 2026"
      ]
     },
     {
      "short": "SGC",
-     "events": [
-      "布袋寅泰 HOTEI the LIVE 2026「45th Celebration GIGS」STAY WILD TOUR"
-     ]
+     "events": []
     }
    ]
-  }
+  },
+  "weather": {
+   "text": "雨",
+   "tmax": 15,
+   "tmin": 12,
+   "pop": 100,
+   "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
+  },
+  "look": "rain"
  },
  "event": null,
  "room": {
-  "away": true,
-  "status": "お出かけ中（潮岬灯台）",
-  "return_label": "11/14に帰る予定",
-  "dest_name": "潮岬灯台",
-  "souvenirs": [],
-  "count": 0
- },
- "stale": [
-  "weather"
- ],
- "errors": [
-  "weather: HTTP Error 429: Too Many Requests",
-  "tomorrow.weather: HTTP Error 429: Too Many Requests"
- ]
+  "away": false,
+  "status": "ただいま！おみやげが増えたよ",
+  "return_label": null,
+  "dest_name": null,
+  "souvenirs": [
+   {
+    "image": "postcard_shionomisaki",
+    "name": "灯台の置物"
+   }
+  ],
+  "count": 1
+ }
 }
