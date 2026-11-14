@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-14T08:09:35+09:00",
- "updated_label": "11/14 08:09",
+ "updated_at": "2026-11-14T13:27:50+09:00",
+ "updated_label": "11/14 13:27",
  "date": "2026-11-14",
  "date_label": "11/14（土）",
  "shift": {
@@ -47,10 +47,10 @@
  },
  "weather": {
   "text": "くもり",
-  "tmax": 18,
-  "tmin": 12,
+  "tmax": 19,
+  "tmin": 11,
   "pop": 4,
-  "advice": "長袖＋薄手の上着"
+  "advice": "長袖＋薄手の上着（朝晩は冷える）"
  },
  "look": "off",
  "tomorrow": {
@@ -83,7 +83,7 @@
   },
   "weather": {
    "text": "雨",
-   "tmax": 15,
+   "tmax": 14,
    "tmin": 12,
    "pop": 100,
    "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"

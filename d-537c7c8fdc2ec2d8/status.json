@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794611291,
+ "updated_at_epoch": 1794630604,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 1.34,
-  "load5": 0.66,
-  "load15": 0.46,
+  "load1": 0.08,
+  "load5": 0.12,
+  "load15": 0.13,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7319,
-   "available_mb": 615,
-   "used_pct": 92
+   "used_mb": 7346,
+   "available_mb": 588,
+   "used_pct": 93
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 14.2,
-   "free_gb": 146.0,
+   "used_gb": 14.4,
+   "free_gb": 145.7,
    "used_pct": 9
   },
-  "boot_epoch": 1794607662,
-  "uptime_hours": 1.0
+  "boot_epoch": 1794625445,
+  "uptime_hours": 1.4
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-14T07:50:39+09:00"
+  "ai_usage_updated_at": "2026-11-14T08:07:57+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,8 +46,16 @@
     "title": "AI使用量の定期収集",
     "schedule": "12時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794587199,
+    "last_run_epoch": 1794630399,
     "last_status": "running"
+   },
+   {
+    "id": "ai-usage-first-run-check-20261114",
+    "title": "AI使用量 初回チェック（13:26回）",
+    "schedule": "2026-11-14 13:50（1回）",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "art-sns-daily-post",
@@ -70,7 +78,7 @@
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794530681,
+    "last_run_epoch": 1794617081,
     "last_status": "succeeded"
    },
    {
@@ -102,7 +110,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794530680,
+    "last_run_epoch": 1794617080,
     "last_status": "succeeded"
    },
    {
@@ -118,7 +126,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794523477,
+    "last_run_epoch": 1794609877,
     "last_status": "succeeded"
    },
    {
@@ -126,7 +134,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1794523828,
+    "last_run_epoch": 1794610228,
     "last_status": "succeeded"
    },
    {
@@ -142,7 +150,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1794534260,
+    "last_run_epoch": 1794620660,
     "last_status": "succeeded"
    },
    {
@@ -182,8 +190,8 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794522130,
-    "last_status": "running"
+    "last_run_epoch": 1794609891,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -214,8 +222,8 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794523477,
-    "last_status": "succeeded"
+    "last_run_epoch": 1794609877,
+    "last_status": "failed"
    },
    {
     "id": "odaiba-pr-premerge-check-1044",
@@ -258,14 +266,6 @@
     "last_status": "failed"
    },
    {
-    "id": "the-cabs-sale-reminder-20261114",
-    "title": "the cabs 一般発売リマインド",
-    "schedule": "2026-11-14 09:55（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
     "id": "unkan-2027-2nd-exam-watch",
     "title": "運行管理者試験 案内チェック",
     "schedule": "毎週 月・木 09:44",
@@ -286,8 +286,8 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1794520608,
-    "last_status": "running"
+    "last_run_epoch": 1794609892,
+    "last_status": "succeeded"
    },
    {
     "id": "unko-drill-numbers-check-20261205",
@@ -307,6 +307,6 @@
    }
   ],
   "count": 34,
-  "snapshot_epoch": 1794589255
+  "snapshot_epoch": 1794630583
  }
 }
