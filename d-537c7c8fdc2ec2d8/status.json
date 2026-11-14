@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794630604,
+ "updated_at_epoch": 1794686817,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.08,
-  "load5": 0.12,
-  "load15": 0.13,
+  "load1": 0.35,
+  "load5": 0.3,
+  "load15": 0.19,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7346,
-   "available_mb": 588,
-   "used_pct": 93
+   "used_mb": 7226,
+   "available_mb": 708,
+   "used_pct": 91
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 14.4,
+   "used_gb": 14.5,
    "free_gb": 145.7,
    "used_pct": 9
   },
-  "boot_epoch": 1794625445,
-  "uptime_hours": 1.4
+  "boot_epoch": 1794686245,
+  "uptime_hours": 0.2
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-14T08:07:57+09:00"
+  "ai_usage_updated_at": "2026-11-14T13:27:37+09:00"
  },
  "jobs": {
   "jobs": [
@@ -38,7 +38,7 @@
     "title": "アフィリエイトASP週次チェック",
     "schedule": "毎週金曜 10:44",
     "group": "ASP",
-    "last_run_epoch": 1794534247,
+    "last_run_epoch": 1794534799,
     "last_status": "succeeded"
    },
    {
@@ -46,23 +46,15 @@
     "title": "AI使用量の定期収集",
     "schedule": "12時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794630399,
+    "last_run_epoch": 1794673599,
     "last_status": "running"
-   },
-   {
-    "id": "ai-usage-first-run-check-20261114",
-    "title": "AI使用量 初回チェック（13:26回）",
-    "schedule": "2026-11-14 13:50（1回）",
-    "group": "基盤",
-    "last_run_epoch": null,
-    "last_status": null
    },
    {
     "id": "art-sns-daily-post",
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1794570272,
+    "last_run_epoch": 1794656782,
     "last_status": "succeeded"
    },
    {
@@ -70,7 +62,7 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1794581092,
+    "last_run_epoch": 1794667691,
     "last_status": "succeeded"
    },
    {
@@ -78,7 +70,7 @@
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794617081,
+    "last_run_epoch": 1794617139,
     "last_status": "succeeded"
    },
    {
@@ -110,7 +102,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794617080,
+    "last_run_epoch": 1794617308,
     "last_status": "succeeded"
    },
    {
@@ -126,7 +118,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794609877,
+    "last_run_epoch": 1794610111,
     "last_status": "succeeded"
    },
    {
@@ -134,7 +126,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1794610228,
+    "last_run_epoch": 1794610895,
     "last_status": "succeeded"
    },
    {
@@ -150,7 +142,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1794620660,
+    "last_run_epoch": 1794620699,
     "last_status": "succeeded"
    },
    {
@@ -190,7 +182,7 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794609891,
+    "last_run_epoch": 1794610427,
     "last_status": "succeeded"
    },
    {
@@ -198,7 +190,7 @@
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1794566661,
+    "last_run_epoch": 1794655710,
     "last_status": "succeeded"
    },
    {
@@ -222,7 +214,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794609877,
+    "last_run_epoch": 1794610019,
     "last_status": "failed"
    },
    {
@@ -246,7 +238,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週 月・水・金 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1794530699,
+    "last_run_epoch": 1794530909,
     "last_status": "succeeded"
    },
    {
@@ -286,7 +278,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1794609892,
+    "last_run_epoch": 1794610197,
     "last_status": "succeeded"
    },
    {
@@ -306,7 +298,7 @@
     "last_status": null
    }
   ],
-  "count": 34,
-  "snapshot_epoch": 1794630583
+  "count": 33,
+  "snapshot_epoch": 1794673757
  }
 }

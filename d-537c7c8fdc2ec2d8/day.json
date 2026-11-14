@@ -1,21 +1,23 @@
 {
- "updated_at": "2026-11-14T17:49:32+09:00",
- "updated_label": "11/14 17:49",
- "date": "2026-11-14",
- "date_label": "11/14（土）",
+ "updated_at": "2026-11-15T05:06:45+09:00",
+ "updated_label": "11/15 05:06",
+ "date": "2026-11-15",
+ "date_label": "11/15（日）",
  "shift": {
   "today": {
-   "kind": "off"
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "10:00",
    "no": ""
   },
+  "tomorrow": {
+   "kind": "work",
+   "start": "9:00",
+   "no": "1"
+  },
   "next_off": {
-   "date": "2026-11-14",
-   "label": "11/14（土）",
-   "in_days": 0
+   "date": "2026-11-18",
+   "label": "11/18（水）",
+   "in_days": 3
   }
  },
  "route": {
@@ -29,73 +31,74 @@
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": [
-     "B.PREMIER公式戦 アルバルク東京 vs 広島ドラゴンフライズ"
-    ]
+    "events": []
    },
    {
     "short": "Zepp",
     "events": [
-     "日食なつこ"
+     "Perfect Sounds Progressive Tracks＋Live on November 15th 2026"
     ]
    },
    {
     "short": "SGC",
-    "events": [
-     "布袋寅泰 HOTEI the LIVE 2026「45th Celebration GIGS」STAY WILD TOUR"
-    ]
+    "events": []
    }
   ]
  },
  "weather": {
-  "text": "くもり",
-  "tmax": 18,
-  "tmin": 11,
-  "pop": 4,
-  "advice": "長袖＋薄手の上着"
+  "text": "大雨",
+  "tmax": 15,
+  "tmin": 12,
+  "pop": 100,
+  "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
  },
- "look": "off",
+ "look": "rain",
  "tomorrow": {
-  "date": "2026-11-15",
-  "date_label": "11/15（日）",
+  "date": "2026-11-16",
+  "date_label": "11/16（月）",
   "route": {
    "kind": "run",
-   "code": "ATLAS",
-   "name": "特別運航便",
-   "time": "",
-   "shuttle": false
+   "code": "T03",
+   "name": "セントラル広場〜テレポート",
+   "time": "12:00–18:00",
+   "shuttle": false,
+   "note": "アトラス特別便は運休"
   },
   "venues": {
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": []
+     "events": [
+      "B.PREMIER公式戦 アルバルク東京 vs 神戸ストークス"
+     ]
     },
     {
      "short": "Zepp",
      "events": [
-      "Perfect Sounds Progressive Tracks＋Live on November 15th 2026"
+      "CYNHN ONE MAN LIVE 2026"
      ]
     },
     {
      "short": "SGC",
-     "events": []
+     "events": [
+      "沢田研二 2026 LIVE!『freedom 安堵 courage』"
+     ]
     }
    ]
   },
   "weather": {
-   "text": "雨",
-   "tmax": 14,
-   "tmin": 12,
-   "pop": 100,
-   "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
+   "text": "くもり時々晴れ",
+   "tmax": 18,
+   "tmin": 13,
+   "pop": 47,
+   "advice": "長袖＋薄手の上着（折りたたみ傘があると安心）"
   },
-  "look": "rain"
+  "look": "jacket"
  },
  "event": null,
  "room": {
   "away": false,
-  "status": "ただいま！おみやげが増えたよ",
+  "status": "おうちにいるよ",
   "return_label": null,
   "dest_name": null,
   "souvenirs": [
@@ -105,11 +108,5 @@
    }
   ],
   "count": 1
- },
- "stale": [
-  "tomorrow.weather(last-good)"
- ],
- "errors": [
-  "tomorrow.weather: HTTP Error 429: Too Many Requests"
- ]
+ }
 }
