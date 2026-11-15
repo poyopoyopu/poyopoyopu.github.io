@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794686817,
+ "updated_at_epoch": 1794717013,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.35,
-  "load5": 0.3,
-  "load15": 0.19,
+  "load1": 0.2,
+  "load5": 0.17,
+  "load15": 0.25,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7226,
-   "available_mb": 708,
-   "used_pct": 91
+   "used_mb": 7435,
+   "available_mb": 499,
+   "used_pct": 94
   },
   "disk_home": {
    "total_gb": 161.0,
    "used_gb": 14.5,
-   "free_gb": 145.7,
+   "free_gb": 145.6,
    "used_pct": 9
   },
-  "boot_epoch": 1794686245,
-  "uptime_hours": 0.2
+  "boot_epoch": 1794714085,
+  "uptime_hours": 0.8
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-14T13:27:37+09:00"
+  "ai_usage_updated_at": "2026-11-15T05:06:44+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,7 +46,7 @@
     "title": "AI使用量の定期収集",
     "schedule": "12時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794673599,
+    "last_run_epoch": 1794716799,
     "last_status": "running"
    },
    {
@@ -70,7 +70,7 @@
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794617139,
+    "last_run_epoch": 1794703532,
     "last_status": "succeeded"
    },
    {
@@ -102,7 +102,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794617308,
+    "last_run_epoch": 1794703707,
     "last_status": "succeeded"
    },
    {
@@ -118,7 +118,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794610111,
+    "last_run_epoch": 1794696689,
     "last_status": "succeeded"
    },
    {
@@ -126,7 +126,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1794610895,
+    "last_run_epoch": 1794696852,
     "last_status": "succeeded"
    },
    {
@@ -142,16 +142,8 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1794620699,
+    "last_run_epoch": 1794707084,
     "last_status": "succeeded"
-   },
-   {
-    "id": "note-muse-case-sns-ops-20261115",
-    "title": "紹介記事の下書き⑦SNS運用",
-    "schedule": "2026-11-15 10:44（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
    },
    {
     "id": "note-pipeline-weekly",
@@ -182,7 +174,7 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794610427,
+    "last_run_epoch": 1794693884,
     "last_status": "succeeded"
    },
    {
@@ -214,8 +206,8 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794610019,
-    "last_status": "failed"
+    "last_run_epoch": 1794696413,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-pr-premerge-check-1044",
@@ -254,8 +246,8 @@
     "title": "楽天キャンペーン巡回・自動エントリー",
     "schedule": "毎月 1・5・10・15・20・25・30日 09:44",
     "group": "暮らし",
-    "last_run_epoch": 1794271908,
-    "last_status": "failed"
+    "last_run_epoch": 1794704014,
+    "last_status": "succeeded"
    },
    {
     "id": "unkan-2027-2nd-exam-watch",
@@ -278,7 +270,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1794610197,
+    "last_run_epoch": 1794693865,
     "last_status": "succeeded"
    },
    {
@@ -296,9 +288,33 @@
     "group": "ドリル",
     "last_run_epoch": null,
     "last_status": null
+   },
+   {
+    "id": "tokyo-free-events-refresh",
+    "title": "東京無料イベント・ポップアップ更新",
+    "schedule": "毎日 07:44",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "lottery-remind-op18-hobibi-20261116",
+    "title": "OP-18 ホビビ通販部 締切前日リマインド（11/16）",
+    "schedule": "2026-11-16 20:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "lottery-remind-op18-torecaocean-20261116",
+    "title": "OP-18 トレカオーシャン 締切前日リマインド（11/16）",
+    "schedule": "2026-11-16 20:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
    }
   ],
-  "count": 33,
-  "snapshot_epoch": 1794673757
+  "count": 35,
+  "snapshot_epoch": 1794716965
  }
 }
