@@ -1,65 +1,70 @@
 {
- "updated_at": "2026-11-15T13:26:53+09:00",
- "updated_label": "11/15 13:26",
- "date": "2026-11-15",
- "date_label": "11/15（日）",
+ "updated_at": "2026-11-16T06:27:08+09:00",
+ "updated_label": "11/16 06:27",
+ "date": "2026-11-16",
+ "date_label": "11/16（月）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "10:00",
-   "no": ""
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "9:00",
    "no": "1"
   },
+  "tomorrow": {
+   "kind": "work",
+   "start": "9:30",
+   "no": ""
+  },
   "next_off": {
    "date": "2026-11-18",
    "label": "11/18（水）",
-   "in_days": 3
+   "in_days": 2
   }
  },
  "route": {
   "kind": "run",
-  "code": "ATLAS",
-  "name": "特別運航便",
-  "time": "",
-  "shuttle": false
+  "code": "T03",
+  "name": "セントラル広場〜テレポート",
+  "time": "12:00–18:00",
+  "shuttle": false,
+  "note": "アトラス特別便は運休"
  },
  "venues": {
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": []
+    "events": [
+     "B.PREMIER公式戦 アルバルク東京 vs 神戸ストークス"
+    ]
    },
    {
     "short": "Zepp",
     "events": [
-     "Perfect Sounds Progressive Tracks＋Live on November 15th 2026"
+     "CYNHN ONE MAN LIVE 2026"
     ]
    },
    {
     "short": "SGC",
-    "events": []
+    "events": [
+     "沢田研二 2026 LIVE!『freedom 安堵 courage』"
+    ]
    }
   ]
  },
  "weather": {
-  "text": "雨",
-  "tmax": 15,
+  "text": "くもり時々晴れ",
+  "tmax": 18,
   "tmin": 12,
-  "pop": 100,
-  "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
+  "pop": 47,
+  "advice": "長袖＋薄手の上着（折りたたみ傘があると安心）"
  },
- "look": "rain",
+ "look": "jacket",
  "tomorrow": {
-  "date": "2026-11-16",
-  "date_label": "11/16（月）",
+  "date": "2026-11-17",
+  "date_label": "11/17（火）",
   "route": {
    "kind": "run",
-   "code": "T03",
-   "name": "セントラル広場〜テレポート",
+   "code": "T01",
+   "name": "基本ルート",
    "time": "12:00–18:00",
    "shuttle": false,
    "note": "アトラス特別便は運休"
@@ -68,15 +73,11 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": [
-      "B.PREMIER公式戦 アルバルク東京 vs 神戸ストークス"
-     ]
+     "events": []
     },
     {
      "short": "Zepp",
-     "events": [
-      "CYNHN ONE MAN LIVE 2026"
-     ]
+     "events": []
     },
     {
      "short": "SGC",
@@ -87,15 +88,21 @@
    ]
   },
   "weather": {
-   "text": "くもり",
-   "tmax": 19,
-   "tmin": 13,
-   "pop": 47,
-   "advice": "長袖＋薄手の上着（折りたたみ傘があると安心）"
+   "text": "雨",
+   "tmax": 13,
+   "tmin": 10,
+   "pop": 65,
+   "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
   },
-  "look": "jacket"
+  "look": "rain"
  },
- "event": null,
+ "event": {
+  "type": "drop",
+  "image": "drop_stars",
+  "title": "星を見るムーちゃん",
+  "body": "望遠鏡で星空観察中。流れ星はまだ来ない",
+  "short": "星空観察中。流れ星はまだ"
+ },
  "room": {
   "away": false,
   "status": "おうちにいるよ",
@@ -108,5 +115,13 @@
    }
   ],
   "count": 1
- }
+ },
+ "stale": [
+  "weather",
+  "tomorrow.weather"
+ ],
+ "errors": [
+  "weather: HTTP Error 429: Too Many Requests",
+  "tomorrow.weather: HTTP Error 429: Too Many Requests"
+ ]
 }

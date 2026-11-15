@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794717013,
+ "updated_at_epoch": 1794778186,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.2,
-  "load5": 0.17,
-  "load15": 0.25,
+  "load1": 0.93,
+  "load5": 0.63,
+  "load15": 0.46,
   "memory": {
-   "total_mb": 7934,
-   "used_mb": 7435,
-   "available_mb": 499,
+   "total_mb": 7935,
+   "used_mb": 7439,
+   "available_mb": 497,
    "used_pct": 94
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 14.5,
-   "free_gb": 145.6,
+   "used_gb": 15.2,
+   "free_gb": 145.0,
    "used_pct": 9
   },
-  "boot_epoch": 1794714085,
-  "uptime_hours": 0.8
+  "boot_epoch": 1794776902,
+  "uptime_hours": 0.4
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-15T05:06:44+09:00"
+  "ai_usage_updated_at": "2026-11-15T13:26:50+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,7 +46,7 @@
     "title": "AI使用量の定期収集",
     "schedule": "12時間ごと",
     "group": "基盤",
-    "last_run_epoch": 1794716799,
+    "last_run_epoch": 1794778012,
     "last_status": "running"
    },
    {
@@ -54,7 +54,7 @@
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1794656782,
+    "last_run_epoch": 1794743805,
     "last_status": "succeeded"
    },
    {
@@ -62,7 +62,7 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1794667691,
+    "last_run_epoch": 1794754116,
     "last_status": "succeeded"
    },
    {
@@ -150,8 +150,8 @@
     "title": "note週次チェック",
     "schedule": "毎週日曜 19:44",
     "group": "note",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794739514,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-a8-judgment-20261202",
@@ -174,7 +174,7 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794693884,
+    "last_run_epoch": 1794777375,
     "last_status": "succeeded"
    },
    {
@@ -182,7 +182,7 @@
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1794655710,
+    "last_run_epoch": 1794739931,
     "last_status": "succeeded"
    },
    {
@@ -286,8 +286,8 @@
     "title": "運行管理ドリル SNS週次検証",
     "schedule": "毎週日曜 21:00",
     "group": "ドリル",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1794745096,
+    "last_status": "succeeded"
    },
    {
     "id": "tokyo-free-events-refresh",
@@ -312,9 +312,17 @@
     "group": "リマインド",
     "last_run_epoch": null,
     "last_status": null
+   },
+   {
+    "id": "ai-usage-collect-pm",
+    "title": "AI使用量の定期収集（昼）",
+    "schedule": "毎日 13:26",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
    }
   ],
-  "count": 35,
-  "snapshot_epoch": 1794716965
+  "count": 36,
+  "snapshot_epoch": 1794778181
  }
 }
