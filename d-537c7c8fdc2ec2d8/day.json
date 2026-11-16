@@ -1,29 +1,27 @@
 {
- "updated_at": "2026-11-16T13:27:12+09:00",
- "updated_label": "11/16 13:27",
- "date": "2026-11-16",
- "date_label": "11/16（月）",
+ "updated_at": "2026-11-17T06:27:05+09:00",
+ "updated_label": "11/17 06:27",
+ "date": "2026-11-17",
+ "date_label": "11/17（火）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "9:00",
-   "no": "1"
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "9:30",
    "no": ""
   },
+  "tomorrow": {
+   "kind": "off"
+  },
   "next_off": {
    "date": "2026-11-18",
    "label": "11/18（水）",
-   "in_days": 2
+   "in_days": 1
   }
  },
  "route": {
   "kind": "run",
-  "code": "T03",
-  "name": "セントラル広場〜テレポート",
+  "code": "T01",
+  "name": "基本ルート",
   "time": "12:00–18:00",
   "shuttle": false,
   "note": "アトラス特別便は運休"
@@ -32,15 +30,11 @@
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": [
-     "B.PREMIER公式戦 アルバルク東京 vs 神戸ストークス"
-    ]
+    "events": []
    },
    {
     "short": "Zepp",
-    "events": [
-     "CYNHN ONE MAN LIVE 2026"
-    ]
+    "events": []
    },
    {
     "short": "SGC",
@@ -51,20 +45,20 @@
   ]
  },
  "weather": {
-  "text": "くもり",
-  "tmax": 19,
-  "tmin": 12,
-  "pop": 47,
-  "advice": "長袖＋薄手の上着（折りたたみ傘があると安心）"
+  "text": "大雨",
+  "tmax": 14,
+  "tmin": 9,
+  "pop": 100,
+  "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
  },
- "look": "jacket",
+ "look": "rain",
  "tomorrow": {
-  "date": "2026-11-17",
-  "date_label": "11/17（火）",
+  "date": "2026-11-18",
+  "date_label": "11/18（水）",
   "route": {
    "kind": "run",
-   "code": "T01",
-   "name": "基本ルート",
+   "code": "T04",
+   "name": "出会い橋〜テレポート",
    "time": "12:00–18:00",
    "shuttle": false,
    "note": "アトラス特別便は運休"
@@ -73,36 +67,34 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": []
+     "events": [
+      "B.PREMIER公式戦 東京サンロッカーズ vs アルバルク東京（東京ダービー）"
+     ]
     },
     {
      "short": "Zepp",
-     "events": []
+     "events": [
+      "YOGEE NEW WAVES presents「Dreamin' Night 8」"
+     ]
     },
     {
      "short": "SGC",
      "events": [
-      "沢田研二 2026 LIVE!『freedom 安堵 courage』"
+      "テデスキ・トラックス・バンド Day1"
      ]
     }
    ]
   },
   "weather": {
-   "text": "雨",
-   "tmax": 13,
+   "text": "大雨",
+   "tmax": 20,
    "tmin": 10,
-   "pop": 65,
-   "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
+   "pop": 100,
+   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）"
   },
-  "look": "rain"
+  "look": "off"
  },
- "event": {
-  "type": "drop",
-  "image": "drop_stars",
-  "title": "星を見るムーちゃん",
-  "body": "望遠鏡で星空観察中。流れ星はまだ来ない",
-  "short": "星空観察中。流れ星はまだ"
- },
+ "event": null,
  "room": {
   "away": false,
   "status": "おうちにいるよ",

@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-16T13:27:07+09:00",
- "updated_label": "11/16 13:27",
+ "updated_at": "2026-11-17T06:27:01+09:00",
+ "updated_label": "11/17 06:27",
  "services": [
   {
    "id": "codex",
@@ -19,7 +19,7 @@
    "id": "claude_code",
    "name": "クロちゃん",
    "window_label": "週間",
-   "remaining_pct": 25,
+   "remaining_pct": 32,
    "reset_epoch": 1795121999,
    "reset_label": "11/20 05:59",
    "tickets": [
@@ -38,8 +38,8 @@
    ],
    "sub": {
     "label": "5時間枠",
-    "remaining_pct": 0,
-    "reset_epoch": 1794803999
+    "remaining_pct": 100,
+    "reset_epoch": null
    },
    "stale": false
   },
@@ -47,7 +47,7 @@
    "id": "muse",
    "name": "ムーちゃん",
    "window_label": "週間",
-   "remaining_pct": 52,
+   "remaining_pct": 39,
    "reset_epoch": 1795151100,
    "reset_label": "11/20 14:05",
    "sub": null,
@@ -55,6 +55,6 @@
   }
  ],
  "errors": [
-  "codex: IncompleteRead: IncompleteRead(0 bytes read, 1489 more expected)"
+  "codex: HTTPError: HTTP Error 401: Unauthorized"
  ]
 }
