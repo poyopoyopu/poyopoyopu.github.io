@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-16T06:27:08+09:00",
- "updated_label": "11/16 06:27",
+ "updated_at": "2026-11-16T13:27:12+09:00",
+ "updated_label": "11/16 13:27",
  "date": "2026-11-16",
  "date_label": "11/16（月）",
  "shift": {
@@ -51,8 +51,8 @@
   ]
  },
  "weather": {
-  "text": "くもり時々晴れ",
-  "tmax": 18,
+  "text": "くもり",
+  "tmax": 19,
   "tmin": 12,
   "pop": 47,
   "advice": "長袖＋薄手の上着（折りたたみ傘があると安心）"
@@ -115,13 +115,5 @@
    }
   ],
   "count": 1
- },
- "stale": [
-  "weather",
-  "tomorrow.weather"
- ],
- "errors": [
-  "weather: HTTP Error 429: Too Many Requests",
-  "tomorrow.weather: HTTP Error 429: Too Many Requests"
- ]
+ }
 }
