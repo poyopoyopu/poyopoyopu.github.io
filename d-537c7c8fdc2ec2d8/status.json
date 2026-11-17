@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794889783,
+ "updated_at_epoch": 1794950917,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.38,
-  "load5": 0.22,
-  "load15": 0.09,
+  "load1": 0.66,
+  "load5": 0.75,
+  "load15": 0.49,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7388,
-   "available_mb": 546,
-   "used_pct": 93
+   "used_mb": 6811,
+   "available_mb": 1124,
+   "used_pct": 86
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 15.6,
-   "free_gb": 144.6,
+   "used_gb": 15.9,
+   "free_gb": 144.3,
    "used_pct": 10
   },
-  "boot_epoch": 1794886730,
-  "uptime_hours": 0.8
+  "boot_epoch": 1794944855,
+  "uptime_hours": 1.7
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-17T06:27:01+09:00"
+  "ai_usage_updated_at": "2026-11-17T13:40:03+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,23 +46,23 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1794865031,
-    "last_status": "failed"
+    "last_run_epoch": 1794950812,
+    "last_status": "running"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1794889618,
-    "last_status": "running"
+    "last_run_epoch": 1794889925,
+    "last_status": "succeeded"
    },
    {
     "id": "art-sns-daily-post",
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1794829605,
+    "last_run_epoch": 1794916003,
     "last_status": "succeeded"
    },
    {
@@ -70,7 +70,7 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1794840953,
+    "last_run_epoch": 1794927432,
     "last_status": "succeeded"
    },
    {
@@ -130,20 +130,20 @@
     "last_status": null
    },
    {
-    "id": "lottery-remind-op18-cherumo-20261117",
-    "title": "OP-18＋EB-05 秋葉原チェルモ 締切前日リマインド（11/17）",
-    "schedule": "2026-11-17 20:00（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
     "id": "lottery-watch-daily",
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
     "last_run_epoch": 1794869341,
     "last_status": "succeeded"
+   },
+   {
+    "id": "memory-audit-weekly",
+    "title": "メモリ棚卸し（週1・候補リストのみ）",
+    "schedule": "毎週日曜 21:44",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "morning-brief-daily",
@@ -198,7 +198,7 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794864605,
+    "last_run_epoch": 1794950776,
     "last_status": "succeeded"
    },
    {
@@ -206,7 +206,7 @@
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1794826421,
+    "last_run_epoch": 1794912710,
     "last_status": "succeeded"
    },
    {
@@ -274,6 +274,14 @@
     "last_status": "succeeded"
    },
    {
+    "id": "reskilling-google-ai-watch",
+    "title": "リスキリング Google AI無料枠 見張り＋自動申込",
+    "schedule": "6時間ごと",
+    "group": "見張り",
+    "last_run_epoch": 1794950012,
+    "last_status": "succeeded"
+   },
+   {
     "id": "tokyo-free-events-refresh",
     "title": "東京無料イベント・ポップアップ更新",
     "schedule": "48時間ごと",
@@ -322,7 +330,7 @@
     "last_status": "succeeded"
    }
   ],
-  "count": 36,
-  "snapshot_epoch": 1794889772
+  "count": 37,
+  "snapshot_epoch": 1794950910
  }
 }

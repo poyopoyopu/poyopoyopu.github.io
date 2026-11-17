@@ -1,27 +1,27 @@
 {
- "updated_at": "2026-11-17T13:27:20+09:00",
- "updated_label": "11/17 13:27",
- "date": "2026-11-17",
- "date_label": "11/17（火）",
+ "updated_at": "2026-11-18T06:27:07+09:00",
+ "updated_label": "11/18 06:27",
+ "date": "2026-11-18",
+ "date_label": "11/18（水）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "9:30",
-   "no": ""
+   "kind": "off"
   },
   "tomorrow": {
-   "kind": "off"
+   "kind": "work",
+   "start": "10:00",
+   "no": "10"
   },
   "next_off": {
    "date": "2026-11-18",
    "label": "11/18（水）",
-   "in_days": 1
+   "in_days": 0
   }
  },
  "route": {
   "kind": "run",
-  "code": "T01",
-  "name": "基本ルート",
+  "code": "T04",
+  "name": "出会い橋〜テレポート",
   "time": "12:00–18:00",
   "shuttle": false,
   "note": "アトラス特別便は運休"
@@ -30,35 +30,39 @@
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": []
+    "events": [
+     "B.PREMIER公式戦 東京サンロッカーズ vs アルバルク東京（東京ダービー）"
+    ]
    },
    {
     "short": "Zepp",
-    "events": []
+    "events": [
+     "YOGEE NEW WAVES presents「Dreamin' Night 8」"
+    ]
    },
    {
     "short": "SGC",
     "events": [
-     "沢田研二 2026 LIVE!『freedom 安堵 courage』"
+     "テデスキ・トラックス・バンド Day1"
     ]
    }
   ]
  },
  "weather": {
   "text": "大雨",
-  "tmax": 13,
+  "tmax": 19,
   "tmin": 10,
   "pop": 100,
-  "advice": "上着必須（ジャケット・コート）（傘を忘れずに）"
+  "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）"
  },
- "look": "rain",
+ "look": "off",
  "tomorrow": {
-  "date": "2026-11-18",
-  "date_label": "11/18（水）",
+  "date": "2026-11-19",
+  "date_label": "11/19（木）",
   "route": {
    "kind": "run",
-   "code": "T04",
-   "name": "出会い橋〜テレポート",
+   "code": "T02",
+   "name": "出会い橋〜有明",
    "time": "12:00–18:00",
    "shuttle": false,
    "note": "アトラス特別便は運休"
@@ -67,32 +71,30 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": [
-      "B.PREMIER公式戦 東京サンロッカーズ vs アルバルク東京（東京ダービー）"
-     ]
+     "events": []
     },
     {
      "short": "Zepp",
      "events": [
-      "YOGEE NEW WAVES presents「Dreamin' Night 8」"
+      "ブランデー戦記"
      ]
     },
     {
      "short": "SGC",
      "events": [
-      "テデスキ・トラックス・バンド Day1"
+      "テデスキ・トラックス・バンド Day2"
      ]
     }
    ]
   },
   "weather": {
-   "text": "雨",
-   "tmax": 20,
+   "text": "晴れ時々くもり",
+   "tmax": 18,
    "tmin": 10,
-   "pop": 100,
-   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）"
+   "pop": 12,
+   "advice": "長袖＋薄手の上着（朝晩は冷える）"
   },
-  "look": "off"
+  "look": "jacket"
  },
  "event": null,
  "room": {
