@@ -1,19 +1,19 @@
 {
- "updated_at": "2026-11-17T13:27:06+09:00",
- "updated_label": "11/17 13:27",
+ "updated_at": "2026-11-17T13:40:03+09:00",
+ "updated_label": "11/17 13:40",
  "services": [
   {
    "id": "codex",
    "name": "チャッピー",
    "window_label": "30日枠",
    "remaining_pct": 0,
-   "reset_epoch": 1796681237,
+   "reset_epoch": 1796681236,
    "reset_label": "12/8 07:07",
    "reset_credits": 2,
-   "reset_credit_expires_epoch": null,
-   "reset_credit_expires_label": null,
+   "reset_credit_expires_epoch": 1796155632,
+   "reset_credit_expires_label": "12/2 05:07",
    "sub": null,
-   "stale": true
+   "stale": false
   },
   {
    "id": "claude_code",
@@ -53,8 +53,5 @@
    "sub": null,
    "stale": false
   }
- ],
- "errors": [
-  "codex: HTTPError: HTTP Error 401: Unauthorized"
  ]
 }
