@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1794864575,
+ "updated_at_epoch": 1794889783,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.6,
-  "load5": 0.31,
-  "load15": 0.17,
+  "load1": 0.38,
+  "load5": 0.22,
+  "load15": 0.09,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7328,
-   "available_mb": 606,
-   "used_pct": 92
+   "used_mb": 7388,
+   "available_mb": 546,
+   "used_pct": 93
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 15.4,
-   "free_gb": 144.7,
+   "used_gb": 15.6,
+   "free_gb": 144.6,
    "used_pct": 10
   },
-  "boot_epoch": 1794863314,
-  "uptime_hours": 0.4
+  "boot_epoch": 1794886730,
+  "uptime_hours": 0.8
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-16T13:27:07+09:00"
+  "ai_usage_updated_at": "2026-11-17T06:27:01+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,7 +46,15 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1794864412,
+    "last_run_epoch": 1794865031,
+    "last_status": "failed"
+   },
+   {
+    "id": "ai-usage-collect-pm",
+    "title": "AI使用量の定期収集（昼）",
+    "schedule": "毎日 13:26",
+    "group": "基盤",
+    "last_run_epoch": 1794889618,
     "last_status": "running"
    },
    {
@@ -102,7 +110,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794790232,
+    "last_run_epoch": 1794876634,
     "last_status": "succeeded"
    },
    {
@@ -114,11 +122,27 @@
     "last_status": null
    },
    {
+    "id": "lottery-remind-op17-preban-20261121",
+    "title": "OP-17 プレミアムバンダイ 締切前日リマインド（11/21）",
+    "schedule": "2026-11-21 23:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "lottery-remind-op18-cherumo-20261117",
+    "title": "OP-18＋EB-05 秋葉原チェルモ 締切前日リマインド（11/17）",
+    "schedule": "2026-11-17 20:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "lottery-watch-daily",
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794783556,
+    "last_run_epoch": 1794869341,
     "last_status": "succeeded"
    },
    {
@@ -126,7 +150,15 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1794783807,
+    "last_run_epoch": 1794869645,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "muse-feature-watch-daily",
+    "title": "Muse新機能チェック（毎朝）",
+    "schedule": "毎日 08:44",
+    "group": "基盤",
+    "last_run_epoch": 1794872824,
     "last_status": "succeeded"
    },
    {
@@ -142,7 +174,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1794794092,
+    "last_run_epoch": 1794880971,
     "last_status": "succeeded"
    },
    {
@@ -166,8 +198,8 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1794864323,
-    "last_status": "running"
+    "last_run_epoch": 1794864605,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -190,7 +222,7 @@
     "title": "お台場サイト GA4週次チェック",
     "schedule": "毎週火曜 09:44",
     "group": "お台場",
-    "last_run_epoch": 1794274761,
+    "last_run_epoch": 1794878040,
     "last_status": "succeeded"
    },
    {
@@ -198,7 +230,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1794782801,
+    "last_run_epoch": 1794869178,
     "last_status": "succeeded"
    },
    {
@@ -242,6 +274,14 @@
     "last_status": "succeeded"
    },
    {
+    "id": "tokyo-free-events-refresh",
+    "title": "東京無料イベント・ポップアップ更新",
+    "schedule": "48時間ごと",
+    "group": "暮らし",
+    "last_run_epoch": 1794869052,
+    "last_status": "succeeded"
+   },
+   {
     "id": "unkan-2027-2nd-exam-watch",
     "title": "運行管理者試験 案内チェック",
     "schedule": "毎週月曜・木曜 09:44",
@@ -262,7 +302,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1794781741,
+    "last_run_epoch": 1794866501,
     "last_status": "succeeded"
    },
    {
@@ -280,41 +320,9 @@
     "group": "ドリル",
     "last_run_epoch": 1794745096,
     "last_status": "succeeded"
-   },
-   {
-    "id": "tokyo-free-events-refresh",
-    "title": "東京無料イベント・ポップアップ更新",
-    "schedule": "48時間ごと",
-    "group": "暮らし",
-    "last_run_epoch": 1794782660,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "ai-usage-collect-pm",
-    "title": "AI使用量の定期収集（昼）",
-    "schedule": "毎日 13:26",
-    "group": "基盤",
-    "last_run_epoch": 1794803539,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "lottery-remind-op18-cherumo-20261117",
-    "title": "OP-18＋EB-05 秋葉原チェルモ 締切前日リマインド（11/17）",
-    "schedule": "2026-11-17 20:00（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "muse-feature-watch-daily",
-    "title": "Muse新機能チェック（毎朝）",
-    "schedule": "毎日 08:44",
-    "group": "基盤",
-    "last_run_epoch": null,
-    "last_status": null
    }
   ],
-  "count": 35,
-  "snapshot_epoch": 1794864566
+  "count": 36,
+  "snapshot_epoch": 1794889772
  }
 }
