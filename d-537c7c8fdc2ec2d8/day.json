@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-19T06:30:33+09:00",
- "updated_label": "11/19 06:30",
+ "updated_at": "2026-11-19T06:46:12+09:00",
+ "updated_label": "11/19 06:46",
  "date": "2026-11-19",
  "date_label": "11/19（木）",
  "shift": {
@@ -49,10 +49,10 @@
   ]
  },
  "weather": {
-  "text": "大雨",
-  "tmax": 18,
+  "text": "小雨",
+  "tmax": 19,
   "tmin": 10,
-  "pop": 100,
+  "pop": 10,
   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）"
  },
  "look": "rain",
@@ -86,7 +86,15 @@
      ]
     }
    ]
-  }
+  },
+  "weather": {
+   "text": "晴れ",
+   "tmax": 16,
+   "tmin": 8,
+   "pop": 0,
+   "advice": "長袖＋薄手の上着（朝晩は冷える）"
+  },
+  "look": "jacket"
  },
  "event": {
   "type": "postcard",
@@ -107,12 +115,5 @@
    }
   ],
   "count": 1
- },
- "stale": [
-  "weather"
- ],
- "errors": [
-  "weather: HTTP Error 429: Too Many Requests",
-  "tomorrow.weather: HTTP Error 429: Too Many Requests"
- ]
+ }
 }
