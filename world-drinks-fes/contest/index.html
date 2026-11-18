@@ -3,46 +3,46 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LPコンテスト — 世界のお酒フェス</title>
-<meta name="description" content="AIたちが本気で作った「世界のお酒フェス」誘い用LPの見比べ＆投票ページ。">
+<title>四つの世界への入口 — 世界のお酒フェス LPコンテスト</title>
+<meta name="description" content="AIたちが本気で作った「世界のお酒フェス」誘い用LP、4つの世界の見比べ＆投票ページ。">
 <style>
 :root{
   --bg:#070a14; --panel:#101830; --line:#ffffff1c; --txt:#f4f1e8; --muted:#9aa3bd;
-  --gold:#e8c268; --cyan:#59d8e6;
+  --gold:#e8c268; --cyan:#59d8e6; --tint:#59d8e6;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--txt);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;overflow-x:hidden}
 .bgfx{position:fixed;inset:0;pointer-events:none;z-index:0;
   background:
-    radial-gradient(700px 420px at 88% -6%, rgba(232,194,104,.20), transparent 60%),
-    radial-gradient(760px 520px at -12% 34%, rgba(89,216,230,.13), transparent 60%),
-    radial-gradient(680px 520px at 108% 78%, rgba(176,122,255,.13), transparent 60%),
-    radial-gradient(560px 420px at 12% 108%, rgba(163,230,53,.09), transparent 60%);}
-.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:54px 20px 80px}
+    radial-gradient(720px 460px at 85% -6%, rgba(232,194,104,.16), transparent 60%),
+    radial-gradient(760px 560px at -10% 40%, rgba(89,216,230,.10), transparent 60%),
+    radial-gradient(680px 520px at 110% 85%, rgba(176,122,255,.10), transparent 60%);}
+.tint{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:0;transition:opacity .8s ease;
+  background:radial-gradient(820px 560px at 50% 30%, var(--tint), transparent 65%);}
+.tint.on{opacity:.20}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:58px 20px 84px}
 .kicker{display:flex;align-items:center;gap:12px;color:var(--cyan);letter-spacing:.34em;font-size:11px;font-weight:800}
 .kicker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
-h1{font-size:clamp(40px,9.5vw,76px);line-height:1.06;margin:20px 0 0;font-weight:900;letter-spacing:.01em}
-h1 .thin{display:block;font-size:clamp(19px,4.6vw,30px);letter-spacing:.14em;color:var(--muted);font-weight:700;margin-bottom:10px}
+h1{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(38px,9vw,72px);line-height:1.25;margin:26px 0 0;font-weight:600;letter-spacing:.04em}
 h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2b8);-webkit-background-clip:text;background-clip:text;color:transparent}
-.sub{color:var(--muted);line-height:2;font-size:14.5px;margin-top:18px;max-width:640px}
+.sub{color:var(--muted);line-height:2.05;font-size:14.5px;margin-top:22px;max-width:620px}
 .sub b{color:var(--txt)}
-.vs{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
-.vs span{font-size:11px;letter-spacing:.14em;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--muted)}
-.vs span.hot{color:#0b1020;background:var(--gold);border-color:var(--gold)}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
-@media(max-width:680px){.grid{grid-template-columns:1fr}}
-.card{position:relative;display:flex;flex-direction:column;background:linear-gradient(165deg,var(--panel),#0b1122);border:1px solid var(--line);border-radius:18px;padding:26px 24px 22px;overflow:hidden}
-.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--ac,#888)}
-.card::after{content:"";position:absolute;right:-46px;top:-46px;width:150px;height:150px;border-radius:50%;background:var(--ac,#888);opacity:.14;filter:blur(6px)}
+.hint{margin-top:14px;font-size:12px;letter-spacing:.22em;color:var(--muted)}
+.hint::before{content:"";display:inline-block;width:26px;height:1px;background:var(--muted);vertical-align:middle;margin-right:10px}
+.doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:42px}
+@media(max-width:680px){.doors{grid-template-columns:1fr}}
+.door{position:relative;display:flex;flex-direction:column;background:linear-gradient(168deg,#121b36,#0a1020);border:1px solid var(--line);border-radius:18px;padding:30px 24px 22px;overflow:hidden;transition:border-color .3s, transform .3s}
+.door:hover{border-color:var(--ac);transform:translateY(-2px)}
+.door::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--ac)}
+.num{position:absolute;right:10px;top:2px;font-family:"Hiragino Mincho ProN",serif;font-size:96px;line-height:1;color:var(--ac);opacity:.13;font-weight:600;pointer-events:none}
 .rank{position:absolute;top:16px;right:16px;z-index:2;font-size:11px;font-weight:900;letter-spacing:.1em;padding:5px 11px;border-radius:999px;background:var(--ac);color:#0b1020;display:none}
-.card.top .rank{display:block}
-.card .who{font-size:27px;font-weight:900;letter-spacing:.01em}
-.card .style{color:var(--ac);font-size:11.5px;font-weight:800;letter-spacing:.18em;margin-top:5px}
-.card .desc{color:var(--muted);font-size:13.5px;line-height:1.85;margin:13px 0 0;flex:1}
-.card .open{margin-top:18px;display:inline-flex;align-items:center;gap:8px;color:var(--txt);text-decoration:none;font-weight:800;font-size:14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;transition:.15s;background:#ffffff08}
-.card .open:hover{border-color:var(--ac);transform:translateY(-1px)}
-.vrow{display:flex;align-items:center;gap:12px;margin-top:16px}
+.door.top .rank{display:block}
+.concept{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;font-size:clamp(23px,4.6vw,28px);font-weight:600;letter-spacing:.05em;line-height:1.5;padding-right:52px}
+.by{margin-top:9px;font-size:12px;letter-spacing:.26em;font-weight:800;color:var(--ac)}
+.desc{color:var(--muted);font-size:13.5px;line-height:1.9;margin:14px 0 0;flex:1}
+.open{margin-top:20px;display:inline-flex;align-items:center;gap:8px;color:var(--txt);text-decoration:none;font-weight:800;font-size:14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;background:#ffffff08;transition:.15s}
+.open:hover{border-color:var(--ac)}
+.vrow{display:flex;align-items:center;gap:12px;margin-top:14px}
 .vbtn{flex:1;position:relative;overflow:hidden;border:1.5px solid var(--ac);background:transparent;color:var(--txt);font-family:inherit;font-weight:900;font-size:15px;border-radius:12px;padding:13px 10px;cursor:pointer;transition:.15s}
 .vbtn:hover{background:#ffffff10}
 .vbtn:disabled{cursor:default}
@@ -51,11 +51,12 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 .vbtn span{position:relative}
 .vcount{font-size:14px;color:var(--muted);white-space:nowrap}
 .vcount b{color:var(--txt);font-size:19px}
-.rsvp{margin-top:52px;background:linear-gradient(160deg,#141c38,#0b1122);border:1px solid var(--line);border-radius:20px;padding:30px 26px}
-.rsvp h2{margin:0;font-size:clamp(24px,5.6vw,34px);font-weight:900}
+.rsvp{margin-top:56px;background:linear-gradient(160deg,#141c38,#0b1122);border:1px solid var(--line);border-radius:20px;padding:32px 26px}
+.rsvp .rk{color:var(--cyan);letter-spacing:.3em;font-size:11px;font-weight:800}
+.rsvp h2{font-family:"Hiragino Mincho ProN","Yu Mincho",serif;margin:14px 0 0;font-size:clamp(25px,5.6vw,36px);font-weight:600;letter-spacing:.04em}
 .rsvp h2 .gold{color:var(--gold)}
-.rsvp p{color:var(--muted);font-size:13.5px;line-height:1.9;margin:10px 0 0}
-.rgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+.rsvp p{color:var(--muted);font-size:13.5px;line-height:1.9;margin:12px 0 0}
+.rgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px}
 @media(max-width:680px){.rgrid{grid-template-columns:1fr}}
 .rbtn{position:relative;overflow:hidden;border:1.5px solid var(--line);background:#ffffff06;color:var(--txt);font-family:inherit;border-radius:14px;padding:18px 10px;cursor:pointer;font-size:18px;font-weight:900;transition:.15s}
 .rbtn small{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-top:5px}
@@ -66,7 +67,7 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 .rbtn.picked small{color:#0b1020cc}
 .rbtn:disabled{cursor:default}
 .vstat{color:var(--muted);font-size:12.5px;margin-top:16px;min-height:1.4em}
-.note{margin-top:44px;color:var(--muted);font-size:13px;line-height:1.95;border-top:1px solid var(--line);padding-top:22px}
+.note{margin-top:46px;color:var(--muted);font-size:13px;line-height:1.95;border-top:1px solid var(--line);padding-top:22px}
 .note a{color:var(--cyan)}
 .fade{animation:up .7s cubic-bezier(.22,1,.36,1) both}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
@@ -75,54 +76,56 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 </head>
 <body>
 <div class="bgfx"></div>
+<div class="tint" id="tint"></div>
 <div class="wrap">
 
-<div class="kicker">LP CONTEST — AI BATTLE</div>
-<h1><span class="thin">世界のお酒フェス</span>誘い用LP<span class="gold">コンテスト</span></h1>
-<p class="sub">お題はひとつ。「<b>11月22日・仕事終わりにお台場で開催される世界のお酒フェスへ、同僚を誘うLP</b>」。4つのAIが本気で作った。見比べて、気に入ったやつに<b>1タップで投票</b>してほしい。</p>
-<div class="vs"><span class="hot">見比べる</span><span>投票は1タップ</span><span>名前・入力なし</span><span>票数はライブ表示</span></div>
+<div class="kicker">LP CONTEST</div>
+<h1>四つの世界への、<br><span class="gold">入口</span>。</h1>
+<p class="sub">お題はひとつ。「<b>11月22日・仕事終わりにお台場で開催される世界のお酒フェスへ、同僚を誘うLP</b>」。4つのAIが本気で作ると、同じお題でもこれだけ世界が変わる。気になる扉から入って、よかった世界に<b>1タップで投票</b>してほしい。</p>
+<p class="hint">扉にふれると、その世界の色がつきます</p>
 
-<div class="grid" id="cards">
-<article class="card fade d1" style="--ac:#e8c268" data-key="muse">
-<div class="rank">暫定1位</div>
-<div class="who">Muse</div>
-<div class="style">NIGHT FES × NEON</div>
-<p class="desc">ダーク×ネオンの夜フェス世界観。特大の「11.22」、当日のタイムライン、カウントダウン、LINE誘い文コピーまで載せた本戦仕様。</p>
-<a class="open" href="muse/">LPを見る <span>→</span></a>
+<div class="doors" id="cards">
+<article class="door fade d1" style="--ac:#e8c268" data-key="muse">
+<div class="num">01</div><div class="rank">暫定1位</div>
+<div class="concept">ネオンに沈む、<br>夜の祝祭</div>
+<div class="by">MUSE</div>
+<p class="desc">ダークな夜に、金と水色のネオンが灯る。特大の「11.22」、当日のタイムライン、カウントダウン、LINE誘い文コピーまで載せた本戦仕様の一枚。</p>
+<a class="open" href="muse/">この世界の扉を開く <span>→</span></a>
 <div class="vrow"><button class="vbtn" data-vote="muse"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
 </article>
 
-<article class="card fade d2" style="--ac:#a3e635" data-key="chatgpt">
-<div class="rank">暫定1位</div>
-<div class="who">ChatGPT</div>
-<div class="style">ACID EDITORIAL</div>
-<p class="desc">アシッドグリーンのエディトリアルデザイン。「WORLD DRINKS / ODAIBA — 11.22」。雑誌みたいなレイアウトで攻めた改訂版。</p>
-<a class="open" href="chatgpt/">LPを見る <span>→</span></a>
+<article class="door fade d2" style="--ac:#a3e635" data-key="chatgpt">
+<div class="num">02</div><div class="rank">暫定1位</div>
+<div class="concept">アシッドな、<br>雑誌の紙面</div>
+<div class="by">CHATGPT</div>
+<p class="desc">アシッドグリーンが紙面を切り取る、エディトリアルデザイン。「WORLD DRINKS / ODAIBA — 11.22」。雑誌の特集ページみたいな攻めのレイアウト。</p>
+<a class="open" href="chatgpt/">この世界の扉を開く <span>→</span></a>
 <div class="vrow"><button class="vbtn" data-vote="chatgpt"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
 </article>
 
-<article class="card fade d3" style="--ac:#f0935c" data-key="claude">
-<div class="rank">暫定1位</div>
-<div class="who">Claude</div>
-<div class="style">STRAIGHT INVITE</div>
-<p class="desc">「世界のお酒フェス 一緒に行こうぜ」。タイトルからして直球。届いたHTMLをそのまま公開した、飾らない誘いの一枚。</p>
-<a class="open" href="claude/">LPを見る <span>→</span></a>
+<article class="door fade d3" style="--ac:#f0935c" data-key="claude">
+<div class="num">03</div><div class="rank">暫定1位</div>
+<div class="concept">飾らない、<br>直球の誘い状</div>
+<div class="by">CLAUDE</div>
+<p class="desc">「世界のお酒フェス 一緒に行こうぜ」。タイトルからして直球勝負。届いたHTMLをそのまま公開した、余計な飾りのない誘いの一枚。</p>
+<a class="open" href="claude/">この世界の扉を開く <span>→</span></a>
 <div class="vrow"><button class="vbtn" data-vote="claude"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
 </article>
 
-<article class="card fade d4" style="--ac:#8fa8ff" data-key="gemini">
-<div class="rank">暫定1位</div>
-<div class="who">Gemini</div>
-<div class="style">VIP PASS MAKER</div>
-<p class="desc">黒×金の高級な招待状デザイン。目玉は、名前と「1杯目」を選ぶとその場で発行される参加表明パス。触って遊べる一枚。</p>
-<a class="open" href="gemini/">LPを見る <span>→</span></a>
+<article class="door fade d4" style="--ac:#8fa8ff" data-key="gemini">
+<div class="num">04</div><div class="rank">暫定1位</div>
+<div class="concept">黒と金の、<br>VIPパス</div>
+<div class="by">GEMINI</div>
+<p class="desc">黒×金の高級な招待状。目玉は、名前と「1杯目」を選ぶとその場で発行される参加表明パス。触って遊べる仕掛けのある一枚。</p>
+<a class="open" href="gemini/">この世界の扉を開く <span>→</span></a>
 <div class="vrow"><button class="vbtn" data-vote="gemini"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
 </article>
 </div>
 
 <div class="rsvp fade">
-<h2>ついでに聞く。22日、<span class="gold">行ける？</span></h2>
-<p>11月22日（日）仕事終わり、お台場セントラル広場。入場無料、1杯だけでもOK。これも1タップで。</p>
+<div class="rk">AND YOU?</div>
+<h2>そして、22日。<span class="gold">行ける？</span></h2>
+<p>11月22日（日）仕事終わり、お台場セントラル広場。入場無料、1杯だけでもOK。参加表明も1タップで。</p>
 <div class="rgrid" id="rsvp-votes">
 <button class="rbtn" data-key="go"><span class="bar"></span><span>行く<small>0人</small></span></button>
 <button class="rbtn" data-key="maybe"><span class="bar"></span><span>未定<small>0人</small></span></button>
@@ -131,21 +134,31 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 <p class="vstat" id="vote-status">現在の票数を読み込み中…</p>
 </div>
 
-<p class="note">本戦の誘い用LP（Muse版）は <a href="../">こちら</a>。イベント：世界のお酒フェス（2026年11月20日〜23日／お台場セントラル広場・入場無料、飲食はチケット制）。投票は各部門1人1票まで（この端末・ブラウザ単位）。</p>
+<p class="note">本戦の誘い用LP（Muse版）は <a href="../">こちら</a>。イベント：世界のお酒フェス（2026年11月20日〜23日／お台場セントラル広場・入場無料、飲食はチケット制）。投票は各部門1人1票まで（この端末・ブラウザ単位）。参考にした見本集：Fable作「AI企業LP デザイン5案」の入口ページ。</p>
 </div>
 
 <script>
 var API = "https://fes-vote.artplayground.workers.dev";
 var LPKEYS = ["muse","chatgpt","claude","gemini"];
 var RKEYS = ["go","maybe","no"];
+var tint = document.getElementById("tint");
+document.querySelectorAll("#cards .door").forEach(function(card){
+  var color = getComputedStyle(card).getPropertyValue("--ac").trim();
+  function on(){ tint.style.setProperty("--tint", color); tint.classList.add("on"); }
+  function off(){ tint.classList.remove("on"); }
+  card.addEventListener("mouseenter", on);
+  card.addEventListener("mouseleave", off);
+  card.addEventListener("touchstart", on, {passive:true});
+  card.addEventListener("focusin", on);
+  card.addEventListener("focusout", off);
+});
 function render(d){
   var total = LPKEYS.reduce(function(a,k){return a+(d[k]||0)},0);
   var max = Math.max.apply(null, LPKEYS.map(function(k){return d[k]||0}));
-  document.querySelectorAll("#cards .card").forEach(function(card){
+  document.querySelectorAll("#cards .door").forEach(function(card){
     var k = card.getAttribute("data-key"), v = d[k]||0;
     card.querySelector(".vcount b").textContent = v;
-    var btn = card.querySelector(".vbtn");
-    btn.querySelector(".bar").style.width = total ? Math.round(v/total*100)+"%" : "0%";
+    card.querySelector(".vbtn").querySelector(".bar").style.width = total ? Math.round(v/total*100)+"%" : "0%";
     card.classList.toggle("top", total>0 && v===max && v>0);
   });
   var rt = RKEYS.reduce(function(a,k){return a+(d[k]||0)},0);
@@ -168,7 +181,7 @@ function lockRsvp(picked){
     if (b.getAttribute("data-key")===picked) b.classList.add("picked");
   });
 }
-function send(group, key){
+function send(key){
   fetch(API+"/vote", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({key:key})})
     .then(function(r){return r.json()}).then(render)
     .catch(function(){ document.getElementById("vote-status").textContent = "投票は受け付けました（票数の再取得に失敗）"; });
@@ -177,14 +190,14 @@ document.querySelectorAll("#cards .vbtn").forEach(function(b){
   b.addEventListener("click", function(){
     if (localStorage.getItem("fes-lp")) return;
     var key = b.getAttribute("data-vote");
-    localStorage.setItem("fes-lp", key); lockLp(key); send("lp", key);
+    localStorage.setItem("fes-lp", key); lockLp(key); send(key);
   });
 });
 document.querySelectorAll("#rsvp-votes .rbtn").forEach(function(b){
   b.addEventListener("click", function(){
     if (localStorage.getItem("fes-rsvp")) return;
     var key = b.getAttribute("data-key");
-    localStorage.setItem("fes-rsvp", key); lockRsvp(key); send("rsvp", key);
+    localStorage.setItem("fes-rsvp", key); lockRsvp(key); send(key);
   });
 });
 var prevLp = localStorage.getItem("fes-lp"); if (prevLp) lockLp(prevLp);
