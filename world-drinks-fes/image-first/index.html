@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>世界のお酒フェス 11/22（日）お台場 入場無料</title>
+<meta name="description" content="2026年11月22日（日）12:00〜21:00、お台場セントラル広場で開催。入場無料、仕事終わりに合流できる世界のお酒フェス。">
+<style>
+:root{--navy:#050b24;--navy2:#0a1538;--gold:#ffd36a;--gold2:#f2a900;--cyan:#38e1ff;--ink:#eaf2ff;--mute:#9fb2d6}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--navy);color:var(--ink);font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic",system-ui,sans-serif;line-height:1.6;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+.goldtxt{background:linear-gradient(180deg,#fff3b8 0%,#ffd36a 35%,#e69a00 70%,#ffd36a 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;padding:28px 0 26px;background:
+radial-gradient(60% 40% at 80% 30%,rgba(56,225,255,.25),transparent 70%),
+radial-gradient(50% 35% at 10% 10%,rgba(255,200,80,.18),transparent 70%),
+linear-gradient(180deg,#02061a 0%,#0a1a4a 55%,#050b24 100%)}
+.beam{position:absolute;height:2px;width:140%;left:-20%;transform-origin:left;filter:drop-shadow(0 0 6px currentColor);opacity:.8}
+.b1{top:9%;color:var(--gold);background:linear-gradient(90deg,transparent,currentColor,transparent);transform:rotate(14deg)}
+.b2{top:30%;color:var(--cyan);background:linear-gradient(90deg,transparent,currentColor,transparent);transform:rotate(-18deg)}
+.b3{top:62%;color:var(--gold);background:linear-gradient(90deg,transparent,currentColor,transparent);transform:rotate(-8deg);opacity:.5}
+.hero .wrap{position:relative;z-index:2}
+.tag{display:inline-block;font-size:12px;letter-spacing:.12em;color:var(--cyan);border:1px solid rgba(56,225,255,.6);border-radius:99px;padding:3px 12px;box-shadow:0 0 12px rgba(56,225,255,.35)}
+.date{font-weight:900;font-size:clamp(88px,30vw,220px);line-height:.95;letter-spacing:-.04em;margin:10px 0 0;filter:drop-shadow(0 0 18px rgba(255,190,50,.55)) drop-shadow(0 4px 0 rgba(120,60,0,.6))}
+.dow{font-size:clamp(18px,5vw,30px);font-weight:800;color:var(--gold);letter-spacing:.2em;text-shadow:0 0 14px rgba(255,190,50,.7)}
+h1{font-size:clamp(26px,7.2vw,46px);line-height:1.3;margin:14px 0 8px;text-shadow:0 0 18px rgba(56,225,255,.4)}
+.lead{color:var(--cyan);font-weight:700;font-size:clamp(15px,4vw,19px);text-shadow:0 0 10px rgba(56,225,255,.5)}
+.meta{margin-top:14px;display:grid;gap:6px;font-size:14px;color:#dfe8ff}
+.meta b{color:var(--gold)}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.badges span{font-size:13px;font-weight:700;padding:5px 12px;border-radius:99px;border:1px solid rgba(255,211,106,.6);background:rgba(255,211,106,.1);color:var(--gold)}
+.scene{position:relative;margin:18px -18px 0;height:clamp(230px,56vw,420px)}
+.scene svg{position:absolute;inset:0;width:100%;height:100%}
+.wheel{transform-origin:200px 120px;animation:spin 90s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.cta-top{display:flex;justify-content:center;margin-top:6px}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;border:0;cursor:pointer;font:inherit;font-weight:900;color:#3a2200;background:linear-gradient(180deg,#fff0a8,#ffc83a 50%,#e89400);border-radius:99px;padding:18px 34px;font-size:clamp(18px,5vw,24px);box-shadow:0 0 0 2px rgba(255,235,160,.6),0 0 28px rgba(255,190,50,.7),0 8px 0 #9a5f00;transition:transform .15s,box-shadow .15s}
+.btn:active{transform:translateY(6px);box-shadow:0 0 0 2px rgba(255,235,160,.6),0 0 20px rgba(255,190,50,.7),0 2px 0 #9a5f00}
+.btn:focus-visible{outline:3px solid var(--cyan);outline-offset:4px}
+
+/* sections */
+section{padding:44px 0}
+.sh{text-align:center;margin-bottom:24px}
+.sh .en{font-weight:900;font-size:clamp(24px,6.5vw,38px);letter-spacing:.03em;filter:drop-shadow(0 0 10px rgba(255,190,50,.5))}
+.sh .ja{color:var(--cyan);font-weight:700;margin-top:2px;text-shadow:0 0 10px rgba(56,225,255,.4)}
+
+/* cards */
+.cards{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:6px 18px 18px;margin:0 -18px;scrollbar-width:thin}
+.card{flex:0 0 66%;max-width:240px;scroll-snap-align:center;position:relative;border-radius:18px;padding:14px 12px 16px;text-align:center;background:linear-gradient(180deg,#101c4a,#080f2c);border:1.5px solid var(--gold);box-shadow:0 0 18px rgba(255,190,50,.3),inset 0 0 20px rgba(255,190,50,.08)}
+.card .chip{position:absolute;top:-1px;right:-1px;font-size:11px;font-weight:800;background:var(--cyan);color:#012;padding:2px 12px;border-radius:0 17px 0 12px}
+.card svg{width:84px;height:120px;margin:6px auto 4px;display:block;filter:drop-shadow(0 0 10px rgba(255,200,80,.35))}
+.card h3{font-size:17px;letter-spacing:.04em;color:var(--gold)}
+.card .jp{font-size:14px;font-weight:700}
+.card .sub{font-size:12px;color:var(--cyan);margin-top:6px;font-weight:700}
+.card p{font-size:12px;color:var(--mute);margin-top:2px}
+@media(min-width:760px){.cards{display:grid;grid-template-columns:repeat(5,1fr);overflow:visible;padding:8px 0;margin:0}.card{flex:none;max-width:none}}
+
+/* two col */
+.cols{display:grid;gap:36px}
+@media(min-width:860px){.cols{grid-template-columns:1fr 1fr;gap:30px;align-items:start}}
+.tl{list-style:none;position:relative;padding-left:18px;border-left:2px solid var(--gold);box-shadow:-6px 0 14px -8px var(--gold);display:grid;gap:10px}
+.tl li{position:relative;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.05);border-radius:12px;padding:10px 12px}
+.tl li::before{content:"";position:absolute;left:-25px;top:50%;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px var(--gold)}
+.tl time{flex:0 0 74px;text-align:center;font-weight:900;font-size:15px;line-height:1.25;color:#3a2200;background:linear-gradient(180deg,#ffe58a,#f0b030);border-radius:8px;padding:8px 2px}
+.tl strong{display:block;font-size:15px}
+.tl small{color:var(--mute);font-size:12px}
+.tl li.hl{border:1px solid rgba(255,211,106,.7);background:rgba(255,211,106,.1)}
+.info{border:1.5px solid var(--cyan);border-radius:16px;padding:18px;background:linear-gradient(180deg,rgba(56,225,255,.08),rgba(5,11,36,.6));box-shadow:0 0 22px rgba(56,225,255,.25)}
+.info h3{color:var(--gold);margin-bottom:10px}
+.info dl{display:grid;grid-template-columns:auto 1fr;gap:8px 12px;font-size:14px}
+.info dt{color:var(--cyan);font-weight:800;white-space:nowrap}
+.map{position:relative;height:170px;margin:16px 0 10px;border-radius:12px;overflow:hidden;border:1px solid rgba(56,225,255,.4);background:#0a1230}
+.map svg{width:100%;height:100%;display:block}
+.pins{display:grid;gap:8px}
+.pin{display:flex;align-items:center;gap:10px;background:rgba(255,255,255,.06);border-radius:10px;padding:8px 12px;font-size:14px}
+.pin b{color:var(--gold);margin-left:auto;white-space:nowrap}
+.pin i{width:10px;height:10px;border-radius:50%;background:var(--cyan);box-shadow:0 0 8px var(--cyan);flex:none}
+.notes{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.notes span{font-size:12px;font-weight:700;border:1px solid var(--gold);color:var(--gold);border-radius:8px;padding:4px 10px}
+
+/* CTA */
+.cta{border:1.5px solid var(--gold);border-radius:22px;text-align:center;padding:30px 18px 26px;background:radial-gradient(70% 90% at 50% 0%,rgba(255,200,80,.2),transparent 70%),#07102e;box-shadow:0 0 30px rgba(255,190,50,.3)}
+.cta h2{font-size:clamp(22px,6vw,34px);line-height:1.4;margin-bottom:8px}
+.cta p{color:var(--cyan);font-weight:700;margin-bottom:22px;font-size:14px}
+.msg{margin:20px auto 0;max-width:520px;font-size:13px;color:var(--mute);border:1px dashed rgba(159,178,214,.5);border-radius:10px;padding:10px 12px}
+.toast{min-height:1.6em;margin-top:12px;font-weight:800;color:var(--cyan)}
+footer{border-top:1px solid rgba(56,225,255,.3);padding:26px 0 40px;text-align:center;font-size:12.5px;color:var(--mute)}
+footer .warn{color:#ffd9a0;font-weight:700;font-size:14px;margin-bottom:6px}
+@media(prefers-reduced-motion:reduce){.wheel{animation:none}.btn{transition:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <i class="beam b1"></i><i class="beam b2"></i><i class="beam b3"></i>
+  <div class="wrap">
+    <span class="tag">WORLD LIQUOR FES ODAIBA</span>
+    <div class="date goldtxt" aria-label="11月22日">11.22</div>
+    <div class="dow">SUN ・ 日曜日</div>
+    <h1>世界のお酒フェス</h1>
+    <p class="lead">仕事終わりに合流して、お台場で世界の一杯を。</p>
+    <div class="meta">
+      <div><b>日時</b>　2026年11月22日（日）12:00〜21:00（ラストオーダー20:30）</div>
+      <div><b>会場</b>　お台場セントラル広場（シンボルプロムナード公園）</div>
+    </div>
+    <div class="badges"><span>入場無料</span><span>飲食はチケット制</span><span>PayPay・カード可</span></div>
+
+    <div class="scene" aria-hidden="true">
+      <svg viewBox="0 0 400 260" preserveAspectRatio="xMidYMax slice">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b1b55" stop-opacity="0"/><stop offset="1" stop-color="#1a2f78" stop-opacity=".7"/></linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#12307a"/><stop offset="1" stop-color="#040a22"/></linearGradient>
+          <linearGradient id="glass" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#2a1608"/><stop offset=".4" stop-color="#7a4513"/><stop offset="1" stop-color="#1c0e05"/></linearGradient>
+          <linearGradient id="green" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#06180f"/><stop offset=".4" stop-color="#1f5a35"/><stop offset="1" stop-color="#05120b"/></linearGradient>
+          <linearGradient id="champ" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8a6417"/><stop offset=".4" stop-color="#ffe9a0"/><stop offset="1" stop-color="#7a5510"/></linearGradient>
+          <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#5a2a04"/><stop offset=".4" stop-color="#e08a1a"/><stop offset="1" stop-color="#4a2203"/></linearGradient>
+          <radialGradient id="glow"><stop offset="0" stop-color="#38e1ff" stop-opacity=".5"/><stop offset="1" stop-color="#38e1ff" stop-opacity="0"/></radialGradient>
+          <filter id="neon"><feGaussianBlur stdDeviation="2" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+        </defs>
+        <rect width="400" height="260" fill="url(#sky)"/>
+        <!-- skyline -->
+        <g fill="#0a1236">
+          <rect x="0" y="130" width="22" height="80"/><rect x="26" y="108" width="18" height="100"/><rect x="48" y="140" width="26" height="70"/>
+          <rect x="300" y="120" width="20" height="90"/><rect x="324" y="96" width="24" height="114"/><rect x="352" y="132" width="22" height="78"/><rect x="376" y="112" width="24" height="98"/>
+        </g>
+        <g fill="#ffd36a" opacity=".75">
+          <rect x="30" y="116" width="3" height="3"/><rect x="36" y="128" width="3" height="3"/><rect x="30" y="144" width="3" height="3"/><rect x="6" y="140" width="3" height="3"/><rect x="12" y="156" width="3" height="3"/>
+          <rect x="330" y="104" width="3" height="3"/><rect x="338" y="120" width="3" height="3"/><rect x="330" y="140" width="3" height="3"/><rect x="382" y="124" width="3" height="3"/><rect x="390" y="142" width="3" height="3"/><rect x="306" y="134" width="3" height="3"/>
+        </g>
+        <!-- ferris wheel -->
+        <circle cx="200" cy="120" r="95" fill="url(#glow)"/>
+        <g filter="url(#neon)" stroke="#38e1ff" fill="none" stroke-width="1.6">
+          <path d="M170 215 L200 120 L230 215" stroke="#9ff0ff"/>
+          <g class="wheel">
+            <circle cx="200" cy="120" r="78"/><circle cx="200" cy="120" r="56" stroke-width="1" opacity=".7"/><circle cx="200" cy="120" r="6" fill="#ffd36a" stroke="#ffd36a"/>
+            <g stroke-width="1" opacity=".85">
+              <path d="M200 42V198M122 120H278M145 65L255 175M255 65L145 175M163 52L237 188M237 52L163 188M126 90L274 150M274 90L126 150"/>
+            </g>
+            <g fill="#ffd36a" stroke="none">
+              <circle cx="200" cy="42" r="3.2"/><circle cx="200" cy="198" r="3.2"/><circle cx="122" cy="120" r="3.2"/><circle cx="278" cy="120" r="3.2"/>
+              <circle cx="145" cy="65" r="3.2"/><circle cx="255" cy="175" r="3.2"/><circle cx="255" cy="65" r="3.2"/><circle cx="145" cy="175" r="3.2"/>
+              <circle cx="163" cy="52" r="3.2"/><circle cx="237" cy="188" r="3.2"/><circle cx="237" cy="52" r="3.2"/><circle cx="163" cy="188" r="3.2"/>
+            </g>
+          </g>
+        </g>
+        <!-- bridge -->
+        <g filter="url(#neon)" stroke="#ffd36a" fill="none" stroke-width="1.4">
+          <path d="M60 196H400" stroke="#fff3b8" stroke-width="2"/>
+          <path d="M150 196V158M250 196V158" stroke-width="3"/>
+          <path d="M60 196Q150 150 150 158Q200 190 250 158Q250 150 340 196" opacity=".9"/>
+          <path d="M165 196L150 160M185 196L150 160M215 196L250 160M235 196L250 160" opacity=".6" stroke-width=".8"/>
+        </g>
+        <!-- water -->
+        <rect y="198" width="400" height="62" fill="url(#water)"/>
+        <g stroke-width="1.5" stroke-linecap="round" opacity=".6">
+          <path d="M120 206h90" stroke="#ffd36a"/><path d="M150 214h50" stroke="#38e1ff"/><path d="M110 222h110" stroke="#ffd36a" opacity=".5"/><path d="M170 232h30" stroke="#38e1ff"/>
+        </g>
+        <!-- bottles -->
+        <g>
+          <g transform="translate(258 70)"><rect x="12" y="0" width="14" height="46" rx="3" fill="url(#glass)"/><path d="M0 74Q0 44 12 44H26Q38 44 38 74V176H0Z" fill="url(#glass)"/><rect x="3" y="100" width="32" height="46" rx="2" fill="#e8d9b0"/><rect x="8" y="110" width="22" height="3" fill="#6a4a10"/><rect x="8" y="118" width="22" height="3" fill="#6a4a10" opacity=".6"/></g>
+          <g transform="translate(300 62)"><rect x="12" y="0" width="14" height="48" rx="3" fill="url(#green)"/><path d="M0 76Q0 46 12 46H26Q38 46 38 76V184H0Z" fill="url(#green)"/><rect x="3" y="108" width="32" height="48" rx="2" fill="#e5dcc0"/><path d="M19 114l-8 30h16z" fill="#2f7a4a"/></g>
+          <g transform="translate(342 40)"><rect x="12" y="0" width="14" height="50" rx="3" fill="url(#champ)"/><path d="M2 84Q2 50 12 50H26Q36 50 36 84V206H2Z" fill="url(#champ)"/><rect x="4" y="122" width="30" height="52" rx="2" fill="#1c1608" opacity=".85"/><rect x="9" y="132" width="20" height="3" fill="#ffd36a"/><rect x="9" y="142" width="20" height="3" fill="#ffd36a" opacity=".6"/></g>
+        </g>
+        <!-- mini glasses -->
+        <g transform="translate(160 150)" opacity=".95">
+          <path d="M0 0h26l-3 44q-10 4-20 0z" fill="#d89a1a"/><path d="M0 0h26v8H0z" fill="#fff3d0"/><rect x="26" y="10" width="8" height="24" rx="4" fill="none" stroke="#d89a1a" stroke-width="3"/>
+        </g>
+        <rect y="238" width="400" height="22" fill="#050b24" opacity=".7"/>
+      </svg>
+    </div>
+    <div class="cta-top"><a class="btn" href="#invite">友達を誘う ↓</a></div>
+  </div>
+</header>
+
+<main>
+<section aria-labelledby="lineup">
+  <div class="wrap">
+    <div class="sh"><div class="en goldtxt" id="lineup">WORLD DRINKS LINEUP</div><div class="ja">世界のお酒、その一部をご紹介</div></div>
+    <div class="cards">
+      <article class="card"><span class="chip">ハンガリー</span>
+        <svg viewBox="0 0 84 120"><defs><linearGradient id="cp" x1="0" x2="1"><stop offset="0" stop-color="#6a3d0c"/><stop offset=".4" stop-color="#f2bf5a"/><stop offset="1" stop-color="#5a300a"/></linearGradient></defs><rect x="34" y="4" width="16" height="30" rx="3" fill="url(#cp)"/><path d="M26 54Q26 32 42 32Q58 32 58 54V112H26Z" fill="url(#cp)"/><circle cx="42" cy="78" r="12" fill="#ffe9a8"/><circle cx="42" cy="78" r="6" fill="#e0793a"/></svg>
+        <h3>PÁLINKA</h3><div class="jp">パーリンカ</div><div class="sub">ハンガリー｜果実の蒸留酒</div><p>香り高いフルーツブランデー</p></article>
+      <article class="card"><span class="chip">ブラジル</span>
+        <svg viewBox="0 0 84 120"><defs><linearGradient id="cc" x1="0" x2="1"><stop offset="0" stop-color="#3a4a10"/><stop offset=".4" stop-color="#d9e66a"/><stop offset="1" stop-color="#2f3d0a"/></linearGradient></defs><rect x="36" y="4" width="12" height="36" rx="3" fill="url(#cc)"/><path d="M24 62Q24 38 42 38Q60 38 60 62V112H24Z" fill="url(#cc)"/><rect x="28" y="64" width="28" height="30" rx="2" fill="#fff6c8"/><path d="M42 68l8 12-8 10-8-10z" fill="#2f9a4a"/></svg>
+        <h3>CACHAÇA</h3><div class="jp">カシャッサ</div><div class="sub">ブラジル｜サトウキビの酒</div><p>カイピリーニャのベース</p></article>
+      <article class="card"><span class="chip">メキシコ</span>
+        <svg viewBox="0 0 84 120"><defs><linearGradient id="cm" x1="0" x2="1"><stop offset="0" stop-color="#0c2a18"/><stop offset=".4" stop-color="#3f9a5a"/><stop offset="1" stop-color="#081c10"/></linearGradient></defs><rect x="34" y="4" width="16" height="34" rx="3" fill="#2a1608"/><path d="M26 60Q26 36 42 36Q58 36 58 60V112H26Z" fill="url(#cm)"/><rect x="30" y="64" width="24" height="36" rx="2" fill="#efe4c0"/><path d="M42 70l-9 26M42 70l9 26M42 70v28" stroke="#2f7a4a" stroke-width="3" stroke-linecap="round"/></svg>
+        <h3>MEZCAL</h3><div class="jp">メスカル</div><div class="sub">メキシコ｜スモーキー＆アガベ</div><p>燻した香りの竜舌蘭の酒</p></article>
+      <article class="card"><span class="chip">イタリア</span>
+        <svg viewBox="0 0 84 120"><defs><linearGradient id="cs" x1="0" x2="1"><stop offset="0" stop-color="#7a5a14"/><stop offset=".4" stop-color="#fff0b0"/><stop offset="1" stop-color="#6a4a10"/></linearGradient></defs><rect x="34" y="2" width="16" height="22" rx="3" fill="#e5b43a"/><path d="M28 56Q28 24 42 24Q56 24 56 56V114H28Z" fill="url(#cs)"/><rect x="31" y="64" width="22" height="30" rx="2" fill="#2a2008"/><circle cx="42" cy="79" r="6" fill="#ffd36a"/></svg>
+        <h3>PROSECCO</h3><div class="jp">プロセッコ</div><div class="sub">イタリア｜スパークリング</div><p>乾杯にぴったりの泡</p></article>
+      <article class="card"><span class="chip">はちみつ酒</span>
+        <svg viewBox="0 0 84 120"><defs><linearGradient id="ch" x1="0" x2="1"><stop offset="0" stop-color="#7a3e04"/><stop offset=".4" stop-color="#ffb22e"/><stop offset="1" stop-color="#6a3304"/></linearGradient></defs><path d="M30 20h24l4 12H26z" fill="#f6c34a"/><path d="M22 36h40v74Q42 118 22 110z" fill="url(#ch)"/><path d="M22 48h40v10Q52 66 44 58Q34 66 22 58z" fill="#ffe08a"/><polygon points="42,8 50,13 50,22 42,27 34,22 34,13" fill="#ffd36a"/></svg>
+        <h3>MEAD</h3><div class="jp">ミード</div><div class="sub">はちみつ酒｜甘口</div><p>ピスコ・シンガニもあります</p></article>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap cols">
+    <div>
+      <div class="sh"><div class="en goldtxt">EVENING TIMELINE</div><div class="ja">当日のスケジュール</div></div>
+      <ol class="tl">
+        <li><time>12:00</time><div><strong>開場</strong><small>入場無料。お昼から楽しめます</small></div></li>
+        <li><time>夕方</time><div><strong>仕事終わりに合流</strong><small>会社帰りにふらっと立ち寄り</small></div></li>
+        <li class="hl"><time>18:00<br>〜20:00</time><div><strong>ビンゴ大会</strong><small>5,000円綴り以上のチケット購入でカード引換</small></div></li>
+        <li><time>20:30</time><div><strong>ラストオーダー</strong><small>最後の一杯をどうぞ</small></div></li>
+        <li><time>21:00</time><div><strong>閉場</strong><small>気をつけてお帰りください</small></div></li>
+      </ol>
+    </div>
+    <div>
+      <div class="sh"><div class="en goldtxt">INFORMATION &amp; ACCESS</div><div class="ja">開催情報・アクセス</div></div>
+      <div class="info">
+        <h3>開催概要</h3>
+        <dl>
+          <dt>日時</dt><dd>2026年11月22日（日）12:00〜21:00（L.O. 20:30）</dd>
+          <dt>会場</dt><dd>お台場セントラル広場（シンボルプロムナード公園）</dd>
+          <dt>入場</dt><dd>無料</dd>
+          <dt>飲食</dt><dd>チケット制。会場で購入可（現金・カード・PayPay等）</dd>
+        </dl>
+        <div class="map" role="img" aria-label="会場周辺のイメージ図">
+          <svg viewBox="0 0 320 170" preserveAspectRatio="xMidYMid slice">
+            <rect width="320" height="170" fill="#0a1230"/>
+            <g stroke="#38e1ff" stroke-width="2" fill="none" opacity=".75" stroke-linecap="round"><path d="M0 120L130 90L320 40"/><path d="M60 170L110 70L150 0"/><path d="M180 170L200 80L320 110"/></g>
+            <g stroke="#ffd36a" stroke-width="1.5" opacity=".5"><path d="M0 40L320 150M0 150L240 0"/></g>
+            <circle cx="170" cy="82" r="22" fill="#ffd36a" opacity=".2"/><circle cx="170" cy="82" r="7" fill="#ffd36a"/>
+            <text x="184" y="72" fill="#ffd36a" font-size="13" font-weight="800">会場</text>
+            <circle cx="70" cy="110" r="5" fill="#38e1ff"/><text x="80" y="128" fill="#cfe9ff" font-size="11">東京テレポート</text>
+            <circle cx="262" cy="52" r="5" fill="#38e1ff"/><text x="232" y="38" fill="#cfe9ff" font-size="11">青海</text>
+          </svg>
+        </div>
+        <div class="pins">
+          <div class="pin"><i></i>東京テレポート駅<b>徒歩5分</b></div>
+          <div class="pin"><i></i>青海駅<b>徒歩2分</b></div>
+        </div>
+        <div class="notes"><span>入場無料</span><span>チケット制</span><span>20歳以上の方のみ購入可</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="invite">
+  <div class="wrap">
+    <div class="cta">
+      <h2 class="goldtxt">仕事終わり、<br>世界の一杯で乾杯しよう</h2>
+      <p>誘い文をコピーして、LINEやSlackでそのまま送れます</p>
+      <button class="btn" id="copy" type="button">誘い文をコピー ⧉</button>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+      <div class="msg" id="msgtxt">11/22（日）仕事終わり、お台場の世界のお酒フェス行かない？入場無料だよ</div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="warn">20歳未満の飲酒はできません。チケットの購入は20歳以上の方のみ。</p>
+    <p>お酒は適量で。飲酒運転は法律で禁止されています。</p>
+    <p style="margin-top:10px">世界のお酒フェス ｜ 2026.11.22 SUN ｜ お台場セントラル広場</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var TEXT='11/22（日）仕事終わり、お台場の世界のお酒フェス行かない？入場無料だよ';
+  var btn=document.getElementById('copy'),toast=document.getElementById('toast');
+  function done(ok){toast.textContent=ok?'コピーしました！友達に送ろう':'コピーできませんでした。下の文を長押ししてコピーしてください';}
+  function fallback(){
+    var t=document.createElement('textarea');t.value=TEXT;t.style.position='fixed';t.style.opacity='0';
+    document.body.appendChild(t);t.select();var ok=false;
+    try{ok=document.execCommand('copy');}catch(e){}
+    document.body.removeChild(t);done(ok);
+  }
+  btn.addEventListener('click',function(){
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(TEXT).then(function(){done(true)},fallback);}
+    else fallback();
+  });
+})();
+</script>
+
+<a href="../contest/" style="position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:12px;z-index:99999;display:inline-flex;align-items:center;gap:6px;background:rgba(8,11,22,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);color:#fff;border:1px solid rgba(255,255,255,.28);padding:9px 15px;border-radius:999px;font-size:13px;font-weight:700;text-decoration:none;font-family:'Hiragino Kaku Gothic ProN','Noto Sans JP',sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.35)">← コンテストに戻る</a>
+</body>
+</html>
