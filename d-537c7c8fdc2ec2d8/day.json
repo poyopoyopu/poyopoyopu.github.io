@@ -1,27 +1,29 @@
 {
- "updated_at": "2026-11-18T13:27:12+09:00",
- "updated_label": "11/18 13:27",
- "date": "2026-11-18",
- "date_label": "11/18（水）",
+ "updated_at": "2026-11-19T06:30:33+09:00",
+ "updated_label": "11/19 06:30",
+ "date": "2026-11-19",
+ "date_label": "11/19（木）",
  "shift": {
   "today": {
-   "kind": "off"
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "10:00",
    "no": "10"
   },
+  "tomorrow": {
+   "kind": "work",
+   "start": "9:00",
+   "no": "1"
+  },
   "next_off": {
-   "date": "2026-11-18",
-   "label": "11/18（水）",
-   "in_days": 0
+   "date": "2026-11-23",
+   "label": "11/23（月）",
+   "in_days": 4
   }
  },
  "route": {
   "kind": "run",
-  "code": "T04",
-  "name": "出会い橋〜テレポート",
+  "code": "T02",
+  "name": "出会い橋〜有明",
   "time": "12:00–18:00",
   "shuttle": false,
   "note": "アトラス特別便は運休"
@@ -30,20 +32,18 @@
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": [
-     "B.PREMIER公式戦 東京サンロッカーズ vs アルバルク東京（東京ダービー）"
-    ]
+    "events": []
    },
    {
     "short": "Zepp",
     "events": [
-     "YOGEE NEW WAVES presents「Dreamin' Night 8」"
+     "ブランデー戦記"
     ]
    },
    {
     "short": "SGC",
     "events": [
-     "テデスキ・トラックス・バンド Day1"
+     "テデスキ・トラックス・バンド Day2"
     ]
    }
   ]
@@ -55,10 +55,10 @@
   "pop": 100,
   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）"
  },
- "look": "off",
+ "look": "rain",
  "tomorrow": {
-  "date": "2026-11-19",
-  "date_label": "11/19（木）",
+  "date": "2026-11-20",
+  "date_label": "11/20（金）",
   "route": {
    "kind": "run",
    "code": "T02",
@@ -76,32 +76,30 @@
     {
      "short": "Zepp",
      "events": [
-      "ブランデー戦記"
+      "HEROINES AUTUMN-11月編-（出演多数）"
      ]
     },
     {
      "short": "SGC",
      "events": [
-      "テデスキ・トラックス・バンド Day2"
+      "「SGCホール有明 オープニングシリーズ」K2 Member's Night 2026"
      ]
     }
    ]
-  },
-  "weather": {
-   "text": "くもり時々晴れ",
-   "tmax": 18,
-   "tmin": 10,
-   "pop": 6,
-   "advice": "長袖＋薄手の上着（朝晩は冷える）"
-  },
-  "look": "jacket"
+  }
  },
- "event": null,
+ "event": {
+  "type": "postcard",
+  "image": "postcard_shionomisaki",
+  "title": "潮岬灯台（和歌山）",
+  "body": "本州のいちばん南まで来ちゃった。おっちゃんが来る時の下見はバッチリ。灯台は9時から登れるよ",
+  "short": "本州のいちばん南から。下見バッチリ"
+ },
  "room": {
-  "away": false,
-  "status": "おうちにいるよ",
-  "return_label": null,
-  "dest_name": null,
+  "away": true,
+  "status": "お出かけ中（潮岬灯台）",
+  "return_label": "11/21に帰る予定",
+  "dest_name": "潮岬灯台",
   "souvenirs": [
    {
     "image": "postcard_shionomisaki",
@@ -109,5 +107,12 @@
    }
   ],
   "count": 1
- }
+ },
+ "stale": [
+  "weather"
+ ],
+ "errors": [
+  "weather: HTTP Error 429: Too Many Requests",
+  "tomorrow.weather: HTTP Error 429: Too Many Requests"
+ ]
 }

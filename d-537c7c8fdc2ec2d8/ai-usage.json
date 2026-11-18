@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-18T13:27:08+09:00",
- "updated_label": "11/18 13:27",
+ "updated_at": "2026-11-19T06:27:26+09:00",
+ "updated_label": "11/19 06:27",
  "services": [
   {
    "id": "codex",
@@ -13,7 +13,7 @@
    "reset_credit_expires_epoch": 1796155632,
    "reset_credit_expires_label": "12/2 05:07",
    "sub": null,
-   "stale": false
+   "stale": true
   },
   {
    "id": "claude_code",
@@ -35,7 +35,7 @@
     "remaining_pct": 97,
     "reset_epoch": 1794990600
    },
-   "stale": false
+   "stale": true
   },
   {
    "id": "muse",
@@ -47,5 +47,9 @@
    "sub": null,
    "stale": false
   }
+ ],
+ "errors": [
+  "codex: IncompleteRead: IncompleteRead(0 bytes read, 1489 more expected)",
+  "claude_code: URLError: <urlopen error timed out>"
  ]
 }
