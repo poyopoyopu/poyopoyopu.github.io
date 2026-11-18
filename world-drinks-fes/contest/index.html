@@ -24,6 +24,22 @@ a.card:hover{transform:translateY(-3px);border-color:var(--gold)}
 .card.off{opacity:.55}
 .badge{display:inline-block;font-size:11px;letter-spacing:.12em;border:1px solid var(--line);border-radius:20px;padding:3px 10px;color:var(--muted);margin-left:8px;vertical-align:middle}
 .badge.live{color:#0b1020;background:var(--cyan);border-color:var(--cyan);font-weight:700}
+
+.vote{margin-top:44px}
+.vote h2{font-size:clamp(24px,5vw,34px);margin:0 0 6px}
+.vote .lead{color:var(--muted);font-size:14px;line-height:1.8}
+.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+@media(max-width:640px){.vgrid{grid-template-columns:1fr}}
+.vbtn{position:relative;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--txt);font-family:inherit;cursor:pointer;overflow:hidden;width:100%}
+.vbtn .bar{position:absolute;left:0;top:0;bottom:0;background:#59d8e626;width:0%}
+.vbtn .nm{position:relative;font-size:19px;font-weight:900}
+.vbtn .ct{position:relative;float:right;font-size:19px;font-weight:900;color:var(--gold)}
+.vbtn:disabled{cursor:default;opacity:.92}
+.vbtn.picked{border-color:var(--gold)}
+.vbtn .done{position:relative;color:var(--gold);font-size:12px;font-weight:700;margin-left:8px}
+.rgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:640px){.rgrid{grid-template-columns:1fr}}
+.vstat{color:var(--muted);font-size:12.5px;margin-top:12px;min-height:1.5em}
 .note{margin-top:34px;color:var(--muted);font-size:13px;line-height:1.9;border-top:1px solid var(--line);padding-top:20px}
 .note a{color:var(--cyan)}
 </style>
@@ -57,7 +73,72 @@ a.card:hover{transform:translateY(-3px);border-color:var(--gold)}
 </a>
 </div>
 
+
+<div class="vote">
+<h2>投票</h2>
+<p class="lead">ボタンを1回タップするだけ。名前も入力もいりません。<br>① どのLPが一番よかった？</p>
+<div class="vgrid" id="lp-votes">
+<button class="vbtn" data-key="muse"><span class="bar"></span><span class="nm">Muse</span><span class="ct">0票</span></button>
+<button class="vbtn" data-key="chatgpt"><span class="bar"></span><span class="nm">ChatGPT</span><span class="ct">0票</span></button>
+<button class="vbtn" data-key="claude"><span class="bar"></span><span class="nm">Claude</span><span class="ct">0票</span></button>
+<button class="vbtn" data-key="gemini"><span class="bar"></span><span class="nm">Gemini</span><span class="ct">0票</span></button>
+</div>
+<p class="lead" style="margin-top:26px">② 11月22日（日）仕事終わり、行ける？</p>
+<div class="rgrid" id="rsvp-votes">
+<button class="vbtn" data-key="go"><span class="bar"></span><span class="nm">行く</span><span class="ct">0</span></button>
+<button class="vbtn" data-key="maybe"><span class="bar"></span><span class="nm">未定</span><span class="ct">0</span></button>
+<button class="vbtn" data-key="no"><span class="bar"></span><span class="nm">行けない</span><span class="ct">0</span></button>
+</div>
+<p class="vstat" id="vote-status">現在の票数を読み込み中…</p>
+</div>
 <p class="note">本戦の誘い用LP（Muse版）は <a href="../">トップページ</a> でも公開中です。イベント：世界のお酒フェス（2026年11月20日〜23日／お台場セントラル広場・入場無料）。</p>
 </div>
+
+<script>
+var API = "https://fes-vote.artplayground.workers.dev";
+var LPKEYS = ["muse","chatgpt","claude","gemini"];
+var RKEYS = ["go","maybe","no"];
+function render(d){
+  [["lp-votes",LPKEYS],["rsvp-votes",RKEYS]].forEach(function(pair){
+    var box = document.getElementById(pair[0]); if(!box) return;
+    var keys = pair[1];
+    var total = keys.reduce(function(a,k){return a+(d[k]||0)},0);
+    box.querySelectorAll(".vbtn").forEach(function(b){
+      var k = b.getAttribute("data-key"), v = d[k]||0;
+      b.querySelector(".ct").textContent = v + (pair[0]==="lp-votes" ? "票" : "");
+      b.querySelector(".bar").style.width = total ? Math.round(v/total*100)+"%" : "0%";
+    });
+  });
+  document.getElementById("vote-status").textContent = "現在の票数です（自動で更新されます）";
+}
+function lock(group, picked){
+  var box = document.getElementById(group);
+  box.querySelectorAll(".vbtn").forEach(function(b){
+    b.disabled = true;
+    if (b.getAttribute("data-key")===picked && !b.querySelector(".done")){
+      var sp = document.createElement("span"); sp.className="done"; sp.textContent="✓ 投票済み";
+      b.querySelector(".nm").appendChild(sp);
+    }
+  });
+}
+function vote(group, key){
+  if (localStorage.getItem("fes-"+group)) return;
+  localStorage.setItem("fes-"+group, key);
+  lock(group, key);
+  fetch(API+"/vote", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({key:key})})
+    .then(function(r){return r.json()}).then(render)
+    .catch(function(){ document.getElementById("vote-status").textContent = "投票は受け付けました（票数の取得に失敗）"; });
+}
+["lp-votes","rsvp-votes"].forEach(function(group){
+  var box = document.getElementById(group);
+  box.querySelectorAll(".vbtn").forEach(function(b){
+    b.addEventListener("click", function(){ vote(group, b.getAttribute("data-key")); });
+  });
+  var prev = localStorage.getItem("fes-"+group);
+  if (prev) lock(group, prev);
+});
+fetch(API+"/results").then(function(r){return r.json()}).then(render)
+  .catch(function(){ document.getElementById("vote-status").textContent = "票数を読み込めませんでした"; });
+</script>
 </body>
 </html>
