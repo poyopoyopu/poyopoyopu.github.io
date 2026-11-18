@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>発車タイマー（2便体制）</title>
+<title>アトラス運行タイマー</title>
 <style>
 :root{--bg:#f4f4f6;--surface:#ffffff;--muted-bg:#ececf0;--text:#1c1c1e;--muted:#6b6b70;--border:#d8d8de;--accent:#0a6cff;--on-accent:#ffffff;--soon:#d7263d}
 @media (prefers-color-scheme: dark){:root{--bg:#101012;--surface:#1e1e22;--muted-bg:#2a2a30;--text:#f2f2f5;--muted:#a1a1a8;--border:#3a3a42;--accent:#3d8bff;--on-accent:#ffffff;--soon:#ff4d5e}}
@@ -13,8 +13,11 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,s
 .dt-head{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
 .dt-title{font-weight:700;font-size:15px}
 .dt-clock{color:var(--muted);font-size:14px;font-variant-numeric:tabular-nums}
-.dt-tabs{display:flex;gap:8px;margin-bottom:10px}
-.dt-tabs button{flex:1;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-weight:700;cursor:pointer}
+.dt-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.dt-atlas{border:1px solid var(--border);border-radius:12px;background:var(--surface);padding:10px 12px;margin-bottom:10px;font-size:13px;line-height:1.65}
+.dt-atlas-h{font-weight:700;margin-bottom:4px}
+.dt-ai{margin-top:2px}
+.dt-tabs button{flex:1 1 40%;padding:12px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:16px;font-weight:700;cursor:pointer}
 .dt-tabs button.on{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .dt-bar{display:flex;justify-content:flex-end;gap:8px;margin-bottom:4px}
 .dt-bar button{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:14px;cursor:pointer}
@@ -41,8 +44,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,s
 </head>
 <body>
 <div class="dt">
-  <div class="dt-head"><div class="dt-title">発車タイマー（2便体制）</div><div class="dt-clock">現在 <span id="clock">--:--:--</span></div></div>
-  <div class="dt-tabs"><button id="tab1">1番（青）</button><button id="tab2">2番（黄）</button></div>
+  <div class="dt-head"><div class="dt-title">アトラス運行タイマー</div><div class="dt-clock">現在 <span id="clock">--:--:--</span></div></div>
+  <div class="dt-tabs"><button id="tab1">1番（青）</button><button id="tab2">2番（黄）</button><button id="tab3">アトラス1便</button><button id="tab4">アトラス2便</button></div>
+  <div class="dt-atlas"><div class="dt-atlas-h">アトラス運行の予定（公式お知らせ）</div><div id="atlasBody">読み込み中…</div></div>
   <div class="dt-bar"><button id="lockBtn">画面ロック防止オフ</button><button id="soundBtn">音オフ</button></div>
   <div class="dt-note" id="lockNote"></div>
   <div class="dt-sticky">
@@ -70,11 +74,85 @@ var DATA2=[
 {run:"④ 夕便",stop:1,t:"16:46"},{run:"④ 夕便",stop:2,t:"17:10"},{run:"④ 夕便",stop:3,t:"17:17"},{run:"④ 夕便",stop:4,t:"17:30"},{run:"④ 夕便",stop:5,t:"17:37"},
 {run:"戻り",stop:1,t:"17:44"},{run:"戻り",stop:2,t:"17:49",arr:1}
 ];
+var DATA3=[{run:"アトラス1便",stop:1,t:"12:30"},
+{run:"アトラス1便",stop:2,t:"12:40"},
+{run:"アトラス1便",stop:3,t:"12:47"},
+{run:"アトラス1便",stop:4,t:"13:07"},
+{run:"アトラス1便",stop:5,t:"13:14"},
+{run:"アトラス1便",stop:1,t:"13:21"},
+{run:"アトラス1便",stop:2,t:"14:13"},
+{run:"アトラス1便",stop:3,t:"14:20"},
+{run:"アトラス1便",stop:4,t:"14:30"},
+{run:"アトラス1便",stop:5,t:"14:37"},
+{run:"アトラス1便",stop:1,t:"14:44"},
+{run:"アトラス1便",stop:2,t:"15:00"},
+{run:"アトラス1便",stop:3,t:"15:07"},
+{run:"アトラス1便",stop:4,t:"15:14"},
+{run:"アトラス1便",stop:5,t:"15:21"},
+{run:"アトラス1便",stop:1,t:"15:28"},
+{run:"アトラス1便",stop:2,t:"16:12"},
+{run:"アトラス1便",stop:3,t:"16:22"},
+{run:"アトラス1便",stop:4,t:"16:32"},
+{run:"アトラス1便",stop:5,t:"16:39"},
+{run:"アトラス1便",stop:1,t:"16:46"},
+{run:"アトラス1便",stop:2,t:"17:10"},
+{run:"アトラス1便",stop:3,t:"17:17"},
+{run:"アトラス1便",stop:4,t:"17:30"},
+{run:"アトラス1便",stop:5,t:"17:37"},
+{run:"アトラス1便",stop:1,t:"17:44"}];
+var DATA4=[{run:"アトラス2便",stop:1,t:"12:03"},
+{run:"アトラス2便",stop:2,t:"12:13"},
+{run:"アトラス2便",stop:3,t:"12:20"},
+{run:"アトラス2便",stop:4,t:"12:30"},
+{run:"アトラス2便",stop:1,t:"12:31"},
+{run:"アトラス2便",stop:5,t:"12:37"},
+{run:"アトラス2便",stop:2,t:"12:41"},
+{run:"アトラス2便",stop:1,t:"12:44"},
+{run:"アトラス2便",stop:3,t:"12:48"},
+{run:"アトラス2便",stop:4,t:"13:08"},
+{run:"アトラス2便",stop:5,t:"13:15"},
+{run:"アトラス2便",stop:1,t:"13:22"},
+{run:"アトラス2便",stop:2,t:"14:13"},
+{run:"アトラス2便",stop:3,t:"14:20"},
+{run:"アトラス2便",stop:4,t:"14:30"},
+{run:"アトラス2便",stop:5,t:"14:37"},
+{run:"アトラス2便",stop:2,t:"14:41"},
+{run:"アトラス2便",stop:1,t:"14:44"},
+{run:"アトラス2便",stop:3,t:"14:48"},
+{run:"アトラス2便",stop:4,t:"15:06"},
+{run:"アトラス2便",stop:5,t:"15:13"},
+{run:"アトラス2便",stop:1,t:"15:20"},
+{run:"アトラス2便",stop:2,t:"15:20"},
+{run:"アトラス2便",stop:3,t:"15:27"},
+{run:"アトラス2便",stop:4,t:"15:42"},
+{run:"アトラス2便",stop:2,t:"15:46"},
+{run:"アトラス2便",stop:5,t:"15:49"},
+{run:"アトラス2便",stop:3,t:"15:53"},
+{run:"アトラス2便",stop:1,t:"15:56"},
+{run:"アトラス2便",stop:4,t:"16:06"},
+{run:"アトラス2便",stop:5,t:"16:13"},
+{run:"アトラス2便",stop:2,t:"16:15"},
+{run:"アトラス2便",stop:1,t:"16:20"},
+{run:"アトラス2便",stop:3,t:"16:22"},
+{run:"アトラス2便",stop:4,t:"16:32"},
+{run:"アトラス2便",stop:5,t:"16:39"},
+{run:"アトラス2便",stop:1,t:"16:46"},
+{run:"アトラス2便",stop:2,t:"16:46"},
+{run:"アトラス2便",stop:3,t:"16:53"},
+{run:"アトラス2便",stop:4,t:"17:06"},
+{run:"アトラス2便",stop:2,t:"17:10"},
+{run:"アトラス2便",stop:5,t:"17:13"},
+{run:"アトラス2便",stop:3,t:"17:17"},
+{run:"アトラス2便",stop:1,t:"17:20"},
+{run:"アトラス2便",stop:4,t:"17:30"},
+{run:"アトラス2便",stop:5,t:"17:37"},
+{run:"アトラス2便",stop:1,t:"17:44"}];
+var DATAS=[DATA1,DATA2,DATA3,DATA4];
 var cur=1; try{cur=+localStorage.getItem("timer-ban")||1;}catch(e){}
-if(cur!==1&&cur!==2)cur=1;
-var EV=(cur===2?DATA2:DATA1);
-function paintTabs(){document.getElementById("tab1").classList.toggle("on",cur===1);document.getElementById("tab2").classList.toggle("on",cur===2);}
-function switchBan(n){if(n===cur){paintTabs();return;}cur=n;EV=(n===2?DATA2:DATA1);beeped={};try{localStorage.setItem("timer-ban",String(n));}catch(e){}paintTabs();window.scrollTo(0,0);render();}
+if(cur<1||cur>4)cur=1;
+var EV=DATAS[cur-1];
+function paintTabs(){for(var i=1;i<=4;i++){document.getElementById("tab"+i).classList.toggle("on",cur===i);}}
+function switchBan(n){if(n===cur){paintTabs();return;}cur=n;EV=DATAS[n-1];beeped={};try{localStorage.setItem("timer-ban",String(n));}catch(e){}paintTabs();window.scrollTo(0,0);render();}
 var state={sound:false};
 var actx=null,beeped={};
 var lockOn=false,wakeLock=null;
@@ -142,8 +220,14 @@ document.getElementById("lockBtn").addEventListener("click",function(){
   else{if(wakeLock){wakeLock.release();wakeLock=null;}document.getElementById("lockNote").textContent="";}
   render();
 });
-document.getElementById("tab1").addEventListener("click",function(){switchBan(1);});
-document.getElementById("tab2").addEventListener("click",function(){switchBan(2);});
+for(var ti=1;ti<=4;ti++){(function(n){document.getElementById("tab"+n).addEventListener("click",function(){switchBan(n);});})(ti);}
+fetch("https://sub-palette-ride.jp/api/get_info_list").then(function(r){return r.json();}).then(function(d){
+  var items=(d.info||[]).filter(function(x){var t=x.title||"";return t.indexOf("ATLAS")>=0||t.indexOf("特別運航")>=0;}).slice(0,3);
+  var el=document.getElementById("atlasBody");
+  if(!items.length){el.textContent="現在、ATLAS特別運航便のお知らせはありません";return;}
+  function esc(t){return t.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");}
+  el.innerHTML=items.map(function(x){return "<div class='dt-ai'>・"+esc(x.title)+"</div>";}).join("");
+}).catch(function(){document.getElementById("atlasBody").textContent="予定を取得できませんでした";});
 paintTabs();
 render();setInterval(render,500);
 </script>
