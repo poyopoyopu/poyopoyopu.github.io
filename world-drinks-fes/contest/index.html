@@ -3,95 +3,135 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>LPコンテスト — 世界のお酒フェス 誘い用LP</title>
-<meta name="description" content="AIたちが本気で作った「世界のお酒フェス」誘い用LPの見比べページ。">
+<title>LPコンテスト — 世界のお酒フェス</title>
+<meta name="description" content="AIたちが本気で作った「世界のお酒フェス」誘い用LPの見比べ＆投票ページ。">
 <style>
-:root{--bg:#0b1020;--panel:#131a30;--line:#ffffff1f;--txt:#f2f0e9;--muted:#a7aec4;--gold:#e8c268;--cyan:#59d8e6}
+:root{
+  --bg:#070a14; --panel:#101830; --line:#ffffff1c; --txt:#f4f1e8; --muted:#9aa3bd;
+  --gold:#e8c268; --cyan:#59d8e6;
+}
 *{box-sizing:border-box}
-body{margin:0;background:radial-gradient(900px 500px at 85% -5%,#274b6b55,transparent),radial-gradient(700px 500px at -10% 110%,#6b274b44,transparent),var(--bg);color:var(--txt);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif}
-.wrap{max-width:880px;margin:0 auto;padding:56px 22px 70px}
-.kicker{color:var(--cyan);letter-spacing:.28em;font-size:12px;font-weight:700}
-h1{font-size:clamp(34px,7vw,58px);line-height:1.15;margin:16px 0 10px}
-h1 .gold{color:var(--gold)}
-.sub{color:var(--muted);line-height:1.9;font-size:15px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:36px}
-@media(max-width:640px){.grid{grid-template-columns:1fr}}
-.card{display:block;text-decoration:none;color:inherit;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:24px;transition:.18s}
-a.card:hover{transform:translateY(-3px);border-color:var(--gold)}
-.card .who{font-size:22px;font-weight:900}
-.card .desc{color:var(--muted);font-size:13.5px;line-height:1.8;margin-top:8px}
-.card .go{color:var(--gold);font-weight:700;font-size:13px;margin-top:14px;letter-spacing:.08em}
-.card.off{opacity:.55}
-.badge{display:inline-block;font-size:11px;letter-spacing:.12em;border:1px solid var(--line);border-radius:20px;padding:3px 10px;color:var(--muted);margin-left:8px;vertical-align:middle}
-.badge.live{color:#0b1020;background:var(--cyan);border-color:var(--cyan);font-weight:700}
-
-.vote{margin-top:44px}
-.vote h2{font-size:clamp(24px,5vw,34px);margin:0 0 6px}
-.vote .lead{color:var(--muted);font-size:14px;line-height:1.8}
-.vgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-@media(max-width:640px){.vgrid{grid-template-columns:1fr}}
-.vbtn{position:relative;text-align:left;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:18px;color:var(--txt);font-family:inherit;cursor:pointer;overflow:hidden;width:100%}
-.vbtn .bar{position:absolute;left:0;top:0;bottom:0;background:#59d8e626;width:0%}
-.vbtn .nm{position:relative;font-size:19px;font-weight:900}
-.vbtn .ct{position:relative;float:right;font-size:19px;font-weight:900;color:var(--gold)}
-.vbtn:disabled{cursor:default;opacity:.92}
-.vbtn.picked{border-color:var(--gold)}
-.vbtn .done{position:relative;color:var(--gold);font-size:12px;font-weight:700;margin-left:8px}
-.rgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}
-@media(max-width:640px){.rgrid{grid-template-columns:1fr}}
-.vstat{color:var(--muted);font-size:12.5px;margin-top:12px;min-height:1.5em}
-.note{margin-top:34px;color:var(--muted);font-size:13px;line-height:1.9;border-top:1px solid var(--line);padding-top:20px}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--txt);font-family:"Hiragino Kaku Gothic ProN","Noto Sans JP",sans-serif;overflow-x:hidden}
+.bgfx{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(700px 420px at 88% -6%, rgba(232,194,104,.20), transparent 60%),
+    radial-gradient(760px 520px at -12% 34%, rgba(89,216,230,.13), transparent 60%),
+    radial-gradient(680px 520px at 108% 78%, rgba(176,122,255,.13), transparent 60%),
+    radial-gradient(560px 420px at 12% 108%, rgba(163,230,53,.09), transparent 60%);}
+.wrap{position:relative;z-index:1;max-width:920px;margin:0 auto;padding:54px 20px 80px}
+.kicker{display:flex;align-items:center;gap:12px;color:var(--cyan);letter-spacing:.34em;font-size:11px;font-weight:800}
+.kicker::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,var(--cyan),transparent)}
+h1{font-size:clamp(40px,9.5vw,76px);line-height:1.06;margin:20px 0 0;font-weight:900;letter-spacing:.01em}
+h1 .thin{display:block;font-size:clamp(19px,4.6vw,30px);letter-spacing:.14em;color:var(--muted);font-weight:700;margin-bottom:10px}
+h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2b8);-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--muted);line-height:2;font-size:14.5px;margin-top:18px;max-width:640px}
+.sub b{color:var(--txt)}
+.vs{display:flex;gap:8px;flex-wrap:wrap;margin-top:22px}
+.vs span{font-size:11px;letter-spacing:.14em;font-weight:800;border:1px solid var(--line);border-radius:999px;padding:6px 12px;color:var(--muted)}
+.vs span.hot{color:#0b1020;background:var(--gold);border-color:var(--gold)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:40px}
+@media(max-width:680px){.grid{grid-template-columns:1fr}}
+.card{position:relative;display:flex;flex-direction:column;background:linear-gradient(165deg,var(--panel),#0b1122);border:1px solid var(--line);border-radius:18px;padding:26px 24px 22px;overflow:hidden}
+.card::before{content:"";position:absolute;inset:0 0 auto 0;height:4px;background:var(--ac,#888)}
+.card::after{content:"";position:absolute;right:-46px;top:-46px;width:150px;height:150px;border-radius:50%;background:var(--ac,#888);opacity:.14;filter:blur(6px)}
+.rank{position:absolute;top:16px;right:16px;z-index:2;font-size:11px;font-weight:900;letter-spacing:.1em;padding:5px 11px;border-radius:999px;background:var(--ac);color:#0b1020;display:none}
+.card.top .rank{display:block}
+.card .who{font-size:27px;font-weight:900;letter-spacing:.01em}
+.card .style{color:var(--ac);font-size:11.5px;font-weight:800;letter-spacing:.18em;margin-top:5px}
+.card .desc{color:var(--muted);font-size:13.5px;line-height:1.85;margin:13px 0 0;flex:1}
+.card .open{margin-top:18px;display:inline-flex;align-items:center;gap:8px;color:var(--txt);text-decoration:none;font-weight:800;font-size:14px;border:1px solid var(--line);border-radius:12px;padding:12px 16px;transition:.15s;background:#ffffff08}
+.card .open:hover{border-color:var(--ac);transform:translateY(-1px)}
+.vrow{display:flex;align-items:center;gap:12px;margin-top:16px}
+.vbtn{flex:1;position:relative;overflow:hidden;border:1.5px solid var(--ac);background:transparent;color:var(--txt);font-family:inherit;font-weight:900;font-size:15px;border-radius:12px;padding:13px 10px;cursor:pointer;transition:.15s}
+.vbtn:hover{background:#ffffff10}
+.vbtn:disabled{cursor:default}
+.vbtn.picked{background:var(--ac);color:#0b1020}
+.vbtn .bar{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--ac);opacity:.16;pointer-events:none}
+.vbtn span{position:relative}
+.vcount{font-size:14px;color:var(--muted);white-space:nowrap}
+.vcount b{color:var(--txt);font-size:19px}
+.rsvp{margin-top:52px;background:linear-gradient(160deg,#141c38,#0b1122);border:1px solid var(--line);border-radius:20px;padding:30px 26px}
+.rsvp h2{margin:0;font-size:clamp(24px,5.6vw,34px);font-weight:900}
+.rsvp h2 .gold{color:var(--gold)}
+.rsvp p{color:var(--muted);font-size:13.5px;line-height:1.9;margin:10px 0 0}
+.rgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:20px}
+@media(max-width:680px){.rgrid{grid-template-columns:1fr}}
+.rbtn{position:relative;overflow:hidden;border:1.5px solid var(--line);background:#ffffff06;color:var(--txt);font-family:inherit;border-radius:14px;padding:18px 10px;cursor:pointer;font-size:18px;font-weight:900;transition:.15s}
+.rbtn small{display:block;font-size:12px;color:var(--muted);font-weight:700;margin-top:5px}
+.rbtn .bar{position:absolute;left:0;top:0;bottom:0;width:0%;background:var(--gold);opacity:.15;pointer-events:none}
+.rbtn span{position:relative}
+.rbtn[data-key="go"]{border-color:var(--gold)}
+.rbtn.picked{background:var(--gold);color:#0b1020}
+.rbtn.picked small{color:#0b1020cc}
+.rbtn:disabled{cursor:default}
+.vstat{color:var(--muted);font-size:12.5px;margin-top:16px;min-height:1.4em}
+.note{margin-top:44px;color:var(--muted);font-size:13px;line-height:1.95;border-top:1px solid var(--line);padding-top:22px}
 .note a{color:var(--cyan)}
+.fade{animation:up .7s cubic-bezier(.22,1,.36,1) both}
+@keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}
 </style>
 </head>
 <body>
+<div class="bgfx"></div>
 <div class="wrap">
-<div class="kicker">LP CONTEST</div>
-<h1>世界のお酒フェス<br><span class="gold">誘い用LPコンテスト</span></h1>
-<p class="sub">同じお題「11月22日・仕事終わりにお台場で開催される世界のお酒フェスへ、同僚を誘うLP」で、AIたちが本気で作った作品の見比べページ。各カードから実際のLPが開きます。</p>
 
-<div class="grid">
-<a class="card" href="muse/">
-<div class="who">Muse<span class="badge live">公開中</span></div>
-<p class="desc">ダーク×ネオンの夜フェス世界観。特大の「11.22」、タイムライン、カウントダウン、LINE誘い文コピー付き。</p>
-<div class="go">LPを見る →</div>
-</a>
-<a class="card" href="chatgpt/">
-<div class="who">ChatGPT<span class="badge live">公開中</span></div>
-<p class="desc">アシッドグリーンのエディトリアルデザイン。「WORLD DRINKS / ODAIBA — 11.22」（改訂版）。</p>
-<div class="go">LPを見る →</div>
-</a>
-<a class="card" href="gemini/">
-<div class="who">Gemini<span class="badge live">公開中</span></div>
-<p class="desc">黒×金の高級な招待状デザイン。目玉は名前と1杯目を選ぶと発行される「参加表明パス」。参加表明パスはこのサイト上でもそのまま動きます。</p>
-<div class="go">LPを見る →</div>
-</a>
-<a class="card" href="claude/">
-<div class="who">Claude<span class="badge live">公開中</span></div>
-<p class="desc">「世界のお酒フェス 一緒に行こうぜ」。届いたHTMLをそのまま公開。</p>
-<div class="go">LPを見る →</div>
-</a>
+<div class="kicker">LP CONTEST — AI BATTLE</div>
+<h1><span class="thin">世界のお酒フェス</span>誘い用LP<span class="gold">コンテスト</span></h1>
+<p class="sub">お題はひとつ。「<b>11月22日・仕事終わりにお台場で開催される世界のお酒フェスへ、同僚を誘うLP</b>」。4つのAIが本気で作った。見比べて、気に入ったやつに<b>1タップで投票</b>してほしい。</p>
+<div class="vs"><span class="hot">見比べる</span><span>投票は1タップ</span><span>名前・入力なし</span><span>票数はライブ表示</span></div>
+
+<div class="grid" id="cards">
+<article class="card fade d1" style="--ac:#e8c268" data-key="muse">
+<div class="rank">暫定1位</div>
+<div class="who">Muse</div>
+<div class="style">NIGHT FES × NEON</div>
+<p class="desc">ダーク×ネオンの夜フェス世界観。特大の「11.22」、当日のタイムライン、カウントダウン、LINE誘い文コピーまで載せた本戦仕様。</p>
+<a class="open" href="muse/">LPを見る <span>→</span></a>
+<div class="vrow"><button class="vbtn" data-vote="muse"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
+</article>
+
+<article class="card fade d2" style="--ac:#a3e635" data-key="chatgpt">
+<div class="rank">暫定1位</div>
+<div class="who">ChatGPT</div>
+<div class="style">ACID EDITORIAL</div>
+<p class="desc">アシッドグリーンのエディトリアルデザイン。「WORLD DRINKS / ODAIBA — 11.22」。雑誌みたいなレイアウトで攻めた改訂版。</p>
+<a class="open" href="chatgpt/">LPを見る <span>→</span></a>
+<div class="vrow"><button class="vbtn" data-vote="chatgpt"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
+</article>
+
+<article class="card fade d3" style="--ac:#f0935c" data-key="claude">
+<div class="rank">暫定1位</div>
+<div class="who">Claude</div>
+<div class="style">STRAIGHT INVITE</div>
+<p class="desc">「世界のお酒フェス 一緒に行こうぜ」。タイトルからして直球。届いたHTMLをそのまま公開した、飾らない誘いの一枚。</p>
+<a class="open" href="claude/">LPを見る <span>→</span></a>
+<div class="vrow"><button class="vbtn" data-vote="claude"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
+</article>
+
+<article class="card fade d4" style="--ac:#8fa8ff" data-key="gemini">
+<div class="rank">暫定1位</div>
+<div class="who">Gemini</div>
+<div class="style">VIP PASS MAKER</div>
+<p class="desc">黒×金の高級な招待状デザイン。目玉は、名前と「1杯目」を選ぶとその場で発行される参加表明パス。触って遊べる一枚。</p>
+<a class="open" href="gemini/">LPを見る <span>→</span></a>
+<div class="vrow"><button class="vbtn" data-vote="gemini"><span class="bar"></span><span>これに投票</span></button><div class="vcount"><b>0</b> 票</div></div>
+</article>
 </div>
 
-
-<div class="vote">
-<h2>投票</h2>
-<p class="lead">ボタンを1回タップするだけ。名前も入力もいりません。<br>① どのLPが一番よかった？</p>
-<div class="vgrid" id="lp-votes">
-<button class="vbtn" data-key="muse"><span class="bar"></span><span class="nm">Muse</span><span class="ct">0票</span></button>
-<button class="vbtn" data-key="chatgpt"><span class="bar"></span><span class="nm">ChatGPT</span><span class="ct">0票</span></button>
-<button class="vbtn" data-key="claude"><span class="bar"></span><span class="nm">Claude</span><span class="ct">0票</span></button>
-<button class="vbtn" data-key="gemini"><span class="bar"></span><span class="nm">Gemini</span><span class="ct">0票</span></button>
-</div>
-<p class="lead" style="margin-top:26px">② 11月22日（日）仕事終わり、行ける？</p>
+<div class="rsvp fade">
+<h2>ついでに聞く。22日、<span class="gold">行ける？</span></h2>
+<p>11月22日（日）仕事終わり、お台場セントラル広場。入場無料、1杯だけでもOK。これも1タップで。</p>
 <div class="rgrid" id="rsvp-votes">
-<button class="vbtn" data-key="go"><span class="bar"></span><span class="nm">行く</span><span class="ct">0</span></button>
-<button class="vbtn" data-key="maybe"><span class="bar"></span><span class="nm">未定</span><span class="ct">0</span></button>
-<button class="vbtn" data-key="no"><span class="bar"></span><span class="nm">行けない</span><span class="ct">0</span></button>
+<button class="rbtn" data-key="go"><span class="bar"></span><span>行く<small>0人</small></span></button>
+<button class="rbtn" data-key="maybe"><span class="bar"></span><span>未定<small>0人</small></span></button>
+<button class="rbtn" data-key="no"><span class="bar"></span><span>行けない<small>0人</small></span></button>
 </div>
 <p class="vstat" id="vote-status">現在の票数を読み込み中…</p>
 </div>
-<p class="note">本戦の誘い用LP（Muse版）は <a href="../">トップページ</a> でも公開中です。イベント：世界のお酒フェス（2026年11月20日〜23日／お台場セントラル広場・入場無料）。</p>
+
+<p class="note">本戦の誘い用LP（Muse版）は <a href="../">こちら</a>。イベント：世界のお酒フェス（2026年11月20日〜23日／お台場セントラル広場・入場無料、飲食はチケット制）。投票は各部門1人1票まで（この端末・ブラウザ単位）。</p>
 </div>
 
 <script>
@@ -99,44 +139,56 @@ var API = "https://fes-vote.artplayground.workers.dev";
 var LPKEYS = ["muse","chatgpt","claude","gemini"];
 var RKEYS = ["go","maybe","no"];
 function render(d){
-  [["lp-votes",LPKEYS],["rsvp-votes",RKEYS]].forEach(function(pair){
-    var box = document.getElementById(pair[0]); if(!box) return;
-    var keys = pair[1];
-    var total = keys.reduce(function(a,k){return a+(d[k]||0)},0);
-    box.querySelectorAll(".vbtn").forEach(function(b){
-      var k = b.getAttribute("data-key"), v = d[k]||0;
-      b.querySelector(".ct").textContent = v + (pair[0]==="lp-votes" ? "票" : "");
-      b.querySelector(".bar").style.width = total ? Math.round(v/total*100)+"%" : "0%";
-    });
+  var total = LPKEYS.reduce(function(a,k){return a+(d[k]||0)},0);
+  var max = Math.max.apply(null, LPKEYS.map(function(k){return d[k]||0}));
+  document.querySelectorAll("#cards .card").forEach(function(card){
+    var k = card.getAttribute("data-key"), v = d[k]||0;
+    card.querySelector(".vcount b").textContent = v;
+    var btn = card.querySelector(".vbtn");
+    btn.querySelector(".bar").style.width = total ? Math.round(v/total*100)+"%" : "0%";
+    card.classList.toggle("top", total>0 && v===max && v>0);
   });
-  document.getElementById("vote-status").textContent = "現在の票数です（自動で更新されます）";
+  var rt = RKEYS.reduce(function(a,k){return a+(d[k]||0)},0);
+  document.querySelectorAll("#rsvp-votes .rbtn").forEach(function(b){
+    var k = b.getAttribute("data-key"), v = d[k]||0;
+    b.querySelector("small").textContent = v + "人";
+    b.querySelector(".bar").style.width = rt ? Math.round(v/rt*100)+"%" : "0%";
+  });
+  document.getElementById("vote-status").textContent = "現在の票数です（開いたときに自動で読み込みます）";
 }
-function lock(group, picked){
-  var box = document.getElementById(group);
-  box.querySelectorAll(".vbtn").forEach(function(b){
+function lockLp(picked){
+  document.querySelectorAll("#cards .vbtn").forEach(function(b){
     b.disabled = true;
-    if (b.getAttribute("data-key")===picked && !b.querySelector(".done")){
-      var sp = document.createElement("span"); sp.className="done"; sp.textContent="✓ 投票済み";
-      b.querySelector(".nm").appendChild(sp);
-    }
+    if (b.getAttribute("data-vote")===picked){ b.classList.add("picked"); b.querySelector("span:last-child").textContent = "投票済み ✓"; }
   });
 }
-function vote(group, key){
-  if (localStorage.getItem("fes-"+group)) return;
-  localStorage.setItem("fes-"+group, key);
-  lock(group, key);
+function lockRsvp(picked){
+  document.querySelectorAll("#rsvp-votes .rbtn").forEach(function(b){
+    b.disabled = true;
+    if (b.getAttribute("data-key")===picked) b.classList.add("picked");
+  });
+}
+function send(group, key){
   fetch(API+"/vote", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({key:key})})
     .then(function(r){return r.json()}).then(render)
-    .catch(function(){ document.getElementById("vote-status").textContent = "投票は受け付けました（票数の取得に失敗）"; });
+    .catch(function(){ document.getElementById("vote-status").textContent = "投票は受け付けました（票数の再取得に失敗）"; });
 }
-["lp-votes","rsvp-votes"].forEach(function(group){
-  var box = document.getElementById(group);
-  box.querySelectorAll(".vbtn").forEach(function(b){
-    b.addEventListener("click", function(){ vote(group, b.getAttribute("data-key")); });
+document.querySelectorAll("#cards .vbtn").forEach(function(b){
+  b.addEventListener("click", function(){
+    if (localStorage.getItem("fes-lp")) return;
+    var key = b.getAttribute("data-vote");
+    localStorage.setItem("fes-lp", key); lockLp(key); send("lp", key);
   });
-  var prev = localStorage.getItem("fes-"+group);
-  if (prev) lock(group, prev);
 });
+document.querySelectorAll("#rsvp-votes .rbtn").forEach(function(b){
+  b.addEventListener("click", function(){
+    if (localStorage.getItem("fes-rsvp")) return;
+    var key = b.getAttribute("data-key");
+    localStorage.setItem("fes-rsvp", key); lockRsvp(key); send("rsvp", key);
+  });
+});
+var prevLp = localStorage.getItem("fes-lp"); if (prevLp) lockLp(prevLp);
+var prevR = localStorage.getItem("fes-rsvp"); if (prevR) lockRsvp(prevR);
 fetch(API+"/results").then(function(r){return r.json()}).then(render)
   .catch(function(){ document.getElementById("vote-status").textContent = "票数を読み込めませんでした"; });
 </script>
