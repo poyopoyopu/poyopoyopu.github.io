@@ -174,19 +174,23 @@ function render(d){
     b.querySelector("small").textContent = v + "人";
     b.querySelector(".bar").style.width = rt ? Math.round(v/rt*100)+"%" : "0%";
   });
-  document.getElementById("vote-status").textContent = "現在の票数です（開いたときに自動で読み込みます）";
+  document.getElementById("vote-status").textContent = "現在の票数です（投票はあとから変更できます）";
 }
-function lockLp(picked){
+function markLp(picked){
   document.querySelectorAll("#cards .vbtn").forEach(function(b){
-    b.disabled = true;
-    if (b.getAttribute("data-vote")===picked){ b.classList.add("picked"); b.querySelector("span:last-child").textContent = "投票済み ✓"; }
+    var on = b.getAttribute("data-vote")===picked;
+    b.classList.toggle("picked", on);
+    b.querySelector("span:last-child").textContent = on ? "投票済み ✓" : "これに投票";
   });
 }
-function lockRsvp(picked){
+function markRsvp(picked){
   document.querySelectorAll("#rsvp-votes .rbtn").forEach(function(b){
-    b.disabled = true;
-    if (b.getAttribute("data-key")===picked) b.classList.add("picked");
+    b.classList.toggle("picked", b.getAttribute("data-key")===picked);
   });
+}
+function sendDelta(key, delta){
+  fetch(API+"/vote", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({key:key, delta:delta})})
+    .then(function(r){return r.json()}).then(render).catch(function(){});
 }
 function send(key){
   fetch(API+"/vote", {method:"POST", headers:{"Content-Type":"application/json"}, body: JSON.stringify({key:key})})
@@ -195,20 +199,24 @@ function send(key){
 }
 document.querySelectorAll("#cards .vbtn").forEach(function(b){
   b.addEventListener("click", function(){
-    if (localStorage.getItem("fes-lp")) return;
     var key = b.getAttribute("data-vote");
-    localStorage.setItem("fes-lp", key); lockLp(key); send(key);
+    var prev = localStorage.getItem("fes-lp");
+    if (prev === key) return;
+    if (prev) sendDelta(prev, -1);
+    localStorage.setItem("fes-lp", key); markLp(key); send(key);
   });
 });
 document.querySelectorAll("#rsvp-votes .rbtn").forEach(function(b){
   b.addEventListener("click", function(){
-    if (localStorage.getItem("fes-rsvp")) return;
     var key = b.getAttribute("data-key");
-    localStorage.setItem("fes-rsvp", key); lockRsvp(key); send(key);
+    var prev = localStorage.getItem("fes-rsvp");
+    if (prev === key) return;
+    if (prev) sendDelta(prev, -1);
+    localStorage.setItem("fes-rsvp", key); markRsvp(key); send(key);
   });
 });
-var prevLp = localStorage.getItem("fes-lp"); if (prevLp) lockLp(prevLp);
-var prevR = localStorage.getItem("fes-rsvp"); if (prevR) lockRsvp(prevR);
+var prevLp = localStorage.getItem("fes-lp"); if (prevLp) markLp(prevLp);
+var prevR = localStorage.getItem("fes-rsvp"); if (prevR) markRsvp(prevR);
 fetch(API+"/results").then(function(r){return r.json()}).then(render)
   .catch(function(){ document.getElementById("vote-status").textContent = "票数を読み込めませんでした"; });
 </script>
