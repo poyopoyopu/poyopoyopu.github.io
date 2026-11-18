@@ -67,8 +67,11 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 .rbtn.picked small{color:#0b1020cc}
 .rbtn:disabled{cursor:default}
 .vstat{color:var(--muted);font-size:12.5px;margin-top:16px;min-height:1.4em}
-.note{margin-top:46px;color:var(--muted);font-size:13px;line-height:1.95;border-top:1px solid var(--line);padding-top:22px}
-.note a{color:var(--cyan)}
+.colophon{margin-top:56px;border-top:1px solid var(--line);padding:30px 0 8px;text-align:center}
+.colo-main{font-family:var(--mincho);font-size:16px;letter-spacing:.08em;margin:0 0 14px}
+.colo-main a{color:var(--gold,#e8c268);text-decoration:none;border-bottom:1px solid rgba(232,194,104,.45);padding-bottom:2px}
+.colo-event{color:var(--muted);font-size:12.5px;letter-spacing:.06em;line-height:1.9;margin:0 0 10px}
+.colo-fine{color:var(--muted);opacity:.62;font-size:11px;letter-spacing:.05em;line-height:1.9;margin:0}
 .fade{animation:up .7s cubic-bezier(.22,1,.36,1) both}
 @keyframes up{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
 .d1{animation-delay:.05s}.d2{animation-delay:.12s}.d3{animation-delay:.19s}.d4{animation-delay:.26s}
@@ -134,7 +137,11 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 <p class="vstat" id="vote-status">現在の票数を読み込み中…</p>
 </div>
 
-<p class="note">本戦の誘い用LP（Muse版）は <a href="../">こちら</a>。イベント：世界のお酒フェス（2026年11月20日〜23日／お台場セントラル広場・入場無料、飲食はチケット制）。投票は各部門1人1票まで（この端末・ブラウザ単位）。参考にした見本集：Fable作「AI企業LP デザイン5案」の入口ページ。</p>
+<footer class="colophon">
+<p class="colo-main"><a href="../">本戦の誘い状 ― Muse版はこちら</a></p>
+<p class="colo-event">世界のお酒フェス　2026年11月20日（金）〜23日（月・祝）／お台場セントラル広場／入場無料・飲食はチケット制</p>
+<p class="colo-fine">投票は各部門1人1票まで（この端末・ブラウザ単位）<br>入口の意匠は、Fable「AI企業LP デザイン5案」に着想を得た</p>
+</footer>
 </div>
 
 <script>
