@@ -1,0 +1,1001 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界のお酒フェス | 2026.11.22 (SUN) 仕事終わり特設招待状</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Shippori Mincho, Zen Kaku Gothic New, Cormorant Garamond, Syne -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Shippori+Mincho:wght@600;700;800&family=Syne:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        mincho: ['"Shippori Mincho"', 'serif'],
+                        sans: ['"Zen Kaku Gothic New"', 'sans-serif'],
+                        serifDisplay: ['"Cormorant Garamond"', 'serif'],
+                        display: ['"Syne"', 'sans-serif'],
+                    },
+                    colors: {
+                        obsidian: '#07080B',
+                        charcoal: '#0E1117',
+                        amberGold: '#E5A93C',
+                        champagne: '#F7E2B8',
+                        bayTeal: '#14B8A6',
+                    },
+                    animation: {
+                        'shine': 'shine 4s linear infinite',
+                        'pulse-glow': 'pulseGlow 5s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        shine: {
+                            '0%': { backgroundPosition: '200% center' },
+                            '100%': { backgroundPosition: '-200% center' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+                            '50%': { opacity: '0.8', transform: 'scale(1.06)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        :root {
+            --bg-obsidian: #07080B;
+            --gold-primary: #E5A93C;
+            --champagne-glow: #F7E2B8;
+        }
+
+        body {
+            background-color: var(--bg-obsidian);
+            color: #F4F4F6;
+            overflow-x: hidden;
+            font-feature-settings: "palt";
+        }
+
+        /* 微細なフィルムグレイン質感 */
+        .noise-overlay {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 3;
+            opacity: 0.035;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+        }
+
+        /* ゴールド・グラデーションテキスト */
+        .text-gold-foil {
+            background: linear-gradient(120deg, #F7E2B8 0%, #E5A93C 35%, #FFF3D6 50%, #C6861E 75%, #F7E2B8 100%);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: shine 6s linear infinite;
+        }
+
+        /* スポットライト追従ガラスカード */
+        .spotlight-card {
+            position: relative;
+            background: rgba(14, 17, 23, 0.72);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border: 1px solid rgba(229, 169, 60, 0.22);
+            transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s ease, box-shadow 0.35s ease;
+            overflow: hidden;
+        }
+        .spotlight-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(500px circle at var(--mouse-x, 50%) var(--mouse-y, 50%), rgba(229, 169, 60, 0.14), transparent 45%);
+            opacity: 0;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+        .spotlight-card:hover::before {
+            opacity: 1;
+        }
+        .spotlight-card:hover {
+            border-color: rgba(247, 226, 184, 0.5);
+            box-shadow: 0 20px 50px -15px rgba(0, 0, 0, 0.85), 0 0 30px rgba(229, 169, 60, 0.12);
+        }
+
+        /* VIPデジタルチケットのメタリック・ホログラム加工 */
+        .vip-pass-card {
+            background: linear-gradient(135deg, #161A24 0%, #0A0C12 45%, #1D1811 100%);
+            border: 1px solid rgba(229, 169, 60, 0.55);
+            box-shadow:
+                0 25px 60px -15px rgba(0, 0, 0, 0.9),
+                inset 0 1px 1px rgba(247, 226, 184, 0.35),
+                0 0 35px rgba(229, 169, 60, 0.18);
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            transition: transform 0.2s ease-out;
+        }
+        .vip-pass-shimmer {
+            position: absolute;
+            inset: -50%;
+            background: linear-gradient(
+                115deg,
+                transparent 35%,
+                rgba(247, 226, 184, 0.12) 45%,
+                rgba(229, 169, 60, 0.25) 50%,
+                rgba(20, 184, 166, 0.12) 55%,
+                transparent 65%
+            );
+            transform: rotate(15deg);
+            animation: passSweep 5.5s ease-in-out infinite;
+            pointer-events: none;
+        }
+        @keyframes passSweep {
+            0%, 100% { transform: translateX(-60%) rotate(15deg); }
+            50% { transform: translateX(60%) rotate(15deg); }
+        }
+
+        /* チケットの左右切り欠き（ミシン目表現） */
+        .ticket-notch-left, .ticket-notch-right {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background-color: var(--bg-obsidian);
+            border: 1px solid rgba(229, 169, 60, 0.45);
+            border-radius: 9999px;
+            top: 66%;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .ticket-notch-left { left: -12px; }
+        .ticket-notch-right { right: -12px; }
+
+        /* プライマリーゴールドボタン */
+        .btn-luxury-gold {
+            background: linear-gradient(135deg, #F7E2B8 0%, #E5A93C 50%, #C78419 100%);
+            color: #07080B;
+            box-shadow: 0 10px 30px -5px rgba(229, 169, 60, 0.45);
+            transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .btn-luxury-gold:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px -5px rgba(229, 169, 60, 0.65);
+            filter: brightness(1.06);
+        }
+        .btn-luxury-gold:active {
+            transform: translateY(0);
+        }
+
+        /* 選択チップ */
+        .option-pill {
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.03);
+            transition: all 0.25s ease;
+        }
+        .option-pill:hover {
+            border-color: rgba(229, 169, 60, 0.45);
+            background: rgba(229, 169, 60, 0.08);
+        }
+        .option-pill.active {
+            border-color: #E5A93C;
+            background: linear-gradient(135deg, rgba(229, 169, 60, 0.24), rgba(229, 169, 60, 0.1));
+            color: #F7E2B8;
+            box-shadow: 0 0 20px rgba(229, 169, 60, 0.22);
+        }
+
+        /* スクロールリビールアニメーション */
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition: opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1), transform 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* カスタムスクロールバー */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #07080B; }
+        ::-webkit-scrollbar-thumb { background: #2D2618; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E5A93C; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-amberGold selection:text-obsidian">
+
+    <!-- 全画面シャンパンバブル＆夜景ボケ Canvas -->
+    <canvas id="bubble-canvas" class="fixed inset-0 w-full h-full pointer-events-none z-0"></canvas>
+    <div class="noise-overlay"></div>
+
+    <!-- お台場ベイエリアのアンビエントネオン光源 -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden">
+        <div class="absolute -top-32 left-1/4 w-[28rem] h-[28rem] bg-amberGold/10 rounded-full blur-[130px] animate-pulse-glow"></div>
+        <div class="absolute top-1/2 -right-32 w-[30rem] h-[30rem] bg-bayTeal/10 rounded-full blur-[140px] animate-pulse-glow" style="animation-delay: 2.5s;"></div>
+        <div class="absolute -bottom-32 left-10 w-[26rem] h-[26rem] bg-amber-600/10 rounded-full blur-[130px]"></div>
+    </div>
+
+    <!-- フローティング・ミニマルヘッダー -->
+    <header class="fixed top-0 inset-x-0 z-40 border-b border-amberGold/15 bg-obsidian/75 backdrop-blur-xl">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group">
+                <span class="w-2 h-2 rounded-full bg-amberGold shadow-[0_0_10px_#E5A93C]"></span>
+                <span class="font-display font-bold tracking-[0.16em] text-xs sm:text-sm text-champagne group-hover:text-amberGold transition">
+                    WORLD DRINKS FES
+                </span>
+                <span class="hidden sm:inline-block text-[11px] font-serifDisplay italic text-amberGold/80 border-l border-white/15 pl-2.5">
+                    Odaiba After-Work Meetup
+                </span>
+            </a>
+
+            <div class="flex items-center gap-2 sm:gap-3">
+                <a href="#vip-pass" class="text-xs font-bold px-3.5 py-2 rounded-full bg-amberGold/15 hover:bg-amberGold/25 text-champagne border border-amberGold/40 transition">
+                    参加表明パス発行
+                </a>
+                <a href="https://worlddrinks-fest.jp/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold px-3.5 py-2 rounded-full bg-white/5 hover:bg-white/10 text-zinc-200 border border-white/15 transition flex items-center gap-1">
+                    <span>公式HP</span>
+                    <svg class="w-3 h-3 text-amberGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- メインコンテンツ -->
+    <main class="relative z-10 pt-24 sm:pt-28 pb-28">
+
+        <!-- =========================================================
+             1. HERO SECTION (エディトリアル・ナイトバー導入)
+        ========================================================== -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-4 pb-16 sm:pb-24 text-center space-y-8">
+            <!-- プライベート招待バッジ -->
+            <div class="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-amberGold/45 bg-amberGold/10 backdrop-blur-md shadow-[0_0_25px_rgba(229,169,60,0.2)]">
+                <span class="w-1.5 h-1.5 rounded-full bg-amberGold animate-ping"></span>
+                <span class="font-display text-[11px] sm:text-xs font-bold tracking-[0.18em] text-champagne uppercase">
+                    PRIVATE INVITATION // 2026.11.22 (SUN) 仕事終わり
+                </span>
+            </div>
+
+            <!-- ポエティック・メインヘッドライン -->
+            <div class="space-y-5 max-w-4xl mx-auto">
+                <p class="font-serifDisplay italic text-amberGold text-base sm:text-xl tracking-[0.2em]">
+                    — 世界のお酒フェス at Odaiba Central Plaza —
+                </p>
+                <h1 class="font-mincho font-extrabold text-4xl sm:text-6xl md:text-7xl tracking-tight leading-[1.18] text-white">
+                    今夜は、お台場で<br class="sm:hidden">
+                    <span class="text-gold-foil">世界と乾杯しよう。</span>
+                </h1>
+                <p class="text-sm sm:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed font-normal pt-2">
+                    11月22日（日）仕事終わり、青海1丁目・お台場セントラル広場へ。<br class="hidden sm:inline">
+                    入場無料・チケット制だから、仕事帰りの1杯だけでも最高に贅沢な夜になる。
+                </p>
+            </div>
+
+            <!-- イルミネーション・カウントダウンボード (2026-11-22 18:00 集合ターゲット) -->
+            <div class="max-w-2xl mx-auto pt-2">
+                <div class="spotlight-card rounded-3xl p-5 sm:p-6">
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2 pb-4 mb-4 border-b border-white/10">
+                        <div class="flex items-center gap-2">
+                            <span class="px-2 py-0.5 rounded bg-amberGold text-obsidian font-display font-extrabold text-[10px] tracking-wider">MEETUP BOARD</span>
+                            <span class="text-xs sm:text-sm font-bold text-champagne">11.22 (SUN) 18:00 乾杯目安まで</span>
+                        </div>
+                        <span class="text-[11px] font-display tracking-widest text-zinc-400">OPEN 12:00 — CLOSE 21:00</span>
+                    </div>
+
+                    <div id="countdown-grid" class="grid grid-cols-4 gap-2.5 sm:gap-4">
+                        <div class="bg-obsidian/80 border border-amberGold/25 rounded-2xl py-3 px-2">
+                            <div id="cd-days" class="font-display font-extrabold text-2xl sm:text-4xl text-champagne">00</div>
+                            <div class="font-display text-[10px] tracking-[0.2em] text-zinc-400 mt-1">DAYS</div>
+                        </div>
+                        <div class="bg-obsidian/80 border border-amberGold/25 rounded-2xl py-3 px-2">
+                            <div id="cd-hours" class="font-display font-extrabold text-2xl sm:text-4xl text-champagne">00</div>
+                            <div class="font-display text-[10px] tracking-[0.2em] text-zinc-400 mt-1">HOURS</div>
+                        </div>
+                        <div class="bg-obsidian/80 border border-amberGold/25 rounded-2xl py-3 px-2">
+                            <div id="cd-mins" class="font-display font-extrabold text-2xl sm:text-4xl text-champagne">00</div>
+                            <div class="font-display text-[10px] tracking-[0.2em] text-zinc-400 mt-1">MINS</div>
+                        </div>
+                        <div class="bg-obsidian/80 border border-amberGold/25 rounded-2xl py-3 px-2">
+                            <div id="cd-secs" class="font-display font-extrabold text-2xl sm:text-4xl text-amberGold">00</div>
+                            <div class="font-display text-[10px] tracking-[0.2em] text-zinc-400 mt-1">SECS</div>
+                        </div>
+                    </div>
+                    <p id="countdown-status" class="text-xs text-amberGold/90 font-medium mt-3">
+                        ※仕事終わり次第、各自お台場セントラル広場へ順次合流！21:00まで開催中
+                    </p>
+                </div>
+            </div>
+
+            <!-- プライマリーCTAボタン -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-3.5 pt-2">
+                <a href="#vip-pass" class="w-full sm:w-auto btn-luxury-gold font-black text-sm sm:text-base px-8 py-4 rounded-2xl flex items-center justify-center gap-2.5">
+                    <span>🥂 参加表明カードを作る</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                </a>
+                <a href="https://worlddrinks-fest.jp/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto spotlight-card text-white font-bold text-sm sm:text-base px-7 py-4 rounded-2xl flex items-center justify-center gap-2">
+                    <span>公式サイトを見る (worlddrinks-fest.jp)</span>
+                    <svg class="w-4 h-4 text-amberGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                </a>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             2. BENTO SHOWCASE — なぜ、22日の仕事終わりなのか？ (3 REASONS)
+        ========================================================== -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 reveal">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8">
+                <div>
+                    <p class="font-display text-xs tracking-[0.25em] text-amberGold uppercase font-bold mb-1.5">3 REASONS TO JOIN</p>
+                    <h2 class="font-mincho text-2xl sm:text-4xl font-bold text-white">
+                        なぜ、22日の仕事終わりなのか？
+                    </h2>
+                </div>
+                <p class="text-xs sm:text-sm text-zinc-400">
+                    気負わず集まれて、非日常の夜風に酔いしれる3つの理由。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+                <!-- REASON 01 -->
+                <article class="spotlight-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="font-serifDisplay italic text-3xl font-bold text-amberGold">01</span>
+                            <span class="text-xs font-display tracking-widest text-bayTeal bg-bayTeal/10 border border-bayTeal/30 px-2.5 py-1 rounded-full">LOCATION</span>
+                        </div>
+                        <h3 class="font-mincho text-xl font-bold text-champagne leading-snug">
+                            お台場・青海1丁目の<br>圧倒的開放感
+                        </h3>
+                        <p class="text-sm text-zinc-300 leading-relaxed">
+                            セントラル広場の夜風と煌めくイルミネーション。職場からもすぐ立ち寄れる好立地で、退勤した瞬間からフェス気分へスイッチできます。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
+                        <span>お台場セントラル広場</span>
+                        <span class="text-amberGold">仕事帰り直行OK</span>
+                    </div>
+                </article>
+
+                <!-- REASON 02 -->
+                <article class="spotlight-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="font-serifDisplay italic text-3xl font-bold text-amberGold">02</span>
+                            <span class="text-xs font-display tracking-widest text-amberGold bg-amberGold/10 border border-amberGold/30 px-2.5 py-1 rounded-full">FREE ENTRY</span>
+                        </div>
+                        <h3 class="font-mincho text-xl font-bold text-champagne leading-snug">
+                            入場無料 × チケット制の<br>圧倒的な気楽さ
+                        </h3>
+                        <p class="text-sm text-zinc-300 leading-relaxed">
+                            入場チャージは一切なし。飲食はチケット制だから、「今日は1杯だけサクッと乾杯」も「世界中の銘酒をハシゴ」も自分のペースで自由自在。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
+                        <span>入場料 ¥0</span>
+                        <span class="text-amberGold">途中合流・早抜け歓迎</span>
+                    </div>
+                </article>
+
+                <!-- REASON 03 -->
+                <article class="spotlight-card rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-6">
+                    <div class="space-y-4">
+                        <div class="flex items-center justify-between">
+                            <span class="font-serifDisplay italic text-3xl font-bold text-amberGold">03</span>
+                            <span class="text-xs font-display tracking-widest text-champagne bg-white/10 border border-white/20 px-2.5 py-1 rounded-full">SPECIAL HOURS</span>
+                        </div>
+                        <h3 class="font-mincho text-xl font-bold text-champagne leading-snug">
+                            12:00〜21:00 開催の<br>ハイライト夜
+                        </h3>
+                        <p class="text-sm text-zinc-300 leading-relaxed">
+                            通常16:00〜21:00のところ、21〜23日は12:00〜21:00の拡大営業！日曜の夜、職場の仲間と集まって乾杯する最高のタイミングです。
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-white/10 flex items-center justify-between text-xs text-zinc-400">
+                        <span>11.22 (SUN) 営業拡大日</span>
+                        <span class="text-amberGold">21:00 CLOSE</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             3. INTERACTIVE VIP GUEST PASS GENERATOR (参加表明デジタルチケット)
+        ========================================================== -->
+        <section id="vip-pass" class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 scroll-mt-20 reveal">
+            <div class="text-center max-w-2xl mx-auto mb-10 space-y-2.5">
+                <p class="font-display text-xs tracking-[0.25em] text-amberGold uppercase font-bold">DIGITAL INVITATION PASS</p>
+                <h2 class="font-mincho text-2xl sm:text-4xl font-bold text-white">
+                    今夜の1杯・乾杯スタイル診断＆<br class="sm:hidden">デジタル招待チケット発行
+                </h2>
+                <p class="text-xs sm:text-sm text-zinc-400">
+                    あなたの合流スタイルと最初の1杯を選ぶと、専用VIPパスがリアルタイムで完成します。
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-7 items-center">
+                <!-- 左カラム：カスタマイズ操作パネル -->
+                <div class="lg:col-span-7 spotlight-card rounded-3xl p-6 sm:p-8 space-y-6">
+                    <!-- STEP 1: 名前入力 -->
+                    <div class="space-y-2">
+                        <label for="guest-name" class="flex items-center justify-between text-xs font-bold text-champagne">
+                            <span>STEP 01. ニックネーム / お名前</span>
+                            <span class="text-zinc-500 font-normal">パスに刻印されます</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="guest-name"
+                            maxlength="18"
+                            placeholder="例：SATO / 佐藤（空欄なら GUEST）"
+                            oninput="updateVipPass()"
+                            class="w-full rounded-xl bg-obsidian/90 border border-white/15 px-4 py-3 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-amberGold transition"
+                        >
+                    </div>
+
+                    <!-- STEP 2: 合流スタイル -->
+                    <div class="space-y-2.5">
+                        <label class="text-xs font-bold text-champagne block">STEP 02. 22日（日）の合流スタイル</label>
+                        <div class="grid grid-cols-2 gap-2" id="arrival-options">
+                            <button type="button" onclick="setArrival('仕事終わり直行！', this)" class="option-pill active rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200">
+                                💼 仕事終わり直行！
+                            </button>
+                            <button type="button" onclick="setArrival('少し遅れて合流', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200">
+                                🏃 少し遅れて合流
+                            </button>
+                            <button type="button" onclick="setArrival('1杯だけサクッと', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200">
+                                ⚡ 1杯だけサクッと
+                            </button>
+                            <button type="button" onclick="setArrival('最後まで飲み明かす', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200">
+                                🔥 最後まで飲み明かす
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- STEP 3: 最初の1杯 -->
+                    <div class="space-y-2.5">
+                        <label class="text-xs font-bold text-champagne block">STEP 03. 乾杯の1杯目セレクト</label>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="drink-options">
+                            <button type="button" onclick="setDrink('キンキンのクラフトビール', '🍺', 'CRAFT BEER', this)" class="option-pill active rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200 flex items-center gap-2">
+                                <span>🍺</span><span>キンキンのクラフトビール</span>
+                            </button>
+                            <button type="button" onclick="setDrink('芳醇ワイン・スパークリング', '🥂', 'WINE & SPARKLING', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200 flex items-center gap-2">
+                                <span>🥂</span><span>芳醇ワイン・スパークリング</span>
+                            </button>
+                            <button type="button" onclick="setDrink('ハイボール・ウイスキー', '🥃', 'WHISKY & HIGHBALL', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200 flex items-center gap-2">
+                                <span>🥃</span><span>ハイボール・ウイスキー</span>
+                            </button>
+                            <button type="button" onclick="setDrink('甘いカクテル・果実酒', '🍹', 'COCKTAIL & LIQUEUR', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200 flex items-center gap-2">
+                                <span>🍹</span><span>甘いカクテル・果実酒</span>
+                            </button>
+                            <button type="button" onclick="setDrink('ノンアルで雰囲気楽しむ', '✨', 'MOCKTAIL & CHILL', this)" class="option-pill rounded-xl px-3.5 py-2.5 text-left text-xs sm:text-sm font-bold text-zinc-200 flex items-center gap-2 sm:col-span-2">
+                                <span>✨</span><span>ノンアルで雰囲気楽しむ</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- ワンクリック参加表明コピーボタン -->
+                    <div class="pt-2">
+                        <button type="button" onclick="copyRsvpMessage()" class="w-full btn-luxury-gold font-black text-sm sm:text-base py-4 px-6 rounded-2xl flex items-center justify-center gap-2.5">
+                            <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                            <span>この内容で参加表明文をコピー（LINE・チャット用）</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 右カラム：リアルタイム描画 VIP AFTER-WORK PASS -->
+                <div class="lg:col-span-5">
+                    <div id="vip-ticket-element" class="vip-pass-card rounded-3xl p-6 sm:p-7 select-none">
+                        <div class="vip-pass-shimmer"></div>
+                        <div class="ticket-notch-left"></div>
+                        <div class="ticket-notch-right"></div>
+
+                        <!-- パス上部ヘッダー -->
+                        <div class="flex items-start justify-between border-b border-amberGold/25 pb-4">
+                            <div>
+                                <span class="font-display text-[10px] tracking-[0.25em] text-amberGold font-bold uppercase block">
+                                    VIP AFTER-WORK PASS
+                                </span>
+                                <h3 class="font-mincho text-lg sm:text-xl font-extrabold text-white mt-0.5">
+                                    世界のお酒フェス
+                                </h3>
+                            </div>
+                            <div class="text-right">
+                                <span class="inline-block px-2.5 py-0.5 rounded-full bg-amberGold/20 border border-amberGold/50 font-display text-[10px] font-bold text-champagne">
+                                    ADMISSION FREE
+                                </span>
+                                <div class="font-display text-xs text-zinc-400 mt-1">NO. 2026-1122</div>
+                            </div>
+                        </div>
+
+                        <!-- ゲスト名＆ドリンクアイコン -->
+                        <div class="py-6 flex items-center justify-between gap-4">
+                            <div class="space-y-1 min-w-0">
+                                <div class="font-display text-[10px] tracking-[0.2em] text-zinc-400">GUEST NAME</div>
+                                <div id="pass-guest-name" class="font-display text-2xl sm:text-3xl font-extrabold text-gold-foil truncate">
+                                    COLLEAGUE GUEST
+                                </div>
+                                <div class="pt-1 flex flex-wrap items-center gap-1.5">
+                                    <span id="pass-arrival-badge" class="inline-block px-2.5 py-1 rounded-lg bg-white/10 border border-white/15 text-xs font-bold text-champagne">
+                                        💼 仕事終わり直行！
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- 選択ドリンクエンブレム -->
+                            <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-amberGold/25 to-obsidian border border-amberGold/50 flex flex-col items-center justify-center shrink-0 shadow-[0_0_25px_rgba(229,169,60,0.25)]">
+                                <span id="pass-drink-icon" class="text-3xl">🍺</span>
+                                <span id="pass-drink-code" class="font-display text-[8px] tracking-wider text-champagne font-bold mt-1 text-center px-1">CRAFT BEER</span>
+                            </div>
+                        </div>
+
+                        <!-- 選択ドリンクテキスト -->
+                        <div class="bg-obsidian/75 border border-white/10 rounded-xl px-3.5 py-2.5 mb-5 flex items-center justify-between">
+                            <span class="text-[11px] text-zinc-400">FIRST DRINK</span>
+                            <span id="pass-drink-label" class="text-xs font-bold text-champagne">キンキンのクラフトビール</span>
+                        </div>
+
+                        <!-- ミシン目ディバイダー -->
+                        <div class="border-t border-dashed border-amberGold/35 my-4"></div>
+
+                        <!-- チケット下部：日時・場所・擬似バーコード -->
+                        <div class="pt-2 flex items-end justify-between gap-3">
+                            <div class="space-y-1 text-xs">
+                                <div class="text-zinc-400 text-[10px] font-display tracking-widest">DATE & TIME</div>
+                                <div class="font-bold text-white">2026.11.22 (SUN) 仕事終わり〜21:00</div>
+                                <div class="text-amberGold text-[11px] font-medium">お台場セントラル広場（青海1丁目）</div>
+                            </div>
+
+                            <!-- 装飾バーコードSVG -->
+                            <div class="shrink-0 opacity-80">
+                                <svg class="w-16 h-9 text-champagne" viewBox="0 0 80 40" fill="currentColor">
+                                    <rect x="2" y="2" width="3" height="36"/>
+                                    <rect x="8" y="2" width="1.5" height="36"/>
+                                    <rect x="13" y="2" width="4" height="36"/>
+                                    <rect x="20" y="2" width="2" height="36"/>
+                                    <rect x="25" y="2" width="1.5" height="36"/>
+                                    <rect x="30" y="2" width="3.5" height="36"/>
+                                    <rect x="37" y="2" width="2" height="36"/>
+                                    <rect x="42" y="2" width="4" height="36"/>
+                                    <rect x="49" y="2" width="1.5" height="36"/>
+                                    <rect x="54" y="2" width="3" height="36"/>
+                                    <rect x="60" y="2" width="2" height="36"/>
+                                    <rect x="65" y="2" width="4" height="36"/>
+                                    <rect x="72" y="2" width="2" height="36"/>
+                                    <rect x="76" y="2" width="2" height="36"/>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             4. ORGANIZER'S INVITE TEMPLATES (仲間を誘う・コピペ用招待メッセージ)
+        ========================================================== -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 py-12 sm:py-16 reveal">
+            <div class="spotlight-card rounded-3xl p-6 sm:p-10 space-y-6">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-white/10 pb-6">
+                    <div>
+                        <p class="font-display text-xs tracking-[0.25em] text-amberGold uppercase font-bold mb-1">SPREAD THE WORD</p>
+                        <h2 class="font-mincho text-2xl sm:text-3xl font-bold text-white">
+                            仲間を誘う・コピペ用招待メッセージ
+                        </h2>
+                        <p class="text-xs sm:text-sm text-zinc-400 mt-1">
+                            さらに職場のメンバーを誘うときにそのまま使える招待テンプレートです。
+                        </p>
+                    </div>
+
+                    <!-- パターン切替タブ -->
+                    <div class="flex flex-wrap gap-2">
+                        <button type="button" onclick="selectInvitePreset('casual', this)" class="invite-tab active px-3.5 py-2 rounded-xl text-xs font-bold border border-amberGold bg-amberGold/20 text-champagne transition">
+                            🍻 カジュアル誘い
+                        </button>
+                        <button type="button" onclick="selectInvitePreset('oneDrink', this)" class="invite-tab px-3.5 py-2 rounded-xl text-xs font-bold border border-white/15 bg-white/5 text-zinc-300 hover:border-amberGold/40 transition">
+                            ⚡ 1杯だけ誘い
+                        </button>
+                        <button type="button" onclick="selectInvitePreset('group', this)" class="invite-tab px-3.5 py-2 rounded-xl text-xs font-bold border border-white/15 bg-white/5 text-zinc-300 hover:border-amberGold/40 transition">
+                            📣 グループ全体向け
+                        </button>
+                    </div>
+                </div>
+
+                <!-- テンプレートテキストエリア -->
+                <div class="space-y-3">
+                    <textarea
+                        id="invite-template-box"
+                        rows="7"
+                        class="w-full rounded-2xl bg-obsidian/90 border border-amberGold/30 p-4 sm:p-5 text-xs sm:text-sm text-zinc-100 leading-relaxed focus:outline-none focus:border-amberGold"
+                    ></textarea>
+
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3">
+                        <span class="text-[11px] text-zinc-400">
+                            ※テキストは自由に編集してからコピーすることもできます
+                        </span>
+                        <button type="button" onclick="copyInviteTemplate()" class="w-full sm:w-auto px-7 py-3.5 rounded-xl bg-amberGold hover:bg-champagne text-obsidian font-black text-xs sm:text-sm transition flex items-center justify-center gap-2 shadow-[0_8px_25px_rgba(229,169,60,0.3)]">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"></path></svg>
+                            <span>お誘いメッセージをコピーする</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =========================================================
+             5. EVENT INFORMATION & ACCESS ARCHITECTURE GRID
+        ========================================================== -->
+        <section class="max-w-5xl mx-auto px-4 sm:px-6 pt-8 reveal">
+            <div class="mb-6">
+                <p class="font-display text-xs tracking-[0.25em] text-amberGold uppercase font-bold mb-1">EVENT SPECIFICATION</p>
+                <h2 class="font-mincho text-2xl sm:text-3xl font-bold text-white">開催概要・集合インフォメーション</h2>
+            </div>
+
+            <div class="spotlight-card rounded-3xl overflow-hidden">
+                <div class="divide-y divide-white/10">
+                    <!-- Row 1 -->
+                    <div class="p-5 sm:px-8 sm:py-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div class="text-xs font-bold text-amberGold tracking-wider">イベント名</div>
+                        <div class="sm:col-span-2 font-mincho text-base sm:text-lg font-bold text-white">世界のお酒フェス</div>
+                    </div>
+                    <!-- Row 2 -->
+                    <div class="p-5 sm:px-8 sm:py-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div class="text-xs font-bold text-amberGold tracking-wider">集合日時</div>
+                        <div class="sm:col-span-2 space-y-1">
+                            <div class="text-sm sm:text-base font-bold text-champagne">2026年11月22日（日）仕事終わり〜21:00</div>
+                            <div class="text-xs text-zinc-400">※イベント開催時間：16:00〜21:00 / 21〜23日は12:00〜21:00</div>
+                        </div>
+                    </div>
+                    <!-- Row 3 -->
+                    <div class="p-5 sm:px-8 sm:py-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div class="text-xs font-bold text-amberGold tracking-wider">会場</div>
+                        <div class="sm:col-span-2 space-y-1">
+                            <div class="text-sm sm:text-base font-bold text-white">お台場セントラル広場（東京都江東区青海1丁目）</div>
+                            <div class="text-xs text-zinc-400">仕事終わりにそのまま合流しやすいお台場エリア屋外広場</div>
+                        </div>
+                    </div>
+                    <!-- Row 4 -->
+                    <div class="p-5 sm:px-8 sm:py-6 grid grid-cols-1 sm:grid-cols-3 gap-2">
+                        <div class="text-xs font-bold text-amberGold tracking-wider">料金</div>
+                        <div class="sm:col-span-2 space-y-1">
+                            <div class="text-sm sm:text-base font-bold text-white">入場無料（飲食は別途チケット制）</div>
+                            <div class="text-xs text-zinc-400">会場内チケット販売ブースにて飲食チケットをご購入ください</div>
+                        </div>
+                    </div>
+                    <!-- Row 5 -->
+                    <div class="p-5 sm:px-8 sm:py-6 grid grid-cols-1 sm:grid-cols-3 gap-3 items-center bg-amberGold/5">
+                        <div class="text-xs font-bold text-amberGold tracking-wider">公式サイト</div>
+                        <div class="sm:col-span-2">
+                            <a href="https://worlddrinks-fest.jp/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2.5 px-5 py-3 rounded-xl bg-obsidian border border-amberGold/50 hover:border-champagne text-champagne font-bold text-xs sm:text-sm transition group">
+                                <span>https://worlddrinks-fest.jp/</span>
+                                <svg class="w-4 h-4 text-amberGold group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- エディトリアル・フッター -->
+    <footer class="relative z-10 border-t border-white/10 bg-obsidian/95 py-10 px-4 text-center space-y-3">
+        <div class="font-display font-bold text-xs tracking-[0.25em] text-amberGold">
+            WORLD DRINKS FES • ODAIBA AFTER-WORK INVITATION
+        </div>
+        <p class="text-xs text-zinc-400">
+            2026.11.22 (SUN) 仕事終わり｜お台場セントラル広場（青海1丁目）｜入場無料（飲食チケット制）
+        </p>
+        <p class="text-[11px] text-zinc-600 pt-1">
+            ※20歳未満の方の飲酒は法律で禁止されています。節度ある大人な乾杯を楽しみましょう。
+        </p>
+    </footer>
+
+    <!-- トースト通知（alert()不使用） -->
+    <div id="toast-notification" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 pointer-events-none opacity-0 translate-y-4 transition-all duration-300">
+        <div class="bg-champagne text-obsidian font-black text-xs sm:text-sm px-6 py-3.5 rounded-full shadow-[0_15px_40px_rgba(229,169,60,0.55)] border border-amberGold flex items-center gap-2.5">
+            <span class="text-base">🥂</span>
+            <span id="toast-message">クリップボードにコピーしました！</span>
+        </div>
+    </div>
+
+<script>
+/* =========================================================
+1. HTML5 CANVAS: 黄金のシャンパン気泡＆夜景ボケパーティクル
+========================================================== */
+(function initBubbleCanvas() {
+const canvas = document.getElementById('bubble-canvas');
+const ctx = canvas.getContext('2d');
+let width = canvas.width = window.innerWidth;
+let height = canvas.height = window.innerHeight;
+
+let mouseX = width / 2;
+let mouseY = height / 2;
+let scrollY = window.scrollY;
+
+window.addEventListener('resize', () => {
+width = canvas.width = window.innerWidth;
+height = canvas.height = window.innerHeight;
+});
+
+window.addEventListener('mousemove', (e) => {
+mouseX = e.clientX;
+mouseY = e.clientY;
+}, { passive: true});
+
+window.addEventListener('scroll', () => {
+scrollY = window.scrollY;
+}, { passive: true});
+
+// パーティクル生成（黄金気泡 ＋ 夜景ボケ）
+const bubbleCount = Math.min(65, Math.floor(width / 18));
+const particles = [];
+
+for (let i = 0; i < bubbleCount; i++) {
+const isBokeh = i % 7 === 0;
+particles.push({
+x: Math.random() * width,
+y: Math.random() * height,
+radius: isBokeh? (Math.random() * 14 + 6): (Math.random() * 2.4 + 0.7),
+speedY: isBokeh? (Math.random() * 0.25 + 0.08): (Math.random() * 0.65 + 0.25),
+wobbleSpeed: Math.random() * 0.02 + 0.008,
+wobblePhase: Math.random() * Math.PI * 2,
+alpha: isBokeh? (Math.random() * 0.09 + 0.03): (Math.random() * 0.45 + 0.15),
+isBokeh: isBokeh,
+hue: isBokeh && Math.random() > 0.5? '#14B8A6': '#E5A93C'
+});
+}
+
+function render() {
+ctx.clearRect(0, 0, width, height);
+
+const mouseOffsetX = (mouseX - width / 2) * 0.015;
+
+for (let i = 0; i < particles.length; i++) {
+const p = particles[i];
+p.y -= p.speedY;
+p.wobblePhase += p.wobbleSpeed;
+
+const driftX = Math.sin(p.wobblePhase) * (p.isBokeh? 0.4: 0.7) + mouseOffsetX * (p.radius * 0.12);
+p.x += driftX;
+
+if (p.y < -30) {
+p.y = height + 30;
+p.x = Math.random() * width;
+}
+if (p.x < -30) p.x = width + 30;
+if (p.x > width + 30) p.x = -30;
+
+ctx.beginPath();
+if (p.isBokeh) {
+const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, p.radius);
+grad.addColorStop(0, p.hue === '#14B8A6'? `rgba(20, 184, 166, ${p.alpha})`: `rgba(229, 169, 60, ${p.alpha})`);
+grad.addColorStop(1, 'rgba(7, 8, 11, 0)');
+ctx.fillStyle = grad;
+ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+ctx.fill();
+} else {
+ctx.fillStyle = `rgba(247, 226, 184, ${p.alpha})`;
+ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+ctx.fill();
+}
+}
+requestAnimationFrame(render);
+}
+render();
+})();
+
+/* =========================================================
+2. SPOTLIGHT HOVER EFFECT & 3D TILT FOR VIP TICKET
+========================================================== */
+document.querySelectorAll('.spotlight-card').forEach(card => {
+card.addEventListener('mousemove', (e) => {
+const rect = card.getBoundingClientRect();
+const x = e.clientX - rect.left;
+const y = e.clientY - rect.top;
+card.style.setProperty('--mouse-x', `${x}px`);
+card.style.setProperty('--mouse-y', `${y}px`);
+});
+});
+
+const vipTicket = document.getElementById('vip-ticket-element');
+if (vipTicket) {
+vipTicket.addEventListener('mousemove', (e) => {
+const rect = vipTicket.getBoundingClientRect();
+const x = (e.clientX - rect.left) / rect.width - 0.5;
+const y = (e.clientY - rect.top) / rect.height - 0.5;
+vipTicket.style.transform = `perspective(900px) rotateY(${x * 10}deg) rotateX(${-y * 10}deg)`;
+});
+vipTicket.addEventListener('mouseleave', () => {
+vipTicket.style.transform = 'perspective(900px) rotateY(0deg) rotateX(0deg)';
+});
+}
+
+/* =========================================================
+3. LIVE COUNTDOWN TIMER TO 2026-11-22 18:00 JST
+========================================================== */
+function updateCountdown() {
+const targetTime = new Date('2026-11-22T18:00:00+09:00').getTime();
+const closeTime = new Date('2026-11-22T21:00:00+09:00').getTime();
+const now = Date.now();
+
+const statusEl = document.getElementById('countdown-status');
+
+if (now >= closeTime) {
+document.getElementById('cd-days').textContent = '00';
+document.getElementById('cd-hours').textContent = '00';
+document.getElementById('cd-mins').textContent = '00';
+document.getElementById('cd-secs').textContent = '00';
+statusEl.textContent = '✨ 11.22 お台場開催は終了しました！また次回乾杯しましょう！';
+return;
+}
+
+if (now >= targetTime) {
+const diffClose = closeTime - now;
+const h = Math.floor(diffClose / (1000 * 60 * 60));
+const m = Math.floor((diffClose / (1000 * 60)) % 60);
+const s = Math.floor((diffClose / 1000) % 60);
+document.getElementById('cd-days').textContent = '00';
+document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+document.getElementById('cd-mins').textContent = String(m).padStart(2, '0');
+document.getElementById('cd-secs').textContent = String(s).padStart(2, '0');
+statusEl.textContent = '🥂 ただいま開催中！21:00クローズまでお台場セントラル広場で乾杯中！';
+return;
+}
+
+const diff = targetTime - now;
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+const mins = Math.floor((diff / (1000 * 60)) % 60);
+const secs = Math.floor((diff / 1000) % 60);
+
+document.getElementById('cd-days').textContent = String(days).padStart(2, '0');
+document.getElementById('cd-hours').textContent = String(hours).padStart(2, '0');
+document.getElementById('cd-mins').textContent = String(mins).padStart(2, '0');
+document.getElementById('cd-secs').textContent = String(secs).padStart(2, '0');
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+/* =========================================================
+4. VIP GUEST PASS & RSVP MESSAGE GENERATOR
+========================================================== */
+let vipState = {
+arrival: '仕事終わり直行！',
+arrivalEmoji: '💼',
+drinkLabel: 'キンキンのクラフトビール',
+drinkIcon: '🍺',
+drinkCode: 'CRAFT BEER'
+};
+
+function setArrival(label, btn) {
+vipState.arrival = label;
+const emojiMap = {
+'仕事終わり直行！': '💼',
+'少し遅れて合流': '🏃',
+'1杯だけサクッと': '⚡',
+'最後まで飲み明かす': '🔥'
+};
+vipState.arrivalEmoji = emojiMap[label] || '🥂';
+
+document.querySelectorAll('#arrival-options.option-pill').forEach(el => el.classList.remove('active'));
+btn.classList.add('active');
+updateVipPass();
+}
+
+function setDrink(label, icon, code, btn) {
+vipState.drinkLabel = label;
+vipState.drinkIcon = icon;
+vipState.drinkCode = code;
+
+document.querySelectorAll('#drink-options.option-pill').forEach(el => el.classList.remove('active'));
+btn.classList.add('active');
+updateVipPass();
+}
+
+function updateVipPass() {
+const rawName = document.getElementById('guest-name').value.trim();
+document.getElementById('pass-guest-name').textContent = rawName? rawName.toUpperCase(): 'COLLEAGUE GUEST';
+document.getElementById('pass-arrival-badge').textContent = `${vipState.arrivalEmoji} ${vipState.arrival}`;
+document.getElementById('pass-drink-icon').textContent = vipState.drinkIcon;
+document.getElementById('pass-drink-code').textContent = vipState.drinkCode;
+document.getElementById('pass-drink-label').textContent = vipState.drinkLabel;
+}
+
+function copyRsvpMessage() {
+const rawName = document.getElementById('guest-name').value.trim();
+const nameHeader = rawName? ``: '';
+
+const rsvpText = `${nameHeader} 11/22(日) 仕事終わりの「世界のお酒フェス」参加します！🥂\n` +
+`・合流スタイル：${vipState.arrivalEmoji} ${vipState.arrival}\n` +
+`・1杯目の気分：${vipState.drinkIcon} ${vipState.drinkLabel}\n` +
+`お台場セントラル広場（青海1丁目）で乾杯しましょう〜！`;
+
+copyTextToClipboard(rsvpText, '参加表明メッセージをコピーしました！チャットに貼り付けてね🥂');
+}
+
+/* =========================================================
+5. ORGANIZER INVITE TEMPLATES
+========================================================== */
+const invitePresets = {
+casual: `お疲れ様です！22日の仕事終わりにお台場セントラル広場の「世界のお酒フェス」行こう！🥂\n職場のメンバー何人かで行くので、都合合う人ぜひ一緒に乾杯しましょう！\n\n📅 11月22日(日) 仕事終わり〜21:00（開催時間 12:00〜21:00）\n📍 お台場セントラル広場（青海1丁目）\n🎟️ 入場無料（飲食チケット制）だから1杯だけでもぜひ！\n\n公式HP👉 https://worlddrinks-fest.jp/`,
+oneDrink: `お疲れ様です！22日の仕事終わりにお台場セントラル広場（青海1丁目）の「世界のお酒フェス」行きませんか？🍺\n職場からすぐ近く＆入場無料（飲食チケット制）なので、退勤後に1杯だけサクッと合流も大歓迎です！\n21:00までやってるので行けそうな人いたらぜひ〜！\n\n公式HP👉 https://worlddrinks-fest.jp/`,
+group: `\n職場の有志でお台場開催の「世界のお酒フェス」に行ってきます！\n\n■ 日時：11月22日(日) 仕事終わり〜21:00（※21〜23日は12:00〜21:00開催 / 通常16:00〜21:00）\n■ 会場：お台場セントラル広場（青海1丁目）\n■ 料金：入場無料（飲食チケット制）\n\n途中合流・1杯だけ顔出しもOKなので、来れそうな人は気軽に参加表明ください！\n公式HP：https://worlddrinks-fest.jp/`
+};
+
+function selectInvitePreset(key, btn) {
+document.getElementById('invite-template-box').value = invitePresets[key];
+document.querySelectorAll('.invite-tab').forEach(tab => {
+tab.classList.remove('active', 'border-amberGold', 'bg-amberGold/20', 'text-champagne');
+tab.classList.add('border-white/15', 'bg-white/5', 'text-zinc-300');
+});
+btn.classList.remove('border-white/15', 'bg-white/5', 'text-zinc-300');
+btn.classList.add('active', 'border-amberGold', 'bg-amberGold/20', 'text-champagne');
+}
+
+function copyInviteTemplate() {
+const text = document.getElementById('invite-template-box').value;
+copyTextToClipboard(text, 'お誘いメッセージをコピーしました！職場の仲間に送ろう📣');
+}
+
+/* =========================================================
+6. CLIPBOARD HELPER & TOAST (iFrame Safe execCommand)
+========================================================== */
+function copyTextToClipboard(text, toastMsg) {
+const tempTextarea = document.createElement('textarea');
+tempTextarea.value = text;
+tempTextarea.style.position = 'fixed';
+tempTextarea.style.opacity = '0';
+document.body.appendChild(tempTextarea);
+tempTextarea.select();
+tempTextarea.setSelectionRange(0, 99999);
+
+try {
+document.execCommand('copy');
+showToast(toastMsg);
+} catch (err) {
+console.error('Copy failed:', err);
+} finally {
+document.body.removeChild(tempTextarea);
+}
+}
+
+let toastTimer;
+function showToast(msg) {
+const toast = document.getElementById('toast-notification');
+const msgEl = document.getElementById('toast-message');
+msgEl.textContent = msg;
+
+toast.classList.remove('opacity-0', 'translate-y-4');
+toast.classList.add('opacity-100', 'translate-y-0');
+
+clearTimeout(toastTimer);
+toastTimer = setTimeout(() => {
+toast.classList.remove('opacity-100', 'translate-y-0');
+toast.classList.add('opacity-0', 'translate-y-4');
+}, 2800);
+}
+
+/* =========================================================
+7. SCROLL REVEAL OBSERVER & INIT
+========================================================== */
+window.addEventListener('DOMContentLoaded', () => {
+// 初期テンプレートセット
+document.getElementById('invite-template-box').value = invitePresets.casual;
+updateVipPass();
+
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+observer.unobserve(entry.target);
+}
+});
+}, { threshold: 0.12});
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+});
+</script>
+</body>
+</html>
