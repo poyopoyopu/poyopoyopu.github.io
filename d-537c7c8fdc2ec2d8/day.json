@@ -1,23 +1,23 @@
 {
- "updated_at": "2026-11-19T13:27:34+09:00",
- "updated_label": "11/19 13:27",
- "date": "2026-11-19",
- "date_label": "11/19（木）",
+ "updated_at": "2026-11-20T06:27:03+09:00",
+ "updated_label": "11/20 06:27",
+ "date": "2026-11-20",
+ "date_label": "11/20（金）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "10:00",
-   "no": "10"
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "9:00",
    "no": "1"
   },
+  "tomorrow": {
+   "kind": "work",
+   "start": "9:00",
+   "no": "2"
+  },
   "next_off": {
    "date": "2026-11-23",
    "label": "11/23（月）",
-   "in_days": 4
+   "in_days": 3
   }
  },
  "route": {
@@ -37,35 +37,34 @@
    {
     "short": "Zepp",
     "events": [
-     "ブランデー戦記"
+     "HEROINES AUTUMN-11月編-（出演多数）"
     ]
    },
    {
     "short": "SGC",
     "events": [
-     "テデスキ・トラックス・バンド Day2"
+     "「SGCホール有明 オープニングシリーズ」K2 Member's Night 2026"
     ]
    }
   ]
  },
  "weather": {
   "text": "晴れ",
-  "tmax": 19,
-  "tmin": 10,
-  "pop": 0,
-  "advice": "長袖＋薄手の上着（朝晩は冷える）（風が強い）"
+  "tmax": 14,
+  "tmin": 8,
+  "pop": 10,
+  "advice": "上着必須（ジャケット・コート）（風が強い）"
  },
- "look": "jacket",
+ "look": "coat",
  "tomorrow": {
-  "date": "2026-11-20",
-  "date_label": "11/20（金）",
+  "date": "2026-11-21",
+  "date_label": "11/21（土）",
   "route": {
    "kind": "run",
    "code": "T02",
    "name": "出会い橋〜有明",
    "time": "12:00–18:00",
-   "shuttle": false,
-   "note": "アトラス特別便は運休"
+   "shuttle": false
   },
   "venues": {
    "venues": [
@@ -76,33 +75,27 @@
     {
      "short": "Zepp",
      "events": [
-      "HEROINES AUTUMN-11月編-（出演多数）"
+      "TRUST NIGHT 2026"
      ]
     },
     {
      "short": "SGC",
      "events": [
-      "「SGCホール有明 オープニングシリーズ」K2 Member's Night 2026"
+      "ファイヴ・セカンズ・オブ・サマー Day1"
      ]
     }
    ]
   },
   "weather": {
    "text": "晴れ",
-   "tmax": 15,
-   "tmin": 8,
-   "pop": 10,
+   "tmax": 14,
+   "tmin": 7,
+   "pop": 0,
    "advice": "上着必須（ジャケット・コート）（風が強い）"
   },
   "look": "coat"
  },
- "event": {
-  "type": "postcard",
-  "image": "postcard_shionomisaki",
-  "title": "潮岬灯台（和歌山）",
-  "body": "本州のいちばん南まで来ちゃった。おっちゃんが来る時の下見はバッチリ。灯台は9時から登れるよ",
-  "short": "本州のいちばん南から。下見バッチリ"
- },
+ "event": null,
  "room": {
   "away": true,
   "status": "お出かけ中（潮岬灯台）",
