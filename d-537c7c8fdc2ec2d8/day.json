@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-19T06:53:26+09:00",
- "updated_label": "11/19 06:53",
+ "updated_at": "2026-11-19T13:27:34+09:00",
+ "updated_label": "11/19 13:27",
  "date": "2026-11-19",
  "date_label": "11/19（木）",
  "shift": {
@@ -89,12 +89,12 @@
   },
   "weather": {
    "text": "晴れ",
-   "tmax": 16,
+   "tmax": 15,
    "tmin": 8,
    "pop": 10,
-   "advice": "長袖＋薄手の上着（朝晩は冷える）（風が強い）"
+   "advice": "上着必須（ジャケット・コート）（風が強い）"
   },
-  "look": "jacket"
+  "look": "coat"
  },
  "event": {
   "type": "postcard",

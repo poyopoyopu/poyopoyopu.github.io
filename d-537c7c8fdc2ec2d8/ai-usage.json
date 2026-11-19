@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-19T06:27:26+09:00",
- "updated_label": "11/19 06:27",
+ "updated_at": "2026-11-19T13:27:26+09:00",
+ "updated_label": "11/19 13:27",
  "services": [
   {
    "id": "codex",
@@ -19,7 +19,7 @@
    "id": "claude_code",
    "name": "クロちゃん",
    "window_label": "週間",
-   "remaining_pct": 22,
+   "remaining_pct": 19,
    "reset_epoch": 1795121999,
    "reset_label": "11/20 05:59",
    "tickets": [
@@ -32,10 +32,10 @@
    ],
    "sub": {
     "label": "5時間枠",
-    "remaining_pct": 97,
-    "reset_epoch": 1794990600
+    "remaining_pct": 100,
+    "reset_epoch": null
    },
-   "stale": true
+   "stale": false
   },
   {
    "id": "muse",
@@ -49,7 +49,6 @@
   }
  ],
  "errors": [
-  "codex: IncompleteRead: IncompleteRead(0 bytes read, 1489 more expected)",
-  "claude_code: URLError: <urlopen error timed out>"
+  "codex: IncompleteRead: IncompleteRead(0 bytes read, 1489 more expected)"
  ]
 }
