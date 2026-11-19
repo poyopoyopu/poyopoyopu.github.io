@@ -67,6 +67,17 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 .rbtn.picked small{color:#0b1020cc}
 .rbtn:disabled{cursor:default}
 .vstat{color:var(--muted);font-size:12.5px;margin-top:16px;min-height:1.4em}
+.bonus{margin-top:56px;border-top:1px solid var(--line);padding-top:34px;text-align:center}
+.bonus .bk{color:var(--cyan);letter-spacing:.3em;font-size:11px;font-weight:800}
+.bonus h2{font-family:var(--mincho);font-size:clamp(22px,5vw,30px);font-weight:600;letter-spacing:.04em;margin:12px 0 0}
+.bonus .bsub{color:var(--muted);font-size:13px;line-height:1.9;margin:10px 0 0}
+.bgrid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:22px;text-align:left}
+@media(max-width:680px){.bgrid{grid-template-columns:1fr}}
+.bcard{display:block;border:1.5px solid var(--line);border-radius:14px;padding:18px 16px;background:#ffffff06;color:var(--txt);text-decoration:none;transition:.15s}
+.bcard:hover{border-color:var(--gold)}
+.bcard .bt{font-family:var(--mincho);font-size:17px;letter-spacing:.03em}
+.bcard .bd{color:var(--muted);font-size:12.5px;line-height:1.8;margin-top:7px}
+.bcard .ba{color:var(--gold);font-size:13px;font-weight:800;margin-top:10px;display:block}
 .colophon{margin-top:56px;border-top:1px solid var(--line);padding:30px 0 8px;text-align:center}
 .colo-main{font-family:var(--mincho);font-size:16px;letter-spacing:.08em;margin:0 0 14px}
 .colo-main a{color:var(--gold,#e8c268);text-decoration:none;border-bottom:1px solid rgba(232,194,104,.45);padding-bottom:2px}
@@ -135,6 +146,17 @@ h1 .gold{background:linear-gradient(100deg,#f7e2b8,#e8c268 45%,#c6861e 80%,#f7e2
 <button class="rbtn" data-key="no"><span class="bar"></span><span>行けない<small>0人</small></span></button>
 </div>
 <p class="vstat" id="vote-status">現在の票数を読み込み中…</p>
+</div>
+
+<div class="bonus fade">
+<div class="bk">BONUS</div>
+<h2>おまけ ― <span class="gold">現場の道具たち</span></h2>
+<p class="bsub">ついでに、作った人の現場道具も置いておきます。よかったら覗いてみて。</p>
+<div class="bgrid">
+<a class="bcard" href="https://odaibacrowdforecast.com/" target="_blank" rel="noopener"><span class="bt">お台場混雑予報</span><p class="bd">「今日のお台場、混んでる？」に毎朝答える予報サイト。お出かけ前のチェックに。</p><span class="ba">サイトを開く →</span></a>
+<a class="bcard" href="https://poyopoyopu.github.io/timer/" target="_blank" rel="noopener"><span class="bt">アトラス運行タイマー</span><p class="bd">アトラス便の発車タイマー。1番・2番の切り替え式で、乗務のお供に。</p><span class="ba">タイマーを開く →</span></a>
+<a class="bcard" href="https://poyopoyopu.github.io/timer/atlas/" target="_blank" rel="noopener"><span class="bt">アトラス運行ご案内</span><p class="bd">お客さん向けのアトラス便ガイド。時刻表・停留所マップ・通常便の案内つき。</p><span class="ba">ガイドを開く →</span></a>
+</div>
 </div>
 
 <footer class="colophon">
