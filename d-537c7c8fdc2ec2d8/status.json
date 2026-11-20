@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795148947,
+ "updated_at_epoch": 1795210171,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.34,
-  "load5": 0.24,
-  "load15": 0.19,
+  "load1": 1.07,
+  "load5": 0.66,
+  "load15": 0.29,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7466,
-   "available_mb": 469,
-   "used_pct": 94
+   "used_mb": 6729,
+   "available_mb": 1206,
+   "used_pct": 85
   },
   "disk_home": {
    "total_gb": 161.0,
    "used_gb": 16.9,
-   "free_gb": 143.3,
+   "free_gb": 143.4,
    "used_pct": 10
   },
-  "boot_epoch": 1795146035,
-  "uptime_hours": 0.8
+  "boot_epoch": 1795209916,
+  "uptime_hours": 0.1
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-20T06:27:01+09:00"
+  "ai_usage_updated_at": "2026-11-20T13:27:17+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,31 +46,23 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1795124975,
-    "last_status": "failed"
+    "last_run_epoch": 1795210012,
+    "last_status": "running"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1795148818,
-    "last_status": "running"
-   },
-   {
-    "id": "ai-usage-push-verify-20261120",
-    "title": "AI使用量 push検証（11/20）",
-    "schedule": "2026-11-20 13:45（1回）",
-    "group": "基盤",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1795149085,
+    "last_status": "succeeded"
    },
    {
     "id": "art-sns-daily-post",
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1795088757,
+    "last_run_epoch": 1795180147,
     "last_status": "succeeded"
    },
    {
@@ -78,16 +70,8 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1795099744,
-    "last_status": "failed"
-   },
-   {
-    "id": "chat-log-verify-20261121",
-    "title": "会話ログ検証（11/21）",
-    "schedule": "2026-11-21 00:10（1回）",
-    "group": "基盤",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1795186066,
+    "last_status": "succeeded"
    },
    {
     "id": "comed-monitor-watch-daily",
@@ -154,9 +138,9 @@
     "last_status": null
    },
    {
-    "id": "lottery-remind-op18-torecaport-20261120",
-    "title": "OP-18 Toreca Port 締切前日リマインド（11/20）",
-    "schedule": "2026-11-20 20:00（1回）",
+    "id": "lottery-remind-pikachu-figure-20261129",
+    "title": "ピカチュウフィギュア（ポケセン）締切前日リマインド（11/29）",
+    "schedule": "2026-11-29 20:00（1回）",
     "group": "リマインド",
     "last_run_epoch": null,
     "last_status": null
@@ -174,6 +158,14 @@
     "title": "メモリ棚卸し（週1・候補リストのみ）",
     "schedule": "毎週日曜 21:44",
     "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "monitor-patrol-twice-weekly",
+    "title": "モニター・懸賞 定期巡回（週2回・自動応募）",
+    "schedule": "毎週火曜・金曜 10:33",
+    "group": "暮らし",
     "last_run_epoch": null,
     "last_status": null
    },
@@ -262,7 +254,7 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1795125176,
+    "last_run_epoch": 1795209634,
     "last_status": "succeeded"
    },
    {
@@ -270,7 +262,7 @@
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1795085965,
+    "last_run_epoch": 1795172029,
     "last_status": "succeeded"
    },
    {
@@ -378,6 +370,14 @@
     "last_status": "succeeded"
    },
    {
+    "id": "torecaport-result-check-20261121",
+    "title": "Toreca Port OP-18 結果チェック（11/21）",
+    "schedule": "2026-11-21 12:40（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "unkan-2027-2nd-exam-watch",
     "title": "運行管理者試験 案内チェック",
     "schedule": "毎週月曜・木曜 09:44",
@@ -419,6 +419,6 @@
    }
   ],
   "count": 48,
-  "snapshot_epoch": 1795148943
+  "snapshot_epoch": 1795210163
  }
 }
