@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795123680,
+ "updated_at_epoch": 1795148947,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.09,
-  "load5": 0.08,
-  "load15": 0.09,
+  "load1": 0.34,
+  "load5": 0.24,
+  "load15": 0.19,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7364,
-   "available_mb": 571,
-   "used_pct": 93
+   "used_mb": 7466,
+   "available_mb": 469,
+   "used_pct": 94
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 16.8,
-   "free_gb": 143.4,
+   "used_gb": 16.9,
+   "free_gb": 143.3,
    "used_pct": 10
   },
-  "boot_epoch": 1795117820,
-  "uptime_hours": 1.6
+  "boot_epoch": 1795146035,
+  "uptime_hours": 0.8
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-19T13:27:26+09:00"
+  "ai_usage_updated_at": "2026-11-20T06:27:01+09:00"
  },
  "jobs": {
   "jobs": [
@@ -38,7 +38,7 @@
     "title": "アフィリエイトASP週次チェック",
     "schedule": "毎週金曜 10:44",
     "group": "ASP",
-    "last_run_epoch": 1794534799,
+    "last_run_epoch": 1795139493,
     "last_status": "succeeded"
    },
    {
@@ -46,16 +46,24 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1795123612,
-    "last_status": "running"
+    "last_run_epoch": 1795124975,
+    "last_status": "failed"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1795062869,
-    "last_status": "succeeded"
+    "last_run_epoch": 1795148818,
+    "last_status": "running"
+   },
+   {
+    "id": "ai-usage-push-verify-20261120",
+    "title": "AI使用量 push検証（11/20）",
+    "schedule": "2026-11-20 13:45（1回）",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "art-sns-daily-post",
@@ -74,11 +82,19 @@
     "last_status": "failed"
    },
    {
+    "id": "chat-log-verify-20261121",
+    "title": "会話ログ検証（11/21）",
+    "schedule": "2026-11-21 00:10（1回）",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "comed-monitor-watch-daily",
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794962778,
+    "last_run_epoch": 1795135553,
     "last_status": "succeeded"
    },
    {
@@ -110,7 +126,7 @@
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1795049251,
+    "last_run_epoch": 1795135677,
     "last_status": "succeeded"
    },
    {
@@ -138,11 +154,19 @@
     "last_status": null
    },
    {
+    "id": "lottery-remind-op18-torecaport-20261120",
+    "title": "OP-18 Toreca Port 締切前日リマインド（11/20）",
+    "schedule": "2026-11-20 20:00（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "lottery-watch-daily",
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795042086,
+    "last_run_epoch": 1795128524,
     "last_status": "succeeded"
    },
    {
@@ -158,7 +182,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1795044956,
+    "last_run_epoch": 1795128764,
     "last_status": "succeeded"
    },
    {
@@ -166,7 +190,7 @@
     "title": "Muse新機能チェック（毎朝）",
     "schedule": "毎日 08:44",
     "group": "基盤",
-    "last_run_epoch": 1795045638,
+    "last_run_epoch": 1795131971,
     "last_status": "succeeded"
    },
    {
@@ -182,7 +206,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1795054154,
+    "last_run_epoch": 1795139853,
     "last_status": "succeeded"
    },
    {
@@ -238,8 +262,8 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1795121977,
-    "last_status": "running"
+    "last_run_epoch": 1795125176,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -264,6 +288,14 @@
     "group": "お台場",
     "last_run_epoch": 1794878040,
     "last_status": "succeeded"
+   },
+   {
+    "id": "odaiba-icons-divercity-verify-20261121",
+    "title": "divercity/dreampark アイコン反映の翌朝確認",
+    "schedule": "2026-11-21 08:19（1回）",
+    "group": "お台場",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "odaiba-illumi-cleanup-20270105",
@@ -294,7 +326,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795041981,
+    "last_run_epoch": 1795128373,
     "last_status": "succeeded"
    },
    {
@@ -318,7 +350,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1794962993,
+    "last_run_epoch": 1795135717,
     "last_status": "succeeded"
    },
    {
@@ -334,7 +366,7 @@
     "title": "楽天キャンペーン巡回・自動エントリー",
     "schedule": "毎月 1・5・10・15・20・25・30日 09:44",
     "group": "暮らし",
-    "last_run_epoch": 1794704014,
+    "last_run_epoch": 1795136110,
     "last_status": "succeeded"
    },
    {
@@ -366,7 +398,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1795039362,
+    "last_run_epoch": 1795125959,
     "last_status": "succeeded"
    },
    {
@@ -386,7 +418,7 @@
     "last_status": "succeeded"
    }
   ],
-  "count": 44,
-  "snapshot_epoch": 1795123675
+  "count": 48,
+  "snapshot_epoch": 1795148943
  }
 }
