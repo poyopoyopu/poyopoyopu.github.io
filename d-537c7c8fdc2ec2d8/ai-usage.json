@@ -1,25 +1,25 @@
 {
- "updated_at": "2026-11-21T13:54:35+09:00",
- "updated_label": "11/21 13:54",
+ "updated_at": "2026-11-22T06:27:10+09:00",
+ "updated_label": "11/22 06:27",
  "services": [
   {
    "id": "codex",
    "name": "チャッピー",
    "window_label": "30日枠",
    "remaining_pct": 0,
-   "reset_epoch": 1796681236,
+   "reset_epoch": 1796681237,
    "reset_label": "12/8 07:07",
    "reset_credits": 2,
-   "reset_credit_expires_epoch": 1796155632,
-   "reset_credit_expires_label": "12/2 05:07",
+   "reset_credit_expires_epoch": null,
+   "reset_credit_expires_label": null,
    "sub": null,
-   "stale": true
+   "stale": false
   },
   {
    "id": "claude_code",
    "name": "クロちゃん",
    "window_label": "週間",
-   "remaining_pct": 83,
+   "remaining_pct": 63,
    "reset_epoch": 1795726799,
    "reset_label": "11/27 05:59",
    "tickets": [
@@ -32,8 +32,8 @@
    ],
    "sub": {
     "label": "5時間枠",
-    "remaining_pct": 73,
-    "reset_epoch": 1795250999
+    "remaining_pct": 100,
+    "reset_epoch": null
    },
    "stale": false
   },
@@ -41,14 +41,11 @@
    "id": "muse",
    "name": "ムーちゃん",
    "window_label": "週間",
-   "remaining_pct": 77,
+   "remaining_pct": 44,
    "reset_epoch": 1795757040,
    "reset_label": "11/27 14:24",
    "sub": null,
    "stale": false
   }
- ],
- "errors": [
-  "codex: IncompleteRead: IncompleteRead(0 bytes read, 1489 more expected)"
  ]
 }

@@ -1,30 +1,28 @@
 {
- "updated_at": "2026-11-21T13:54:35+09:00",
- "updated_label": "11/21 13:54",
- "date": "2026-11-21",
- "date_label": "11/21（土）",
+ "updated_at": "2026-11-22T06:27:14+09:00",
+ "updated_label": "11/22 06:27",
+ "date": "2026-11-22",
+ "date_label": "11/22（日）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "9:00",
-   "no": "2"
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "10:00",
    "no": ""
   },
+  "tomorrow": {
+   "kind": "off"
+  },
   "next_off": {
    "date": "2026-11-23",
    "label": "11/23（月）",
-   "in_days": 2
+   "in_days": 1
   }
  },
  "route": {
   "kind": "run",
-  "code": "T02",
-  "name": "出会い橋〜有明",
-  "time": "12:00–18:00",
+  "code": "ATLAS",
+  "name": "特別運航便",
+  "time": "",
   "shuttle": false
  },
  "venues": {
@@ -36,28 +34,28 @@
    {
     "short": "Zepp",
     "events": [
-     "TRUST NIGHT 2026"
+     "アルステイク 単独公演「リロード」"
     ]
    },
    {
     "short": "SGC",
     "events": [
-     "ファイヴ・セカンズ・オブ・サマー Day1"
+     "ファイヴ・セカンズ・オブ・サマー Day2"
     ]
    }
   ]
  },
  "weather": {
   "text": "晴れ",
-  "tmax": 14,
-  "tmin": 8,
-  "pop": 0,
-  "advice": "上着必須（ジャケット・コート）（風が強い）"
+  "tmax": 13,
+  "tmin": 7,
+  "pop": 10,
+  "advice": "上着必須（ジャケット・コート）"
  },
  "look": "coat",
  "tomorrow": {
-  "date": "2026-11-22",
-  "date_label": "11/22（日）",
+  "date": "2026-11-23",
+  "date_label": "11/23（月）",
   "route": {
    "kind": "run",
    "code": "ATLAS",
@@ -69,18 +67,18 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": []
+     "events": [
+      "真天地開闢集団-ジグザグ「単独禊『ジグザグ 10周年記念禊』」"
+     ]
     },
     {
      "short": "Zepp",
-     "events": [
-      "アルステイク 単独公演「リロード」"
-     ]
+     "events": []
     },
     {
      "short": "SGC",
      "events": [
-      "ファイヴ・セカンズ・オブ・サマー Day2"
+      "2026 Kep1er FAN-CON TOUR in TOKYO"
      ]
     }
    ]
@@ -88,16 +86,16 @@
   "weather": {
    "text": "晴れ",
    "tmax": 13,
-   "tmin": 7,
+   "tmin": 6,
    "pop": 0,
    "advice": "上着必須（ジャケット・コート）"
   },
-  "look": "coat"
+  "look": "off"
  },
  "event": null,
  "room": {
   "away": false,
-  "status": "ただいま！おみやげが増えたよ",
+  "status": "おうちにいるよ",
   "return_label": null,
   "dest_name": null,
   "souvenirs": [
