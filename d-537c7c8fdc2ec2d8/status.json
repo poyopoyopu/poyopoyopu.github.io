@@ -1,17 +1,17 @@
 {
- "updated_at_epoch": 1795235381,
+ "updated_at_epoch": 1795236895,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.92,
-  "load5": 0.56,
-  "load15": 0.31,
+  "load1": 0.89,
+  "load5": 0.72,
+  "load15": 0.57,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7373,
-   "available_mb": 562,
-   "used_pct": 93
+   "used_mb": 7306,
+   "available_mb": 629,
+   "used_pct": 92
   },
   "disk_home": {
    "total_gb": 161.0,
@@ -20,7 +20,7 @@
    "used_pct": 11
   },
   "boot_epoch": 1795231212,
-  "uptime_hours": 1.2
+  "uptime_hours": 1.6
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-21T06:27:04+09:00"
+  "ai_usage_updated_at": "2026-11-21T13:27:04+09:00"
  },
  "jobs": {
   "jobs": [
