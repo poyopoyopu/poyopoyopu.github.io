@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-22T06:27:10+09:00",
- "updated_label": "11/22 06:27",
+ "updated_at": "2026-11-22T13:27:06+09:00",
+ "updated_label": "11/22 13:27",
  "services": [
   {
    "id": "codex",
@@ -13,13 +13,13 @@
    "reset_credit_expires_epoch": null,
    "reset_credit_expires_label": null,
    "sub": null,
-   "stale": false
+   "stale": true
   },
   {
    "id": "claude_code",
    "name": "クロちゃん",
    "window_label": "週間",
-   "remaining_pct": 63,
+   "remaining_pct": 60,
    "reset_epoch": 1795726799,
    "reset_label": "11/27 05:59",
    "tickets": [
@@ -41,11 +41,14 @@
    "id": "muse",
    "name": "ムーちゃん",
    "window_label": "週間",
-   "remaining_pct": 44,
+   "remaining_pct": 29,
    "reset_epoch": 1795757040,
    "reset_label": "11/27 14:24",
    "sub": null,
    "stale": false
   }
+ ],
+ "errors": [
+  "codex: IncompleteRead: IncompleteRead(0 bytes read, 1489 more expected)"
  ]
 }
