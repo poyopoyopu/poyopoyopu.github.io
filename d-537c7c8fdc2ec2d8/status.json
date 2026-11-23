@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795408085,
+ "updated_at_epoch": 1795469295,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.41,
-  "load5": 0.41,
-  "load15": 0.27,
+  "load1": 0.01,
+  "load5": 0.04,
+  "load15": 0.06,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7355,
-   "available_mb": 580,
+   "used_mb": 7358,
+   "available_mb": 576,
    "used_pct": 93
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 17.5,
-   "free_gb": 142.7,
+   "used_gb": 17.4,
+   "free_gb": 142.8,
    "used_pct": 11
   },
-  "boot_epoch": 1795404118,
-  "uptime_hours": 1.1
+  "boot_epoch": 1795462031,
+  "uptime_hours": 2.0
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-23T06:27:02+09:00"
+  "ai_usage_updated_at": "2026-11-23T13:27:06+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,8 +46,8 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1795384409,
-    "last_status": "failed"
+    "last_run_epoch": 1795469212,
+    "last_status": "running"
    },
    {
     "id": "ai-usage-collect-pm",
@@ -62,15 +62,23 @@
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1795352908,
+    "last_run_epoch": 1795434272,
     "last_status": "succeeded"
+   },
+   {
+    "id": "bahamas-acts-live-watch",
+    "title": "夕張工業団地・1inamillion・RAYバンドセット・Texas 3000・神々のゴライコーズ ライブ見張り（週1）",
+    "schedule": "毎週月曜 09:58",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "chat-log-drive-nightly",
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1795358885,
+    "last_run_epoch": 1795445092,
     "last_status": "succeeded"
    },
    {
@@ -122,6 +130,22 @@
     "last_status": null
    },
    {
+    "id": "kimishima-1124-price-check-1124am",
+    "title": "君島大空 ¥3,000チェック（公演当日・朝7:15／出発判断用）",
+    "schedule": "2026-11-24 07:15（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "kimishima-1124-price-check-1124pm",
+    "title": "君島大空 ¥3,000チェック（公演当日・夕方）",
+    "schedule": "2026-11-24 17:18（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "kimishima-1124-ticket-watch",
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
@@ -133,14 +157,6 @@
     "id": "kimishima-watch-stop-20261125",
     "title": "君島大空 見張りの終了処理",
     "schedule": "2026-11-25 09:44（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "lottery-remind-op13-dmm-20261123",
-    "title": "OP-13 DMM通販 締切前日リマインド（11/23）",
-    "schedule": "2026-11-23 20:00（1回）",
     "group": "リマインド",
     "last_run_epoch": null,
     "last_status": null
@@ -262,15 +278,15 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1795384529,
-    "last_status": "succeeded"
+    "last_run_epoch": 1795467577,
+    "last_status": "running"
    },
    {
     "id": "odaiba-forecast-evening-preview",
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1795353039,
+    "last_run_epoch": 1795433038,
     "last_status": "succeeded"
    },
    {
@@ -362,6 +378,38 @@
     "last_status": "succeeded"
    },
    {
+    "id": "tahiti80-price-check-1124",
+    "title": "Tahiti 80 ¥3,000見張り（11/24）",
+    "schedule": "2026-11-24 09:44（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "tahiti80-price-check-1125",
+    "title": "Tahiti 80 ¥3,000見張り（11/25）",
+    "schedule": "2026-11-25 09:44（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "tahiti80-price-check-1126am",
+    "title": "Tahiti 80 ¥3,000見張り（11/26朝）",
+    "schedule": "2026-11-26 09:44（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "tahiti80-price-check-1126pm",
+    "title": "Tahiti 80 ¥3,000見張り（11/26夕方・最終）",
+    "schedule": "2026-11-26 17:44（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "tokyo-free-events-refresh",
     "title": "東京無料イベント・ポップアップ更新",
     "schedule": "48hごと",
@@ -410,7 +458,7 @@
     "last_status": "succeeded"
    }
   ],
-  "count": 47,
-  "snapshot_epoch": 1795408080
+  "count": 53,
+  "snapshot_epoch": 1795469287
  }
 }

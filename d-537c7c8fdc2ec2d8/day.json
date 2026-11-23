@@ -1,37 +1,37 @@
 {
- "updated_at": "2026-11-23T13:27:10+09:00",
- "updated_label": "11/23 13:27",
- "date": "2026-11-23",
- "date_label": "11/23（月）",
+ "updated_at": "2026-11-24T06:27:04+09:00",
+ "updated_label": "11/24 06:27",
+ "date": "2026-11-24",
+ "date_label": "11/24（火）",
  "shift": {
   "today": {
-   "kind": "off"
-  },
-  "tomorrow": {
    "kind": "work",
    "start": "10:00",
    "no": "10"
   },
+  "tomorrow": {
+   "kind": "work",
+   "start": "10:00",
+   "no": ""
+  },
   "next_off": {
-   "date": "2026-11-23",
-   "label": "11/23（月）",
-   "in_days": 0
+   "date": "2026-11-27",
+   "label": "11/27（金）",
+   "in_days": 3
   }
  },
  "route": {
   "kind": "run",
-  "code": "ATLAS",
-  "name": "特別運航便",
-  "time": "",
+  "code": "T02",
+  "name": "出会い橋〜有明",
+  "time": "12:00–18:00",
   "shuttle": false
  },
  "venues": {
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": [
-     "真天地開闢集団-ジグザグ「単独禊『ジグザグ 10周年記念禊』」"
-    ]
+    "events": []
    },
    {
     "short": "Zepp",
@@ -40,7 +40,7 @@
    {
     "short": "SGC",
     "events": [
-     "2026 Kep1er FAN-CON TOUR in TOKYO"
+     "FRUITS ZIPPER 鎮西寿々歌 生誕祭 2026"
     ]
    }
   ]
@@ -52,22 +52,20 @@
   "pop": 0,
   "advice": "上着必須（ジャケット・コート）（風が強い）"
  },
- "look": "off",
+ "look": "coat",
  "tomorrow": {
-  "date": "2026-11-24",
-  "date_label": "11/24（火）",
+  "date": "2026-11-25",
+  "date_label": "11/25（水）",
   "route": {
-   "kind": "run",
-   "code": "T02",
-   "name": "出会い橋〜有明",
-   "time": "12:00–18:00",
-   "shuttle": false
+   "kind": "none"
   },
   "venues": {
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": []
+     "events": [
+      "第一生命 D.LEAGUE 26-27 ROUND.4 Day1"
+     ]
     },
     {
      "short": "Zepp",
@@ -75,28 +73,20 @@
     },
     {
      "short": "SGC",
-     "events": [
-      "FRUITS ZIPPER 鎮西寿々歌 生誕祭 2026"
-     ]
+     "events": []
     }
    ]
   },
   "weather": {
-   "text": "くもり昼過ぎから夕方雨",
-   "tmax": 19,
-   "tmin": 11,
-   "pop": 50,
-   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）（風が強い）"
+   "text": "晴れ",
+   "tmax": 15,
+   "tmin": 7,
+   "pop": 10,
+   "advice": "上着必須（ジャケット・コート）（朝晩は冷える）（風が強い）"
   },
-  "look": "rain"
+  "look": "coat"
  },
- "event": {
-  "type": "drop",
-  "image": "drop_bridge",
-  "title": "レインボーブリッジの夜",
-  "body": "お台場の夜景は、やっぱり現場で見るのが一番",
-  "short": "お台場の夜景は現場が一番"
- },
+ "event": null,
  "room": {
   "away": false,
   "status": "おうちにいるよ",
@@ -113,5 +103,11 @@
    }
   ],
   "count": 2
- }
+ },
+ "stale": [
+  "weather"
+ ],
+ "errors": [
+  "weather: temps unavailable for 2026-11-24"
+ ]
 }
