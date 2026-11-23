@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795382902,
+ "updated_at_epoch": 1795408085,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.44,
-  "load5": 0.26,
-  "load15": 0.25,
+  "load1": 0.41,
+  "load5": 0.41,
+  "load15": 0.27,
   "memory": {
-   "total_mb": 7935,
+   "total_mb": 7934,
    "used_mb": 7355,
    "available_mb": 580,
    "used_pct": 93
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 17.3,
-   "free_gb": 142.9,
+   "used_gb": 17.5,
+   "free_gb": 142.7,
    "used_pct": 11
   },
-  "boot_epoch": 1795381315,
-  "uptime_hours": 0.4
+  "boot_epoch": 1795404118,
+  "uptime_hours": 1.1
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-22T13:27:06+09:00"
+  "ai_usage_updated_at": "2026-11-23T06:27:02+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,16 +46,16 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1795382812,
-    "last_status": "running"
+    "last_run_epoch": 1795384409,
+    "last_status": "failed"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1795321792,
-    "last_status": "succeeded"
+    "last_run_epoch": 1795408018,
+    "last_status": "running"
    },
    {
     "id": "art-sns-daily-post",
@@ -78,7 +78,7 @@
     "title": "治験・通院モニター募集チェック",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "見張り",
-    "last_run_epoch": 1795135553,
+    "last_run_epoch": 1795394769,
     "last_status": "succeeded"
    },
    {
@@ -86,8 +86,16 @@
     "title": "ダフトパンク LEGO オンライン監視",
     "schedule": "毎週月曜 09:44",
     "group": "見張り",
-    "last_run_epoch": 1794790111,
+    "last_run_epoch": 1795394886,
     "last_status": "succeeded"
+   },
+   {
+    "id": "drill-sc-recheck-20270222",
+    "title": "資格ドリル SC再チェック（コンテンツがないクエリ・一回限り）",
+    "schedule": "2027-02-22 09:58（1回）",
+    "group": "ドリル",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "flows-event-day-reminder-20261227",
@@ -106,11 +114,19 @@
     "last_status": null
    },
    {
+    "id": "jma-inquiry-deadline-20261205",
+    "title": "気象庁問い合わせ 12/5一次期限チェック",
+    "schedule": "2026-12-05 09:58（1回）",
+    "group": "お台場",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "kimishima-1124-ticket-watch",
     "title": "君島大空 追加席・リセール監視",
     "schedule": "毎日 09:44",
     "group": "見張り",
-    "last_run_epoch": 1795308448,
+    "last_run_epoch": 1795394811,
     "last_status": "succeeded"
    },
    {
@@ -142,7 +158,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795301218,
+    "last_run_epoch": 1795387604,
     "last_status": "succeeded"
    },
    {
@@ -166,7 +182,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1795301604,
+    "last_run_epoch": 1795387958,
     "last_status": "succeeded"
    },
    {
@@ -174,7 +190,7 @@
     "title": "Muse新機能チェック（毎朝）",
     "schedule": "毎日 08:44",
     "group": "基盤",
-    "last_run_epoch": 1795304953,
+    "last_run_epoch": 1795391153,
     "last_status": "succeeded"
    },
    {
@@ -190,7 +206,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1795314070,
+    "last_run_epoch": 1795401150,
     "last_status": "succeeded"
    },
    {
@@ -246,8 +262,8 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1795381362,
-    "last_status": "running"
+    "last_run_epoch": 1795384529,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -262,7 +278,7 @@
     "title": "お台場混雑予報 今週の予報",
     "schedule": "毎週月曜 08:44",
     "group": "お台場",
-    "last_run_epoch": 1794786916,
+    "last_run_epoch": 1795391475,
     "last_status": "succeeded"
    },
    {
@@ -302,7 +318,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795301136,
+    "last_run_epoch": 1795387566,
     "last_status": "succeeded"
    },
    {
@@ -326,7 +342,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1795135717,
+    "last_run_epoch": 1795394902,
     "last_status": "succeeded"
    },
    {
@@ -350,7 +366,7 @@
     "title": "東京無料イベント・ポップアップ更新",
     "schedule": "48hごと",
     "group": "暮らし",
-    "last_run_epoch": 1795214653,
+    "last_run_epoch": 1795387454,
     "last_status": "succeeded"
    },
    {
@@ -358,7 +374,7 @@
     "title": "運行管理者試験 案内チェック",
     "schedule": "毎週月曜・木曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1795049165,
+    "last_run_epoch": 1795394746,
     "last_status": "succeeded"
    },
    {
@@ -374,7 +390,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1795298381,
+    "last_run_epoch": 1795384802,
     "last_status": "failed"
    },
    {
@@ -394,7 +410,7 @@
     "last_status": "succeeded"
    }
   ],
-  "count": 45,
-  "snapshot_epoch": 1795382898
+  "count": 47,
+  "snapshot_epoch": 1795408080
  }
 }
