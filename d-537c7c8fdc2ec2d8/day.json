@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-24T06:27:04+09:00",
- "updated_label": "11/24 06:27",
+ "updated_at": "2026-11-24T12:05:26+09:00",
+ "updated_label": "11/24 12:05",
  "date": "2026-11-24",
  "date_label": "11/24（火）",
  "shift": {
@@ -46,13 +46,13 @@
   ]
  },
  "weather": {
-  "text": "晴れ",
-  "tmax": 13,
-  "tmin": 6,
-  "pop": 0,
-  "advice": "上着必須（ジャケット・コート）（風が強い）"
+  "text": "くもり昼過ぎから夕方雨",
+  "tmax": 18,
+  "tmin": 9,
+  "pop": 70,
+  "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）（風が強い）"
  },
- "look": "coat",
+ "look": "rain",
  "tomorrow": {
   "date": "2026-11-25",
   "date_label": "11/25（水）",
@@ -79,10 +79,10 @@
   },
   "weather": {
    "text": "晴れ",
-   "tmax": 15,
-   "tmin": 7,
+   "tmax": 13,
+   "tmin": 8,
    "pop": 10,
-   "advice": "上着必須（ジャケット・コート）（朝晩は冷える）（風が強い）"
+   "advice": "上着必須（ジャケット・コート）（風が強い）"
   },
   "look": "coat"
  },
@@ -103,11 +103,5 @@
    }
   ],
   "count": 2
- },
- "stale": [
-  "weather"
- ],
- "errors": [
-  "weather: temps unavailable for 2026-11-24"
- ]
+ }
 }
