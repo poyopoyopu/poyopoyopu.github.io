@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-24T12:05:26+09:00",
- "updated_label": "11/24 12:05",
+ "updated_at": "2026-11-24T13:27:10+09:00",
+ "updated_label": "11/24 13:27",
  "date": "2026-11-24",
  "date_label": "11/24（火）",
  "shift": {
@@ -79,10 +79,10 @@
   },
   "weather": {
    "text": "晴れ",
-   "tmax": 13,
-   "tmin": 8,
+   "tmax": 15,
+   "tmin": 7,
    "pop": 10,
-   "advice": "上着必須（ジャケット・コート）（風が強い）"
+   "advice": "上着必須（ジャケット・コート）（朝晩は冷える）（風が強い）"
   },
   "look": "coat"
  },
@@ -103,5 +103,11 @@
    }
   ],
   "count": 2
- }
+ },
+ "stale": [
+  "weather"
+ ],
+ "errors": [
+  "weather: temps unavailable for 2026-11-24"
+ ]
 }

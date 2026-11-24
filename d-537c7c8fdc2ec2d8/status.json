@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795469295,
+ "updated_at_epoch": 1795494534,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.01,
-  "load5": 0.04,
-  "load15": 0.06,
+  "load1": 0.41,
+  "load5": 0.37,
+  "load15": 0.34,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7358,
-   "available_mb": 576,
-   "used_pct": 93
+   "used_mb": 7292,
+   "available_mb": 643,
+   "used_pct": 92
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 17.4,
-   "free_gb": 142.8,
+   "used_gb": 17.6,
+   "free_gb": 142.6,
    "used_pct": 11
   },
-  "boot_epoch": 1795462031,
-  "uptime_hours": 2.0
+  "boot_epoch": 1795490669,
+  "uptime_hours": 1.1
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-23T13:27:06+09:00"
+  "ai_usage_updated_at": "2026-11-24T06:27:02+09:00"
  },
  "jobs": {
   "jobs": [
@@ -46,15 +46,15 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1795469212,
-    "last_status": "running"
+    "last_run_epoch": 1795469910,
+    "last_status": "succeeded"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1795408018,
+    "last_run_epoch": 1795494418,
     "last_status": "running"
    },
    {
@@ -82,19 +82,11 @@
     "last_status": "succeeded"
    },
    {
-    "id": "comed-monitor-watch-daily",
-    "title": "治験・通院モニター募集チェック",
-    "schedule": "毎週月曜・水曜・金曜 09:44",
-    "group": "見張り",
-    "last_run_epoch": 1795394769,
-    "last_status": "succeeded"
-   },
-   {
     "id": "daft-punk-lego-watch",
     "title": "ダフトパンク LEGO オンライン監視",
     "schedule": "毎週月曜 09:44",
     "group": "見張り",
-    "last_run_epoch": 1795394886,
+    "last_run_epoch": 1795394656,
     "last_status": "succeeded"
    },
    {
@@ -130,38 +122,6 @@
     "last_status": null
    },
    {
-    "id": "kimishima-1124-price-check-1124am",
-    "title": "君島大空 ¥3,000チェック（公演当日・朝7:15／出発判断用）",
-    "schedule": "2026-11-24 07:15（1回）",
-    "group": "見張り",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "kimishima-1124-price-check-1124pm",
-    "title": "君島大空 ¥3,000チェック（公演当日・夕方）",
-    "schedule": "2026-11-24 17:18（1回）",
-    "group": "見張り",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "kimishima-1124-ticket-watch",
-    "title": "君島大空 追加席・リセール監視",
-    "schedule": "毎日 09:44",
-    "group": "見張り",
-    "last_run_epoch": 1795394811,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "kimishima-watch-stop-20261125",
-    "title": "君島大空 見張りの終了処理",
-    "schedule": "2026-11-25 09:44（1回）",
-    "group": "リマインド",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
     "id": "lottery-remind-pikachu-figure-20261129",
     "title": "ピカチュウフィギュア（ポケセン）締切前日リマインド（11/29）",
     "schedule": "2026-11-29 20:00（1回）",
@@ -174,7 +134,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795387604,
+    "last_run_epoch": 1795473877,
     "last_status": "succeeded"
    },
    {
@@ -182,7 +142,7 @@
     "title": "メモリ棚卸し（週1・候補リストのみ）",
     "schedule": "毎週日曜 21:44",
     "group": "基盤",
-    "last_run_epoch": 1795351648,
+    "last_run_epoch": 1795351497,
     "last_status": "succeeded"
    },
    {
@@ -190,15 +150,15 @@
     "title": "モニター・懸賞 定期巡回（週2回・自動応募）",
     "schedule": "毎週火曜・金曜 10:33",
     "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
+    "last_run_epoch": 1795485145,
+    "last_status": "succeeded"
    },
    {
     "id": "morning-brief-daily",
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1795387958,
+    "last_run_epoch": 1795476600,
     "last_status": "succeeded"
    },
    {
@@ -206,15 +166,7 @@
     "title": "Muse新機能チェック（毎朝）",
     "schedule": "毎日 08:44",
     "group": "基盤",
-    "last_run_epoch": 1795391153,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "nearby-event-watch-weekly",
-    "title": "近場イベント見張り（お台場周辺）",
-    "schedule": "毎週水曜 09:44",
-    "group": "見張り",
-    "last_run_epoch": 1794962857,
+    "last_run_epoch": 1795477486,
     "last_status": "succeeded"
    },
    {
@@ -222,7 +174,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1795401150,
+    "last_run_epoch": 1795485145,
     "last_status": "succeeded"
    },
    {
@@ -278,8 +230,8 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1795467577,
-    "last_status": "running"
+    "last_run_epoch": 1795469910,
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -294,7 +246,7 @@
     "title": "お台場混雑予報 今週の予報",
     "schedule": "毎週月曜 08:44",
     "group": "お台場",
-    "last_run_epoch": 1795391475,
+    "last_run_epoch": 1795391083,
     "last_status": "succeeded"
    },
    {
@@ -302,7 +254,7 @@
     "title": "お台場サイト GA4週次チェック",
     "schedule": "毎週火曜 09:44",
     "group": "お台場",
-    "last_run_epoch": 1794878040,
+    "last_run_epoch": 1795481052,
     "last_status": "succeeded"
    },
    {
@@ -334,7 +286,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795387566,
+    "last_run_epoch": 1795473877,
     "last_status": "succeeded"
    },
    {
@@ -358,7 +310,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1795394902,
+    "last_run_epoch": 1795394699,
     "last_status": "succeeded"
    },
    {
@@ -376,14 +328,6 @@
     "group": "暮らし",
     "last_run_epoch": 1795136110,
     "last_status": "succeeded"
-   },
-   {
-    "id": "tahiti80-price-check-1124",
-    "title": "Tahiti 80 ¥3,000見張り（11/24）",
-    "schedule": "2026-11-24 09:44（1回）",
-    "group": "見張り",
-    "last_run_epoch": null,
-    "last_status": null
    },
    {
     "id": "tahiti80-price-check-1125",
@@ -414,7 +358,7 @@
     "title": "東京無料イベント・ポップアップ更新",
     "schedule": "48hごと",
     "group": "暮らし",
-    "last_run_epoch": 1795387454,
+    "last_run_epoch": 1795387452,
     "last_status": "succeeded"
    },
    {
@@ -422,7 +366,7 @@
     "title": "運行管理者試験 案内チェック",
     "schedule": "毎週月曜・木曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1795394746,
+    "last_run_epoch": 1795394678,
     "last_status": "succeeded"
    },
    {
@@ -438,7 +382,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1795384802,
+    "last_run_epoch": 1795471008,
     "last_status": "failed"
    },
    {
@@ -454,11 +398,75 @@
     "title": "運行管理ドリル SNS週次検証",
     "schedule": "毎週日曜 21:00",
     "group": "ドリル",
-    "last_run_epoch": 1795349437,
+    "last_run_epoch": 1795348627,
     "last_status": "succeeded"
+   },
+   {
+    "id": "ai-usage-stale-watch",
+    "title": "ウィジェット鮮度見張り（13時間超で再実行）",
+    "schedule": "毎日 19:52",
+    "group": "基盤",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "art-ab-review-20261224",
+    "title": "ART 3ライン輪番ABテスト 30日復盤",
+    "schedule": "2026-12-24 09:58（1回）",
+    "group": "ART",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q1100",
+    "title": "Dan Koeプロトコル 質問11:00（12/14）",
+    "schedule": "2026-12-14 11:05（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q1330",
+    "title": "Dan Koeプロトコル 質問13:30（12/14）",
+    "schedule": "2026-12-14 13:57（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q1700",
+    "title": "Dan Koeプロトコル 質問17:00（12/14）",
+    "schedule": "2026-12-14 17:13（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q2100",
+    "title": "Dan Koeプロトコル 質問21:00＋夜の統合（12/14）",
+    "schedule": "2026-12-14 21:03（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-start",
+    "title": "Dan Koeプロトコル 当日朝の開始リマインド（12/14）",
+    "schedule": "2026-12-14 09:52（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "prolific-invite-watch",
+    "title": "Prolific招待メール見張り",
+    "schedule": "毎日 09:58",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
    }
   ],
-  "count": 53,
-  "snapshot_epoch": 1795469287
+  "count": 54,
+  "snapshot_epoch": 1795494518
  }
 }
