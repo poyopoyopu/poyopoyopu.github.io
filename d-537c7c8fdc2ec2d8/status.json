@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795556121,
+ "updated_at_epoch": 1795581011,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.35,
-  "load5": 0.42,
-  "load15": 0.19,
+  "load1": 0.45,
+  "load5": 0.5,
+  "load15": 0.65,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 6689,
-   "available_mb": 1245,
-   "used_pct": 84
+   "used_mb": 7369,
+   "available_mb": 565,
+   "used_pct": 93
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 17.0,
-   "free_gb": 143.2,
+   "used_gb": 17.2,
+   "free_gb": 143.0,
    "used_pct": 11
   },
-  "boot_epoch": 1795555893,
-  "uptime_hours": 0.1
+  "boot_epoch": 1795574958,
+  "uptime_hours": 1.7
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-24T13:27:06+09:00"
+  "ai_usage_updated_at": "2026-11-25T06:27:06+09:00"
  },
  "jobs": {
   "jobs": [
@@ -47,15 +47,31 @@
     "schedule": "毎日 06:26",
     "group": "基盤",
     "last_run_epoch": 1795555933,
-    "last_status": "running"
+    "last_status": "succeeded"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1795494418,
-    "last_status": "failed"
+    "last_run_epoch": 1795580818,
+    "last_status": "running"
+   },
+   {
+    "id": "ai-usage-stale-watch",
+    "title": "ウィジェット鮮度見張り（13時間超で再実行）",
+    "schedule": "毎日 19:52",
+    "group": "基盤",
+    "last_run_epoch": 1795517546,
+    "last_status": "succeeded"
+   },
+   {
+    "id": "art-ab-review-20261224",
+    "title": "ART 3ライン輪番ABテスト 30日復盤",
+    "schedule": "2026-12-24 09:58（1回）",
+    "group": "ART",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "art-sns-daily-post",
@@ -90,6 +106,46 @@
     "last_status": "succeeded"
    },
    {
+    "id": "dankoe-1214-q1100",
+    "title": "Dan Koeプロトコル 質問11:00（12/14）",
+    "schedule": "2026-12-14 11:05（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q1330",
+    "title": "Dan Koeプロトコル 質問13:30（12/14）",
+    "schedule": "2026-12-14 13:57（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q1700",
+    "title": "Dan Koeプロトコル 質問17:00（12/14）",
+    "schedule": "2026-12-14 17:13（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-q2100",
+    "title": "Dan Koeプロトコル 質問21:00＋夜の統合（12/14）",
+    "schedule": "2026-12-14 21:03（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "dankoe-1214-start",
+    "title": "Dan Koeプロトコル 当日朝の開始リマインド（12/14）",
+    "schedule": "2026-12-14 09:52（1回）",
+    "group": "暮らし",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "drill-sc-recheck-20270222",
     "title": "資格ドリル SC再チェック（コンテンツがないクエリ・一回限り）",
     "schedule": "2027-02-22 09:58（1回）",
@@ -114,6 +170,14 @@
     "last_status": null
    },
    {
+    "id": "hyogaki-seeding-daily",
+    "title": "氷河期おじさん 種まき（IG/Threads）",
+    "schedule": "毎日 19:52",
+    "group": "note",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
     "id": "jma-inquiry-deadline-20261205",
     "title": "気象庁問い合わせ 12/5一次期限チェック",
     "schedule": "2026-12-05 09:58（1回）",
@@ -134,8 +198,16 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795473877,
+    "last_run_epoch": 1795560277,
     "last_status": "succeeded"
+   },
+   {
+    "id": "makefun-final-results-check-20261126",
+    "title": "make.fun 最終順位チェック（11/26朝・1回限り）",
+    "schedule": "2026-11-26 09:44（1回）",
+    "group": "見張り",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "memory-audit-weekly",
@@ -158,7 +230,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1795476600,
+    "last_run_epoch": 1795560628,
     "last_status": "succeeded"
    },
    {
@@ -166,7 +238,7 @@
     "title": "Muse新機能チェック（毎朝）",
     "schedule": "毎日 08:44",
     "group": "基盤",
-    "last_run_epoch": 1795477486,
+    "last_run_epoch": 1795563886,
     "last_status": "succeeded"
    },
    {
@@ -174,7 +246,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1795485145,
+    "last_run_epoch": 1795571060,
     "last_status": "succeeded"
    },
    {
@@ -231,7 +303,7 @@
     "schedule": "毎日 06:00",
     "group": "お台場",
     "last_run_epoch": 1795555933,
-    "last_status": "running"
+    "last_status": "succeeded"
    },
    {
     "id": "odaiba-forecast-evening-preview",
@@ -286,15 +358,31 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795473877,
+    "last_run_epoch": 1795560277,
     "last_status": "succeeded"
+   },
+   {
+    "id": "odaiba-parallel-check-20261202",
+    "title": "お台場週次更新 新方式の並走サイクル（12/2・1回限り）",
+    "schedule": "2026-12-02 11:54（1回）",
+    "group": "お台場",
+    "last_run_epoch": null,
+    "last_status": null
+   },
+   {
+    "id": "odaiba-parallel-watchdog-20261202",
+    "title": "お台場週次更新 影並走の見張り（12/2・動かなかったら通知）",
+    "schedule": "2026-12-02 13:44（1回）",
+    "group": "お台場",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "odaiba-pr-premerge-check-1044",
     "title": "お台場サイト PRチェック（10:44）",
     "schedule": "毎週水曜 10:44",
     "group": "お台場",
-    "last_run_epoch": 1794966641,
+    "last_run_epoch": 1795571040,
     "last_status": "succeeded"
    },
    {
@@ -302,7 +390,7 @@
     "title": "お台場サイト PRチェック（11:44）",
     "schedule": "毎週水曜 11:44",
     "group": "お台場",
-    "last_run_epoch": 1794969902,
+    "last_run_epoch": 1795574678,
     "last_status": "succeeded"
    },
    {
@@ -310,7 +398,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1795394699,
+    "last_run_epoch": 1795567499,
     "last_status": "succeeded"
    },
    {
@@ -322,18 +410,26 @@
     "last_status": null
    },
    {
+    "id": "prolific-invite-watch",
+    "title": "Prolific招待メール見張り",
+    "schedule": "毎日 09:58",
+    "group": "暮らし",
+    "last_run_epoch": 1795568298,
+    "last_status": "succeeded"
+   },
+   {
     "id": "rakuten-campaign-patrol-1st",
     "title": "楽天キャンペーン巡回・自動エントリー",
     "schedule": "毎月 1・5・10・15・20・25・30日 09:44",
     "group": "暮らし",
-    "last_run_epoch": 1795136110,
+    "last_run_epoch": 1795567487,
     "last_status": "succeeded"
    },
    {
-    "id": "tahiti80-price-check-1125",
-    "title": "Tahiti 80 ¥3,000見張り（11/25）",
-    "schedule": "2026-11-25 09:44（1回）",
-    "group": "見張り",
+    "id": "side-chat-daily-tidy",
+    "title": "サイドチャット日次整理",
+    "schedule": "毎日 22:02",
+    "group": "基盤",
     "last_run_epoch": null,
     "last_status": null
    },
@@ -352,14 +448,6 @@
     "group": "見張り",
     "last_run_epoch": null,
     "last_status": null
-   },
-   {
-    "id": "tokyo-free-events-refresh",
-    "title": "東京無料イベント・ポップアップ更新",
-    "schedule": "48hごと",
-    "group": "暮らし",
-    "last_run_epoch": 1795387452,
-    "last_status": "succeeded"
    },
    {
     "id": "unkan-2027-2nd-exam-watch",
@@ -382,8 +470,16 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1795471008,
+    "last_run_epoch": 1795557408,
     "last_status": "failed"
+   },
+   {
+    "id": "unko-drill-ig-030-afternoon-check",
+    "title": "#030 IG反映の午後確認",
+    "schedule": "2026-11-25 14:30（1回）",
+    "group": "ドリル",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "unko-drill-numbers-check-20261205",
@@ -402,79 +498,15 @@
     "last_status": "succeeded"
    },
    {
-    "id": "ai-usage-stale-watch",
-    "title": "ウィジェット鮮度見張り（13時間超で再実行）",
-    "schedule": "毎日 19:52",
-    "group": "基盤",
-    "last_run_epoch": 1795517546,
-    "last_status": "succeeded"
-   },
-   {
-    "id": "art-ab-review-20261224",
-    "title": "ART 3ライン輪番ABテスト 30日復盤",
-    "schedule": "2026-12-24 09:58（1回）",
-    "group": "ART",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "dankoe-1214-q1100",
-    "title": "Dan Koeプロトコル 質問11:00（12/14）",
-    "schedule": "2026-12-14 11:05（1回）",
+    "id": "xing-kitaimatupu-refresh",
+    "title": "行きたいマップ 更新",
+    "schedule": "毎日 08:10",
     "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "dankoe-1214-q1330",
-    "title": "Dan Koeプロトコル 質問13:30（12/14）",
-    "schedule": "2026-12-14 13:57（1回）",
-    "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "dankoe-1214-q1700",
-    "title": "Dan Koeプロトコル 質問17:00（12/14）",
-    "schedule": "2026-12-14 17:13（1回）",
-    "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "dankoe-1214-q2100",
-    "title": "Dan Koeプロトコル 質問21:00＋夜の統合（12/14）",
-    "schedule": "2026-12-14 21:03（1回）",
-    "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "dankoe-1214-start",
-    "title": "Dan Koeプロトコル 当日朝の開始リマインド（12/14）",
-    "schedule": "2026-12-14 09:52（1回）",
-    "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "prolific-invite-watch",
-    "title": "Prolific招待メール見張り",
-    "schedule": "毎日 09:58",
-    "group": "暮らし",
-    "last_run_epoch": null,
-    "last_status": null
-   },
-   {
-    "id": "side-chat-daily-tidy",
-    "title": "サイドチャット日次整理",
-    "schedule": "毎日 22:02",
-    "group": "基盤",
     "last_run_epoch": null,
     "last_status": null
    }
   ],
-  "count": 55,
-  "snapshot_epoch": 1795556094
+  "count": 59,
+  "snapshot_epoch": 1795581002
  }
 }

@@ -1,6 +1,6 @@
 {
- "updated_at": "2026-11-25T06:27:13+09:00",
- "updated_label": "11/25 06:27",
+ "updated_at": "2026-11-25T13:27:20+09:00",
+ "updated_label": "11/25 13:27",
  "date": "2026-11-25",
  "date_label": "11/25（水）",
  "shift": {
@@ -33,7 +33,9 @@
    },
    {
     "short": "Zepp",
-    "events": []
+    "events": [
+     "あたたかくなる 1st LIVE『Show your Hot！』"
+    ]
    },
    {
     "short": "SGC",
@@ -46,7 +48,7 @@
   "tmax": 13,
   "tmin": 8,
   "pop": 0,
-  "advice": "上着必須（ジャケット・コート）（風が強い）"
+  "advice": "上着必須（ジャケット・コート）"
  },
  "look": "coat",
  "tomorrow": {
@@ -79,7 +81,7 @@
   },
   "weather": {
    "text": "晴れ夕方からくもり",
-   "tmax": 15,
+   "tmax": 14,
    "tmin": 6,
    "pop": 0,
    "advice": "上着必須（ジャケット・コート）（朝晩は冷える）"
