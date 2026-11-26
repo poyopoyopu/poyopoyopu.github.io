@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-25T13:27:20+09:00",
- "updated_label": "11/25 13:27",
- "date": "2026-11-25",
- "date_label": "11/25（水）",
+ "updated_at": "2026-11-26T13:27:11+09:00",
+ "updated_label": "11/26 13:27",
+ "date": "2026-11-26",
+ "date_label": "11/26（木）",
  "shift": {
   "today": {
    "kind": "work",
@@ -10,14 +10,12 @@
    "no": ""
   },
   "tomorrow": {
-   "kind": "work",
-   "start": "10:00",
-   "no": ""
+   "kind": "off"
   },
   "next_off": {
    "date": "2026-11-27",
    "label": "11/27（金）",
-   "in_days": 2
+   "in_days": 1
   }
  },
  "route": {
@@ -28,32 +26,34 @@
    {
     "short": "トヨタアリーナ",
     "events": [
-     "第一生命 D.LEAGUE 26-27 ROUND.4 Day1"
+     "第一生命 D.LEAGUE 26-27 ROUND.4 Day2"
     ]
    },
    {
     "short": "Zepp",
     "events": [
-     "あたたかくなる 1st LIVE『Show your Hot！』"
+     "TAHITI 80"
     ]
    },
    {
     "short": "SGC",
-    "events": []
+    "events": [
+     "CUTIE STREET 佐野愛花 生誕祭 2026"
+    ]
    }
   ]
  },
  "weather": {
-  "text": "晴れ",
-  "tmax": 13,
-  "tmin": 8,
+  "text": "晴れ夕方からくもり",
+  "tmax": 14,
+  "tmin": 6,
   "pop": 0,
-  "advice": "上着必須（ジャケット・コート）"
+  "advice": "上着必須（ジャケット・コート）（朝晩は冷える）"
  },
  "look": "coat",
  "tomorrow": {
-  "date": "2026-11-26",
-  "date_label": "11/26（木）",
+  "date": "2026-11-27",
+  "date_label": "11/27（金）",
   "route": {
    "kind": "none"
   },
@@ -61,40 +61,32 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": [
-      "第一生命 D.LEAGUE 26-27 ROUND.4 Day2"
-     ]
+     "events": []
     },
     {
      "short": "Zepp",
      "events": [
-      "TAHITI 80"
+      "wave to earth - the pieces tour"
      ]
     },
     {
      "short": "SGC",
      "events": [
-      "CUTIE STREET 佐野愛花 生誕祭 2026"
+      "GIFT 〜Girls Idol Festival Tokyo〜 Day1"
      ]
     }
    ]
   },
   "weather": {
-   "text": "晴れ夕方からくもり",
-   "tmax": 14,
-   "tmin": 6,
-   "pop": 0,
-   "advice": "上着必須（ジャケット・コート）（朝晩は冷える）"
+   "text": "晴れ朝晩くもり",
+   "tmax": 15,
+   "tmin": 8,
+   "pop": 10,
+   "advice": "上着必須（ジャケット・コート）"
   },
-  "look": "coat"
+  "look": "off"
  },
- "event": {
-  "type": "postcard",
-  "image": "postcard_inubosaki",
-  "title": "犬吠埼灯台（千葉）",
-  "body": "家から一番近い灯台から。天気のいい日は水平線が丸く見えるんだよ",
-  "short": "一番近い灯台から。水平線が丸い"
- },
+ "event": null,
  "room": {
   "away": true,
   "status": "お出かけ中（犬吠埼灯台）",
