@@ -1,26 +1,26 @@
 {
- "updated_at_epoch": 1795753746,
+ "updated_at_epoch": 1795815038,
  "vm": {
   "name": "ムーちゃんのVM（Museの作業マシン）",
   "hostname": "htch-runtime",
   "cpus": 4,
-  "load1": 0.56,
-  "load5": 0.71,
-  "load15": 0.7,
+  "load1": 0.88,
+  "load5": 0.29,
+  "load15": 0.17,
   "memory": {
    "total_mb": 7934,
-   "used_mb": 7309,
-   "available_mb": 625,
-   "used_pct": 92
+   "used_mb": 7412,
+   "available_mb": 522,
+   "used_pct": 93
   },
   "disk_home": {
    "total_gb": 161.0,
-   "used_gb": 17.8,
-   "free_gb": 142.4,
+   "used_gb": 18.3,
+   "free_gb": 142.0,
    "used_pct": 11
   },
-  "boot_epoch": 1795747691,
-  "uptime_hours": 1.7
+  "boot_epoch": 1795813854,
+  "uptime_hours": 0.3
  },
  "tools": {
   "claude_code": "2.1.322 (Claude Code)",
@@ -29,7 +29,7 @@
  "pages": {
   "ok": true,
   "http": 200,
-  "ai_usage_updated_at": "2026-11-26T13:27:08+09:00"
+  "ai_usage_updated_at": "2026-11-27T13:27:07+09:00"
  },
  "jobs": {
   "jobs": [
@@ -38,7 +38,7 @@
     "title": "アフィリエイトASP週次チェック",
     "schedule": "毎週金曜 10:44",
     "group": "ASP",
-    "last_run_epoch": 1795743847,
+    "last_run_epoch": 1795744120,
     "last_status": "succeeded"
    },
    {
@@ -46,23 +46,23 @@
     "title": "AI使用量の定期収集",
     "schedule": "毎日 06:26",
     "group": "基盤",
-    "last_run_epoch": 1795728412,
-    "last_status": "failed"
+    "last_run_epoch": 1795814812,
+    "last_status": "running"
    },
    {
     "id": "ai-usage-collect-pm",
     "title": "AI使用量の定期収集（昼）",
     "schedule": "毎日 13:26",
     "group": "基盤",
-    "last_run_epoch": 1795753618,
-    "last_status": "running"
+    "last_run_epoch": 1795753874,
+    "last_status": "succeeded"
    },
    {
     "id": "ai-usage-stale-watch",
     "title": "ウィジェット鮮度見張り（13時間超で再実行）",
     "schedule": "毎日 19:52",
     "group": "基盤",
-    "last_run_epoch": 1795690365,
+    "last_run_epoch": 1795776764,
     "last_status": "succeeded"
    },
    {
@@ -78,7 +78,7 @@
     "title": "ART SNS毎日投稿（Threads＋Instagram）",
     "schedule": "毎日 20:44",
     "group": "ART",
-    "last_run_epoch": 1795693685,
+    "last_run_epoch": 1795780310,
     "last_status": "succeeded"
    },
    {
@@ -102,8 +102,16 @@
     "title": "会話ログを毎晩Driveへ保存",
     "schedule": "毎日 23:44",
     "group": "基盤",
-    "last_run_epoch": 1795704440,
+    "last_run_epoch": 1795791080,
     "last_status": "succeeded"
+   },
+   {
+    "id": "cruise-expo-remind-20261201",
+    "title": "クルーズEXPO事前予約のリマインド",
+    "schedule": "2026-12-01 20:43（1回）",
+    "group": "リマインド",
+    "last_run_epoch": null,
+    "last_status": null
    },
    {
     "id": "daft-punk-lego-watch",
@@ -158,7 +166,7 @@
     "title": "ダッシュボード「ムーちゃんの今」毎朝更新",
     "schedule": "毎日 07:38",
     "group": "基盤",
-    "last_run_epoch": 1795732701,
+    "last_run_epoch": 1795733612,
     "last_status": "succeeded"
    },
    {
@@ -190,7 +198,7 @@
     "title": "氷河期おじさん 種まき（IG/Threads）",
     "schedule": "毎日 19:52",
     "group": "note",
-    "last_run_epoch": 1795691704,
+    "last_run_epoch": 1795777813,
     "last_status": "succeeded"
    },
    {
@@ -222,7 +230,7 @@
     "title": "ネット抽選チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795733077,
+    "last_run_epoch": 1795733391,
     "last_status": "succeeded"
    },
    {
@@ -238,7 +246,7 @@
     "title": "モニター・懸賞 定期巡回（週2回・自動応募）",
     "schedule": "毎週火曜・金曜 10:33",
     "group": "暮らし",
-    "last_run_epoch": 1795743183,
+    "last_run_epoch": 1795747583,
     "last_status": "succeeded"
    },
    {
@@ -246,7 +254,7 @@
     "title": "モーニングブリーフ",
     "schedule": "毎日 07:50",
     "group": "基盤",
-    "last_run_epoch": 1795733428,
+    "last_run_epoch": 1795733604,
     "last_status": "succeeded"
    },
    {
@@ -254,7 +262,7 @@
     "title": "Muse新機能チェック（毎朝）",
     "schedule": "毎日 08:44",
     "group": "基盤",
-    "last_run_epoch": 1795736686,
+    "last_run_epoch": 1795736801,
     "last_status": "succeeded"
    },
    {
@@ -262,7 +270,7 @@
     "title": "note下書きの毎日生産",
     "schedule": "毎日 10:44",
     "group": "note",
-    "last_run_epoch": 1795743860,
+    "last_run_epoch": 1795746618,
     "last_status": "succeeded"
    },
    {
@@ -326,15 +334,15 @@
     "title": "お台場混雑予報 原稿",
     "schedule": "毎日 06:00",
     "group": "お台場",
-    "last_run_epoch": 1795726777,
-    "last_status": "succeeded"
+    "last_run_epoch": 1795813894,
+    "last_status": "running"
    },
    {
     "id": "odaiba-forecast-evening-preview",
     "title": "お台場混雑予報 前日配信",
     "schedule": "毎日 19:44",
     "group": "お台場",
-    "last_run_epoch": 1795690427,
+    "last_run_epoch": 1795776629,
     "last_status": "succeeded"
    },
    {
@@ -382,7 +390,7 @@
     "title": "お台場限定品チェック",
     "schedule": "毎日 07:44",
     "group": "見張り",
-    "last_run_epoch": 1795733077,
+    "last_run_epoch": 1795733449,
     "last_status": "succeeded"
    },
    {
@@ -430,7 +438,7 @@
     "title": "ドリル・台本 進捗見張り",
     "schedule": "毎週月曜・水曜・金曜 09:44",
     "group": "ドリル",
-    "last_run_epoch": 1795740517,
+    "last_run_epoch": 1795740523,
     "last_status": "failed"
    },
    {
@@ -446,7 +454,7 @@
     "title": "Prolific招待メール見張り",
     "schedule": "毎日 09:58",
     "group": "暮らし",
-    "last_run_epoch": 1795741098,
+    "last_run_epoch": 1795741212,
     "last_status": "succeeded"
    },
    {
@@ -462,7 +470,7 @@
     "title": "サイドチャット日次整理",
     "schedule": "毎日 22:02",
     "group": "基盤",
-    "last_run_epoch": 1795698293,
+    "last_run_epoch": 1795784650,
     "last_status": "succeeded"
    },
    {
@@ -486,7 +494,7 @@
     "title": "運行管理ドリル 今日の1問",
     "schedule": "毎日 07:00",
     "group": "ドリル",
-    "last_run_epoch": 1795730208,
+    "last_run_epoch": 1795731138,
     "last_status": "succeeded"
    },
    {
@@ -510,11 +518,11 @@
     "title": "行きたいマップ 更新",
     "schedule": "毎日 08:10",
     "group": "暮らし",
-    "last_run_epoch": 1795734601,
+    "last_run_epoch": 1795734602,
     "last_status": "succeeded"
    }
   ],
-  "count": 60,
-  "snapshot_epoch": 1795753726
+  "count": 61,
+  "snapshot_epoch": 1795815027
  }
 }

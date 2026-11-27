@@ -1,8 +1,8 @@
 {
- "updated_at": "2026-11-27T13:27:10+09:00",
- "updated_label": "11/27 13:27",
- "date": "2026-11-27",
- "date_label": "11/27（金）",
+ "updated_at": "2026-11-28T06:27:10+09:00",
+ "updated_label": "11/28 06:27",
+ "date": "2026-11-28",
+ "date_label": "11/28（土）",
  "shift": {
   "today": {
    "kind": "off"
@@ -11,8 +11,8 @@
    "kind": "off"
   },
   "next_off": {
-   "date": "2026-11-27",
-   "label": "11/27（金）",
+   "date": "2026-11-28",
+   "label": "11/28（土）",
    "in_days": 0
   }
  },
@@ -23,33 +23,35 @@
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": []
+    "events": [
+     "GIFT 〜Girls Idol Festival Tokyo〜 Day2"
+    ]
    },
    {
     "short": "Zepp",
     "events": [
-     "wave to earth - the pieces tour"
+     "宇都宮隆"
     ]
    },
    {
     "short": "SGC",
     "events": [
-     "GIFT 〜Girls Idol Festival Tokyo〜 Day1"
+     "GIFT 〜Girls Idol Festival Tokyo〜 Day2"
     ]
    }
   ]
  },
  "weather": {
-  "text": "晴れ夜くもり所により夜遅く雨",
-  "tmax": 16,
+  "text": "雨昼前からくもり後晴れ",
+  "tmax": 20,
   "tmin": 9,
-  "pop": 20,
-  "advice": "長袖＋薄手の上着（傘を忘れずに）"
+  "pop": 60,
+  "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）（風が強い）"
  },
  "look": "off",
  "tomorrow": {
-  "date": "2026-11-28",
-  "date_label": "11/28（土）",
+  "date": "2026-11-29",
+  "date_label": "11/29（日）",
   "route": {
    "kind": "none"
   },
@@ -58,7 +60,7 @@
     {
      "short": "トヨタアリーナ",
      "events": [
-      "GIFT 〜Girls Idol Festival Tokyo〜 Day2"
+      "GIFT 〜Girls Idol Festival Tokyo〜 Day3"
      ]
     },
     {
@@ -70,30 +72,24 @@
     {
      "short": "SGC",
      "events": [
-      "GIFT 〜Girls Idol Festival Tokyo〜 Day2"
+      "GIFT 〜Girls Idol Festival Tokyo〜 最終日"
      ]
     }
    ]
   },
   "weather": {
-   "text": "雨昼前からくもり後晴れ",
-   "tmax": 20,
-   "tmin": 11,
-   "pop": 80,
-   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）（風が強い）"
+   "text": "晴れ",
+   "tmax": 14,
+   "tmin": 8,
+   "pop": 10,
+   "advice": "上着必須（ジャケット・コート）（風が強い）"
   },
   "look": "off"
  },
- "event": {
-  "type": "drop",
-  "image": "drop_stars",
-  "title": "星を見るムーちゃん",
-  "body": "望遠鏡で星空観察中。流れ星はまだ来ない",
-  "short": "星空観察中。流れ星はまだ"
- },
+ "event": null,
  "room": {
   "away": false,
-  "status": "ただいま！おみやげが増えたよ",
+  "status": "おうちにいるよ",
   "return_label": null,
   "dest_name": null,
   "souvenirs": [
