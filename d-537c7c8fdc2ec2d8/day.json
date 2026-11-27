@@ -1,13 +1,11 @@
 {
- "updated_at": "2026-11-26T13:27:11+09:00",
- "updated_label": "11/26 13:27",
- "date": "2026-11-26",
- "date_label": "11/26（木）",
+ "updated_at": "2026-11-27T13:27:10+09:00",
+ "updated_label": "11/27 13:27",
+ "date": "2026-11-27",
+ "date_label": "11/27（金）",
  "shift": {
   "today": {
-   "kind": "work",
-   "start": "10:00",
-   "no": ""
+   "kind": "off"
   },
   "tomorrow": {
    "kind": "off"
@@ -15,7 +13,7 @@
   "next_off": {
    "date": "2026-11-27",
    "label": "11/27（金）",
-   "in_days": 1
+   "in_days": 0
   }
  },
  "route": {
@@ -25,35 +23,33 @@
   "venues": [
    {
     "short": "トヨタアリーナ",
-    "events": [
-     "第一生命 D.LEAGUE 26-27 ROUND.4 Day2"
-    ]
+    "events": []
    },
    {
     "short": "Zepp",
     "events": [
-     "TAHITI 80"
+     "wave to earth - the pieces tour"
     ]
    },
    {
     "short": "SGC",
     "events": [
-     "CUTIE STREET 佐野愛花 生誕祭 2026"
+     "GIFT 〜Girls Idol Festival Tokyo〜 Day1"
     ]
    }
   ]
  },
  "weather": {
-  "text": "晴れ夕方からくもり",
-  "tmax": 14,
-  "tmin": 6,
-  "pop": 0,
-  "advice": "上着必須（ジャケット・コート）（朝晩は冷える）"
+  "text": "晴れ夜くもり所により夜遅く雨",
+  "tmax": 16,
+  "tmin": 9,
+  "pop": 20,
+  "advice": "長袖＋薄手の上着（傘を忘れずに）"
  },
- "look": "coat",
+ "look": "off",
  "tomorrow": {
-  "date": "2026-11-27",
-  "date_label": "11/27（金）",
+  "date": "2026-11-28",
+  "date_label": "11/28（土）",
   "route": {
    "kind": "none"
   },
@@ -61,37 +57,45 @@
    "venues": [
     {
      "short": "トヨタアリーナ",
-     "events": []
+     "events": [
+      "GIFT 〜Girls Idol Festival Tokyo〜 Day2"
+     ]
     },
     {
      "short": "Zepp",
      "events": [
-      "wave to earth - the pieces tour"
+      "宇都宮隆"
      ]
     },
     {
      "short": "SGC",
      "events": [
-      "GIFT 〜Girls Idol Festival Tokyo〜 Day1"
+      "GIFT 〜Girls Idol Festival Tokyo〜 Day2"
      ]
     }
    ]
   },
   "weather": {
-   "text": "晴れ朝晩くもり",
-   "tmax": 15,
-   "tmin": 8,
-   "pop": 10,
-   "advice": "上着必須（ジャケット・コート）"
+   "text": "雨昼前からくもり後晴れ",
+   "tmax": 20,
+   "tmin": 11,
+   "pop": 80,
+   "advice": "長袖＋薄手の上着（朝晩は冷える・傘を忘れずに）（風が強い）"
   },
   "look": "off"
  },
- "event": null,
+ "event": {
+  "type": "drop",
+  "image": "drop_stars",
+  "title": "星を見るムーちゃん",
+  "body": "望遠鏡で星空観察中。流れ星はまだ来ない",
+  "short": "星空観察中。流れ星はまだ"
+ },
  "room": {
-  "away": true,
-  "status": "お出かけ中（犬吠埼灯台）",
-  "return_label": "11/27に帰る予定",
-  "dest_name": "犬吠埼灯台",
+  "away": false,
+  "status": "ただいま！おみやげが増えたよ",
+  "return_label": null,
+  "dest_name": null,
   "souvenirs": [
    {
     "image": "postcard_shionomisaki",
@@ -100,8 +104,12 @@
    {
     "image": "postcard_shionomisaki",
     "name": "灯台の置物"
+   },
+   {
+    "image": "postcard_inubosaki",
+    "name": "灯台のポストカード"
    }
   ],
-  "count": 2
+  "count": 3
  }
 }
