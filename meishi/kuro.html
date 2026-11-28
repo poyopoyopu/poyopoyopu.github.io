@@ -192,7 +192,8 @@
       .rail::-webkit-scrollbar { display: none; }
       .rail.drag { cursor: grabbing; scroll-snap-type: none; }
       .wk { position: relative; flex: none; width: min(62vw, 240px); scroll-snap-align: center; text-decoration: none; transform-style: preserve-3d; -webkit-user-drag: none; user-select: none; }
-      .wk-img { position: relative; display: block; aspect-ratio: 476 / 630; overflow: hidden; border-radius: 12px; background: #151518; box-shadow: inset 0 0 0 1px var(--hair); }
+      .wk-img { position: relative; display: block; aspect-ratio: 476 / 630; overflow: hidden; border-radius: 12px; background: #151518; }
+      .wk-img::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; background: linear-gradient(130deg, rgba(255,255,255,.35), hsl(var(--h) 90% 70% / .7), transparent 40%, hsl(calc(var(--h) + 150) 90% 70% / .6)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
       .wk-img img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; pointer-events: none; transform: scale(1.02); transition: transform 0.8s var(--ease); }
       .wk:hover .wk-img img { transform: scale(1.07); }
       .wk-no { display: block; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--faint); }
@@ -213,8 +214,9 @@
 
       /* サイト */
       .sites { list-style: none; margin: 0; padding: 0; }
-      .sites a { display: flex; align-items: center; gap: 1rem; padding: 1.5rem 0; text-decoration: none; border-bottom: 1px solid var(--hair); }
-      .sites li:first-child a { border-top: 1px solid var(--hair); }
+      .sites { display: grid; gap: 0.8rem; }
+      .sites a { display: flex; align-items: center; gap: 1rem; padding: 1.4rem 1.3rem; text-decoration: none; border-radius: 16px; transition: transform .5s var(--ease); }
+      .sites a:active { transform: scale(.985); }
       .s-main { flex: 1; min-width: 0; }
       .s-title { display: block; font-size: clamp(1.25rem, 5.4vw, 1.6rem); font-weight: 900; letter-spacing: 0.04em; transition: letter-spacing 0.5s var(--ease); }
       .s-desc { display: block; margin-top: 0.4rem; font-size: 0.84rem; line-height: 1.8; color: var(--soft); }
@@ -227,7 +229,6 @@
       .chips li {
         position: relative; padding: 0.9rem 1.3rem; border-radius: 999px;
         font-size: 1.05rem; font-weight: 700; letter-spacing: 0.08em;
-        background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12);
       }
       .chips li small { display: block; margin-top: 0.2rem; font-size: 0.7rem; font-weight: 500; color: var(--faint); letter-spacing: 0.06em; }
 
@@ -235,7 +236,9 @@
       .c-save { display: flex; align-items: center; justify-content: center; gap: 0.7rem; min-height: 64px; border-radius: 14px; text-decoration: none; color: #111; font-weight: 900; letter-spacing: 0.16em; background: var(--foil); }
       .c-note { margin: 0.8rem 0 1.4rem; font-size: 0.8rem; line-height: 1.8; color: var(--faint); }
       .c-rows { list-style: none; margin: 0; padding: 0; }
-      .c-rows a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; text-decoration: none; border-bottom: 1px solid var(--hair); }
+      .c-rows { border-radius: 16px; overflow: hidden; }
+      .c-rows a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.2rem 1.3rem; text-decoration: none; }
+      .c-rows li + li a { border-top: 1px solid var(--hair); }
       .c-k { display: block; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--faint); }
       .c-v { display: block; margin-top: 0.3rem; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.03em; overflow-wrap: anywhere; }
 
@@ -243,6 +246,28 @@
       .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.72rem; color: var(--faint); letter-spacing: 0.14em; }
       .foot b { font-size: 1rem; color: var(--ink); letter-spacing: 0.12em; }
 
+
+      /* ===== 箔の世界観（下のページ） ===== */
+      .foil-edge {
+        border: 1px solid transparent;
+        background: linear-gradient(#121215, #121215) padding-box, linear-gradient(120deg, rgba(255,255,255,.08), hsl(var(--h) 90% 70% / .55), rgba(255,255,255,.08) 45%, hsl(calc(var(--h) + 150) 90% 70% / .5), rgba(255,255,255,.08)) border-box;
+      }
+      .stamp {
+        display: inline-block; width: 0.42em; height: 0.42em; margin-right: 0.28em; vertical-align: 0.12em; border-radius: 3px;
+        background: conic-gradient(from calc(var(--h) * 1deg), #ff8ccf, #ffd57a, #9dffc9, #79cfff, #c39bff, #ff8ccf);
+        box-shadow: 0 0 18px hsl(var(--h) 90% 60% / .45);
+      }
+      .skip { position: absolute; bottom: max(1.6rem, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); font-size: 0.72rem; letter-spacing: 0.2em; color: var(--faint); opacity: 0; transition: opacity .6s ease .8s; }
+      #loader.can-skip .skip { opacity: 1; }
+      .tilt-btn {
+        display: inline-flex; align-items: center; gap: 0.6rem; appearance: none; cursor: pointer;
+        font: inherit; font-size: 0.84rem; font-weight: 700; letter-spacing: 0.12em; color: #111;
+        padding: 0.8rem 1.3rem; border-radius: 999px; border: 0; background: var(--foil);
+        box-shadow: 0 8px 30px -8px hsl(var(--h) 90% 60% / .6);
+      }
+      .tilt-btn[hidden] { display: none; }
+      .phone { display: inline-block; width: 12px; height: 19px; border: 2px solid currentColor; border-radius: 3px; animation: rock 2.2s ease-in-out infinite; }
+      @keyframes rock { 0%,100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
       }
@@ -262,6 +287,7 @@
         <div class="ld-fill" id="ldFill"></div>
         <div class="ld-name">SHUN SATO</div>
       </div>
+      <div class="skip">タップでスキップ</div>
       <div class="ld-meta">
         <div class="ld-num"><span id="ldNum">0</span><small>%</small></div>
         <div class="ld-status" id="ldStatus">準備しています</div>
@@ -295,6 +321,7 @@
         <div class="shadow" id="shadow" aria-hidden="true"></div>
       </div>
       <div class="controls">
+        <button class="tilt-btn" id="tiltBtn" type="button" hidden><span class="phone" aria-hidden="true"></span>傾けて光らせる</button>
         <p class="hint" id="hint">傾けると光ります · 触れると裏返ります</p>
         <div class="btns">
           <button class="pill" id="flipBtn" type="button">裏返す</button>
@@ -308,7 +335,7 @@
       <!-- 作品 -->
       <section class="blk" aria-labelledby="art-h">
         <div class="wrap">
-          <h2 class="h reveal" id="art-h"><span class="h-ja">作品</span><span class="h-sub">コードで描くジェネラティブアート「ART PLAYGROUND」。<br />この名刺の箔も、作品「FOIL LAW」の仕組みで光っています。</span></h2>
+          <h2 class="h reveal" id="art-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>作品</span><span class="h-sub">コードで描くジェネラティブアート「ART PLAYGROUND」。<br />この名刺の箔も、作品「FOIL LAW」の仕組みで光っています。</span></h2>
           <p class="count reveal" style="--d:.1s"><b class="foil-text" id="artCount" data-n="79">79</b><span>WORKS</span></p>
         </div>
         <div class="rail" id="rail" aria-label="作品一覧">
@@ -400,33 +427,33 @@
 
       <!-- サイト -->
       <section class="blk wrap" aria-labelledby="site-h">
-        <h2 class="h reveal" id="site-h"><span class="h-ja">サイト</span><span class="h-sub">ひとりで作って、運営しています。</span></h2>
-        <ul class="sites">
-          <li class="reveal"><a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener"><span class="s-main"><span class="s-title">お台場混雑予報</span><span class="s-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span></span><span class="s-arr">↗</span></a></li>
-          <li class="reveal" style="--d:.08s"><a href="https://shikaku-drill.net" target="_blank" rel="noopener"><span class="s-main"><span class="s-title">資格ドリルシリーズ</span><span class="s-desc">運行管理者試験と危険物取扱者のドリルを、無料で解けるサイト。</span></span><span class="s-arr">↗</span></a></li>
-          <li class="reveal" style="--d:.16s"><a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener"><span class="s-main"><span class="s-title">ART PLAYGROUND</span><span class="s-desc">上の作品がぜんぶ遊べる、ジェネラティブアートのサイト。</span></span><span class="s-arr">↗</span></a></li>
+        <h2 class="h reveal" id="site-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>サイト</span><span class="h-sub">ひとりで作って、運営しています。</span></h2>
+        <ul class="sites" style="list-style:none;margin:0;padding:0">
+          <li class="reveal"><a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener" class="foil-edge"><span class="s-main"><span class="s-title">お台場混雑予報</span><span class="s-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span></span><span class="s-arr">↗</span></a></li>
+          <li class="reveal" style="--d:.08s"><a href="https://shikaku-drill.net" target="_blank" rel="noopener" class="foil-edge"><span class="s-main"><span class="s-title">資格ドリルシリーズ</span><span class="s-desc">運行管理者試験と危険物取扱者のドリルを、無料で解けるサイト。</span></span><span class="s-arr">↗</span></a></li>
+          <li class="reveal" style="--d:.16s"><a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener" class="foil-edge"><span class="s-main"><span class="s-title">ART PLAYGROUND</span><span class="s-desc">上の作品がぜんぶ遊べる、ジェネラティブアートのサイト。</span></span><span class="s-arr">↗</span></a></li>
         </ul>
       </section>
 
       <!-- 趣味 -->
       <section class="blk wrap" aria-labelledby="hob-h">
-        <h2 class="h reveal" id="hob-h"><span class="h-ja">趣味</span></h2>
+        <h2 class="h reveal" id="hob-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>趣味</span></h2>
         <ul class="chips">
-          <li class="reveal">音楽鑑賞<small>ライブによく行きます</small></li>
-          <li class="reveal" style="--d:.06s">キャンプ</li>
-          <li class="reveal" style="--d:.12s">釣り</li>
-          <li class="reveal" style="--d:.18s">競馬</li>
+          <li class="reveal foil-edge">音楽鑑賞<small>ライブによく行きます</small></li>
+          <li class="reveal foil-edge" style="--d:.06s">キャンプ</li>
+          <li class="reveal foil-edge" style="--d:.12s">釣り</li>
+          <li class="reveal foil-edge" style="--d:.18s">競馬</li>
         </ul>
       </section>
 
       <!-- 連絡先 -->
       <section class="blk wrap" aria-labelledby="con-h">
-        <h2 class="h reveal" id="con-h"><span class="h-ja">連絡先</span></h2>
+        <h2 class="h reveal" id="con-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>連絡先</span></h2>
         <div class="reveal">
           <a class="c-save" href="kuro.vcf">＋ 連絡先に保存</a>
           <p class="c-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
         </div>
-        <ul class="c-rows">
+        <ul class="c-rows foil-edge">
           <li class="reveal"><a href="tel:+817091180935"><span><span class="c-k">電話</span><span class="c-v">070-9118-0935</span></span><span>→</span></a></li>
           <li class="reveal" style="--d:.06s"><a href="mailto:muuu@muse.ai"><span><span class="c-k">メール</span><span class="c-v">muuu@muse.ai</span></span><span>→</span></a></li>
         </ul>
@@ -571,9 +598,12 @@ void main(){
             setHint();
           }).catch(() => { permDenied = true; setHint(); });
         }
+        const tiltBtn = $("#tiltBtn");
+        tiltBtn.addEventListener("click", () => askMotion());
         function setHint() {
+          tiltBtn.hidden = !(needsPerm && !permAsked && !gyro);
           hint.innerHTML = gyro ? "スマホを傾けると、箔が光ります<br>触れると裏返ります"
-            : needsPerm && !permAsked ? "名刺に触れると、傾きで光るようになります"
+            : needsPerm && !permAsked ? "触れると裏返ります"
             : coarse ? "指でなぞると光が動きます<br>触れると裏返ります"
             : "マウスで光が動きます · クリックで裏返ります";
         }
@@ -620,6 +650,13 @@ void main(){
         function frame(nowMs) {
           const t = nowMs / 1000, dt = Math.min(0.05, (nowMs - prev) / 1000);
           prev = nowMs;
+          if (!heroOn) {
+            const k0 = 1 - Math.exp(-dt * 8);
+            if (!gyro) { target.x = Math.sin(t * 0.3) * 0.6; target.y = Math.cos(t * 0.23) * 0.5; }
+            tilt.x += (target.x - tilt.x) * k0; tilt.y += (target.y - tilt.y) * k0;
+            const hue0 = (((tilt.x * 70 + tilt.y * 50 + baseHue * 360 + scrollY * 0.08) % 360) + 360) % 360;
+            root.style.setProperty("--h", hue0.toFixed(1));
+          }
           if (heroOn) {
             if (!gyro && t - lastInput > 2.5 && !down) { target.x = Math.sin(t * 0.45) * 0.6; target.y = Math.cos(t * 0.37) * 0.5; }
             const k = 1 - Math.exp(-dt * 8);
@@ -653,9 +690,15 @@ void main(){
         ]).then(() => document.fonts.ready) : Promise.resolve();
         Promise.race([fontJob, new Promise((r) => setTimeout(r, 5000))]).catch(() => {}).finally(() => (flags.fonts = true));
         const msgs = [[0, "文字を用意しています"], [25, "箔を流し込んでいます"], [55, "作品を並べています"], [85, "箔を押しています"], [100, "できあがり"]];
-        const t0 = performance.now(), MIN = RM ? 500 : 3400, MAX = 10000;
+        let seen = false;
+        try { seen = localStorage.getItem("kuro-meishi-seen") === "1"; localStorage.setItem("kuro-meishi-seen", "1"); } catch (e) {}
+        const t0 = performance.now(), MIN = RM ? 500 : seen ? 1100 : 3400, MAX = seen ? 4000 : 10000;
+        const ldEl = $("#loader");
+        setTimeout(() => ldEl && ldEl.classList.add("can-skip"), 600);
+        ldEl.addEventListener("click", () => { if (!done && ldEl.classList.contains("can-skip")) { done = true; finish(); } });
         let shown = 0, done = false;
         function tick() {
+          if (done) return;
           const el = performance.now() - t0, tp = Math.min(1, el / MIN), e = 1 - (1 - tp) * (1 - tp);
           let target2 = e * 40 + (flags.fonts ? 25 : 0) + (flags.gl ? 10 : 0) + Math.min(1, flags.art / ART_N) * 25;
           if (tp < 1) target2 = Math.min(target2, e * 100, 99);
