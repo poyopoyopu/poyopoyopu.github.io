@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="サトウ シュンの名刺。お台場で運転の仕事をしています。連絡先の保存、電話、メール、LINE、お台場混雑予報・ART PLAYGROUNDへのリンク。" />
+    <meta name="description" content="サトウ シュンの名刺。ジェネラティブアート作品「GLASS RELAY」を掲げた名刺。お台場で運転の仕事をしています。連絡先の保存、電話、メール、LINE、お台場混雑予報・ART PLAYGROUNDへのリンク。" />
     <link rel="icon" href="data:," />
     <title>サトウ シュン｜名刺</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -89,64 +89,47 @@
         to { transform: scaleX(1); }
       }
 
-      /* ===== 水平線ステージ（WebGLシェーダーの水平線） ===== */
-      .horizon-stage {
-        position: relative;
-        height: clamp(88px, 24vw, 124px);
-        cursor: pointer;
-        -webkit-tap-highlight-color: transparent;
+      /* ===== 作品（GLASS RELAY） ===== */
+      .artwork { margin: 0; }
+      .artwork-frame {
+        background: var(--bg);
+        border: 1px solid var(--hairline);
       }
-      .horizon-stage:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
-      .horizon-stage canvas {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
+      .artwork-frame iframe {
         display: block;
-        opacity: 0;
-        transition: opacity 1.4s ease 0.15s;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+        border: 0;
+        background: var(--bg);
       }
-      .horizon-stage .horizon {
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 42%;
-        transition: opacity 0.6s ease;
-      }
-      .horizon-stage.gl-on canvas { opacity: 1; }
-      .horizon-stage.gl-on .horizon { opacity: 0; animation: none; }
-      .horizon-tools {
+      .artwork-cap {
         display: flex;
         align-items: baseline;
         justify-content: space-between;
         gap: 1rem;
-        min-height: 1.2rem;
-        margin-top: 0.65rem;
+        margin-top: 0.7rem;
       }
-      .horizon-hint {
-        margin: 0;
-        font-size: 0.7rem;
-        font-weight: 500;
-        letter-spacing: 0.22em;
-        color: var(--ink-faint);
-      }
-      .tilt-btn {
-        flex: none;
-        margin: 0;
-        padding: 0.15rem 0.05rem;
-        background: none;
-        border: none;
-        border-bottom: 1px solid var(--ink-faint);
-        color: var(--ink-soft);
-        font: inherit;
-        font-size: 0.7rem;
+      .artwork-title {
+        font-size: 0.72rem;
         font-weight: 700;
-        letter-spacing: 0.22em;
-        cursor: pointer;
+        letter-spacing: 0.26em;
+        color: var(--ink-soft);
+        white-space: nowrap;
+      }
+      .artwork-title .cap-sub { color: var(--ink-faint); font-weight: 500; }
+      .artwork-link {
+        flex: none;
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.18em;
+        color: var(--ink-soft);
+        text-decoration: none;
+        border-bottom: 1px solid var(--ink-faint);
+        padding-bottom: 0.15rem;
         transition: color 0.15s ease, border-color 0.15s ease;
       }
-      .tilt-btn:hover { color: var(--accent); border-color: var(--accent); }
-      .tilt-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      .artwork-link:hover { color: var(--accent); border-color: var(--accent); }
+      .artwork-link:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
       /* ===== 名前 ===== */
       .head { padding: 0 0 clamp(2.4rem, 7svh, 3.4rem); }
@@ -159,9 +142,9 @@
       }
       h1.name {
         margin: 0;
-        font-size: clamp(2.3rem, 10.5vw, 3.3rem);
+        font-size: clamp(1.85rem, 7.5vw, 2.4rem);
         font-weight: 900;
-        line-height: 1.25;
+        line-height: 1.3;
         letter-spacing: 0.14em;
       }
       .tagline {
@@ -326,8 +309,7 @@
 
       @media (prefers-reduced-motion: reduce) {
         .horizon { animation: none; }
-        .rows a, .rows .r-arrow, .save-btn { transition: none; }
-        .horizon-stage canvas, .horizon-stage .horizon, .tilt-btn { transition: none; }
+        .rows a, .rows .r-arrow, .save-btn, .artwork-link { transition: none; }
       }
     </style>
   </head>
@@ -335,14 +317,19 @@
     <div class="page">
       <!-- ===== 名前 ===== -->
       <header class="head">
-        <div class="horizon-stage" id="horizonStage" role="button" tabindex="0" aria-label="東京湾の水平線。タップすると小さな音が鳴ります">
-          <canvas id="glCanvas" aria-hidden="true"></canvas>
-          <div class="horizon" aria-hidden="true"></div>
-        </div>
-        <div class="horizon-tools">
-          <p class="horizon-hint">水平線をタップすると音が鳴ります</p>
-          <button class="tilt-btn" id="tiltBtn" type="button" aria-pressed="false" hidden>傾けてみる</button>
-        </div>
+        <figure class="artwork">
+          <div class="artwork-frame">
+            <iframe
+              src="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html"
+              title="ジェネラティブアート作品「GLASS RELAY」"
+              loading="eager"
+            ></iframe>
+          </div>
+          <figcaption class="artwork-cap">
+            <span class="artwork-title">GLASS RELAY <span class="cap-sub">— ART PLAYGROUND</span></span>
+            <a class="artwork-link" href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">作品サイトへ</a>
+          </figcaption>
+        </figure>
         <p class="kind">名刺</p>
         <h1 class="name">サトウ シュン</h1>
         <p class="tagline">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
@@ -444,296 +431,5 @@
       </footer>
     </div>
 
-    <script>
-      (function () {
-        "use strict";
-        var stage = document.getElementById("horizonStage");
-        var canvas = document.getElementById("glCanvas");
-        var tiltBtn = document.getElementById("tiltBtn");
-        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-        var pulse = 0;
-
-        /* ===== Web Audio：水平線をタップした時だけ鳴る小さなドローン ===== */
-        var audioCtx = null;
-        function playTone() {
-          pulse = 1;
-          try {
-            var AC = window.AudioContext || window.webkitAudioContext;
-            if (!AC) return;
-            if (!audioCtx) audioCtx = new AC();
-            if (audioCtx.state === "suspended") audioCtx.resume();
-            var t = audioCtx.currentTime;
-            var master = audioCtx.createGain();
-            master.gain.setValueAtTime(0.0001, t);
-            master.gain.exponentialRampToValueAtTime(0.07, t + 1.1);
-            master.gain.exponentialRampToValueAtTime(0.0001, t + 4.6);
-            var filter = audioCtx.createBiquadFilter();
-            filter.type = "lowpass";
-            filter.frequency.value = 520;
-            filter.Q.value = 0.4;
-            filter.connect(master);
-            master.connect(audioCtx.destination);
-            var notes = [
-              { f: 110.0, g: 0.5 },
-              { f: 164.81, g: 0.32 },
-              { f: 220.0, g: 0.2 },
-              { f: 277.18, g: 0.08 }
-            ];
-            notes.forEach(function (n, i) {
-              var osc = audioCtx.createOscillator();
-              osc.type = "sine";
-              osc.frequency.value = n.f;
-              osc.detune.value = i * 3 - 4;
-              var g = audioCtx.createGain();
-              g.gain.value = n.g;
-              osc.connect(g);
-              g.connect(filter);
-              osc.start(t);
-              osc.stop(t + 4.8);
-            });
-          } catch (e) {
-            /* 音の出ない環境では静かに何もしない */
-          }
-        }
-        stage.addEventListener("click", playTone);
-        stage.addEventListener("keydown", function (e) {
-          if (e.key === "Enter" || e.key === " ") {
-            e.preventDefault();
-            playTone();
-          }
-        });
-
-        /* ===== WebGL：フラグメントシェーダーで描く水平線 ===== */
-        var gl = null;
-        try {
-          gl =
-            canvas.getContext("webgl", { alpha: false, antialias: false, powerPreference: "low-power" }) ||
-            canvas.getContext("experimental-webgl");
-        } catch (e) {
-          gl = null;
-        }
-        if (!gl) {
-          canvas.remove();
-          return; /* 静止した線のまま（音は上のハンドラで鳴る） */
-        }
-
-        var fsSrc = [
-          "precision mediump float;",
-          "uniform vec2 u_res;",
-          "uniform float u_time;",
-          "uniform float u_tilt;",
-          "uniform float u_pulse;",
-          "uniform vec3 u_bg;",
-          "uniform vec3 u_ink;",
-          "uniform vec3 u_accent;",
-          "float hash(vec2 p){ return fract(sin(dot(p, vec2(127.1, 311.7))) * 43758.5453123); }",
-          "float noise(vec2 p){",
-          "  vec2 i = floor(p);",
-          "  vec2 f = fract(p);",
-          "  vec2 u = f * f * (3.0 - 2.0 * f);",
-          "  return mix(mix(hash(i), hash(i + vec2(1.0, 0.0)), u.x),",
-          "             mix(hash(i + vec2(0.0, 1.0)), hash(i + vec2(1.0, 1.0)), u.x), u.y);",
-          "}",
-          "float fbm(vec2 p){",
-          "  float v = 0.0;",
-          "  float a = 0.5;",
-          "  for (int i = 0; i < 3; i++) { v += a * noise(p); p = p * 2.03 + 11.7; a *= 0.5; }",
-          "  return v;",
-          "}",
-          "void main(){",
-          "  vec2 uv = gl_FragCoord.xy / u_res;",
-          "  float aspect = u_res.x / u_res.y;",
-          "  float wob = (fbm(vec2(uv.x * 2.2 - u_time * 0.045, 4.7)) - 0.5) * 0.014;",
-          "  float lineY = 0.58 + wob + tan(u_tilt) * (uv.x - 0.5) * aspect;",
-          "  float distPx = abs(uv.y - lineY) * u_res.y;",
-          "  vec3 col = u_bg;",
-          "  float below = step(uv.y, lineY);",
-          "  float shimmer = fbm(vec2(uv.x * aspect * 3.0 + u_time * 0.03, uv.y * 26.0 - u_time * 0.12));",
-          "  float depthFade = exp(-max(lineY - uv.y, 0.0) * 6.0);",
-          "  col += u_ink * below * (0.012 + depthFade * shimmer * 0.05);",
-          "  float seg = 1.0 - smoothstep(52.0, 76.0, gl_FragCoord.x);",
-          "  vec3 lineCol = mix(u_ink, u_accent, seg);",
-          "  float core = smoothstep(1.7, 0.5, distPx);",
-          "  float glow = smoothstep(14.0, 0.0, distPx) * (0.10 + u_pulse * 0.25);",
-          "  col = mix(col, lineCol, core * 0.92);",
-          "  col += lineCol * glow;",
-          "  col += u_accent * below * depthFade * seg * 0.05 * (0.6 + 0.4 * shimmer);",
-          "  gl_FragColor = vec4(col, 1.0);",
-          "}"
-        ].join("\n");
-
-        function makeShader(type, src) {
-          var s = gl.createShader(type);
-          gl.shaderSource(s, src);
-          gl.compileShader(s);
-          if (!gl.getShaderParameter(s, gl.COMPILE_STATUS)) {
-            gl.deleteShader(s);
-            return null;
-          }
-          return s;
-        }
-        var vs = makeShader(gl.VERTEX_SHADER, "attribute vec2 a_pos; void main(){ gl_Position = vec4(a_pos, 0.0, 1.0); }");
-        var fs = makeShader(gl.FRAGMENT_SHADER, fsSrc);
-        if (!vs || !fs) {
-          canvas.remove();
-          return;
-        }
-        var prog = gl.createProgram();
-        gl.attachShader(prog, vs);
-        gl.attachShader(prog, fs);
-        gl.linkProgram(prog);
-        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) {
-          canvas.remove();
-          return;
-        }
-        gl.useProgram(prog);
-        var buf = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-        var loc = gl.getAttribLocation(prog, "a_pos");
-        gl.enableVertexAttribArray(loc);
-        gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-        var U = {};
-        ["u_res", "u_time", "u_tilt", "u_pulse", "u_bg", "u_ink", "u_accent"].forEach(function (n) {
-          U[n] = gl.getUniformLocation(prog, n);
-        });
-
-        function cssColor(name) {
-          var v = getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-          var m = /^#([0-9a-f]{6})$/i.exec(v);
-          if (!m) return [0, 0, 0];
-          var n = parseInt(m[1], 16);
-          return [((n >> 16) & 255) / 255, ((n >> 8) & 255) / 255, (n & 255) / 255];
-        }
-        function applyColors() {
-          gl.uniform3fv(U.u_bg, cssColor("--bg"));
-          gl.uniform3fv(U.u_ink, cssColor("--ink"));
-          gl.uniform3fv(U.u_accent, cssColor("--accent"));
-        }
-
-        var W = 0;
-        var H = 0;
-        function resize() {
-          var dpr = Math.min(window.devicePixelRatio || 1, 2);
-          var w = Math.max(1, Math.round(stage.clientWidth * dpr));
-          var h = Math.max(1, Math.round(stage.clientHeight * dpr));
-          if (w !== W || h !== H) {
-            W = w;
-            H = h;
-            canvas.width = w;
-            canvas.height = h;
-            gl.viewport(0, 0, w, h);
-          }
-        }
-
-        /* ===== ジャイロ連動：傾けると水平線が水面のように保たれる ===== */
-        var tiltTarget = 0;
-        var tiltCur = 0;
-        var gyroOn = false;
-        function onOrient(e) {
-          if (e.gamma == null && e.beta == null) return;
-          var deg;
-          var o = window.orientation || 0;
-          if (o === 90) deg = e.beta || 0;
-          else if (o === -90) deg = -(e.beta || 0);
-          else deg = e.gamma || 0;
-          if (deg > 30) deg = 30;
-          if (deg < -30) deg = -30;
-          tiltTarget = (-deg * Math.PI) / 180 * 0.35;
-        }
-        function setGyro(on) {
-          gyroOn = on;
-          tiltBtn.setAttribute("aria-pressed", on ? "true" : "false");
-          tiltBtn.textContent = on ? "連動をやめる" : "傾けてみる";
-          if (on) window.addEventListener("deviceorientation", onOrient);
-          else {
-            window.removeEventListener("deviceorientation", onOrient);
-            tiltTarget = 0;
-          }
-        }
-        if (!reduceMotion && "DeviceOrientationEvent" in window) {
-          tiltBtn.hidden = false;
-          tiltBtn.addEventListener("click", function () {
-            if (gyroOn) {
-              setGyro(false);
-              return;
-            }
-            if (typeof DeviceOrientationEvent.requestPermission === "function") {
-              DeviceOrientationEvent.requestPermission()
-                .then(function (res) {
-                  if (res === "granted") setGyro(true);
-                })
-                .catch(function () {});
-            } else {
-              setGyro(true);
-            }
-          });
-        }
-
-        /* ===== 描画ループ（隠れたら停止・reduced-motionでは静止画） ===== */
-        var rafId = null;
-        var running = false;
-        var startT = performance.now();
-        function frame(now) {
-          resize();
-          tiltCur += (tiltTarget - tiltCur) * 0.055;
-          pulse *= 0.965;
-          gl.uniform2f(U.u_res, W, H);
-          gl.uniform1f(U.u_time, (now - startT) / 1000);
-          gl.uniform1f(U.u_tilt, tiltCur);
-          gl.uniform1f(U.u_pulse, pulse);
-          gl.drawArrays(gl.TRIANGLES, 0, 3);
-          rafId = requestAnimationFrame(frame);
-        }
-        function startLoop() {
-          if (!running && !reduceMotion) {
-            running = true;
-            rafId = requestAnimationFrame(frame);
-          }
-        }
-        function stopLoop() {
-          running = false;
-          if (rafId) cancelAnimationFrame(rafId);
-          rafId = null;
-        }
-        function drawStatic() {
-          resize();
-          applyColors();
-          gl.uniform2f(U.u_res, W, H);
-          gl.uniform1f(U.u_time, 0);
-          gl.uniform1f(U.u_tilt, 0);
-          gl.uniform1f(U.u_pulse, 0);
-          gl.drawArrays(gl.TRIANGLES, 0, 3);
-        }
-
-        stage.classList.add("gl-on");
-        applyColors();
-        if (reduceMotion) {
-          drawStatic();
-        } else {
-          startLoop();
-        }
-        document.addEventListener("visibilitychange", function () {
-          if (document.hidden) stopLoop();
-          else startLoop();
-        });
-        if ("IntersectionObserver" in window && !reduceMotion) {
-          new IntersectionObserver(function (entries) {
-            if (entries[0].isIntersecting) startLoop();
-            else stopLoop();
-          }).observe(stage);
-        }
-        window.addEventListener("resize", function () {
-          if (reduceMotion) drawStatic();
-        });
-        var scheme = window.matchMedia("(prefers-color-scheme: light)");
-        if (scheme.addEventListener) {
-          scheme.addEventListener("change", function () {
-            applyColors();
-            if (reduceMotion) drawStatic();
-          });
-        }
-      })();
-    </script>
   </body>
 </html>
