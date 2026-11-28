@@ -508,7 +508,7 @@ uniform vec2 uRes;uniform float uTime;uniform vec2 uTilt;
 uniform vec4 uA[${S}];uniform vec4 uB[${S}];
 const float TAU=6.28318530718;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-vec2 facet(vec2 q,float N,float rot){float sec=TAU/N;float u=(atan(q.y,q.x+1e-6)-rot)/sec;float k=floor(u);float hf=step(.5,u-k);float th=(k+.25+.5*hf)*sec+rot;return vec2(cos(th+.7),sin(th+.7));}
+vec2 facet(vec2 q,float N,float rot){float sec=TAU/N;float u=(atan(q.y,q.x+1e-6)-rot)/sec;float k=floor(u);float s=smoothstep(.15,.85,u-k);float th=(k+s)*sec+rot;return vec2(cos(th+.7),sin(th+.7));}
 vec2 foldQ(vec2 q,float N,float rot){float sec=TAU/N;float a=mod(atan(q.y,q.x+1e-6)-rot,sec);a=abs(a-.5*sec);return length(q)*vec2(cos(a),sin(a));}
 void main(){
   vec2 fr=gl_FragCoord.xy;
@@ -516,26 +516,32 @@ void main(){
   float px=1./uRes.x;
   vec2 tl=uTilt;
   vec2 f=f0+tl*.02;
-  float d1=1e9,d2=1e9;int i1=0;
-  for(int i=0;i<${S};i++){float r=length(f-uA[i].xy);if(r<d1){d2=d1;d1=r;i1=i;}else if(r<d2){d2=r;}}
-  vec4 A=uA[i1],B=uB[i1];
-  vec2 q=(f-A.xy)*B.y;
-  vec2 nT=vec2(0.);float w=1.;vec2 qq=q;
-  for(int k=0;k<4;k++){nT+=w*facet(qq,A.z,A.w+float(k)*.45);qq=foldQ(qq,A.z,A.w)*2.15-vec2(.62,0.);w*=.55;}
+  float d1=1e9;
+  for(int i=0;i<${S};i++){d1=min(d1,length(f-uA[i].xy));}
+  vec2 nT=vec2(0.);float Wt=0.,hueS=0.,lenS=0.;
+  for(int i=0;i<${S};i++){
+    vec4 A=uA[i],B=uB[i];
+    float r=length(f-A.xy);
+    float wg=exp(-(r-d1)*9.);
+    vec2 q=(f-A.xy)*B.y;
+    vec2 n=vec2(0.);float w=1.;vec2 qq=q;
+    for(int k=0;k<4;k++){n+=w*facet(qq,A.z,A.w+float(k)*.45);qq=foldQ(qq,A.z,A.w)*2.15-vec2(.62,0.);w*=.55;}
+    nT+=wg*n;hueS+=wg*B.x;lenS+=wg*length(q);Wt+=wg;
+  }
+  nT/=Wt;hueS/=Wt;lenS/=Wt;
   vec3 Nn=normalize(vec3(nT*.42,1.));
   vec3 L=normalize(vec3(-tl*.95,1.));
   vec3 H=normalize(L+vec3(0.,0.,1.));
   float nh=max(dot(Nn,H),0.);
   float spec=pow(nh,70.),wide=pow(nh,10.);
-  float phase=dot(nT,tl)*1.1+B.x+length(q)*.35;
+  float phase=dot(nT,tl)*1.1+hueS+lenS*.35;
   vec3 rainbow=.5+.5*cos(TAU*(phase+vec3(0.,.33,.67)));
-  vec3 tint=.5+.5*cos(TAU*(B.x+vec3(0.,.33,.67)));
+  vec3 tint=.5+.5*cos(TAU*(hueS+vec3(0.,.33,.67)));
   vec3 metal=mix(vec3(.5),tint,.3);
   float diff=.5+.5*dot(Nn,L);
   vec3 c=metal*(.14+.3*diff);
   c+=rainbow*(.1+.95*wide);
   c+=vec3(1.,.96,.88)*spec*.9;
-  c*=mix(.35,1.,smoothstep(0.,px*3.,d2-d1));
   float bd=dot(f0,normalize(vec2(1.,.6)))+tl.x*.5+tl.y*.3;
   c+=vec3(1.,.97,.9)*exp(-pow(bd/.2,2.))*.16;
   vec2 hb=vec2(.5,.5*uRes.y/uRes.x);vec2 e=hb-abs(f0);float edge=min(e.x,e.y);
