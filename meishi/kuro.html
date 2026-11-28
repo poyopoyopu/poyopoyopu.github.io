@@ -312,6 +312,42 @@
       .hb-w { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; will-change: transform, opacity, filter; }
       .hb-w b { display: block; font-weight: 900; font-size: clamp(3.6rem, 20vw, 9rem); letter-spacing: .04em; line-height: 1.15; }
       .hb-w small { display: block; margin-top: .9rem; font-size: .9rem; color: var(--ink); letter-spacing: .24em; opacity: .8; }
+      /* 5：音楽 */
+      .lo { background: #070708; }
+      .lo-in { position: absolute; inset: 0; will-change: transform; }
+      .lo-rows { position: absolute; left: 0; right: 0; top: 13%; display: grid; gap: .3rem; }
+      .lo-row { display: flex; width: max-content; white-space: nowrap; font-family: "Unbounded", "Zen Kaku Gothic New", sans-serif; font-weight: 800; font-size: clamp(2.2rem, 11vw, 4.6rem); line-height: 1.12; letter-spacing: -.01em; color: transparent; -webkit-text-stroke: 1px rgba(244,243,239,.5); will-change: transform, opacity; }
+      .lo-row:nth-child(2) { -webkit-text-stroke: 0; color: rgba(244,243,239,.9); font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; }
+      .lo-row:nth-child(4) { -webkit-text-stroke: 0; background: var(--foil); -webkit-background-clip: text; background-clip: text; }
+      .lo-bars { position: absolute; left: 4%; right: 4%; bottom: 7%; height: 38%; display: flex; align-items: flex-end; gap: 3px; }
+      .lo-bars i { flex: 1; height: 100%; border-radius: 3px 3px 0 0; transform-origin: 50% 100%; transform: scaleY(.04); background: linear-gradient(to top, hsl(var(--h) 90% 60%), hsl(calc(var(--h) + 90) 95% 72%) 60%, #fff); will-change: transform; }
+      .lo-msg { position: absolute; left: clamp(1.2rem, 6vw, 3rem); right: clamp(1.2rem, 6vw, 3rem); top: 50%; transform: translateY(-50%); margin: 0; font-weight: 900; font-size: clamp(2rem, 9vw, 4rem); line-height: 1.3; letter-spacing: .03em; text-shadow: 0 4px 30px rgba(0,0,0,.9); }
+      .lo-msg2 { opacity: 0; white-space: nowrap; font-size: clamp(2.4rem, 11vw, 5.6rem); }
+      .lo-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 3; }
+      /* 6：ベスト盤 */
+      .rc { background: radial-gradient(80% 60% at 50% 45%, #18161c, var(--bg) 75%); }
+      .rec-list { list-style: none; margin: 0; padding: 0; }
+      .rec { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; will-change: transform, opacity; }
+      .rec-art { --s: min(60vw, 280px); position: relative; width: var(--s); height: var(--s); margin-left: calc(var(--s) * -0.36); }
+      .sleeve { position: absolute; inset: 0; z-index: 2; border-radius: 4px; overflow: hidden;
+        background: radial-gradient(circle at 72% 28%, hsl(var(--rh) 85% 62% / .9), transparent 46%), radial-gradient(circle at 20% 85%, hsl(calc(var(--rh) + 150) 80% 55% / .55), transparent 50%), linear-gradient(150deg, hsl(calc(var(--rh) + 30) 45% 20%), #0c0c0e 70%);
+        box-shadow: 0 30px 60px -18px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.1); }
+      .sleeve::after { content: ""; position: absolute; left: -20%; right: -20%; top: 54%; height: 7%; transform: rotate(-24deg); background: var(--foil); opacity: .85; mix-blend-mode: screen; }
+      .sleeve b { position: absolute; left: 8%; top: 6%; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: calc(var(--s) * .26); line-height: 1; color: rgba(255,255,255,.92); letter-spacing: -.04em; }
+      .sleeve i { position: absolute; left: 8%; right: 8%; bottom: 7%; font-style: normal; font-family: var(--mono); font-size: calc(var(--s) * .042); letter-spacing: .2em; color: rgba(255,255,255,.75); text-transform: uppercase; }
+      .disc { position: absolute; inset: 3%; z-index: 1; border-radius: 50%; will-change: transform; }
+      .disc::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 20deg, transparent 0 10%, rgba(255,255,255,.16) 14%, transparent 20% 55%, rgba(255,255,255,.12) 62%, transparent 68%); pointer-events: none; }
+      .disc-in { position: absolute; inset: 0; border-radius: 50%; will-change: transform;
+        background: radial-gradient(circle, #f4f3ef 0 2.2%, hsl(var(--rh) 80% 58%) 2.4% 16%, hsl(calc(var(--rh) + 40) 70% 40%) 16.5% 17%, transparent 17.2%), repeating-radial-gradient(circle, #101012 0 1.6px, #1d1d21 1.6px 3px);
+        box-shadow: 0 20px 40px -10px rgba(0,0,0,.9); }
+      .disc-in::before { content: ""; position: absolute; left: 50%; top: 22%; width: 3%; height: 6%; border-radius: 2px; background: rgba(255,255,255,.55); }
+      .rec-t { margin: 2.2rem 0 0; max-width: 88vw; text-align: center; font-weight: 900; font-size: clamp(1.6rem, 7.4vw, 2.8rem); line-height: 1.25; letter-spacing: .02em; }
+      .rec-a { margin: .5rem 0 0; font-family: var(--mono); font-size: .78rem; letter-spacing: .24em; color: var(--soft); text-transform: uppercase; }
+      .rc-foot { position: absolute; left: 0; right: 0; bottom: max(1.4rem, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: .66rem; letter-spacing: .12em; color: var(--faint); }
+      .motto { margin: 0 0 3rem; font-weight: 700; font-size: clamp(1.3rem, 5.6vw, 2rem); line-height: 1.6; letter-spacing: .08em; color: var(--soft); }
+      .rm #sE .lo-msg2 { opacity: 1; position: relative; transform: none; }
+      .rm .rec { position: relative; opacity: 1; padding: 3rem 0; }
+      .rm .rec-list { padding-top: 5rem; }
       /* 締め */
       .fin { margin: 0 0 4rem; font-weight: 900; font-size: clamp(2.6rem, 13vw, 5rem); line-height: 1.2; letter-spacing: .03em; }
       .rm .scene { height: auto; }
@@ -518,22 +554,59 @@
         </div>
       </section>
 
+      <!-- 演出5：音楽（静かに始まって轟音） -->
+      <section class="scene" id="sE" style="--len:400svh" aria-labelledby="mus-h">
+        <div class="pin lo">
+          <div class="lo-in" id="loIn">
+            <div class="lo-rows" id="loRows" aria-hidden="true">
+            <div class="lo-row"><span>Mogwai · MONO · Tortoise · toe · Caspian · American Football · Mogwai · MONO · Tortoise · toe · Caspian · American Football · </span><span>Mogwai · MONO · Tortoise · toe · Caspian · American Football · Mogwai · MONO · Tortoise · toe · Caspian · American Football · </span></div>
+            <div class="lo-row"><span>くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · </span><span>くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · </span></div>
+            <div class="lo-row"><span>rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · </span><span>rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · </span></div>
+            <div class="lo-row"><span>Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · </span><span>Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · </span></div>
+            </div>
+            <div class="lo-bars" id="loBars" aria-hidden="true"></div>
+            <p class="lo-msg" id="loMsg">静かに始まって、<br />最後は、轟音。</p>
+            <p class="lo-msg lo-msg2" id="loMsg2">音は、<br /><span class="foil-text">音量で浴びる。</span></p>
+          </div>
+          <h2 class="hb-head" id="mus-h"><span><span class="stamp" aria-hidden="true"></span>音楽</span><span class="hb-c">POST-ROCK · SHOEGAZE · TECHNO</span></h2>
+          <div class="lo-flash" id="loFlash" aria-hidden="true"></div>
+        </div>
+      </section>
+
+      <!-- 演出6：人生のベスト盤 -->
+      <section class="scene" id="sF" style="--len:460svh" aria-labelledby="rec-h">
+        <div class="pin rc">
+          <h2 class="hb-head" id="rec-h"><span><span class="stamp" aria-hidden="true"></span>人生のベスト盤</span><span class="hb-c" id="recC">01 / 07</span></h2>
+          <ul class="rec-list">
+            <li class="rec" style="--rh:330"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>01</b><i>The Postal Service</i></div></div><p class="rec-t">Give Up</p><p class="rec-a">The Postal Service</p></li>
+            <li class="rec" style="--rh:20"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>02</b><i>Eels</i></div></div><p class="rec-t">Beautiful Freak</p><p class="rec-a">Eels</p></li>
+            <li class="rec" style="--rh:210"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>03</b><i>Weezer</i></div></div><p class="rec-t">Weezer（青いアルバム）</p><p class="rec-a">Weezer</p></li>
+            <li class="rec" style="--rh:45"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>04</b><i>くるり</i></div></div><p class="rec-t">さよならストレンジャー</p><p class="rec-a">くるり</p></li>
+            <li class="rec" style="--rh:280"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>05</b><i>Daft Punk</i></div></div><p class="rec-t">Interstella 5555</p><p class="rec-a">Daft Punk</p></li>
+            <li class="rec" style="--rh:180"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>06</b><i>Sigur Rós</i></div></div><p class="rec-t">( )</p><p class="rec-a">Sigur Rós</p></li>
+            <li class="rec" style="--rh:95"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>07</b><i>eastern youth</i></div></div><p class="rec-t">夏の日の午後</p><p class="rec-a">eastern youth</p></li>
+          </ul>
+          <p class="rc-foot">ジャケットはこのページ用に描いた、オリジナルの絵です</p>
+        </div>
+      </section>
+
       <!-- 演出4：趣味 -->
       <section class="scene" id="sD" style="--len:360svh" aria-labelledby="hob-h">
         <div class="pin hb">
           <div class="hb-ring" id="hbRing" aria-hidden="true"></div>
-          <h2 class="hb-head" id="hob-h"><span class="stamp" aria-hidden="true"></span>趣味<span class="hb-c" id="hbC">01 / 04</span></h2>
+          <h2 class="hb-head" id="hob-h"><span><span class="stamp" aria-hidden="true"></span>趣味</span><span class="hb-c" id="hbC">01 / 04</span></h2>
           <ul class="hb-list">
-            <li class="hb-w"><b class="foil-text">音楽鑑賞</b><small>ライブによく行きます</small></li>
-            <li class="hb-w"><b class="foil-text">キャンプ</b></li>
-            <li class="hb-w"><b class="foil-text">釣り</b></li>
-            <li class="hb-w"><b class="foil-text">競馬</b></li>
+            <li class="hb-w"><b class="foil-text">キャンプ</b><small>ふもとっぱらで、焚き火</small></li>
+            <li class="hb-w"><b class="foil-text">競馬</b><small>データで予想して、現地で観る</small></li>
+            <li class="hb-w"><b class="foil-text">釣り</b><small>のんびり、糸を垂らす</small></li>
+            <li class="hb-w"><b class="foil-text">カード</b><small>ポケカと遊戯王のイラスト集め</small></li>
           </ul>
         </div>
       </section>
 
       <!-- 連絡先 -->
       <section class="blk wrap" aria-labelledby="con-h">
+        <p class="motto reveal">風まかせ。<br />でも、選べる自分で。</p>
         <p class="fin reveal">名刺、<br />受け取って<br />ください。</p>
         <h2 class="h reveal" id="con-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>連絡先</span></h2>
         <div class="reveal">
@@ -868,6 +941,15 @@ void main(){
         // 趣味
         const words = [...document.querySelectorAll(".hb-w")], hbRing = $("#hbRing"), hbC = $("#hbC");
         const span = (el) => { const r = el.getBoundingClientRect(); const len = r.height - innerHeight; return { r, p: len > 0 ? clamp(-r.top / len, 0, 1) : 0, on: r.top < innerHeight && r.bottom > 0 }; };
+        // 音楽
+        const sE = $("#sE"), loIn = $("#loIn"), loFlash = $("#loFlash"), loMsg = $("#loMsg"), loMsg2 = $("#loMsg2");
+        const loRows = [...document.querySelectorAll(".lo-row")];
+        const loBarsEl = $("#loBars");
+        for (let i = 0; i < 36; i++) loBarsEl.appendChild(document.createElement("i"));
+        const loBars = [...loBarsEl.children];
+        // ベスト盤
+        const sF = $("#sF"), recC = $("#recC");
+        const recs = [...document.querySelectorAll(".rec")].map((el) => ({ el, disc: el.querySelector(".disc"), inner: el.querySelector(".disc-in"), spin: 0 }));
         if (RM) root.classList.add("rm");
         let lastY = -1, lastW = 0;
         function scenes(nowMs) {
@@ -946,6 +1028,51 @@ void main(){
               w.style.opacity = o.toFixed(3);
               w.style.transform = `translate(-50%,-50%) scale(${s.toFixed(3)})`;
               w.style.filter = b > 0.05 && o > 0 ? `blur(${b.toFixed(1)}px)` : "none";
+            });
+          }
+          // 5：音楽（静かに始まって、轟音で爆発）
+          const E1 = span(sE);
+          if (E1.on) {
+            const p = E1.p;
+            const build = Math.pow(ss(0.04, 0.74, p), 2.2), after = ss(0.76, 0.92, p);
+            const a = build * (1 - after * 0.8);
+            for (let i = 0; i < loBars.length; i++) {
+              const f = i / (loBars.length - 1);
+              const v = 0.03 + a * (0.5 + 0.5 * Math.abs(Math.sin(t * (5 + (i % 7)) + i * 1.9))) * (0.45 + 0.55 * Math.sin(f * Math.PI));
+              loBars[i].style.transform = `scaleY(${Math.min(1, v).toFixed(3)})`;
+            }
+            loRows.forEach((r, i) => {
+              const dir = i % 2 ? 1 : -1, w = r.scrollWidth / 2;
+              const x = dir > 0 ? -w + p * w * 0.55 : -p * w * 0.55;
+              r.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+              r.style.opacity = (0.12 + build * 0.75).toFixed(3);
+            });
+            const shake = ss(0.55, 0.74, p) * (1 - ss(0.74, 0.8, p));
+            loIn.style.transform = shake > 0.001 ? `translate(${(Math.sin(t * 61) * shake * 9).toFixed(1)}px,${(Math.cos(t * 47) * shake * 9).toFixed(1)}px)` : "";
+            loFlash.style.opacity = Math.exp(-Math.pow((p - 0.75) / 0.022, 2)).toFixed(3);
+            loMsg.style.opacity = (ss(0, 0.05, p) * (1 - ss(0.22, 0.34, p))).toFixed(3);
+            const m2 = ss(0.78, 0.88, p);
+            loMsg2.style.opacity = m2.toFixed(3);
+            loMsg2.style.transform = `translateY(-50%) scale(${(1.25 - 0.25 * m2).toFixed(3)})`;
+          }
+          // 6：人生のベスト盤（レコードが出てきて回る）
+          const F1b = span(sF);
+          if (F1b.on) {
+            const n = recs.length, x = 0.1 + F1b.p * (n - 0.1) * 0.999;
+            recC.textContent = `${String(Math.min(n, Math.floor(x) + 1)).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
+            recs.forEach((r, i) => {
+              const l = x - i; let o = 0, y = 90;
+              if (l >= 0 && l < 0.2) { const k = ss(0, 1, l / 0.2); o = k; y = (1 - k) * 90; }
+              else if (l >= 0.2 && (l < 0.8 || i === n - 1)) { o = 1; y = 0; }
+              else if (l >= 0.8 && l < 1) { const k = ss(0, 1, (l - 0.8) / 0.2); o = 1 - k; y = -k * 90; }
+              r.el.style.opacity = o.toFixed(3);
+              if (o > 0) {
+                const out = ss(0.12, 0.42, l);
+                r.el.style.transform = `translateY(${y.toFixed(1)}px)`;
+                r.disc.style.transform = `translateX(${(out * 62).toFixed(1)}%)`;
+                r.spin = (r.spin || 0) + out * 260 * (1 / 60);
+                r.inner.style.transform = `rotate(${(r.spin + l * 240).toFixed(1)}deg)`;
+              }
             });
           }
           requestAnimationFrame(scenes);
