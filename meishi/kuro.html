@@ -268,6 +268,59 @@
       .tilt-btn[hidden] { display: none; }
       .phone { display: inline-block; width: 12px; height: 19px; border: 2px solid currentColor; border-radius: 3px; animation: rock 2.2s ease-in-out infinite; }
       @keyframes rock { 0%,100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
+      /* ================= スクロール演出 ================= */
+      .dive { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; transform-origin: 50% 40%; will-change: transform, opacity; }
+      .scene { position: relative; height: var(--len, 300svh); }
+      .pin { position: sticky; top: 0; height: 100svh; overflow: hidden; }
+      /* 1：箔の中へ */
+      .sA-clip { position: absolute; inset: 0; overflow: hidden; will-change: clip-path; }
+      #foil2 { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      .sA-veil { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 50%, rgba(11,11,13,.12), rgba(11,11,13,.72)); }
+      .sA-lines { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: .2rem; padding: 0 clamp(1.2rem, 6vw, 3rem); }
+      .ln { margin: 0; white-space: nowrap; font-weight: 900; font-size: clamp(1.6rem, 7vw, 3.4rem); line-height: 1.35; letter-spacing: .03em; color: #fff; text-shadow: 0 2px 28px rgba(0,0,0,.6); will-change: transform, opacity, filter; }
+      .ln.big { margin-top: .5rem; font-size: clamp(3.6rem, 19vw, 9rem); line-height: 1; letter-spacing: -.01em; }
+      .ln .mono { font-family: var(--mono); letter-spacing: -.06em; margin-right: .05em; }
+      .sA-black { position: absolute; inset: 0; background: var(--bg); opacity: 0; pointer-events: none; }
+      /* 2：トンネル */
+      .tun { perspective: 620px; background: radial-gradient(70% 55% at 50% 50%, hsl(var(--h) 70% 16%), var(--bg) 72%); }
+      .tun-world { position: absolute; inset: 0; transform-style: preserve-3d; }
+      .tw { --w: min(40vw, 190px); position: absolute; left: 50%; top: 50%; width: var(--w); aspect-ratio: 476 / 630; margin-left: calc(var(--w) / -2); margin-top: calc(var(--w) * -0.662); border-radius: 12px; overflow: hidden; background: #151518; opacity: 0; will-change: transform, opacity; box-shadow: 0 24px 50px -12px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.14); }
+      .tw img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; }
+      .tun-hud { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; pointer-events: none; z-index: 2; text-shadow: 0 4px 30px rgba(0,0,0,.8); }
+      .tun-hud b { display: block; font-family: var(--mono); font-weight: 700; font-size: clamp(5.5rem, 34vw, 12rem); line-height: .9; letter-spacing: -.06em; font-variant-numeric: tabular-nums; transition: transform .6s var(--ease); }
+      .tun-hud.max b { transform: scale(1.18); background: var(--foil); -webkit-background-clip: text; background-clip: text; color: transparent; }
+      .tun-hud span { font-size: .8rem; letter-spacing: .4em; color: var(--soft); }
+      .tun-name { margin: .9rem 0 0; font-family: var(--mono); font-size: .72rem; letter-spacing: .18em; color: var(--ink); opacity: .75; }
+      .tun-top { position: absolute; top: max(1.4rem, env(safe-area-inset-top)); left: 0; right: 0; margin: 0; text-align: center; font-family: var(--mono); font-size: .66rem; letter-spacing: .4em; color: var(--faint); z-index: 2; }
+      /* 3：サイト */
+      .hz-head { position: absolute; z-index: 2; top: max(1.4rem, env(safe-area-inset-top)); left: clamp(1.4rem, 7vw, 3rem); margin: 0; font-size: 1.5rem; font-weight: 900; letter-spacing: .06em; }
+      .hz-head small { display: block; margin-top: .3rem; font-size: .76rem; font-weight: 500; color: var(--soft); letter-spacing: .08em; }
+      .hz-track { display: flex; width: max-content; height: 100%; will-change: transform; }
+      .hz-panel { position: relative; flex: none; width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(1.4rem, 7vw, 3rem); text-decoration: none; overflow: hidden; }
+      .hz-panel::before { content: ""; position: absolute; inset: 14% 5% 12%; border-radius: 28px; background: radial-gradient(90% 70% at 30% 40%, hsl(var(--ph) 85% 50% / .28), transparent 70%), radial-gradient(70% 60% at 80% 80%, hsl(calc(var(--ph) + 120) 85% 50% / .2), transparent 70%); border: 1px solid hsl(var(--ph) 80% 70% / .25); }
+      .hz-no { position: absolute; right: -3vw; bottom: 9%; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 56vw; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px hsl(var(--ph) 80% 75% / .35); will-change: transform; }
+      .hz-title { position: relative; font-weight: 900; font-size: clamp(2.8rem, 14vw, 5.5rem); line-height: 1.08; letter-spacing: .02em; background: linear-gradient(100deg, hsl(var(--ph) 95% 74%), hsl(calc(var(--ph) + 80) 95% 76%), hsl(calc(var(--ph) + 160) 95% 74%)); -webkit-background-clip: text; background-clip: text; color: transparent; will-change: transform; }
+      .hz-desc { position: relative; margin-top: 1.3rem; max-width: 20em; font-size: .95rem; line-height: 1.9; color: var(--soft); }
+      .hz-go { position: relative; margin-top: 1.8rem; align-self: flex-start; padding: .9rem 1.4rem; border-radius: 999px; background: #fff; color: #111; font-weight: 900; font-size: .85rem; letter-spacing: .14em; }
+      .hz-bar { position: absolute; z-index: 2; left: clamp(1.4rem, 7vw, 3rem); right: clamp(1.4rem, 7vw, 3rem); bottom: max(1.8rem, env(safe-area-inset-bottom)); height: 2px; background: var(--hair); border-radius: 2px; overflow: hidden; }
+      .hz-bar i { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--foil); }
+      /* 4：趣味 */
+      .hb-ring { position: absolute; left: 50%; top: 50%; width: 140vmax; height: 140vmax; margin: -70vmax 0 0 -70vmax; border-radius: 50%; background: conic-gradient(hsl(var(--h) 90% 55% / 0), hsl(var(--h) 90% 60% / .4), hsl(calc(var(--h) + 120) 90% 60% / .32), hsl(calc(var(--h) + 240) 90% 60% / .4), hsl(var(--h) 90% 55% / 0)); filter: blur(46px); opacity: .75; will-change: transform; }
+      .hb-head { position: absolute; z-index: 2; top: max(1.4rem, env(safe-area-inset-top)); left: clamp(1.4rem, 7vw, 3rem); right: clamp(1.4rem, 7vw, 3rem); margin: 0; display: flex; justify-content: space-between; align-items: baseline; font-size: 1.5rem; font-weight: 900; letter-spacing: .06em; }
+      .hb-c { font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .2em; color: var(--soft); }
+      .hb-list { list-style: none; margin: 0; padding: 0; }
+      .hb-w { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; will-change: transform, opacity, filter; }
+      .hb-w b { display: block; font-weight: 900; font-size: clamp(3.6rem, 20vw, 9rem); letter-spacing: .04em; line-height: 1.15; }
+      .hb-w small { display: block; margin-top: .9rem; font-size: .9rem; color: var(--ink); letter-spacing: .24em; opacity: .8; }
+      /* 締め */
+      .fin { margin: 0 0 4rem; font-weight: 900; font-size: clamp(2.6rem, 13vw, 5rem); line-height: 1.2; letter-spacing: .03em; }
+      .rm .scene { height: auto; }
+      .rm .pin { position: relative; height: auto; min-height: 100svh; }
+      .rm #sB, .rm .sA-black { display: none; }
+      .rm .hz-track { flex-direction: column; width: auto; height: auto; padding-top: 6rem; }
+      .rm .hz-panel { width: 100%; min-height: 80svh; }
+      .rm .hb-list { padding: 7rem 1.4rem 3rem; display: grid; gap: 2rem; }
+      .rm .hb-w { position: static; transform: none; }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
       }
@@ -297,6 +350,7 @@
     <!-- ================= 名刺 ================= -->
     <header class="hero">
       <div class="glow" aria-hidden="true"></div>
+      <div class="dive" id="dive">
       <div class="stage">
         <div class="card" id="card" role="button" tabindex="0" aria-label="サトウ シュンの名刺。押すと裏返って連絡先が出ます">
           <div class="face front">
@@ -328,15 +382,41 @@
           <button class="pill" id="rollBtn" type="button"><span class="spark">✦</span>模様を変える</button>
         </div>
       </div>
-      <div class="down" aria-hidden="true"></div>
+      </div>
+      <div class="down" id="downCue" aria-hidden="true"></div>
     </header>
 
     <main>
+      <!-- 演出1：箔の中へ -->
+      <section class="scene" id="sA" style="--len:300svh" aria-label="ハンドルを握る手で、コードを書いています。生まれた光は、79作品。">
+        <div class="pin sA">
+          <div class="sA-clip" id="sAclip">
+            <canvas id="foil2" aria-hidden="true"></canvas>
+            <div class="sA-veil"></div>
+          </div>
+          <div class="sA-lines" aria-hidden="true">
+            <p class="ln">ハンドルを握る手で、</p>
+            <p class="ln">コードを書いています。</p>
+            <p class="ln">生まれた光は、</p>
+            <p class="ln big"><span class="mono">79</span>作品。</p>
+          </div>
+          <div class="sA-black" id="sAblack"></div>
+        </div>
+      </section>
+
+      <!-- 演出2：作品のトンネル -->
+      <section class="scene" id="sB" style="--len:420svh" aria-label="作品79点">
+        <div class="pin tun">
+          <div class="tun-world" id="tunWorld"></div>
+          <div class="tun-hud" id="tunHud"><b id="tunN">0</b><span>WORKS</span><p class="tun-name" id="tunName">&nbsp;</p></div>
+          <p class="tun-top">ART PLAYGROUND</p>
+        </div>
+      </section>
+
       <!-- 作品 -->
       <section class="blk" aria-labelledby="art-h">
         <div class="wrap">
-          <h2 class="h reveal" id="art-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>作品</span><span class="h-sub">コードで描くジェネラティブアート「ART PLAYGROUND」。<br />この名刺の箔も、作品「FOIL LAW」の仕組みで光っています。</span></h2>
-          <p class="count reveal" style="--d:.1s"><b class="foil-text" id="artCount" data-n="79">79</b><span>WORKS</span></p>
+          <h2 class="h reveal" id="art-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>作品</span><span class="h-sub">気になったら、選んで遊べます。<br />この名刺の箔も、作品「FOIL LAW」の仕組みで光っています。</span></h2>
         </div>
         <div class="rail" id="rail" aria-label="作品一覧">
           <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v127-glass-relay.jpg" alt="GLASS RELAY" decoding="async" /></span><span class="wk-no">No.079</span><span class="wk-name">GLASS RELAY</span><span class="wk-line">倒れきったドミノが、新しい時刻になる</span></a>
@@ -425,29 +505,36 @@
         </div>
       </section>
 
-      <!-- サイト -->
-      <section class="blk wrap" aria-labelledby="site-h">
-        <h2 class="h reveal" id="site-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>サイト</span><span class="h-sub">ひとりで作って、運営しています。</span></h2>
-        <ul class="sites" style="list-style:none;margin:0;padding:0">
-          <li class="reveal"><a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener" class="foil-edge"><span class="s-main"><span class="s-title">お台場混雑予報</span><span class="s-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span></span><span class="s-arr">↗</span></a></li>
-          <li class="reveal" style="--d:.08s"><a href="https://shikaku-drill.net" target="_blank" rel="noopener" class="foil-edge"><span class="s-main"><span class="s-title">資格ドリルシリーズ</span><span class="s-desc">運行管理者試験と危険物取扱者のドリルを、無料で解けるサイト。</span></span><span class="s-arr">↗</span></a></li>
-          <li class="reveal" style="--d:.16s"><a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener" class="foil-edge"><span class="s-main"><span class="s-title">ART PLAYGROUND</span><span class="s-desc">上の作品がぜんぶ遊べる、ジェネラティブアートのサイト。</span></span><span class="s-arr">↗</span></a></li>
-        </ul>
+      <!-- 演出3：サイト（横に流れる） -->
+      <section class="scene" id="sC" style="--len:340svh" aria-labelledby="site-h">
+        <div class="pin hz">
+          <h2 class="hz-head" id="site-h"><span class="stamp" aria-hidden="true"></span>サイト<small>ひとりで作って、運営しています。</small></h2>
+          <div class="hz-track" id="hzTrack">
+            <a class="hz-panel" style="--ph:195" href="https://odaibacrowdforecast.com" target="_blank" rel="noopener"><span class="hz-no">01</span><span class="hz-title">お台場<br />混雑予報</span><span class="hz-desc">イベントや天候から、お台場エリアの混み具合を毎日予報しています。</span><span class="hz-go">ひらく ↗</span></a>
+            <a class="hz-panel" style="--ph:95" href="https://shikaku-drill.net" target="_blank" rel="noopener"><span class="hz-no">02</span><span class="hz-title">資格<br />ドリル<br />シリーズ</span><span class="hz-desc">運行管理者試験と危険物取扱者のドリル。無料で、何問でも解けます。</span><span class="hz-go">ひらく ↗</span></a>
+            <a class="hz-panel" style="--ph:300" href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener"><span class="hz-no">03</span><span class="hz-title">ART<br />PLAY<br />GROUND</span><span class="hz-desc">さっきのトンネルの作品が、ぜんぶ触って遊べるサイト。</span><span class="hz-go">ひらく ↗</span></a>
+          </div>
+          <div class="hz-bar"><i id="hzBar"></i></div>
+        </div>
       </section>
 
-      <!-- 趣味 -->
-      <section class="blk wrap" aria-labelledby="hob-h">
-        <h2 class="h reveal" id="hob-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>趣味</span></h2>
-        <ul class="chips">
-          <li class="reveal foil-edge">音楽鑑賞<small>ライブによく行きます</small></li>
-          <li class="reveal foil-edge" style="--d:.06s">キャンプ</li>
-          <li class="reveal foil-edge" style="--d:.12s">釣り</li>
-          <li class="reveal foil-edge" style="--d:.18s">競馬</li>
-        </ul>
+      <!-- 演出4：趣味 -->
+      <section class="scene" id="sD" style="--len:360svh" aria-labelledby="hob-h">
+        <div class="pin hb">
+          <div class="hb-ring" id="hbRing" aria-hidden="true"></div>
+          <h2 class="hb-head" id="hob-h"><span class="stamp" aria-hidden="true"></span>趣味<span class="hb-c" id="hbC">01 / 04</span></h2>
+          <ul class="hb-list">
+            <li class="hb-w"><b class="foil-text">音楽鑑賞</b><small>ライブによく行きます</small></li>
+            <li class="hb-w"><b class="foil-text">キャンプ</b></li>
+            <li class="hb-w"><b class="foil-text">釣り</b></li>
+            <li class="hb-w"><b class="foil-text">競馬</b></li>
+          </ul>
+        </div>
       </section>
 
       <!-- 連絡先 -->
       <section class="blk wrap" aria-labelledby="con-h">
+        <p class="fin reveal">名刺、<br />受け取って<br />ください。</p>
         <h2 class="h reveal" id="con-h"><span class="h-ja"><span class="stamp" aria-hidden="true"></span>連絡先</span></h2>
         <div class="reveal">
           <a class="c-save" href="kuro.vcf">＋ 連絡先に保存</a>
@@ -494,17 +581,12 @@
         roll();
 
         /* ============ ホロ箔（FOIL LAWの仕組み・WebGL2） ============ */
-        const cv = $("#foil");
-        const gl = cv.getContext("webgl2", { alpha: false, antialias: false, powerPreference: "high-performance" });
-        let U = null;
-        if (gl) {
-          try {
-            const VS = `#version 300 es
+        const VS = `#version 300 es
 void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));gl_Position=vec4(p*2.-1.,0.,1.);}`;
-            const FS = `#version 300 es
+        const FS = `#version 300 es
 precision highp float;
 out vec4 o;
-uniform vec2 uRes;uniform float uTime;uniform vec2 uTilt;
+uniform vec2 uRes;uniform float uTime;uniform vec2 uTilt;uniform float uZoom;
 uniform vec4 uA[${S}];uniform vec4 uB[${S}];
 const float TAU=6.28318530718;
 float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
@@ -512,7 +594,7 @@ vec2 facet(vec2 q,float N,float rot){float sec=TAU/N;float u=(atan(q.y,q.x+1e-6)
 vec2 foldQ(vec2 q,float N,float rot){float sec=TAU/N;float a=mod(atan(q.y,q.x+1e-6)-rot,sec);a=abs(a-.5*sec);return length(q)*vec2(cos(a),sin(a));}
 void main(){
   vec2 fr=gl_FragCoord.xy;
-  vec2 f0=(fr-.5*uRes)/uRes.x;
+  vec2 f0=(fr-.5*uRes)/uRes.x/uZoom;
   float px=1./uRes.x;
   vec2 tl=uTilt;
   vec2 f=f0+tl*.02;
@@ -549,7 +631,11 @@ void main(){
   c+=(hash(fr+fract(uTime))-.5)/255.;
   o=vec4(c,1.);
 }`;
-            const sh = (t, s) => { const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(o); return o; };
+        function makeFoil(cv, cap) {
+          const gl = cv && cv.getContext("webgl2", { alpha: false, antialias: false, powerPreference: "high-performance" });
+          if (!gl) { if (cv) cv.style.display = "none"; return null; }
+          try {
+            const sh = (t, src) => { const o = gl.createShader(t); gl.shaderSource(o, src); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(o); return o; };
             const prog = gl.createProgram();
             gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS));
             gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
@@ -557,25 +643,17 @@ void main(){
             if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw gl.getProgramInfoLog(prog);
             gl.useProgram(prog);
             gl.bindVertexArray(gl.createVertexArray());
-            U = { res: gl.getUniformLocation(prog, "uRes"), time: gl.getUniformLocation(prog, "uTime"), tilt: gl.getUniformLocation(prog, "uTilt"), A: gl.getUniformLocation(prog, "uA"), B: gl.getUniformLocation(prog, "uB") };
-          } catch (e) { U = null; cv.style.display = "none"; }
-        } else cv.style.display = "none";
-
-        function sizeFoil() {
-          if (!U) return;
-          const dpr = Math.min(devicePixelRatio || 1, 2);
-          const w = Math.round(cv.clientWidth * dpr), h = Math.round(cv.clientHeight * dpr);
-          if (w && (cv.width !== w || cv.height !== h)) { cv.width = w; cv.height = h; gl.viewport(0, 0, w, h); }
+            const L = (n) => gl.getUniformLocation(prog, n);
+            const U = { res: L("uRes"), time: L("uTime"), tilt: L("uTilt"), zoom: L("uZoom"), A: L("uA"), B: L("uB") };
+            return {
+              size() { const d = Math.min(devicePixelRatio || 1, cap); const w = Math.round(cv.clientWidth * d), h = Math.round(cv.clientHeight * d); if (w && (cv.width !== w || cv.height !== h)) { cv.width = w; cv.height = h; gl.viewport(0, 0, w, h); } },
+              draw(t, tx, ty, z) { gl.uniform2f(U.res, cv.width, cv.height); gl.uniform1f(U.time, t); gl.uniform2f(U.tilt, tx, ty); gl.uniform1f(U.zoom, z); gl.uniform4fv(U.A, A); gl.uniform4fv(U.B, B); gl.drawArrays(gl.TRIANGLES, 0, 3); },
+            };
+          } catch (e) { cv.style.display = "none"; return null; }
         }
-        function drawFoil(t, tx, ty) {
-          if (!U) return;
-          gl.uniform2f(U.res, cv.width, cv.height);
-          gl.uniform1f(U.time, t);
-          gl.uniform2f(U.tilt, tx, ty);
-          gl.uniform4fv(U.A, A);
-          gl.uniform4fv(U.B, B);
-          gl.drawArrays(gl.TRIANGLES, 0, 3);
-        }
+        const F1 = makeFoil($("#foil"), 2), F2 = makeFoil($("#foil2"), 1.25);
+        function sizeFoil() { F1 && F1.size(); F2 && F2.size(); }
+        function drawFoil(t, tx, ty) { F1 && F1.draw(t, tx, ty, 1); }
         addEventListener("resize", sizeFoil);
         sizeFoil();
         drawFoil(0, 0.3, 0.2);
@@ -766,6 +844,114 @@ void main(){
           addEventListener("pointerup", () => { if (!dn) return; dn = false; let v = vx * 16; const g = () => { if (Math.abs(v) < 0.4) { rail.classList.remove("drag"); return; } rail.scrollLeft -= v; v *= 0.93; requestAnimationFrame(g); }; g(); });
           rail.addEventListener("click", (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
         }
+
+        /* ============ スクロール演出 ============ */
+        const ss = (a, b, x) => { const k = clamp((x - a) / (b - a), 0, 1); return k * k * (3 - 2 * k); };
+        const dive = $("#dive"), downCue = $("#downCue");
+        const sA = $("#sA"), sB = $("#sB"), sC = $("#sC"), sD = $("#sD");
+        const lines = [...document.querySelectorAll(".ln")], sAclip = $("#sAclip"), sAblack = $("#sAblack");
+        // トンネルの作品
+        const tw = $("#tunWorld"), tunN = $("#tunN"), tunName = $("#tunName"), tunHud = $("#tunHud");
+        const GAP = 360;
+        const tItems = [...document.querySelectorAll(".rail .wk")].slice(0, 30).map((a, i) => {
+          const d = document.createElement("div");
+          d.className = "tw";
+          const img = document.createElement("img");
+          img.alt = ""; img.decoding = "async"; img.src = a.querySelector("img").src;
+          d.appendChild(img); tw.appendChild(d);
+          return { el: d, ang: i * 2.39996 + 0.6, z: -i * GAP - 500, no: a.querySelector(".wk-no").textContent, name: a.querySelector(".wk-name").textContent };
+        });
+        const TUN_LEN = tItems.length * GAP + 700;
+        // サイト
+        const track = $("#hzTrack"), hzBar = $("#hzBar");
+        const panels = [...track.querySelectorAll(".hz-panel")].map((el) => ({ el, no: el.querySelector(".hz-no"), ti: el.querySelector(".hz-title") }));
+        // 趣味
+        const words = [...document.querySelectorAll(".hb-w")], hbRing = $("#hbRing"), hbC = $("#hbC");
+        const span = (el) => { const r = el.getBoundingClientRect(); const len = r.height - innerHeight; return { r, p: len > 0 ? clamp(-r.top / len, 0, 1) : 0, on: r.top < innerHeight && r.bottom > 0 }; };
+        if (RM) root.classList.add("rm");
+        let lastY = -1, lastW = 0;
+        function scenes(nowMs) {
+          const t = nowMs / 1000, vh = innerHeight, vw = innerWidth;
+          const moved = scrollY !== lastY || vw !== lastW;
+          lastY = scrollY; lastW = vw;
+          // 名刺がせり出して消える
+          if (moved && ready) {
+            const hp = clamp(scrollY / vh, 0, 1);
+            dive.style.transform = hp ? `translateY(${(hp * 42).toFixed(2)}vh) scale(${(1 + hp * 1.1).toFixed(3)})` : "";
+            dive.style.opacity = (1 - ss(0.35, 0.9, hp)).toFixed(3);
+            downCue.style.opacity = (1 - hp * 3).toFixed(2);
+          }
+          // 1：箔の中へ（カードが画面いっぱいに広がる）
+          const A1 = span(sA);
+          if (A1.on) {
+            const e = clamp(1 - A1.r.top / vh, 0, 1), k = 1 - ss(0, 1, e);
+            sAclip.style.clipPath = k > 0.001 ? `inset(${(k * 22).toFixed(2)}% ${(k * 16).toFixed(2)}% round ${(k * 28).toFixed(1)}px)` : "none";
+            if (F2) { F2.size(); F2.draw(t, tilt.x, tilt.y, 1.15 + A1.p * 3.6 + Math.sin(t * 0.4) * 0.03); }
+            if (moved) {
+              lines.forEach((ln, i) => {
+                const a = 0.08 + i * 0.17, q = ss(a, a + 0.13, A1.p);
+                ln.style.opacity = q.toFixed(3);
+                ln.style.transform = `translateY(${((1 - q) * 46).toFixed(1)}px) scale(${(1 + (1 - q) * 0.35).toFixed(3)})`;
+                ln.style.filter = q < 0.999 ? `blur(${((1 - q) * 16).toFixed(1)}px)` : "none";
+              });
+              sAblack.style.opacity = ss(0.84, 1, A1.p).toFixed(3);
+            }
+          }
+          // 2：作品のトンネルを飛ぶ
+          const B1 = span(sB);
+          if (B1.on && moved) {
+            const off = B1.p * TUN_LEN, R = Math.min(vw * 0.42, 240);
+            let near = null, nd = 1e9;
+            for (const it of tItems) {
+              const z = it.z + off;
+              let o = 1;
+              if (z > 260) o = 0; else if (z > 40) o = 1 - (z - 40) / 220;
+              if (z < -GAP * 10) o = 0; else if (z < -GAP * 6) o *= (z + GAP * 10) / (GAP * 4);
+              it.el.style.opacity = o.toFixed(3);
+              if (o > 0) {
+                const sp = it.ang + B1.p * 1.6;
+                it.el.style.transform = `translate3d(${(Math.cos(sp) * R).toFixed(1)}px,${(Math.sin(sp) * R * 1.3).toFixed(1)}px,${z.toFixed(1)}px) rotateZ(${(Math.cos(sp) * 6).toFixed(2)}deg)`;
+                const dz = Math.abs(z + 120); if (o > 0.4 && dz < nd) { nd = dz; near = it; }
+              }
+            }
+            const n = Math.round(79 * ss(0.02, 0.9, B1.p));
+            tunN.textContent = n;
+            tunHud.classList.toggle("max", n >= 79);
+            const label = n >= 79 ? "ALL 79 WORKS" : near ? `${near.no}  ${near.name}` : " ";
+            if (tunName.textContent !== label) tunName.textContent = label;
+          }
+          // 3：サイトが横に流れる
+          const C1 = span(sC);
+          if (C1.on && moved) {
+            const q = ss(0.06, 0.94, C1.p), max = track.scrollWidth - vw;
+            track.style.transform = `translate3d(${(-q * max).toFixed(1)}px,0,0)`;
+            hzBar.style.transform = `scaleX(${q.toFixed(4)})`;
+            panels.forEach((pn, i) => {
+              const x = i * vw - q * max;
+              pn.no.style.transform = `translateX(${(-x * 0.55).toFixed(1)}px)`;
+              pn.ti.style.transform = `translateX(${(x * 0.22).toFixed(1)}px)`;
+            });
+          }
+          // 4：趣味がひとつずつ大きく出る
+          const D1 = span(sD);
+          if (D1.on && moved) {
+            const n = words.length, x = 0.3 + D1.p * (n - 0.3) * 0.999;
+            hbRing.style.transform = `rotate(${(D1.p * 540).toFixed(1)}deg) scale(${(0.8 + D1.p * 0.5).toFixed(3)})`;
+            hbC.textContent = `${String(Math.min(n, Math.floor(x) + 1)).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
+            words.forEach((w, i) => {
+              const l = x - i; let o = 0, s = 1.6, b = 14;
+              if (l >= 0 && l < 0.25) { const k = ss(0, 1, l / 0.25); o = k; s = 1.6 - 0.6 * k; b = (1 - k) * 14; }
+              else if (l >= 0.25 && (l < 0.75 || i === n - 1)) { o = 1; s = 1; b = 0; }
+              else if (l >= 0.75 && l < 1) { const k = ss(0, 1, (l - 0.75) / 0.25); o = 1 - k; s = 1 - 0.25 * k; b = k * 10; }
+              w.style.opacity = o.toFixed(3);
+              w.style.transform = `translate(-50%,-50%) scale(${s.toFixed(3)})`;
+              w.style.filter = b > 0.05 && o > 0 ? `blur(${b.toFixed(1)}px)` : "none";
+            });
+          }
+          requestAnimationFrame(scenes);
+        }
+        if (!RM) requestAnimationFrame(scenes);
+        else { lines.forEach((l) => (l.style.opacity = 1)); if (F2) { F2.size(); F2.draw(0, 0.3, 0.2, 2); } }
       })();
     </script>
   </body>
