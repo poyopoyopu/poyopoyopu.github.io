@@ -342,6 +342,8 @@
         box-shadow: 0 20px 40px -10px rgba(0,0,0,.9); }
       .disc-in::before { content: ""; position: absolute; left: 50%; top: 22%; width: 3%; height: 6%; border-radius: 2px; background: rgba(255,255,255,.55); }
       .rec-t { margin: 2.2rem 0 0; max-width: 88vw; text-align: center; font-weight: 900; font-size: clamp(1.6rem, 7.4vw, 2.8rem); line-height: 1.25; letter-spacing: .02em; }
+      .rec-n { margin: 2rem 0 -1.4rem; font-weight: 900; font-size: .9rem; letter-spacing: .4em; }
+      .rec-top .sleeve b { font-size: calc(var(--s) * .22); }
       .rec-a { margin: .5rem 0 0; font-family: var(--mono); font-size: .78rem; letter-spacing: .24em; color: var(--soft); text-transform: uppercase; }
       .rc-foot { position: absolute; left: 0; right: 0; bottom: max(1.4rem, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: .66rem; letter-spacing: .12em; color: var(--faint); }
       .motto { margin: 0 0 3rem; font-weight: 700; font-size: clamp(1.3rem, 5.6vw, 2rem); line-height: 1.6; letter-spacing: .08em; color: var(--soft); }
@@ -574,17 +576,18 @@
       </section>
 
       <!-- 演出6：人生のベスト盤 -->
-      <section class="scene" id="sF" style="--len:460svh" aria-labelledby="rec-h">
+      <section class="scene" id="sF" style="--len:520svh" aria-labelledby="rec-h">
         <div class="pin rc">
-          <h2 class="hb-head" id="rec-h"><span><span class="stamp" aria-hidden="true"></span>人生のベスト盤</span><span class="hb-c" id="recC">01 / 07</span></h2>
+          <h2 class="hb-head" id="rec-h"><span><span class="stamp" aria-hidden="true"></span>人生のベスト盤</span><span class="hb-c" id="recC">01 / 08</span></h2>
           <ul class="rec-list">
-            <li class="rec" style="--rh:330"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>01</b><i>The Postal Service</i></div></div><p class="rec-t">Give Up</p><p class="rec-a">The Postal Service</p></li>
-            <li class="rec" style="--rh:20"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>02</b><i>Eels</i></div></div><p class="rec-t">Beautiful Freak</p><p class="rec-a">Eels</p></li>
-            <li class="rec" style="--rh:210"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>03</b><i>Weezer</i></div></div><p class="rec-t">Weezer（青いアルバム）</p><p class="rec-a">Weezer</p></li>
-            <li class="rec" style="--rh:45"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>04</b><i>くるり</i></div></div><p class="rec-t">さよならストレンジャー</p><p class="rec-a">くるり</p></li>
-            <li class="rec" style="--rh:280"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>05</b><i>Daft Punk</i></div></div><p class="rec-t">Interstella 5555</p><p class="rec-a">Daft Punk</p></li>
-            <li class="rec" style="--rh:180"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>06</b><i>Sigur Rós</i></div></div><p class="rec-t">( )</p><p class="rec-a">Sigur Rós</p></li>
-            <li class="rec" style="--rh:95"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>07</b><i>eastern youth</i></div></div><p class="rec-t">夏の日の午後</p><p class="rec-a">eastern youth</p></li>
+            <li class="rec rec-top" style="--rh:350"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>No.1</b><i>くるり</i></div></div><p class="rec-n foil-text">人生のNo.1</p><p class="rec-t">東京</p><p class="rec-a">くるり</p></li>
+            <li class="rec" style="--rh:330"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>02</b><i>The Postal Service</i></div></div><p class="rec-t">Give Up</p><p class="rec-a">The Postal Service</p></li>
+            <li class="rec" style="--rh:20"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>03</b><i>Eels</i></div></div><p class="rec-t">Beautiful Freak</p><p class="rec-a">Eels</p></li>
+            <li class="rec" style="--rh:210"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>04</b><i>Weezer</i></div></div><p class="rec-t">Weezer（青いアルバム）</p><p class="rec-a">Weezer</p></li>
+            <li class="rec" style="--rh:45"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>05</b><i>くるり</i></div></div><p class="rec-t">さよならストレンジャー</p><p class="rec-a">くるり</p></li>
+            <li class="rec" style="--rh:280"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>06</b><i>Daft Punk</i></div></div><p class="rec-t">Interstella 5555</p><p class="rec-a">Daft Punk</p></li>
+            <li class="rec" style="--rh:180"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>07</b><i>Sigur Rós</i></div></div><p class="rec-t">( )</p><p class="rec-a">Sigur Rós</p></li>
+            <li class="rec" style="--rh:95"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>08</b><i>eastern youth</i></div></div><p class="rec-t">夏の日の午後</p><p class="rec-a">eastern youth</p></li>
           </ul>
           <p class="rc-foot">ジャケットはこのページ用に描いた、オリジナルの絵です</p>
         </div>
