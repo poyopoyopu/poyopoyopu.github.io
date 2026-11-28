@@ -269,22 +269,22 @@
       .phone { display: inline-block; width: 12px; height: 19px; border: 2px solid currentColor; border-radius: 3px; animation: rock 2.2s ease-in-out infinite; }
       @keyframes rock { 0%,100% { transform: rotate(-16deg); } 50% { transform: rotate(16deg); } }
       /* ================= スクロール演出 ================= */
-      .dive { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; transform-origin: 50% 40%; will-change: transform, opacity; }
+      .dive { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; transform-origin: 50% 40%; }
       .scene { position: relative; height: var(--len, 300svh); }
       .pin { position: sticky; top: 0; height: 100svh; overflow: hidden; }
       /* 1：箔の中へ */
-      .sA-clip { position: absolute; inset: 0; overflow: hidden; will-change: clip-path; }
+      .sA-clip { position: absolute; inset: 0; overflow: hidden; }
       #foil2 { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
       .sA-veil { position: absolute; inset: 0; background: radial-gradient(120% 75% at 50% 50%, rgba(11,11,13,.12), rgba(11,11,13,.72)); }
       .sA-lines { position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; gap: .2rem; padding: 0 clamp(1.2rem, 6vw, 3rem); }
-      .ln { margin: 0; white-space: nowrap; font-weight: 900; font-size: clamp(1.6rem, 7vw, 3.4rem); line-height: 1.35; letter-spacing: .03em; color: #fff; text-shadow: 0 2px 28px rgba(0,0,0,.6); will-change: transform, opacity, filter; }
+      .ln { margin: 0; white-space: nowrap; font-weight: 900; font-size: clamp(1.6rem, 7vw, 3.4rem); line-height: 1.35; letter-spacing: .03em; color: #fff; text-shadow: 0 2px 28px rgba(0,0,0,.6); }
       .ln.big { margin-top: .5rem; font-size: clamp(3.6rem, 19vw, 9rem); line-height: 1; letter-spacing: -.01em; }
       .ln .mono { font-family: var(--mono); letter-spacing: -.06em; margin-right: .05em; }
       .sA-black { position: absolute; inset: 0; background: var(--bg); opacity: 0; pointer-events: none; }
       /* 2：トンネル */
       .tun { perspective: 620px; background: radial-gradient(70% 55% at 50% 50%, hsl(var(--h) 70% 16%), var(--bg) 72%); }
       .tun-world { position: absolute; inset: 0; transform-style: preserve-3d; }
-      .tw { --w: min(40vw, 190px); position: absolute; left: 50%; top: 50%; width: var(--w); aspect-ratio: 476 / 630; margin-left: calc(var(--w) / -2); margin-top: calc(var(--w) * -0.662); border-radius: 12px; overflow: hidden; background: #151518; opacity: 0; will-change: transform, opacity; box-shadow: 0 24px 50px -12px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.14); }
+      .tw { --w: min(40vw, 190px); position: absolute; left: 50%; top: 50%; width: var(--w); aspect-ratio: 476 / 630; margin-left: calc(var(--w) / -2); margin-top: calc(var(--w) * -0.662); border-radius: 12px; overflow: hidden; background: #151518; opacity: 0; box-shadow: 0 24px 50px -12px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.14); }
       .tw img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; }
       .tun-hud { position: absolute; left: 0; right: 0; top: 50%; transform: translateY(-50%); text-align: center; pointer-events: none; z-index: 2; text-shadow: 0 4px 30px rgba(0,0,0,.8); }
       .tun-hud b { display: block; font-family: var(--mono); font-weight: 700; font-size: clamp(5.5rem, 34vw, 12rem); line-height: .9; letter-spacing: -.06em; font-variant-numeric: tabular-nums; transition: transform .6s var(--ease); }
@@ -295,25 +295,25 @@
       /* 3：サイト */
       .hz-head { position: absolute; z-index: 2; top: max(1.4rem, env(safe-area-inset-top)); left: clamp(1.4rem, 7vw, 3rem); margin: 0; font-size: 1.5rem; font-weight: 900; letter-spacing: .06em; }
       .hz-head small { display: block; margin-top: .3rem; font-size: .76rem; font-weight: 500; color: var(--soft); letter-spacing: .08em; }
-      .hz-track { display: flex; width: max-content; height: 100%; will-change: transform; }
+      .hz-track { display: flex; width: max-content; height: 100%; }
       .hz-panel { position: relative; flex: none; width: 100vw; height: 100%; display: flex; flex-direction: column; justify-content: center; padding: 0 clamp(1.4rem, 7vw, 3rem); text-decoration: none; overflow: hidden; }
       .hz-panel::before { content: ""; position: absolute; inset: 14% 5% 12%; border-radius: 28px; background: radial-gradient(90% 70% at 30% 40%, hsl(var(--ph) 85% 50% / .28), transparent 70%), radial-gradient(70% 60% at 80% 80%, hsl(calc(var(--ph) + 120) 85% 50% / .2), transparent 70%); border: 1px solid hsl(var(--ph) 80% 70% / .25); }
-      .hz-no { position: absolute; right: -3vw; bottom: 9%; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 56vw; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px hsl(var(--ph) 80% 75% / .35); will-change: transform; }
-      .hz-title { position: relative; font-weight: 900; font-size: clamp(2.8rem, 14vw, 5.5rem); line-height: 1.08; letter-spacing: .02em; background: linear-gradient(100deg, hsl(var(--ph) 95% 74%), hsl(calc(var(--ph) + 80) 95% 76%), hsl(calc(var(--ph) + 160) 95% 74%)); -webkit-background-clip: text; background-clip: text; color: transparent; will-change: transform; }
+      .hz-no { position: absolute; right: -3vw; bottom: 9%; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: 56vw; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px hsl(var(--ph) 80% 75% / .35); }
+      .hz-title { position: relative; font-weight: 900; font-size: clamp(2.8rem, 14vw, 5.5rem); line-height: 1.08; letter-spacing: .02em; background: linear-gradient(100deg, hsl(var(--ph) 95% 74%), hsl(calc(var(--ph) + 80) 95% 76%), hsl(calc(var(--ph) + 160) 95% 74%)); -webkit-background-clip: text; background-clip: text; color: transparent; }
       .hz-desc { position: relative; margin-top: 1.3rem; max-width: 20em; font-size: .95rem; line-height: 1.9; color: var(--soft); }
       .hz-go { position: relative; margin-top: 1.8rem; align-self: flex-start; padding: .9rem 1.4rem; border-radius: 999px; background: #fff; color: #111; font-weight: 900; font-size: .85rem; letter-spacing: .14em; }
       .hz-bar { position: absolute; z-index: 2; left: clamp(1.4rem, 7vw, 3rem); right: clamp(1.4rem, 7vw, 3rem); bottom: max(1.8rem, env(safe-area-inset-bottom)); height: 2px; background: var(--hair); border-radius: 2px; overflow: hidden; }
       .hz-bar i { display: block; height: 100%; width: 100%; transform-origin: 0 50%; transform: scaleX(0); background: var(--foil); }
       /* 4：趣味 */
-      .hb-ring { position: absolute; left: 50%; top: 50%; width: 140vmax; height: 140vmax; margin: -70vmax 0 0 -70vmax; border-radius: 50%; background: conic-gradient(hsl(var(--h) 90% 55% / 0), hsl(var(--h) 90% 60% / .4), hsl(calc(var(--h) + 120) 90% 60% / .32), hsl(calc(var(--h) + 240) 90% 60% / .4), hsl(var(--h) 90% 55% / 0)); filter: blur(46px); opacity: .75; will-change: transform; }
+      .hb-ring { position: absolute; left: 50%; top: 50%; width: 140vmax; height: 140vmax; margin: -70vmax 0 0 -70vmax; border-radius: 50%; background: conic-gradient(hsl(var(--h) 90% 55% / 0), hsl(var(--h) 90% 60% / .4), hsl(calc(var(--h) + 120) 90% 60% / .32), hsl(calc(var(--h) + 240) 90% 60% / .4), hsl(var(--h) 90% 55% / 0)); filter: blur(46px); opacity: .75; }
       .hb-head { position: absolute; z-index: 2; top: max(1.4rem, env(safe-area-inset-top)); left: clamp(1.4rem, 7vw, 3rem); right: clamp(1.4rem, 7vw, 3rem); margin: 0; display: flex; justify-content: space-between; align-items: baseline; font-size: 1.5rem; font-weight: 900; letter-spacing: .06em; }
       .hb-c { font-family: var(--mono); font-size: .72rem; font-weight: 700; letter-spacing: .2em; color: var(--soft); }
       .hb-list { list-style: none; margin: 0; padding: 0; }
-      .hb-w { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; will-change: transform, opacity, filter; }
+      .hb-w { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; }
       .hb-w b { display: block; font-weight: 900; font-size: clamp(3.6rem, 20vw, 9rem); letter-spacing: .04em; line-height: 1.15; }
       .hb-w small { display: block; margin-top: .9rem; font-size: .9rem; color: var(--ink); letter-spacing: .24em; opacity: .8; }
       .hb-ph { position: absolute; inset: 0; z-index: 1; opacity: 0; overflow: hidden; pointer-events: none; }
-      .hb-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform, opacity; }
+      .hb-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
       .hb-ph img:first-child { object-position: 22% 50%; }
       .hb-ph img + img { opacity: 0; }
       .hb-ph::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 50%, rgba(8,8,10,.62), rgba(8,8,10,.25) 70%), linear-gradient(to bottom, rgba(8,8,10,.55), transparent 22%, transparent 78%, rgba(8,8,10,.6)); }
@@ -323,20 +323,20 @@
       .hb-w small { text-shadow: 0 1px 10px rgba(0,0,0,.7); }
       /* 5：音楽 */
       .lo { background: #070708; }
-      .lo-in { position: absolute; inset: 0; will-change: transform; }
+      .lo-in { position: absolute; inset: 0; }
       .lo-rows { position: absolute; left: 0; right: 0; top: 13%; display: grid; gap: .3rem; }
-      .lo-row { display: flex; width: max-content; white-space: nowrap; font-family: "Unbounded", "Zen Kaku Gothic New", sans-serif; font-weight: 800; font-size: clamp(2.2rem, 11vw, 4.6rem); line-height: 1.12; letter-spacing: -.01em; color: transparent; -webkit-text-stroke: 1px rgba(244,243,239,.5); will-change: transform, opacity; }
+      .lo-row { display: flex; width: max-content; white-space: nowrap; font-family: "Unbounded", "Zen Kaku Gothic New", sans-serif; font-weight: 800; font-size: clamp(2.2rem, 11vw, 4.6rem); line-height: 1.12; letter-spacing: -.01em; color: transparent; -webkit-text-stroke: 1px rgba(244,243,239,.5); }
       .lo-row:nth-child(2) { -webkit-text-stroke: 0; color: rgba(244,243,239,.9); font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; }
-      .lo-row:nth-child(4) { -webkit-text-stroke: 0; background: var(--foil); -webkit-background-clip: text; background-clip: text; }
+      .lo-row:nth-child(4) { -webkit-text-stroke: 0; color: hsl(var(--h) 85% 78% / .9); }
       .lo-bars { position: absolute; left: 4%; right: 4%; bottom: 7%; height: 38%; display: flex; align-items: flex-end; gap: 3px; }
-      .lo-bars i { flex: 1; height: 100%; border-radius: 3px 3px 0 0; transform-origin: 50% 100%; transform: scaleY(.04); background: linear-gradient(to top, hsl(var(--h) 90% 60%), hsl(calc(var(--h) + 90) 95% 72%) 60%, #fff); will-change: transform; }
+      .lo-bars i { flex: 1; height: 100%; border-radius: 3px 3px 0 0; transform-origin: 50% 100%; transform: scaleY(.04); background: linear-gradient(to top, hsl(var(--h) 90% 60%), hsl(calc(var(--h) + 90) 95% 72%) 60%, #fff); }
       .lo-msg { position: absolute; left: clamp(1.2rem, 6vw, 3rem); right: clamp(1.2rem, 6vw, 3rem); top: 50%; transform: translateY(-50%); margin: 0; font-weight: 900; font-size: clamp(2rem, 9vw, 4rem); line-height: 1.3; letter-spacing: .03em; text-shadow: 0 4px 30px rgba(0,0,0,.9); }
       .lo-msg2 { opacity: 0; white-space: nowrap; font-size: clamp(2.4rem, 11vw, 5.6rem); }
       .lo-flash { position: absolute; inset: 0; background: #fff; opacity: 0; pointer-events: none; z-index: 3; }
       /* 6：ベスト盤 */
       .rc { background: radial-gradient(80% 60% at 50% 45%, #18161c, var(--bg) 75%); }
       .rec-list { list-style: none; margin: 0; padding: 0; }
-      .rec { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; will-change: transform, opacity; }
+      .rec { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
       .rec-art { --s: min(60vw, 280px); position: relative; width: var(--s); height: var(--s); margin-left: calc(var(--s) * -0.36); }
       .sleeve { position: absolute; inset: 0; z-index: 2; border-radius: 4px; overflow: hidden;
         background: radial-gradient(circle at 72% 28%, hsl(var(--rh) 85% 62% / .9), transparent 46%), radial-gradient(circle at 20% 85%, hsl(calc(var(--rh) + 150) 80% 55% / .55), transparent 50%), linear-gradient(150deg, hsl(calc(var(--rh) + 30) 45% 20%), #0c0c0e 70%);
@@ -344,9 +344,9 @@
       .sleeve::after { content: ""; position: absolute; left: -20%; right: -20%; top: 54%; height: 7%; transform: rotate(-24deg); background: var(--foil); opacity: .85; mix-blend-mode: screen; }
       .sleeve b { position: absolute; left: 8%; top: 6%; font-family: "Unbounded", sans-serif; font-weight: 800; font-size: calc(var(--s) * .26); line-height: 1; color: rgba(255,255,255,.92); letter-spacing: -.04em; }
       .sleeve i { position: absolute; left: 8%; right: 8%; bottom: 7%; font-style: normal; font-family: var(--mono); font-size: calc(var(--s) * .042); letter-spacing: .2em; color: rgba(255,255,255,.75); text-transform: uppercase; }
-      .disc { position: absolute; inset: 3%; z-index: 1; border-radius: 50%; will-change: transform; }
+      .disc { position: absolute; inset: 3%; z-index: 1; border-radius: 50%; }
       .disc::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: conic-gradient(from 20deg, transparent 0 10%, rgba(255,255,255,.16) 14%, transparent 20% 55%, rgba(255,255,255,.12) 62%, transparent 68%); pointer-events: none; }
-      .disc-in { position: absolute; inset: 0; border-radius: 50%; will-change: transform;
+      .disc-in { position: absolute; inset: 0; border-radius: 50%;
         background: radial-gradient(circle, #f4f3ef 0 2.2%, hsl(var(--rh) 80% 58%) 2.4% 16%, hsl(calc(var(--rh) + 40) 70% 40%) 16.5% 17%, transparent 17.2%), repeating-radial-gradient(circle, #101012 0 1.6px, #1d1d21 1.6px 3px);
         box-shadow: 0 20px 40px -10px rgba(0,0,0,.9); }
       .disc-in::before { content: ""; position: absolute; left: 50%; top: 22%; width: 3%; height: 6%; border-radius: 2px; background: rgba(255,255,255,.55); }
@@ -576,10 +576,10 @@
         <div class="pin lo">
           <div class="lo-in" id="loIn">
             <div class="lo-rows" id="loRows" aria-hidden="true">
-            <div class="lo-row"><span>Mogwai · MONO · Tortoise · toe · Caspian · American Football · Mogwai · MONO · Tortoise · toe · Caspian · American Football · </span><span>Mogwai · MONO · Tortoise · toe · Caspian · American Football · Mogwai · MONO · Tortoise · toe · Caspian · American Football · </span></div>
-            <div class="lo-row"><span>くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · </span><span>くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · </span></div>
-            <div class="lo-row"><span>rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · </span><span>rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · </span></div>
-            <div class="lo-row"><span>Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · </span><span>Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · </span></div>
+            <div class="lo-row"><span>Mogwai · MONO · Tortoise · toe · Caspian · American Football · </span><span>Mogwai · MONO · Tortoise · toe · Caspian · American Football · </span></div>
+            <div class="lo-row"><span>くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · </span><span>くるり · 羊文学 · きのこ帝国 · 君島大空 · Texas 3000 · kedama · </span></div>
+            <div class="lo-row"><span>rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · </span><span>rei harakami · Underground Resistance · Daft Punk · Boards of Canada · High Contrast · </span></div>
+            <div class="lo-row"><span>Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · </span><span>Sigur Rós · The Postal Service · Death Cab for Cutie · Weezer · The Strokes · </span></div>
             </div>
             <div class="lo-bars" id="loBars" aria-hidden="true"></div>
             <p class="lo-msg" id="loMsg">静かに始まって、<br />最後は、轟音。</p>
@@ -744,7 +744,7 @@ void main(){
             };
           } catch (e) { cv.style.display = "none"; return null; }
         }
-        const F1 = makeFoil($("#foil"), 2), F2 = makeFoil($("#foil2"), 1.25);
+        const F1 = makeFoil($("#foil"), 1.5), F2 = makeFoil($("#foil2"), 1);
         function sizeFoil() { F1 && F1.size(); F2 && F2.size(); }
         function drawFoil(t, tx, ty) { F1 && F1.draw(t, tx, ty, 1); }
         addEventListener("resize", sizeFoil);
@@ -946,7 +946,7 @@ void main(){
         // トンネルの作品
         const tw = $("#tunWorld"), tunN = $("#tunN"), tunName = $("#tunName"), tunHud = $("#tunHud");
         const GAP = 360;
-        const tItems = [...document.querySelectorAll(".rail .wk")].slice(0, 30).map((a, i) => {
+        const tItems = [...document.querySelectorAll(".rail .wk")].slice(0, 16).map((a, i) => {
           const d = document.createElement("div");
           d.className = "tw";
           const img = document.createElement("img");
@@ -1011,6 +1011,7 @@ void main(){
               if (z > 260) o = 0; else if (z > 40) o = 1 - (z - 40) / 220;
               if (z < -GAP * 10) o = 0; else if (z < -GAP * 6) o *= (z + GAP * 10) / (GAP * 4);
               it.el.style.opacity = o.toFixed(3);
+              it.el.style.visibility = o > 0 ? "visible" : "hidden";
               if (o > 0) {
                 const sp = it.ang + B1.p * 1.6;
                 it.el.style.transform = `translate3d(${(Math.cos(sp) * R).toFixed(1)}px,${(Math.sin(sp) * R * 1.3).toFixed(1)}px,${z.toFixed(1)}px) rotateZ(${(Math.cos(sp) * 6).toFixed(2)}deg)`;
@@ -1047,12 +1048,14 @@ void main(){
               else if (l >= 0.25 && (l < 0.75 || i === n - 1)) { o = 1; s = 1; b = 0; }
               else if (l >= 0.75 && l < 1) { const k = ss(0, 1, (l - 0.75) / 0.25); o = 1 - k; s = 1 - 0.25 * k; b = k * 10; }
               w.style.opacity = o.toFixed(3);
+              w.style.visibility = o > 0 ? "visible" : "hidden";
               w.style.transform = `translate(-50%,-50%) scale(${s.toFixed(3)})`;
               w.style.filter = b > 0.05 && o > 0 ? `blur(${b.toFixed(1)}px)` : "none";
               if (i === 0 && hbPh) {
                 // キャンプの間だけ、621野営場の写真（夕日→焚き火）
                 const ph = clamp(l, 0, 1);
                 hbPh.style.opacity = (l < 0 ? 0 : o).toFixed(3);
+                hbPh.style.visibility = l < 0 || o <= 0 ? "hidden" : "visible";
                 const k2 = ss(0.5, 0.7, ph);
                 hbImgs[1].style.opacity = k2.toFixed(3);
                 hbImgs[0].style.transform = `scale(${(1.08 + ph * 0.12).toFixed(3)})`;
@@ -1074,7 +1077,7 @@ void main(){
             loRows.forEach((r, i) => {
               const dir = i % 2 ? 1 : -1, w = r.scrollWidth / 2;
               const x = dir > 0 ? -w + p * w * 0.55 : -p * w * 0.55;
-              r.style.transform = `translate3d(${x.toFixed(1)}px,0,0)`;
+              r.style.transform = `translateX(${x.toFixed(1)}px)`;
               r.style.opacity = (0.12 + build * 0.75).toFixed(3);
             });
             const shake = ss(0.55, 0.74, p) * (1 - ss(0.74, 0.8, p));
@@ -1096,6 +1099,7 @@ void main(){
               else if (l >= 0.2 && (l < 0.8 || i === n - 1)) { o = 1; y = 0; }
               else if (l >= 0.8 && l < 1) { const k = ss(0, 1, (l - 0.8) / 0.2); o = 1 - k; y = -k * 90; }
               r.el.style.opacity = o.toFixed(3);
+              r.el.style.visibility = o > 0 ? "visible" : "hidden";
               r.el.style.pointerEvents = o > 0.6 ? "auto" : "none";
               if (o > 0) {
                 const out = ss(0.12, 0.42, l);
