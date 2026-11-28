@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
     <meta name="theme-color" content="#0b0b0d" />
-    <meta name="description" content="サトウ シュンの名刺。お台場で運転の仕事をしています。傾けると光るホロ箔の名刺、ART PLAYGROUNDの作品79点、連絡先。" />
+    <meta name="description" content="サトウ シュンの名刺。傾けると光るホロ箔の名刺、ART PLAYGROUNDの作品79点、連絡先。" />
     <link rel="icon" href="img/favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32.png" />
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
@@ -207,6 +207,12 @@
       .wk-img::after { content: ""; position: absolute; inset: 0; border-radius: inherit; padding: 1px; pointer-events: none; background: linear-gradient(130deg, rgba(255,255,255,.35), hsl(var(--h) 90% 70% / .7), transparent 40%, hsl(calc(var(--h) + 150) 90% 70% / .6)); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; }
       .wk-img img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; pointer-events: none; transform: scale(1.02); transition: transform 0.8s var(--ease); }
       .wk:hover .wk-img img { transform: scale(1.07); }
+      /* 真ん中に来た作品だけ、本物を動かして見せる（読み込めたら静止画の上にふわっと重ねる） */
+      .wk-img iframe { position: absolute; left: 0; top: 0; width: 476px; height: 630px; border: 0; pointer-events: none; transform-origin: 0 0; opacity: 0; transition: opacity .7s ease; background: #000; }
+      .wk-img iframe.on { opacity: 1; }
+      .wk-live { position: absolute; z-index: 2; left: 10px; top: 10px; display: flex; align-items: center; gap: 6px; padding: 4px 9px; border-radius: 999px; background: rgba(10,10,12,.6); font-family: var(--mono); font-size: .58rem; letter-spacing: .2em; color: #fff; opacity: 0; transition: opacity .5s; pointer-events: none; }
+      .wk-live::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: #ff4d5e; box-shadow: 0 0 8px #ff4d5e; }
+      .wk-img.live .wk-live { opacity: 1; }
       .wk-no { display: block; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--faint); }
       .wk-name { display: block; margin-top: 0.3rem; font-size: 1.05rem; font-weight: 900; letter-spacing: 0.05em; }
       .wk-line { display: block; margin-top: 0.3rem; font-size: 0.76rem; line-height: 1.7; color: var(--faint); }
@@ -453,7 +459,7 @@
             <div class="f-panel">
               <h1 class="f-name" aria-label="サトウ シュン">SHUN SATO</h1>
               <p class="f-roma foil-text">サトウ シュン</p>
-              <p class="f-tag">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
+              <p class="f-tag">暇つぶしで、作品とWebサイトを<br />作っています。</p>
             </div>
           </div>
           <div class="face back">
@@ -984,6 +990,26 @@ void main(){
           addEventListener("pointermove", (e) => { if (!dn) return; const n = performance.now(); vx = (e.clientX - lx) / Math.max(1, n - lt); lx = e.clientX; lt = n; moved = Math.max(moved, Math.abs(e.clientX - sx)); rail.scrollLeft = sl - (e.clientX - sx); });
           addEventListener("pointerup", () => { if (!dn) return; dn = false; let v = vx * 16; const g = () => { if (Math.abs(v) < 0.4) { rail.classList.remove("drag"); return; } rail.scrollLeft -= v; v *= 0.93; requestAnimationFrame(g); }; g(); });
           rail.addEventListener("click", (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
+          // 真ん中の作品だけライブで動かす（同時に動かすのは1つだけ）
+          let liveI = -1, liveT = 0, railSeen = false;
+          const centerI = () => { const mid = rail.scrollLeft + rail.clientWidth / 2; let b = 0, bd = 1e9; items.forEach((c, i) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; b = i; } }); return b; };
+          const stopLive = () => { rail.querySelectorAll(".wk-img iframe").forEach((f) => f.remove()); rail.querySelectorAll(".wk-img.live").forEach((w) => w.classList.remove("live")); liveI = -1; };
+          const goLive = () => {
+            if (!railSeen || RM) return;
+            const i = centerI(); if (i === liveI) return;
+            stopLive(); liveI = i;
+            const box = items[i].querySelector(".wk-img");
+            if (!box.querySelector(".wk-live")) { const t = document.createElement("span"); t.className = "wk-live"; t.textContent = "LIVE"; box.appendChild(t); }
+            const f = document.createElement("iframe");
+            f.src = items[i].href; f.title = items[i].querySelector(".wk-name").textContent; f.tabIndex = -1;
+            f.setAttribute("sandbox", "allow-scripts allow-same-origin"); f.setAttribute("aria-hidden", "true");
+            f.style.transform = `scale(${(box.clientWidth / 476).toFixed(4)})`;
+            f.addEventListener("load", () => setTimeout(() => { if (f.isConnected) { f.classList.add("on"); box.classList.add("live"); } }, 600));
+            box.appendChild(f);
+          };
+          rail.addEventListener("scroll", () => { clearTimeout(liveT); liveT = setTimeout(goLive, 380); }, { passive: true });
+          new IntersectionObserver((es) => { railSeen = es[0].isIntersecting; if (railSeen) goLive(); else stopLive(); }, { threshold: 0.35 }).observe(rail);
+          addEventListener("resize", () => { const f = rail.querySelector(".wk-img iframe"); if (f) f.style.transform = `scale(${(f.parentNode.clientWidth / 476).toFixed(4)})`; });
         }
 
         /* ============ スクロール演出 ============ */
