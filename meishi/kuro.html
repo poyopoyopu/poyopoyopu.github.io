@@ -1082,8 +1082,9 @@ void main(){
             .map(([n, la, lo]) => { const q = P(la, lo); let bi = 0, bd = 1e9; fish.forEach((f, i) => { const d = (f[0] - q[0]) ** 2 + (f[1] - q[1]) ** 2; if (d < bd) { bd = d; bi = i; } }); return { n, p: q, at: fl[bi] / fl[fl.length - 1] }; });
           // カメラ：[進み具合, 中心x, 中心y, 見せる幅, 見せる高さ]
           const keys = [[0, 862, 1000, 270, 290], [0.3, 862, 1000, 270, 290], [0.36, 905, 740, 330, 760], [0.42, 905, 740, 330, 760], [0.47, 660, 760, 1180, 1040],
-            [0.59, 660, 760, 1180, 1040], [0.63, 910, 1012, 64, 64], [0.695, 910, 1012, 64, 64], [0.72, 660, 760, 1180, 1040], [0.735, 660, 760, 1180, 1040], [0.775, 952, 1040, 140, 140], [1, 952, 1040, 140, 140]];
-          return { camps, best, rc, spots, fish, fl, keys, jp };
+            [0.59, 660, 760, 1180, 1040], [0.63, 910, 1012, 64, 64], [0.695, 910, 1012, 64, 64], [0.72, 660, 760, 1180, 1040], [0.735, 660, 760, 1180, 1040], [0.775, 952, 1040, 140, 140], [0.95, 952, 1040, 140, 140], [0.985, 912, 1045, 225, 200], [1, 912, 1045, 225, 200]];
+          const extra = [["伊東", 34.97, 139.1], ["沼津", 35.08, 138.86]].map(([n, la, lo]) => ({ n, p: P(la, lo) }));
+          return { camps, best, rc, spots, extra, fish, fl, keys, jp };
         })();
         let hmW = 0, hmH = 0, hmDpr = 1;
         const hmSize = () => { if (!hmCv) return; hmDpr = Math.min(2, devicePixelRatio || 1); hmW = hmCv.clientWidth; hmH = hmCv.clientHeight; hmCv.width = Math.round(hmW * hmDpr); hmCv.height = Math.round(hmH * hmDpr); };
@@ -1178,7 +1179,7 @@ void main(){
           // 釣り
           const a3 = ss(0.735, 0.775, p);
           if (a3 > 0) {
-            const f = ss(0.79, 0.96, p), L = HM.fl[HM.fl.length - 1], end = f * L;
+            const f = ss(0.79, 0.94, p), L = HM.fl[HM.fl.length - 1], end = f * L;
             g.globalAlpha = a3; g.lineCap = "round"; g.lineJoin = "round";
             for (const [w, col, bl] of [[7, "hsla(190,100%,60%,.25)", 16], [2.6, "hsl(188 100% 70%)", 6]]) {
               g.lineWidth = w; g.strokeStyle = col; g.shadowColor = "hsl(190 100% 60%)"; g.shadowBlur = bl; g.beginPath();
@@ -1193,7 +1194,15 @@ void main(){
             }
             let last = null;
             HM.spots.forEach((s) => { const v = clamp((f - s.at) * 25 + 0.15, 0, 1); if (v > 0) { label(s.n, X(s.p) + 10, Y(s.p), a3 * v, 12, "hsl(188 100% 85%)"); last = s; } });
-            if (p > 0.775) cap = f >= 0.995 ? { t: "陸っぱりで", n: "鹿島から川崎まで、ひと通り", c: "", u: "", a: a3 } : { t: "海沿いを、竿一本で", n: last ? last.n : "鹿島", c: "", u: "", a: a3 };
+            const ex = ss(0.955, 0.985, p);
+            if (ex > 0) HM.extra.forEach((e, i) => {
+              const x = X(e.p), y = Y(e.p), k = clamp(ex * 2 - i * 0.6, 0, 1); if (k <= 0) return;
+              g.globalAlpha = a3 * k; dot(x, y, 5, "hsl(188 100% 72%)", 16);
+              for (let r = 0; r < 2; r++) ring(x, y, 6 + ((t * 18 + r * 12) % 24), "hsl(188 100% 72%)", a3 * k * (1 - ((t * 18 + r * 12) % 24) / 24), 1.4);
+              label(e.n, x - 10, y, a3 * k, 12, "hsl(188 100% 85%)", "right");
+            });
+            if (p > 0.775 && ex > 0.3) cap = { t: "陸っぱりで。伊東や沼津でも", n: "鹿島から川崎まで、ひと通り", c: "", u: "", a: a3 };
+            else if (p > 0.775) cap = f >= 0.995 ? { t: "陸っぱりで", n: "鹿島から川崎まで、ひと通り", c: "", u: "", a: a3 } : { t: "海沿いを、竿一本で", n: last ? last.n : "鹿島", c: "", u: "", a: a3 };
           }
           g.globalAlpha = 1;
           // 下の字幕
