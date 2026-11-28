@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="サトウ シュンの名刺。ジェネラティブアート作品「GLASS RELAY」を掲げた名刺。お台場で運転の仕事をしています。連絡先の保存、電話、メール、LINE、お台場混雑予報・ART PLAYGROUNDへのリンク。" />
+    <meta name="description" content="サトウ シュンのデジタル名刺。ジェネラティブアート作品「GLASS RELAY」の標本ページ。お台場で運転の仕事をしています。電話 070-9118-0935、メール、連絡先の保存、お台場混雑予報・ART PLAYGROUNDへのリンク。" />
     <link rel="icon" href="data:," />
     <title>サトウ シュン｜名刺</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -17,31 +17,32 @@
       :root {
         color-scheme: light dark;
 
-        /* 墨色の壁（ダークが本体） */
-        --bg: #101010;
+        /* モノクローム基調。色は作品と LIVE 表示からだけ取る */
+        --bg: #0f0f0e;
+        --surface: #161615;
         --ink: #f2f1ec;
         --ink-soft: #a9a8a1;
-        --ink-faint: #767570;
-        --hairline: #2b2b28;
+        --ink-faint: #7a7973;
+        --hairline: #2c2c29;
         --row-hover: rgba(242, 241, 236, 0.045);
-        --accent: #d7ff3f;
         --btn-bg: #f2f1ec;
-        --btn-ink: #101010;
+        --btn-ink: #0f0f0e;
+        --live: #d7ff3f;
 
         --mono: ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+        --console-h: 76px;
       }
       @media (prefers-color-scheme: light) {
         :root {
-          /* 白い壁のギャラリーとして反転 */
-          --bg: #f7f6f2;
-          --ink: #161613;
+          --bg: #f6f5f1;
+          --surface: #ffffff;
+          --ink: #171714;
           --ink-soft: #5b5a54;
           --ink-faint: #8f8d84;
-          --hairline: #dddcd4;
-          --row-hover: rgba(22, 22, 19, 0.04);
-          --accent: #aacc06;
-          --btn-bg: #161613;
-          --btn-ink: #f7f6f2;
+          --hairline: #dddcd3;
+          --row-hover: rgba(23, 23, 20, 0.04);
+          --btn-bg: #171714;
+          --btn-ink: #f6f5f1;
         }
       }
 
@@ -55,366 +56,635 @@
         text-rendering: optimizeLegibility;
         overflow-x: hidden;
       }
-      ::selection { background: var(--accent); color: #101010; }
-      a { -webkit-tap-highlight-color: transparent; }
+      ::selection { background: var(--ink); color: var(--bg); }
+      a, button { -webkit-tap-highlight-color: transparent; }
+      button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
 
       .page {
         max-width: 680px;
         margin: 0 auto;
         padding:
           0
-          clamp(1.4rem, 6vw, 2.5rem)
-          max(2.6rem, env(safe-area-inset-bottom));
+          clamp(1.25rem, 5.5vw, 2.25rem)
+          calc(var(--console-h) + env(safe-area-inset-bottom) + 3rem);
       }
 
-      /* ===== 展示ゾーン：墨色の広いマット（余白そのものが額縁） ===== */
-      .exhibit {
-        padding-top: max(clamp(3rem, 10svh, 5.5rem), env(safe-area-inset-top));
+      /* ============================================================
+         生きた標本：GLASS RELAY を額装した窓
+         ============================================================ */
+      .specimen {
+        padding-top: max(clamp(1.6rem, 5svh, 3rem), env(safe-area-inset-top));
       }
-      .artwork { margin: 0; }
-      .artwork iframe {
+      .frame {
+        border: 1px solid var(--hairline);
+        background: var(--surface);
+        padding: clamp(0.55rem, 2vw, 0.85rem);
+      }
+      .window {
+        position: relative;
+        height: clamp(330px, 56svh, 540px);
+        background: #111110;
+        overflow: hidden;
+      }
+      /* 読み込み前は墨色パネル＋作品名で成立させる */
+      .window-fallback {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.9rem;
+        color: #f2f1ec;
+        transition: opacity 0.45s ease;
+      }
+      .window-fallback .fb-rule {
+        width: 44px;
+        height: 1px;
+        background: rgba(242, 241, 236, 0.4);
+      }
+      .window-fallback .fb-title {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 700;
+        letter-spacing: 0.42em;
+        text-indent: 0.42em;
+      }
+      .window-fallback .fb-sub {
+        margin: 0;
+        font-family: var(--mono);
+        font-size: 0.68rem;
+        letter-spacing: 0.22em;
+        color: rgba(242, 241, 236, 0.55);
+      }
+      .window iframe {
+        position: absolute;
+        inset: 0;
         display: block;
         width: 100%;
-        aspect-ratio: 1 / 1;
+        height: 100%;
         border: 0;
-        background: var(--bg);
+        background: #111110;
+        opacity: 0;
+        transition: opacity 0.45s ease;
       }
-      @media (min-width: 561px) {
-        .artwork iframe { aspect-ratio: 3 / 2; }
-      }
+      .window.is-loaded .window-fallback { opacity: 0; pointer-events: none; }
+      .window.is-loaded iframe { opacity: 1; }
 
-      /* ===== キャプションプレート（美術館ラベルの文法） ===== */
-      .plate { margin-top: 1.15rem; }
-      .plate-live {
+      /* ===== 作品キャプション：実スペックだけを等幅で刻む ===== */
+      .caption { margin-top: 1.1rem; }
+      .caption-head {
         display: flex;
-        align-items: center;
-        gap: 0.55rem;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 1rem;
+      }
+      .caption-title {
         margin: 0;
-        font-size: 0.68rem;
+        font-size: 1.08rem;
         font-weight: 700;
-        letter-spacing: 0.34em;
+        letter-spacing: 0.3em;
+        line-height: 1.5;
+      }
+      .caption-sub {
+        margin: 0.35rem 0 0;
+        font-size: 0.8rem;
+        font-weight: 500;
+        letter-spacing: 0.12em;
         color: var(--ink-soft);
       }
-      .plate-live .dot {
+      /* LIVE は状態表示。蛍光イエローはここだけ */
+      .live-chip {
         flex: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.45rem;
+        margin-top: 0.15rem;
+        padding: 0.32rem 0.6rem 0.32rem 0.55rem;
+        background: #111110;
+        font-family: var(--mono);
+        font-size: 0.66rem;
+        font-weight: 700;
+        letter-spacing: 0.3em;
+        color: var(--live);
+      }
+      .live-chip .dot {
         width: 6px;
         height: 6px;
         border-radius: 50%;
-        background: var(--accent);
+        background: var(--live);
       }
-      .plate-title {
-        margin: 0.6rem 0 0;
-        font-size: 1.05rem;
-        font-weight: 700;
-        letter-spacing: 0.26em;
-        line-height: 1.5;
+      .specs {
+        margin: 1rem 0 0;
+        border-top: 1px solid var(--hairline);
       }
-      .plate-medium {
-        margin: 0.45rem 0 0;
-        font-size: 0.8rem;
+      .specs .spec {
+        display: grid;
+        grid-template-columns: 6.2rem 1fr;
+        gap: 1rem;
+        padding: 0.5rem 0;
+        border-bottom: 1px solid var(--hairline);
+        font-family: var(--mono);
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+      .specs .spec dt { color: var(--ink-faint); }
+      .specs .spec dd { margin: 0; }
+      .spec-note {
+        margin: 0.85rem 0 0;
+        font-size: 0.86rem;
         font-weight: 500;
-        letter-spacing: 0.1em;
-        line-height: 1.8;
+        line-height: 1.95;
         color: var(--ink-soft);
       }
 
-      /* ===== 人物：名前は中サイズ、字間を広く静かに ===== */
-      .person {
-        margin-top: clamp(2.6rem, 8svh, 3.6rem);
-        padding: clamp(2.4rem, 7svh, 3.2rem) 0 clamp(2.6rem, 7svh, 3.4rem);
-        border-top: 1px solid var(--hairline);
+      /* ============================================================
+         台帳（インデックス）
+         ============================================================ */
+      .ledger { margin-top: clamp(2.6rem, 8svh, 3.8rem); }
+      .ledger-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 1rem;
+        padding-bottom: 0.7rem;
       }
-      .person .kind {
-        margin: 0 0 1rem;
-        font-size: 0.7rem;
+      .ledger-title {
+        margin: 0;
+        font-size: 0.78rem;
         font-weight: 700;
         letter-spacing: 0.42em;
         color: var(--ink-faint);
       }
-      h1.name {
-        margin: 0;
-        font-size: clamp(1.55rem, 6.2vw, 2.05rem);
-        font-weight: 700;
-        line-height: 1.45;
-        letter-spacing: 0.24em;
+      .ledger-count {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        color: var(--ink-faint);
       }
 
-      /* ===== セクション共通（ラベル列＋本文列のグリッド） ===== */
-      section {
+      .entry { border-top: 1px solid var(--hairline); }
+      .ledger .entry:last-of-type { border-bottom: 1px solid var(--hairline); }
+
+      /* 静的な行（名前・一言） */
+      .entry-static {
         display: grid;
-        grid-template-columns: 4.8rem 1fr;
-        column-gap: clamp(1rem, 4vw, 1.8rem);
-        padding: 1.9rem 0 2.1rem;
-        border-top: 1px solid var(--hairline);
+        grid-template-columns: 4.6rem 1fr;
+        column-gap: clamp(0.9rem, 4vw, 1.6rem);
+        padding: 1.15rem 0 1.25rem;
       }
-      .sec-label {
+      .entry-kind {
         margin: 0;
-        padding-top: 0.32rem;
-        font-size: 0.78rem;
+        padding-top: 0.34rem;
+        font-size: 0.74rem;
         font-weight: 700;
         letter-spacing: 0.3em;
         color: var(--ink-faint);
         white-space: nowrap;
       }
-
-      /* ===== 一言 ===== */
-      .statement {
+      .entry-name {
         margin: 0;
-        font-size: 0.98rem;
+        font-size: clamp(1.5rem, 6vw, 1.95rem);
+        font-weight: 700;
+        line-height: 1.45;
+        letter-spacing: 0.22em;
+      }
+      .entry-statement {
+        margin: 0;
+        padding-top: 0.18rem;
+        font-size: 0.96rem;
         font-weight: 500;
         line-height: 2.05;
       }
 
-      /* ===== 趣味 ===== */
-      .hobbies { list-style: none; margin: 0; padding: 0; }
-      .hobbies li {
+      /* 展開する行（趣味・リンク・連絡先） */
+      .entry-toggle {
+        display: grid;
+        grid-template-columns: 4.6rem 1fr auto;
+        column-gap: clamp(0.9rem, 4vw, 1.6rem);
+        align-items: center;
+        width: 100%;
+        padding: 1.15rem 0;
+        text-align: left;
+      }
+      .entry-toggle:hover { background: var(--row-hover); }
+      .entry-toggle:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+      .entry-toggle .entry-kind { padding-top: 0; }
+      .entry-preview {
+        font-size: 1rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        line-height: 1.6;
+      }
+      .entry-preview .mono {
+        font-family: var(--mono);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+      }
+      .entry-preview .sub {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 0.78rem;
+        font-weight: 500;
+        color: var(--ink-faint);
+        letter-spacing: 0.06em;
+      }
+      .entry-mark {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        border: 1px solid var(--hairline);
+        border-radius: 50%;
+        color: var(--ink-soft);
+        transition: transform 0.25s ease;
+      }
+      .entry-toggle[aria-expanded="true"] .entry-mark { transform: rotate(45deg); }
+
+      .entry-panel {
+        display: grid;
+        grid-template-rows: 0fr;
+        transition: grid-template-rows 0.28s ease;
+      }
+      .entry-panel[hidden] { display: none; }
+      .entry-panel.open { grid-template-rows: 1fr; }
+      .entry-panel-inner { overflow: hidden; min-height: 0; }
+      .entry-body {
+        padding: 0.15rem 0 1.35rem calc(4.6rem + clamp(0.9rem, 4vw, 1.6rem));
+      }
+
+      /* 展開の中身：趣味 */
+      .hobby-list { list-style: none; margin: 0; padding: 0; }
+      .hobby-list li {
         display: flex;
         align-items: baseline;
         gap: 1rem;
-        padding: 0.62rem 0;
+        padding: 0.55rem 0;
       }
-      .hobbies li + li { border-top: 1px solid var(--hairline); }
-      .hobbies li:first-child { padding-top: 0.1rem; }
-      .hobbies li:last-child { padding-bottom: 0; }
-      .hobbies .hobby-name {
-        font-size: 1.12rem;
-        font-weight: 700;
-        letter-spacing: 0.08em;
-      }
-      .hobbies .note {
-        margin-left: auto;
-        font-size: 0.82rem;
-        color: var(--ink-faint);
-        text-align: right;
-      }
+      .hobby-list li + li { border-top: 1px solid var(--hairline); }
+      .hobby-list li:first-child { padding-top: 0; }
+      .hobby-list li:last-child { padding-bottom: 0; }
+      .hobby-name { font-size: 1.08rem; font-weight: 700; letter-spacing: 0.08em; }
+      .hobby-note { margin-left: auto; font-size: 0.82rem; color: var(--ink-faint); text-align: right; }
 
-      /* ===== リンク／連絡先の行 ===== */
-      .rows { list-style: none; margin: 0; padding: 0; }
-      .rows li + li { border-top: 1px solid var(--hairline); }
-      .rows a {
+      /* 展開の中身：リンク／連絡先の行 */
+      .subrows { list-style: none; margin: 0; padding: 0; }
+      .subrows li + li { border-top: 1px solid var(--hairline); }
+      .subrows a {
         display: flex;
         align-items: center;
         gap: 1rem;
-        padding: 0.95rem 0.2rem;
+        padding: 0.8rem 0.15rem;
         color: var(--ink);
         text-decoration: none;
       }
-      .rows li:first-child a { padding-top: 0.35rem; }
-      .rows li:last-child a { padding-bottom: 0.35rem; }
-      .rows a:hover, .rows a:active { background: var(--row-hover); }
-      .rows a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-      .rows .r-main { flex: 1; min-width: 0; }
-      .rows .r-title {
+      .subrows li:first-child a { padding-top: 0.2rem; }
+      .subrows li:last-child a { padding-bottom: 0.2rem; }
+      .subrows a:hover { background: var(--row-hover); }
+      .subrows a:focus-visible { outline: 2px solid var(--ink); outline-offset: -2px; }
+      .subrows .s-main { flex: 1; min-width: 0; }
+      .subrows .s-title { display: block; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.05em; }
+      .subrows .s-desc {
         display: block;
-        font-size: 1.12rem;
-        font-weight: 700;
-        letter-spacing: 0.06em;
-      }
-      .rows .r-desc {
-        display: block;
-        margin-top: 0.3rem;
-        font-size: 0.84rem;
-        line-height: 1.75;
+        margin-top: 0.25rem;
+        font-size: 0.82rem;
+        line-height: 1.7;
         color: var(--ink-soft);
       }
-      .rows .r-value {
+      .subrows .s-url {
         display: block;
-        font-size: 1.02rem;
-        font-weight: 500;
-        letter-spacing: 0.05em;
+        margin-top: 0.3rem;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.02em;
+        color: var(--ink-faint);
         overflow-wrap: anywhere;
       }
-      .rows .r-value.mono {
-        font-family: var(--mono);
-        font-size: 1rem;
-        letter-spacing: 0.04em;
-      }
-      .rows .r-label {
+      .subrows .s-label {
         display: block;
-        margin-bottom: 0.25rem;
-        font-size: 0.7rem;
+        margin-bottom: 0.2rem;
+        font-size: 0.68rem;
         font-weight: 700;
         letter-spacing: 0.28em;
         color: var(--ink-faint);
       }
-      .rows .r-arrow { flex: none; color: var(--ink-faint); }
-      .rows a:hover .r-arrow { color: var(--ink); }
-
-      /* ===== 連絡先に保存（唯一の塗りボタン） ===== */
-      .save-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.65rem;
-        width: 100%;
-        min-height: 58px;
-        padding: 0.95rem 1.2rem;
-        background: var(--btn-bg);
-        color: var(--btn-ink);
+      .subrows .s-value {
+        display: block;
+        font-family: var(--mono);
         font-size: 1rem;
-        font-weight: 900;
-        letter-spacing: 0.16em;
-        text-decoration: none;
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        overflow-wrap: anywhere;
       }
-      .save-btn:hover { opacity: 0.88; }
-      .save-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-      .save-btn svg { flex: none; }
-      .save-note {
-        margin: 0.75rem 0 0;
-        font-size: 0.82rem;
-        line-height: 1.8;
-        color: var(--ink-faint);
-      }
-      .contact-rows { margin-top: 1.4rem; }
+      .subrows .s-arrow { flex: none; color: var(--ink-faint); }
+      .subrows a:hover .s-arrow { color: var(--ink); }
 
-      /* ===== フッター ===== */
-      footer {
-        padding-top: 1.1rem;
-        border-top: 1px solid var(--hairline);
-      }
       .foot-note {
         display: flex;
         justify-content: space-between;
         gap: 1rem;
-        font-size: 0.72rem;
+        margin-top: 2.2rem;
+        font-size: 0.7rem;
         font-weight: 500;
         letter-spacing: 0.24em;
         color: var(--ink-faint);
       }
 
+      /* ============================================================
+         下部固定コンソール（親指ゾーン）：保存／電話／メールの3つだけ
+         ============================================================ */
+      .console {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 10;
+        background: var(--bg);
+        border-top: 1px solid var(--hairline);
+        padding-bottom: env(safe-area-inset-bottom);
+      }
+      .console-inner {
+        max-width: 680px;
+        margin: 0 auto;
+        padding: 0.55rem clamp(1.25rem, 5.5vw, 2.25rem);
+        display: grid;
+        grid-template-columns: 1.35fr 1fr 1fr;
+        gap: 0.55rem;
+        min-height: var(--console-h);
+        align-items: stretch;
+      }
+      .console a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: 52px;
+        font-size: 0.92rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+      }
+      .console a:focus-visible { outline: 2px solid var(--ink); outline-offset: -3px; }
+      .console .c-save { background: var(--btn-bg); color: var(--btn-ink); font-weight: 900; }
+      .console .c-save:hover { opacity: 0.88; }
+      .console .c-ghost { border: 1px solid var(--hairline); color: var(--ink); }
+      .console .c-ghost:hover { background: var(--row-hover); }
+      .console svg { flex: none; }
+
       @media (max-width: 480px) {
-        section {
-          grid-template-columns: 1fr;
-          row-gap: 1.1rem;
-        }
-        .sec-label { padding-top: 0; }
+        .entry-static { grid-template-columns: 3.9rem 1fr; }
+        .entry-toggle { grid-template-columns: 3.9rem 1fr auto; }
+        .entry-body { padding-left: calc(3.9rem + clamp(0.9rem, 4vw, 1.6rem)); }
+        .specs .spec { grid-template-columns: 5.4rem 1fr; }
+        .console a { font-size: 0.86rem; letter-spacing: 0.06em; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .window iframe, .window-fallback, .entry-panel, .entry-mark { transition: none; }
       }
     </style>
   </head>
   <body>
     <div class="page">
-      <!-- ===== 展示：GLASS RELAY ===== -->
-      <header class="exhibit">
-        <figure class="artwork">
-          <iframe
-            src="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html"
-            title="ジェネラティブアート作品「GLASS RELAY」"
-            loading="eager"
-          ></iframe>
-          <figcaption class="plate">
-            <p class="plate-live"><span class="dot" aria-hidden="true"></span>LIVE</p>
-            <p class="plate-title">GLASS RELAY</p>
-            <p class="plate-medium">ジェネラティブアート／ART PLAYGROUND</p>
-          </figcaption>
-        </figure>
+      <!-- ===== 生きた標本：GLASS RELAY ===== -->
+      <header class="specimen">
+        <div class="frame">
+          <div class="window" id="artWindow">
+            <div class="window-fallback" aria-hidden="true">
+              <p class="fb-title">GLASS RELAY</p>
+              <span class="fb-rule"></span>
+              <p class="fb-sub">GENERATIVE ART — v127</p>
+            </div>
+            <iframe
+              id="artFrame"
+              data-src="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html"
+              title="ジェネラティブアート作品「GLASS RELAY」"
+              loading="lazy"
+            ></iframe>
+          </div>
+        </div>
+
+        <div class="caption">
+          <div class="caption-head">
+            <div>
+              <p class="caption-title">GLASS RELAY</p>
+              <p class="caption-sub">ジェネラティブアート／ART PLAYGROUND</p>
+            </div>
+            <span class="live-chip"><span class="dot" aria-hidden="true"></span>LIVE</span>
+          </div>
+          <dl class="specs">
+            <div class="spec"><dt>VERSION</dt><dd>v127</dd></div>
+            <div class="spec"><dt>AREAS</dt><dd>5エリア</dd></div>
+            <div class="spec"><dt>CYCLE</dt><dd>5分で1周</dd></div>
+          </dl>
+          <p class="spec-note">5分で1周するドミノ時計。毎分0秒に、分の数字が倒れて出る。</p>
+        </div>
       </header>
 
       <main>
-        <!-- ===== 人物 ===== -->
-        <div class="person">
-          <p class="kind">名刺</p>
-          <h1 class="name">サトウ シュン</h1>
-        </div>
+        <!-- ===== 台帳（インデックス） ===== -->
+        <section class="ledger" aria-label="台帳">
+          <div class="ledger-head">
+            <h2 class="ledger-title">台帳</h2>
+            <span class="ledger-count">全5件</span>
+          </div>
 
-        <!-- ===== 一言 ===== -->
-        <section aria-labelledby="statement-title">
-          <h2 class="sec-label" id="statement-title">一言</h2>
-          <p class="statement">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
-        </section>
+          <!-- 名前 -->
+          <div class="entry entry-static">
+            <p class="entry-kind">名前</p>
+            <h1 class="entry-name">サトウ シュン</h1>
+          </div>
 
-        <!-- ===== 趣味 ===== -->
-        <section aria-labelledby="hobbies-title">
-          <h2 class="sec-label" id="hobbies-title">趣味</h2>
-          <ul class="hobbies">
-            <li>
-              <span class="hobby-name">音楽鑑賞</span>
-              <span class="note">ライブによく行きます</span>
-            </li>
-            <li><span class="hobby-name">キャンプ</span></li>
-            <li><span class="hobby-name">釣り</span></li>
-            <li><span class="hobby-name">競馬</span></li>
-          </ul>
-        </section>
+          <!-- 一言 -->
+          <div class="entry entry-static">
+            <p class="entry-kind">一言</p>
+            <p class="entry-statement">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
+          </div>
 
-        <!-- ===== リンク ===== -->
-        <section aria-labelledby="works-title">
-          <h2 class="sec-label" id="works-title">リンク</h2>
-          <ul class="rows">
-            <li>
-              <a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener">
-                <span class="r-main">
-                  <span class="r-title">お台場混雑予報</span>
-                  <span class="r-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span>
-                </span>
-                <svg class="r-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
-              </a>
-            </li>
-            <li>
-              <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">
-                <span class="r-main">
-                  <span class="r-title">ART PLAYGROUND</span>
-                  <span class="r-desc">コードで描くジェネラティブアートの作品サイト。</span>
-                </span>
-                <svg class="r-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
-              </a>
-            </li>
-          </ul>
-        </section>
+          <!-- 趣味 -->
+          <div class="entry">
+            <button class="entry-toggle" type="button" aria-expanded="false" aria-controls="panel-hobbies" id="toggle-hobbies">
+              <span class="entry-kind">趣味</span>
+              <span class="entry-preview">音楽鑑賞<span class="sub">全4項目</span></span>
+              <span class="entry-mark" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+              </span>
+            </button>
+            <div class="entry-panel" id="panel-hobbies" role="region" aria-labelledby="toggle-hobbies" hidden>
+              <div class="entry-panel-inner">
+                <div class="entry-body">
+                  <ul class="hobby-list">
+                    <li>
+                      <span class="hobby-name">音楽鑑賞</span>
+                      <span class="hobby-note">ライブによく行きます</span>
+                    </li>
+                    <li><span class="hobby-name">キャンプ</span></li>
+                    <li><span class="hobby-name">釣り</span></li>
+                    <li><span class="hobby-name">競馬</span></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
-        <!-- ===== 連絡先 ===== -->
-        <section aria-labelledby="contact-title">
-          <h2 class="sec-label" id="contact-title">連絡先</h2>
-          <div>
-            <a class="save-btn" href="contact.vcf">
-              <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <circle cx="10" cy="8" r="3.6" />
-                <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
-                <path d="M17.5 14.5v6M14.5 17.5h6" />
-              </svg>
-              連絡先に保存
-            </a>
-            <p class="save-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
+          <!-- リンク -->
+          <div class="entry">
+            <button class="entry-toggle" type="button" aria-expanded="false" aria-controls="panel-links" id="toggle-links">
+              <span class="entry-kind">リンク</span>
+              <span class="entry-preview">お台場混雑予報<span class="sub">全2件</span></span>
+              <span class="entry-mark" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+              </span>
+            </button>
+            <div class="entry-panel" id="panel-links" role="region" aria-labelledby="toggle-links" hidden>
+              <div class="entry-panel-inner">
+                <div class="entry-body">
+                  <ul class="subrows">
+                    <li>
+                      <a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener">
+                        <span class="s-main">
+                          <span class="s-title">お台場混雑予報</span>
+                          <span class="s-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span>
+                          <span class="s-url">odaibacrowdforecast.com</span>
+                        </span>
+                        <svg class="s-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">
+                        <span class="s-main">
+                          <span class="s-title">ART PLAYGROUND</span>
+                          <span class="s-desc">コードで描くジェネラティブアートの作品サイト。</span>
+                          <span class="s-url">art-playground.artplayground.workers.dev</span>
+                        </span>
+                        <svg class="s-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
 
-            <ul class="rows contact-rows">
-              <li>
-                <a href="tel:+819098503262">
-                  <span class="r-main">
-                    <span class="r-label">電話</span>
-                    <span class="r-value mono">090-9850-3262</span>
-                  </span>
-                  <svg class="r-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-                </a>
-              </li>
-              <li>
-                <a href="mailto:muuu@muse.ai">
-                  <span class="r-main">
-                    <span class="r-label">メール</span>
-                    <span class="r-value mono">muuu@muse.ai</span>
-                  </span>
-                  <svg class="r-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-                </a>
-              </li>
-              <li>
-                <a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener">
-                  <span class="r-main">
-                    <span class="r-label">LINE</span>
-                    <span class="r-value">LINEで連絡</span>
-                  </span>
-                  <svg class="r-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
-                </a>
-              </li>
-            </ul>
+          <!-- 連絡先 -->
+          <div class="entry">
+            <button class="entry-toggle" type="button" aria-expanded="false" aria-controls="panel-contact" id="toggle-contact">
+              <span class="entry-kind">連絡先</span>
+              <span class="entry-preview"><span class="mono">070-9118-0935</span><span class="sub">電話・メール</span></span>
+              <span class="entry-mark" aria-hidden="true">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14" /></svg>
+              </span>
+            </button>
+            <div class="entry-panel" id="panel-contact" role="region" aria-labelledby="toggle-contact" hidden>
+              <div class="entry-panel-inner">
+                <div class="entry-body">
+                  <ul class="subrows">
+                    <li>
+                      <a href="tel:+817091180935">
+                        <span class="s-main">
+                          <span class="s-label">電話</span>
+                          <span class="s-value">070-9118-0935</span>
+                        </span>
+                        <svg class="s-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="mailto:muuu@muse.ai">
+                        <span class="s-main">
+                          <span class="s-label">メール</span>
+                          <span class="s-value">muuu@muse.ai</span>
+                        </span>
+                        <svg class="s-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="foot-note" aria-hidden="true">
+            <span>サトウ シュン</span>
+            <span>お台場</span>
           </div>
         </section>
       </main>
-
-      <footer aria-hidden="true">
-        <div class="foot-note">
-          <span>サトウ シュン</span>
-          <span>お台場</span>
-        </div>
-      </footer>
     </div>
 
+    <!-- ===== 下部固定コンソール ===== -->
+    <nav class="console" aria-label="連絡アクション">
+      <div class="console-inner">
+        <a class="c-save" href="contact.vcf">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10" cy="8" r="3.6" />
+            <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
+            <path d="M17.5 14.5v6M14.5 17.5h6" />
+          </svg>
+          連絡先に保存
+        </a>
+        <a class="c-ghost" href="tel:+817091180935">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
+          </svg>
+          電話
+        </a>
+        <a class="c-ghost" href="mailto:muuu@muse.ai">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="2" y="4" width="20" height="16" rx="2" />
+            <path d="m22 7-10 6L2 7" />
+          </svg>
+          メール
+        </a>
+      </div>
+    </nav>
+
+    <script>
+      // 静止画ファースト：本文を先に描画し、作品 iframe は遅れて読み込む
+      (function () {
+        var win = document.getElementById("artWindow");
+        var frame = document.getElementById("artFrame");
+        if (!win || !frame) return;
+        frame.addEventListener("load", function () {
+          win.classList.add("is-loaded");
+        });
+        function start() {
+          if (frame.getAttribute("src")) return;
+          frame.setAttribute("src", frame.getAttribute("data-src"));
+        }
+        if (document.readyState === "complete") {
+          setTimeout(start, 500);
+        } else {
+          window.addEventListener("load", function () { setTimeout(start, 500); });
+        }
+        // 万一 load イベントを取りこぼしても、読み込み開始後は窓を開く
+        setTimeout(function () { win.classList.add("is-loaded"); }, 6000);
+      })();
+
+      // 台帳の展開：行タップでその場に開閉する（閉じた行の中身は非表示にし、開いたときだけ現れる）
+      (function () {
+        var toggles = document.querySelectorAll(".entry-toggle");
+        toggles.forEach(function (btn) {
+          btn.addEventListener("click", function () {
+            var panel = document.getElementById(btn.getAttribute("aria-controls"));
+            if (!panel) return;
+            var open = btn.getAttribute("aria-expanded") === "true";
+            if (open) {
+              btn.setAttribute("aria-expanded", "false");
+              panel.classList.remove("open");
+              setTimeout(function () {
+                if (!panel.classList.contains("open")) panel.hidden = true;
+              }, 300);
+            } else {
+              btn.setAttribute("aria-expanded", "true");
+              panel.hidden = false;
+              // 表示直後にクラスを付けて開くアニメーションを効かせる
+              void panel.offsetHeight;
+              requestAnimationFrame(function () { panel.classList.add("open"); });
+            }
+          });
+        });
+      })();
+    </script>
   </body>
 </html>
