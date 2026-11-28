@@ -10,7 +10,7 @@
     <title>サトウ シュン｜名刺</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Unbounded:wght@700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <style>
       @property --a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
       :root {
@@ -65,7 +65,7 @@
       .ld-edge { position: absolute; left: 0; right: 0; height: 2px; background: #fff; box-shadow: 0 0 22px 4px rgba(255,255,255,.6); opacity: .9; bottom: 0; }
       .ld-name {
         position: absolute; left: 0; right: 0; bottom: 12%; text-align: center;
-        font-weight: 900; font-size: calc(var(--cw) * 0.13); letter-spacing: 0.12em; color: rgba(255,255,255,.1);
+        font-family: "Unbounded", sans-serif; font-weight: 800; font-size: calc(var(--cw) * 0.13); letter-spacing: 0.12em; color: rgba(255,255,255,.1);
       }
       .ld-meta { width: var(--cw); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
       .ld-num { font-family: var(--mono); font-weight: 700; font-size: 2.6rem; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
@@ -123,8 +123,8 @@
         background: linear-gradient(calc(110deg + var(--tx, 0) * 30deg), transparent 30%, rgba(255,255,255,.07) 48%, transparent 62%);
       }
       .f-panel::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--foil); opacity: .9; }
-      .f-name { margin: 0; font-weight: 900; font-size: calc(var(--cw) * 0.118); line-height: 1.1; letter-spacing: 0.08em; }
-      .f-roma { margin: 0.5em 0 0; font-family: var(--mono); font-size: calc(var(--cw) * 0.032); letter-spacing: 0.42em; }
+      .f-name { margin: 0; font-family: "Unbounded", "Zen Kaku Gothic New", sans-serif; font-weight: 800; font-size: calc(var(--cw) * 0.1); line-height: 1.05; letter-spacing: 0.01em; white-space: nowrap; }
+      .f-roma { margin: 0.7em 0 0; font-weight: 700; font-size: calc(var(--cw) * 0.036); letter-spacing: 0.4em; }
       .f-tag { margin: 1.1em 0 0; font-size: calc(var(--cw) * 0.036); line-height: 1.85; color: var(--soft); }
       /* 裏：連絡先 */
       .back {
@@ -138,11 +138,11 @@
       .b-head { position: relative; display: flex; justify-content: space-between; align-items: baseline; }
       .b-name { font-weight: 900; font-size: calc(var(--cw) * 0.07); letter-spacing: 0.1em; }
       .b-serial { font-family: var(--mono); font-size: calc(var(--cw) * 0.03); color: var(--faint); letter-spacing: 0.14em; }
-      .b-rows { position: relative; list-style: none; margin: 8% 0 0; padding: 0; flex: 1; }
+      .b-rows { position: relative; list-style: none; margin: 0; padding: 0; flex: 1; display: flex; flex-direction: column; justify-content: center; }
       .b-rows li + li { border-top: 1px solid var(--hair); }
-      .b-rows a { display: block; padding: 0.95em 0; text-decoration: none; }
+      .b-rows a { display: block; padding: 1.3em 0; text-decoration: none; }
       .b-k { display: block; font-size: calc(var(--cw) * 0.03); letter-spacing: 0.24em; color: var(--faint); }
-      .b-v { display: flex; justify-content: space-between; align-items: center; margin-top: 0.35em; font-size: calc(var(--cw) * 0.052); font-weight: 700; letter-spacing: 0.03em; }
+      .b-v { display: flex; justify-content: space-between; align-items: center; margin-top: 0.4em; font-size: calc(var(--cw) * 0.062); font-weight: 700; letter-spacing: 0.03em; }
       .b-v i { font-style: normal; color: var(--faint); font-weight: 500; }
       .b-save {
         position: relative; display: flex; align-items: center; justify-content: center; gap: 0.6em;
@@ -260,7 +260,7 @@
     <div id="loader" role="status" aria-live="polite">
       <div class="ld-card" aria-hidden="true">
         <div class="ld-fill" id="ldFill"></div>
-        <div class="ld-name">サトウ シュン</div>
+        <div class="ld-name">SHUN SATO</div>
       </div>
       <div class="ld-meta">
         <div class="ld-num"><span id="ldNum">0</span><small>%</small></div>
@@ -277,8 +277,8 @@
             <canvas id="foil" aria-hidden="true"></canvas>
             <div class="f-top"><span>MEISHI</span><span class="serial">No.0000</span></div>
             <div class="f-panel">
-              <h1 class="f-name">サトウ シュン</h1>
-              <p class="f-roma foil-text">SATO SHUN</p>
+              <h1 class="f-name" aria-label="サトウ シュン">SHUN SATO</h1>
+              <p class="f-roma foil-text">サトウ シュン</p>
               <p class="f-tag">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
             </div>
           </div>
@@ -287,7 +287,6 @@
             <ul class="b-rows">
               <li><a href="tel:+817091180935"><span class="b-k">電話</span><span class="b-v">070-9118-0935<i>→</i></span></a></li>
               <li><a href="mailto:muuu@muse.ai"><span class="b-k">メール</span><span class="b-v">muuu@muse.ai<i>→</i></span></a></li>
-              <li><a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener"><span class="b-k">LINE</span><span class="b-v">LINEで連絡<i>↗</i></span></a></li>
             </ul>
             <a class="b-save" href="kuro.vcf">＋ 連絡先に保存</a>
             <p class="b-back">余白に触れると表に戻ります</p>
@@ -430,14 +429,13 @@
         <ul class="c-rows">
           <li class="reveal"><a href="tel:+817091180935"><span><span class="c-k">電話</span><span class="c-v">070-9118-0935</span></span><span>→</span></a></li>
           <li class="reveal" style="--d:.06s"><a href="mailto:muuu@muse.ai"><span><span class="c-k">メール</span><span class="c-v">muuu@muse.ai</span></span><span>→</span></a></li>
-          <li class="reveal" style="--d:.12s"><a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener"><span><span class="c-k">LINE</span><span class="c-v">LINEで連絡</span></span><span>↗</span></a></li>
         </ul>
       </section>
     </main>
 
     <footer class="wrap" aria-hidden="true">
       <div class="rule"></div>
-      <div class="foot" style="margin-top:1.4rem"><b>サトウ シュン</b><span class="serial">No.0000</span></div>
+      <div class="foot" style="margin-top:1.4rem"><b style="font-family:Unbounded,sans-serif;font-weight:800;letter-spacing:.02em">SHUN SATO</b><span class="serial">No.0000</span></div>
     </footer>
 
     <script>
@@ -651,6 +649,7 @@ void main(){
           document.fonts.load('900 1em "Zen Kaku Gothic New"', "サトウシュン連絡先作品"),
           document.fonts.load('500 1em "Zen Kaku Gothic New"', "お台場"),
           document.fonts.load('700 1em "JetBrains Mono"', "0123"),
+          document.fonts.load('800 1em "Unbounded"', "SHUN SATO"),
         ]).then(() => document.fonts.ready) : Promise.resolve();
         Promise.race([fontJob, new Promise((r) => setTimeout(r, 5000))]).catch(() => {}).finally(() => (flags.fonts = true));
         const msgs = [[0, "文字を用意しています"], [25, "箔を流し込んでいます"], [55, "作品を並べています"], [85, "箔を押しています"], [100, "できあがり"]];
