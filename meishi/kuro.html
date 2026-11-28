@@ -372,6 +372,18 @@
       .rec-buy:active { background: rgba(255,255,255,.18); }
       .rm .rec { pointer-events: auto; }
       .c-pr { margin-top: 2.2rem; font-size: .7rem; line-height: 1.8; color: var(--faint); }
+      /* トーンアーム（レコードが出きったら針が落ちる） */
+      .arm { position: absolute; z-index: 3; left: calc(var(--s) * 1.443); top: calc(var(--s) * .1); width: calc(var(--s) * .026); height: calc(var(--s) * .51);
+        margin-left: calc(var(--s) * -.013); transform-origin: 50% 0; opacity: 0; transform: rotate(-12deg); pointer-events: none;
+        border-radius: 99px; background: linear-gradient(90deg, #6d6c72, #e9e8ee 45%, #8b8a90); box-shadow: 4px 8px 14px rgba(0,0,0,.6); }
+      .arm::before { content: ""; position: absolute; left: 50%; top: 0; width: calc(var(--s) * .11); height: calc(var(--s) * .11); transform: translate(-50%, -50%); border-radius: 50%;
+        background: radial-gradient(circle, #f4f3ef 0 18%, #2a2a2f 20% 52%, #5b5a61 54%); box-shadow: 0 6px 14px rgba(0,0,0,.7); }
+      .arm::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--s) * -.05); width: calc(var(--s) * .06); height: calc(var(--s) * .085); transform: translateX(-50%) rotate(14deg); border-radius: 3px;
+        background: linear-gradient(#d9d8de, #7b7a80); }
+      .rc-eq { position: absolute; left: 14%; right: 14%; bottom: calc(max(1.4rem, env(safe-area-inset-bottom)) + 3rem); height: min(6svh, 48px); display: flex; align-items: flex-end; gap: 3px; pointer-events: none; }
+      .rc-eq i { flex: 1; height: 100%; border-radius: 2px 2px 0 0; transform-origin: 50% 100%; transform: scaleY(.04); opacity: .85;
+        background: linear-gradient(to top, hsl(var(--rh, 200) 85% 58%), hsl(calc(var(--rh, 200) + 80) 90% 72%) 65%, #fff); }
+      .rm .arm, .rm .rc-eq { display: none; }
       .rc-foot { position: absolute; left: 0; right: 0; bottom: max(1.4rem, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: .66rem; letter-spacing: .12em; color: var(--faint); }
       .motto { margin: 0 0 3rem; font-weight: 700; font-size: clamp(1.3rem, 5.6vw, 2rem); line-height: 1.6; letter-spacing: .08em; color: var(--soft); }
       .rm #sE .lo-msg2 { opacity: 1; position: relative; transform: none; }
@@ -613,6 +625,7 @@
             <li class="rec" style="--rh:280"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>04</b><i>Daft Punk</i></div></div><p class="rec-t">One More Time</p><p class="rec-a">Daft Punk</p><span class="rec-links"><a class="rec-buy" href="https://www.youtube.com/results?search_query=Daft%20Punk%20One%20More%20Time" target="_blank" rel="noopener">YouTubeで聴く ↗</a><a class="rec-buy" href="https://www.amazon.co.jp/s?k=Daft%20Punk%20One%20More%20Time&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></span></li>
             <li class="rec" style="--rh:95"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>05</b><i>eastern youth</i></div></div><p class="rec-t">夏の日の午後</p><p class="rec-a">eastern youth</p><span class="rec-links"><a class="rec-buy" href="https://www.youtube.com/results?search_query=eastern%20youth%20%E5%A4%8F%E3%81%AE%E6%97%A5%E3%81%AE%E5%8D%88%E5%BE%8C" target="_blank" rel="noopener">YouTubeで聴く ↗</a><a class="rec-buy" href="https://www.amazon.co.jp/s?k=eastern%20youth%20%E5%A4%8F%E3%81%AE%E6%97%A5%E3%81%AE%E5%8D%88%E5%BE%8C&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></span></li>
           </ul>
+          <div class="rc-eq" id="recEq" aria-hidden="true"></div>
           <p class="rc-foot">ジャケットはこのページ用に描いた、オリジナルの絵です<br>「Amazonで見る」はアフィリエイトリンクです（PR）</p>
         </div>
       </section>
@@ -978,7 +991,15 @@ void main(){
         const loBars = [...loBarsEl.children];
         // ベスト盤
         const sF = $("#sF"), recC = $("#recC");
-        const recs = [...document.querySelectorAll(".rec")].map((el) => ({ el, disc: el.querySelector(".disc"), inner: el.querySelector(".disc-in"), spin: 0 }));
+        const recs = [...document.querySelectorAll(".rec")].map((el) => {
+          const arm = document.createElement("div"); arm.className = "arm"; arm.setAttribute("aria-hidden", "true");
+          el.querySelector(".rec-art").appendChild(arm);
+          return { el, disc: el.querySelector(".disc"), inner: el.querySelector(".disc-in"), arm, spin: 0, rh: el.style.getPropertyValue("--rh") };
+        });
+        const recEq = $("#recEq");
+        for (let i = 0; i < 28; i++) recEq.appendChild(document.createElement("i"));
+        const eqBars = [...recEq.children];
+        let recPrevY = scrollY, recPrevT = 0, eqHue = "";
         if (RM) root.classList.add("rm");
         let lastY = -1, lastW = 0;
         function scenes(nowMs) {
@@ -1098,7 +1119,9 @@ void main(){
           }
           // 6：人生のベスト盤（レコードが出てきて回る）
           const F1b = span(sF);
+          const dt = recPrevT ? Math.min(0.1, t - recPrevT) : 0, dy = scrollY - recPrevY;
           if (F1b.on) {
+            let eqO = 0, eqDown = 0, eqRh = "";
             const n = recs.length, x = 0.1 + F1b.p * (n - 0.1) * 0.999;
             recC.textContent = `${String(Math.min(n, Math.floor(x) + 1)).padStart(2, "0")} / ${String(n).padStart(2, "0")}`;
             recs.forEach((r, i) => {
@@ -1110,14 +1133,26 @@ void main(){
               r.el.style.visibility = o > 0 ? "visible" : "hidden";
               r.el.style.pointerEvents = o > 0.6 ? "auto" : "none";
               if (o > 0) {
-                const out = ss(0.12, 0.42, l);
+                const out = ss(0.12, 0.42, l), down = ss(0.42, 0.52, l) * (1 - ss(0.8, 0.86, i === n - 1 ? 0 : l));
                 r.el.style.transform = `translateY(${y.toFixed(1)}px)`;
                 r.disc.style.transform = `translateX(${(out * 62).toFixed(1)}%)`;
-                r.spin = (r.spin || 0) + out * 260 * (1 / 60);
-                r.inner.style.transform = `rotate(${(r.spin + l * 240).toFixed(1)}deg)`;
+                // 針が落ちたら33回転、スクロールした分だけ前後に回る（戻すと逆回転＝スクラッチ）
+                r.spin += down * 200 * dt + dy * 0.9 * out;
+                r.inner.style.transform = `rotate(${r.spin.toFixed(1)}deg)`;
+                r.arm.style.opacity = out.toFixed(3);
+                r.arm.style.transform = `rotate(${(-12 + down * 33).toFixed(2)}deg)`;
+                if (o > eqO) { eqO = o; eqDown = down * o; eqRh = r.rh; }
               }
             });
+            if (eqRh !== eqHue) { recEq.style.setProperty("--rh", eqRh); eqHue = eqRh; }
+            const scr = Math.min(1, Math.abs(dy) / 40);
+            for (let i = 0; i < eqBars.length; i++) {
+              const f = i / (eqBars.length - 1);
+              const v = 0.04 + eqDown * (0.35 + 0.65 * Math.abs(Math.sin(t * (4 + (i % 5)) + i * 2.3))) * (0.5 + 0.5 * Math.sin(f * Math.PI)) * (0.8 + scr * 0.2);
+              eqBars[i].style.transform = `scaleY(${Math.min(1, v).toFixed(3)})`;
+            }
           }
+          recPrevY = scrollY; recPrevT = t;
           requestAnimationFrame(scenes);
         }
         if (!RM) requestAnimationFrame(scenes);
