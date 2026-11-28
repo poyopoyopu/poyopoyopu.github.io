@@ -346,6 +346,7 @@
       .hm-cap-c b { font-size: clamp(2.6rem, 13vw, 4.4rem); letter-spacing: -.04em; }
       .hm-cap-c span { margin-left: .3rem; font-family: var(--mono); font-size: .8rem; font-weight: 700; color: var(--soft); }
       .rm .hm-cv, .rm .hm-card, .rm .hm-cap { display: none; }
+      #hmCard2 { top: 12%; }
       .hb-list { position: absolute; inset: 0; z-index: 4; }
       .rm .hb-list { position: relative; inset: auto; }
       .hb-w small.hb-best { margin-top: .5rem; font-weight: 700; color: #fff; opacity: 1; text-shadow: 0 1px 10px rgba(0,0,0,.8); }
@@ -666,6 +667,7 @@
         <div class="pin hb">
           <div class="hb-ring" id="hbRing" aria-hidden="true"></div>
           <canvas class="hm-cv" id="hmCv" aria-hidden="true"></canvas>
+          <figure class="hm-card" id="hmCard2" aria-hidden="true"><img src="img/camp-fumoto.jpg" alt="" decoding="async" loading="lazy"><figcaption>静岡・ふもとっぱら</figcaption></figure>
           <figure class="hm-card" id="hmCard" aria-hidden="true"><img src="img/camp-621-1.jpg" alt="" decoding="async" loading="lazy"><figcaption>青森・横浜町　621野営場</figcaption></figure>
           <div class="hm-cap" id="hmCap" aria-hidden="true"><div><p class="hm-cap-t" id="hmCapT"></p><p class="hm-cap-n" id="hmCapN"></p></div><p class="hm-cap-c"><b id="hmCapC"></b><span id="hmCapU"></span></p></div>
           <h2 class="hb-head" id="hob-h"><span><span class="stamp" aria-hidden="true"></span>趣味</span><span class="hb-c" id="hbC">01 / 03</span></h2>
@@ -1057,7 +1059,7 @@ void main(){
         });
         // 趣味マップ（キャンプ・競馬・釣りを地図の上で見せる）
         const hmCv = $("#hmCv"), hmCtx = hmCv ? hmCv.getContext("2d") : null;
-        const hmCap = $("#hmCap"), hmCapT = $("#hmCapT"), hmCapN = $("#hmCapN"), hmCapC = $("#hmCapC"), hmCapU = $("#hmCapU"), hmCard = $("#hmCard");
+        const hmCap = $("#hmCap"), hmCapT = $("#hmCapT"), hmCapN = $("#hmCapN"), hmCapC = $("#hmCapC"), hmCapU = $("#hmCapU"), hmCard = $("#hmCard"), hmCard2 = $("#hmCard2");
         const HM = (() => {
           const C = Math.cos(36 * Math.PI / 180);
           const P = (la, lo) => [(lo - 128.5) * C * 100, (45.8 - la) * 100];
@@ -1122,8 +1124,8 @@ void main(){
           // キャンプ
           const a1 = ss(0.03, 0.08, p) * (1 - ss(0.42, 0.46, p));
           if (a1 > 0) {
-            const n = HM.camps.length, k = clamp((p - 0.08) / 0.21, 0, 1) * n;
-            const cur = Math.min(n - 1, Math.floor(k));
+            const n = HM.camps.length, k = p < 0.125 ? clamp((p - 0.08) / 0.016, 0, 1) : 1 + clamp((p - 0.125) / 0.175, 0, 1) * (n - 1);
+            const cur = clamp(Math.ceil(k) - 1, 0, n - 1);
             // 行った順の軌跡
             g.globalAlpha = a1 * 0.55; g.strokeStyle = "#fff"; g.lineWidth = 1.2; g.setLineDash([3, 5]); g.beginPath();
             for (let i = 0; i <= cur && i < n; i++) {
@@ -1214,6 +1216,11 @@ void main(){
             if (hmCapC.textContent !== cap.c) hmCapC.textContent = cap.c;
             if (hmCapU.textContent !== cap.u) hmCapU.textContent = cap.u;
           } else hmCap.style.opacity = 0;
+          // ふもとっぱらの写真（1回目のピンが立ったところ）
+          const pf = ss(0.093, 0.102, p) * (1 - ss(0.118, 0.128, p));
+          hmCard2.style.opacity = pf.toFixed(3);
+          hmCard2.style.visibility = pf > 0 ? "visible" : "hidden";
+          hmCard2.style.transform = `translate(-50%, ${((1 - pf) * 24).toFixed(1)}px) rotate(${(3 - pf * 1.5).toFixed(2)}deg) scale(${(0.92 + 0.08 * pf).toFixed(3)})`;
           // 621の写真
           const pc = ss(0.37, 0.39, p) * (1 - ss(0.415, 0.435, p));
           hmCard.style.opacity = pc.toFixed(3);
