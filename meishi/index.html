@@ -4,106 +4,323 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="サトウ シュンのデジタル名刺。連絡先の保存、電話、メール、LINE、お台場混雑予報へのリンク。" />
+    <meta name="description" content="サトウ シュンのプロフィール。お台場で運転の仕事をしています。連絡先の保存、電話、メール、LINE、お台場混雑予報・ART PLAYGROUNDへのリンク。" />
     <link rel="icon" href="data:," />
-    <title>デジタル名刺（サトウ シュン）</title>
+    <title>サトウ シュン｜プロフィール</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
         color-scheme: light dark;
-        --paper: #fbfaf7;
-        --ink: #1c1a17;
-        --ink-soft: #55504a;
-        --ink-faint: #8a8378;
-        --hairline: #ddd8cf;
-        --accent: #a33327;
-        --btn-bg: #1c1a17;
-        --btn-ink: #fbfaf7;
-        --btn-bg-active: #3a362f;
-        --row-hover: rgba(28, 26, 23, 0.04);
+
+        /* 夜明け寄りの夕景（ライト） */
+        --sky-1: #2e3358;
+        --sky-2: #6d5570;
+        --sky-3: #c97a5e;
+        --sky-4: #f0a868;
+        --sea: #232a4a;
+        --sun: #ffd9a0;
+        --hero-ink: #fdf6ea;
+        --hero-ink-soft: rgba(253, 246, 234, 0.72);
+        --hero-ink-faint: rgba(253, 246, 234, 0.5);
+
+        --bg: #faf5ec;
+        --bg-alt: #f3ecdd;
+        --ink: #23201b;
+        --ink-soft: #5c554b;
+        --ink-faint: #978c7c;
+        --hairline: #ddd2bf;
+        --accent: #b5502f;
+        --accent-soft: #c97a5e;
+
+        --night: #11142a;
+        --night-2: #1a1e3a;
+        --night-ink: #f3ecdd;
+        --night-ink-soft: rgba(243, 236, 221, 0.68);
+        --night-hairline: rgba(243, 236, 221, 0.16);
+        --amber: #f0a868;
+        --amber-ink: #241a10;
       }
       @media (prefers-color-scheme: dark) {
         :root {
-          --paper: #16150f;
-          --ink: #ece8df;
-          --ink-soft: #b3ac9f;
-          --ink-faint: #7e776b;
-          --hairline: #35322a;
-          --accent: #d97a6c;
-          --btn-bg: #ece8df;
-          --btn-ink: #16150f;
-          --btn-bg-active: #cfc9ba;
-          --row-hover: rgba(236, 232, 223, 0.05);
+          /* 深い夕景（ダーク） */
+          --sky-1: #070a1e;
+          --sky-2: #1d2148;
+          --sky-3: #5c3a5e;
+          --sky-4: #c96f4a;
+          --sea: #0a0d24;
+          --sun: #ffb877;
+          --hero-ink: #f7efdf;
+          --hero-ink-soft: rgba(247, 239, 223, 0.7);
+          --hero-ink-faint: rgba(247, 239, 223, 0.46);
+
+          --bg: #0d1022;
+          --bg-alt: #12152c;
+          --ink: #ece5d5;
+          --ink-soft: #b3ab99;
+          --ink-faint: #7d7663;
+          --hairline: #2b2f52;
+          --accent: #f0a868;
+          --accent-soft: #e08a63;
         }
       }
 
       * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
       html, body { margin: 0; padding: 0; }
       body {
-        background: var(--paper);
+        background: var(--bg);
         color: var(--ink);
         font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
         -webkit-font-smoothing: antialiased;
         text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+      ::selection { background: var(--accent); color: #fff7ea; }
+
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 clamp(1.4rem, 6vw, 3rem);
       }
 
-      .card {
-        max-width: 540px;
-        margin: 0 auto;
-        min-height: 100dvh;
+      /* ================= ヒーロー ================= */
+      .hero {
+        position: relative;
+        min-height: 100svh;
         display: flex;
         flex-direction: column;
-        padding:
-          max(3.5rem, env(safe-area-inset-top))
-          clamp(1.5rem, 7vw, 2.75rem)
-          max(2.5rem, env(safe-area-inset-bottom));
+        overflow: hidden;
+        isolation: isolate;
+        background:
+          linear-gradient(
+            to bottom,
+            var(--sky-1) 0%,
+            var(--sky-2) 34%,
+            var(--sky-3) 55%,
+            var(--sky-4) 68%,
+            var(--sea) 68.2%,
+            var(--sea) 100%
+          );
+        color: var(--hero-ink);
       }
-
-      /* ---------- 名前 ---------- */
-      .romaji {
-        margin: 0 0 0.9rem;
-        font-size: 0.72rem;
-        font-weight: 500;
-        letter-spacing: 0.42em;
-        color: var(--ink-faint);
+      /* 太陽のグロー（地平線の少し上） */
+      .hero .sun {
+        position: absolute;
+        left: 50%;
+        top: 68%;
+        width: min(78vw, 560px);
+        aspect-ratio: 1;
+        transform: translate(-50%, -58%);
+        background: radial-gradient(circle, var(--sun) 0%, rgba(255, 190, 120, 0.35) 32%, rgba(255, 170, 110, 0) 68%);
+        opacity: 0.85;
+        z-index: 0;
+        pointer-events: none;
+      }
+      .hero .sun-core {
+        position: absolute;
+        left: 50%;
+        top: 68%;
+        width: 74px;
+        height: 74px;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        background: radial-gradient(circle at 50% 42%, #fff3d9 0%, var(--sun) 62%, rgba(255, 190, 120, 0) 100%);
+        z-index: 0;
+        pointer-events: none;
+      }
+      #sky {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+        pointer-events: none;
+        will-change: transform;
+      }
+      /* 地平線 */
+      .hero .horizon {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 68%;
+        height: 1px;
+        background: linear-gradient(to right, transparent, rgba(255, 220, 170, 0.55) 30%, rgba(255, 220, 170, 0.55) 70%, transparent);
+        z-index: 2;
+        pointer-events: none;
+      }
+      .hero-inner {
+        position: relative;
+        z-index: 3;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        padding:
+          max(2rem, env(safe-area-inset-top))
+          clamp(1.4rem, 6vw, 3.5rem)
+          0;
+        will-change: transform, opacity;
+      }
+      .hero-top {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.34em;
+        color: var(--hero-ink-faint);
+      }
+      .hero-top .place { text-align: right; }
+      .hero-main {
+        margin-top: clamp(3rem, 11svh, 7rem);
+      }
+      .hero .romaji {
+        margin: 0 0 clamp(1rem, 3svh, 1.8rem);
+        font-size: clamp(0.72rem, 2.6vw, 0.85rem);
+        font-weight: 700;
+        letter-spacing: 0.52em;
+        color: var(--hero-ink-soft);
       }
       h1.name {
         margin: 0;
         font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-weight: 800;
+        font-size: clamp(4.1rem, 19.5vw, 11.5rem);
+        line-height: 1.04;
+        letter-spacing: 0.04em;
+        text-shadow: 0 2px 34px rgba(10, 8, 30, 0.35);
+      }
+      h1.name .line { display: block; }
+      .hero .tagline {
+        margin: clamp(1.6rem, 4.5svh, 2.6rem) 0 0;
+        max-width: 30em;
+        font-size: clamp(0.95rem, 3.4vw, 1.08rem);
+        font-weight: 500;
+        line-height: 2.05;
+        color: var(--hero-ink-soft);
+      }
+      .hero-bottom {
+        margin-top: auto;
+        padding-bottom: max(1.6rem, env(safe-area-inset-bottom));
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 1rem;
+      }
+      .scroll-cue {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 0.68rem;
         font-weight: 700;
-        font-size: clamp(2.4rem, 12.2vw, 4.2rem);
-        line-height: 1.18;
-        letter-spacing: 0.05em;
-        white-space: nowrap;
+        letter-spacing: 0.4em;
+        color: var(--hero-ink-faint);
       }
-      .accent-rule {
-        width: 44px;
-        height: 3px;
-        background: var(--accent);
-        margin: 1.6rem 0 0;
+      .scroll-cue .track {
+        position: relative;
+        width: 1px;
+        height: 44px;
+        background: rgba(253, 246, 234, 0.22);
+        overflow: hidden;
       }
-      .profile {
-        margin: 1.5rem 0 0;
-        font-size: 1rem;
-        line-height: 2;
-        color: var(--ink-soft);
+      .scroll-cue .track::after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: -40%;
+        width: 100%;
+        height: 40%;
+        background: var(--sun);
+        animation: cue 2.6s ease-in-out infinite;
+      }
+      @keyframes cue {
+        0% { top: -40%; }
+        60%, 100% { top: 110%; }
+      }
+      .hero-bottom .coord {
+        font-size: 0.68rem;
+        font-weight: 500;
+        letter-spacing: 0.3em;
+        color: var(--hero-ink-faint);
+        text-align: right;
       }
 
-      /* ---------- 趣味 ---------- */
-      .hobbies { margin-top: 3.25rem; }
-      .hobbies h2 {
-        margin: 0 0 0.4rem;
-        font-size: 0.78rem;
+      /* ================= セクション共通 ================= */
+      section.block {
+        padding: clamp(4.5rem, 13svh, 7.5rem) 0;
+      }
+      section.block.alt { background: var(--bg-alt); }
+      .sec-head {
+        display: flex;
+        align-items: baseline;
+        gap: 1.1rem;
+        margin-bottom: clamp(2.2rem, 6svh, 3.4rem);
+      }
+      .sec-head .no {
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        color: var(--accent);
+      }
+      .sec-head h2 {
+        margin: 0;
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.55rem, 6vw, 2.1rem);
+        font-weight: 700;
+        letter-spacing: 0.08em;
+      }
+      .sec-head .en {
+        margin-left: auto;
+        font-size: 0.68rem;
         font-weight: 700;
         letter-spacing: 0.34em;
         color: var(--ink-faint);
       }
-      .hobbies ul {
+      .sec-head + .rule {
+        height: 1px;
+        background: var(--hairline);
+        margin-top: -1.6rem;
+        margin-bottom: clamp(2.2rem, 6svh, 3.2rem);
+      }
+
+      /* スクロールで静かに現れる（常時可視・操作可能を保つため移動のみ） */
+      .reveal {
+        transform: translateY(16px);
+        transition: transform 0.9s cubic-bezier(0.22, 0.8, 0.3, 1);
+      }
+      .reveal.in { transform: none; }
+      .reveal.d1 { transition-delay: 0.08s; }
+      .reveal.d2 { transition-delay: 0.16s; }
+      .reveal.d3 { transition-delay: 0.24s; }
+
+      /* ================= プロフィール ================= */
+      .profile-lead {
+        margin: 0;
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.3rem, 5.2vw, 1.75rem);
+        font-weight: 600;
+        line-height: 2.1;
+        letter-spacing: 0.03em;
+      }
+      .profile-lead .accent-word { color: var(--accent); }
+      .profile-sub {
+        margin: 1.8rem 0 0;
+        font-size: 0.95rem;
+        line-height: 2.1;
+        color: var(--ink-soft);
+        max-width: 34em;
+      }
+
+      /* ================= 趣味 ================= */
+      .hobbies {
         list-style: none;
         margin: 0;
         padding: 0;
@@ -111,170 +328,520 @@
       .hobbies li {
         display: flex;
         align-items: baseline;
-        gap: 0.75rem;
-        padding: 0.72rem 0.1rem;
+        gap: clamp(1rem, 4vw, 1.8rem);
+        padding: 1.35rem 0.1rem;
         border-bottom: 1px solid var(--hairline);
-        font-size: 0.98rem;
-        line-height: 1.6;
       }
       .hobbies li:first-child { border-top: 1px solid var(--hairline); }
+      .hobbies .idx {
+        flex: none;
+        font-size: 0.72rem;
+        font-weight: 900;
+        letter-spacing: 0.18em;
+        color: var(--accent-soft);
+      }
+      .hobbies .hobby-name {
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.45rem, 6vw, 2rem);
+        font-weight: 700;
+        letter-spacing: 0.1em;
+      }
       .hobbies .note {
-        font-size: 0.82rem;
+        margin-left: auto;
+        font-size: 0.83rem;
         color: var(--ink-faint);
+        text-align: right;
       }
 
-      /* ---------- アクション ---------- */
-      .actions { margin-top: auto; padding-top: 3.5rem; }
+      /* ================= リンク ================= */
+      .works {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .works li { border-bottom: 1px solid var(--hairline); }
+      .works li:first-child { border-top: 1px solid var(--hairline); }
+      .works a {
+        display: flex;
+        align-items: center;
+        gap: clamp(1rem, 4vw, 1.6rem);
+        padding: 1.7rem 0.1rem;
+        color: var(--ink);
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+        transition: background 0.2s ease, padding-left 0.25s ease;
+      }
+      .works a:hover, .works a:active { background: var(--bg-alt); }
+      @media (prefers-color-scheme: dark) {
+        .works a:hover, .works a:active { background: rgba(236, 229, 213, 0.04); }
+      }
+      .works a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+      .works .w-main { flex: 1; min-width: 0; }
+      .works .w-title {
+        display: block;
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-size: clamp(1.35rem, 5.4vw, 1.8rem);
+        font-weight: 700;
+        letter-spacing: 0.05em;
+      }
+      .works .w-desc {
+        display: block;
+        margin-top: 0.45rem;
+        font-size: 0.88rem;
+        line-height: 1.8;
+        color: var(--ink-soft);
+      }
+      .works .w-host {
+        display: block;
+        margin-top: 0.55rem;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.14em;
+        color: var(--ink-faint);
+        overflow-wrap: anywhere;
+      }
+      .works .w-arrow {
+        flex: none;
+        display: grid;
+        place-items: center;
+        width: 46px;
+        height: 46px;
+        border: 1px solid var(--hairline);
+        border-radius: 50%;
+        color: var(--accent);
+        transition: transform 0.25s ease, background 0.2s ease, color 0.2s ease;
+      }
+      .works a:hover .w-arrow { transform: translate(2px, -2px); background: var(--accent); color: #fff7ea; border-color: var(--accent); }
+
+      /* ================= 連絡先（夜のセクション） ================= */
+      .contact {
+        background: linear-gradient(to bottom, var(--night) 0%, var(--night-2) 100%);
+        color: var(--night-ink);
+        padding: clamp(4.5rem, 13svh, 7.5rem) 0 max(3rem, env(safe-area-inset-bottom));
+      }
+      .contact .sec-head h2 { color: var(--night-ink); }
+      .contact .sec-head .en { color: rgba(243, 236, 221, 0.4); }
+      .contact .sec-head + .rule { background: var(--night-hairline); }
       .save-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        gap: 0.65rem;
+        gap: 0.7rem;
         width: 100%;
-        min-height: 60px;
-        padding: 1rem 1.5rem;
-        border: none;
-        border-radius: 6px;
-        background: var(--btn-bg);
-        color: var(--btn-ink);
-        font-family: inherit;
-        font-size: 1.06rem;
-        font-weight: 700;
-        letter-spacing: 0.12em;
-        cursor: pointer;
+        min-height: 64px;
+        padding: 1.05rem 1.5rem;
+        border-radius: 8px;
+        background: linear-gradient(135deg, #f6bc7d 0%, var(--amber) 55%, #e08a4c 100%);
+        color: var(--amber-ink);
+        font-size: 1.08rem;
+        font-weight: 900;
+        letter-spacing: 0.14em;
+        text-decoration: none;
+        box-shadow: 0 14px 34px rgba(240, 168, 104, 0.28);
         -webkit-tap-highlight-color: transparent;
-        transition: background 0.15s ease, transform 0.1s ease;
+        transition: transform 0.12s ease, box-shadow 0.2s ease, filter 0.2s ease;
       }
-      .save-btn { text-decoration: none; }
-      .save-btn:active { background: var(--btn-bg-active); transform: scale(0.99); }
-      .save-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      .save-btn:hover { filter: brightness(1.05); }
+      .save-btn:active { transform: scale(0.985); box-shadow: 0 8px 20px rgba(240, 168, 104, 0.22); }
+      .save-btn:focus-visible { outline: 2px solid #fff3d9; outline-offset: 3px; }
       .save-btn svg { flex: none; }
       .save-note {
-        margin: 0.8rem 0 0;
+        margin: 0.9rem 0 0;
         font-size: 0.85rem;
-        line-height: 1.7;
-        color: var(--ink-soft);
+        line-height: 1.8;
+        color: var(--night-ink-soft);
         text-align: center;
       }
-
-      .links {
+      .contact-links {
         list-style: none;
-        margin: 2rem 0 0;
+        margin: 2.6rem 0 0;
         padding: 0;
       }
-      .links li { border-bottom: 1px solid var(--hairline); }
-      .links li:first-child { border-top: 1px solid var(--hairline); }
-      .links a {
+      .contact-links li { border-bottom: 1px solid var(--night-hairline); }
+      .contact-links li:first-child { border-top: 1px solid var(--night-hairline); }
+      .contact-links a {
         display: flex;
         align-items: center;
         gap: 1rem;
-        min-height: 60px;
-        padding: 0.7rem 0.1rem;
-        color: var(--ink);
+        min-height: 62px;
+        padding: 0.75rem 0.1rem;
+        color: var(--night-ink);
         text-decoration: none;
         -webkit-tap-highlight-color: transparent;
       }
-      .links a:active { background: var(--row-hover); }
-      .links a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
-      .links .label {
+      .contact-links a:active { background: rgba(243, 236, 221, 0.05); }
+      .contact-links a:focus-visible { outline: 2px solid var(--amber); outline-offset: -2px; }
+      .contact-links .label {
         flex: none;
-        width: 5.2em;
-        font-size: 0.8rem;
+        width: 4.6em;
+        font-size: 0.78rem;
         font-weight: 700;
-        letter-spacing: 0.22em;
-        color: var(--ink-faint);
+        letter-spacing: 0.24em;
+        color: rgba(243, 236, 221, 0.45);
       }
-      .links .value {
+      .contact-links .value {
         flex: 1;
-        font-size: 0.98rem;
+        font-size: 1rem;
         font-weight: 500;
+        letter-spacing: 0.04em;
         overflow-wrap: anywhere;
       }
-      .links .desc {
-        display: block;
-        margin-top: 0.2rem;
-        font-size: 0.8rem;
-        font-weight: 400;
-        color: var(--ink-faint);
-      }
-      .links .arrow {
-        flex: none;
-        color: var(--ink-faint);
+      .contact-links .arrow { flex: none; color: rgba(243, 236, 221, 0.45); }
+      .footer {
+        margin-top: clamp(3.5rem, 9svh, 5rem);
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 1rem;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 0.34em;
+        color: rgba(243, 236, 221, 0.38);
       }
 
-      @media (min-width: 700px) {
-        .card { padding-top: 5.5rem; padding-bottom: 4rem; }
+      @media (min-width: 760px) {
+        .hero-inner { padding-top: 3rem; }
+        .works a:hover { padding-left: 0.7rem; }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html { scroll-behavior: auto; }
+        .reveal { opacity: 1; transform: none; transition: none; }
+        .scroll-cue .track::after { animation: none; }
+        .works .w-arrow, .works a, .save-btn { transition: none; }
       }
     </style>
   </head>
   <body>
-    <main class="card">
-      <header>
-        <p class="romaji">SATOU SHUN</p>
-        <h1 class="name">サトウ シュン</h1>
-        <div class="accent-rule" aria-hidden="true"></div>
-        <p class="profile">お台場で運転の仕事をしています。個人でWebサイトの運営もしています。</p>
-      </header>
+    <!-- ===== ヒーロー：お台場の夕景 ===== -->
+    <header class="hero" id="hero">
+      <div class="sun" aria-hidden="true"></div>
+      <div class="sun-core" aria-hidden="true"></div>
+      <canvas id="sky" aria-hidden="true"></canvas>
+      <div class="horizon" aria-hidden="true"></div>
 
-      <section class="hobbies" aria-labelledby="hobbies-title">
-        <h2 id="hobbies-title">趣味</h2>
-        <ul>
-          <li>音楽鑑賞<span class="note">ライブによく行きます</span></li>
-          <li>キャンプ</li>
-          <li>釣り</li>
-          <li>競馬</li>
-        </ul>
+      <div class="hero-inner" id="heroInner">
+        <div class="hero-top">
+          <span>PROFILE</span>
+          <span class="place">ODAIBA — TOKYO BAY</span>
+        </div>
+
+        <div class="hero-main">
+          <p class="romaji">SATOU&nbsp;SHUN</p>
+          <h1 class="name">
+            <span class="line">サトウ</span>
+            <span class="line">シュン</span>
+          </h1>
+          <p class="tagline">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
+        </div>
+
+        <div class="hero-bottom">
+          <span class="scroll-cue"><span class="track" aria-hidden="true"></span>SCROLL</span>
+          <span class="coord">35.63° N — 139.78° E</span>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===== プロフィール ===== -->
+      <section class="block" aria-labelledby="profile-title">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <span class="no">01</span>
+            <h2 id="profile-title">プロフィール</h2>
+            <span class="en">PROFILE</span>
+          </div>
+          <div class="rule reveal" aria-hidden="true"></div>
+          <p class="profile-lead reveal">昼は<span class="accent-word">お台場</span>の道を走り、<br />合間に自分のサイトを育てています。</p>
+          <p class="profile-sub reveal d1">お台場で運転の仕事をしています。個人ではWebサイトの運営もしていて、「お台場混雑予報」と「ART PLAYGROUND」の2つを公開しています。どちらもこのページの下にリンクがあります。</p>
+        </div>
       </section>
 
-      <section class="actions">
-        <a class="save-btn" href="contact.vcf">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="10" cy="8" r="3.6" />
-            <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
-            <path d="M17.5 14.5v6M14.5 17.5h6" />
-          </svg>
-          連絡先に保存
-        </a>
-        <p class="save-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
+      <!-- ===== 趣味 ===== -->
+      <section class="block alt" aria-labelledby="hobbies-title">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <span class="no">02</span>
+            <h2 id="hobbies-title">趣味</h2>
+            <span class="en">INTERESTS</span>
+          </div>
+          <div class="rule reveal" aria-hidden="true"></div>
+          <ul class="hobbies">
+            <li class="reveal">
+              <span class="idx">01</span>
+              <span class="hobby-name">音楽鑑賞</span>
+              <span class="note">ライブによく行きます</span>
+            </li>
+            <li class="reveal d1">
+              <span class="idx">02</span>
+              <span class="hobby-name">キャンプ</span>
+            </li>
+            <li class="reveal d2">
+              <span class="idx">03</span>
+              <span class="hobby-name">釣り</span>
+            </li>
+            <li class="reveal d3">
+              <span class="idx">04</span>
+              <span class="hobby-name">競馬</span>
+            </li>
+          </ul>
+        </div>
+      </section>
 
-        <ul class="links">
-          <li>
-            <a href="tel:+819098503262">
-              <span class="label">電話</span>
-              <span class="value">090-9850-3262</span>
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+      <!-- ===== リンク ===== -->
+      <section class="block" aria-labelledby="works-title">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <span class="no">03</span>
+            <h2 id="works-title">運営サイト</h2>
+            <span class="en">WORKS</span>
+          </div>
+          <div class="rule reveal" aria-hidden="true"></div>
+          <ul class="works">
+            <li class="reveal">
+              <a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener">
+                <span class="w-main">
+                  <span class="w-title">お台場混雑予報</span>
+                  <span class="w-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span>
+                  <span class="w-host">odaibacrowdforecast.com</span>
+                </span>
+                <span class="w-arrow" aria-hidden="true">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                </span>
+              </a>
+            </li>
+            <li class="reveal d1">
+              <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">
+                <span class="w-main">
+                  <span class="w-title">ART PLAYGROUND</span>
+                  <span class="w-desc">コードで描くジェネラティブアートの作品サイト。</span>
+                  <span class="w-host">art-playground.artplayground.workers.dev</span>
+                </span>
+                <span class="w-arrow" aria-hidden="true">
+                  <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M9 7h8v8" /></svg>
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===== 連絡先 ===== -->
+      <section class="contact" aria-labelledby="contact-title">
+        <div class="wrap">
+          <div class="sec-head reveal">
+            <span class="no">04</span>
+            <h2 id="contact-title">連絡先</h2>
+            <span class="en">CONTACT</span>
+          </div>
+          <div class="rule reveal" aria-hidden="true"></div>
+
+          <div class="reveal">
+            <a class="save-btn" href="contact.vcf">
+              <svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="10" cy="8" r="3.6" />
+                <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
+                <path d="M17.5 14.5v6M14.5 17.5h6" />
+              </svg>
+              連絡先に保存
             </a>
-          </li>
-          <li>
-            <a href="mailto:muuu@muse.ai">
-              <span class="label">メール</span>
-              <span class="value">muuu@muse.ai</span>
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener">
-              <span class="label">LINE</span>
-              <span class="value">LINEで連絡</span>
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener">
-              <span class="label">サイト</span>
-              <span class="value">お台場混雑予報<span class="desc">お台場の混雑予報サイト</span></span>
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
-            </a>
-          </li>
-          <li>
-            <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">
-              <span class="label">アート</span>
-              <span class="value">ART PLAYGROUND<span class="desc">コードで描くアート作品のサイト</span></span>
-              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
-            </a>
-          </li>
-        </ul>
+            <p class="save-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
+          </div>
+
+          <ul class="contact-links reveal d1">
+            <li>
+              <a href="tel:+819098503262">
+                <span class="label">電話</span>
+                <span class="value">090-9850-3262</span>
+                <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:muuu@muse.ai">
+                <span class="label">メール</span>
+                <span class="value">muuu@muse.ai</span>
+                <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener">
+                <span class="label">LINE</span>
+                <span class="value">LINEで連絡</span>
+                <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+              </a>
+            </li>
+          </ul>
+
+          <div class="footer" aria-hidden="true">
+            <span>SATOU SHUN</span>
+            <span>TOKYO BAY</span>
+          </div>
+        </div>
       </section>
     </main>
+
+    <script>
+      (function () {
+        "use strict";
+        var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        /* ---------- スクロールで静かに現れる ---------- */
+        var revealEls = document.querySelectorAll(".reveal");
+        if (reduceMotion || !("IntersectionObserver" in window)) {
+          for (var i = 0; i < revealEls.length; i++) revealEls[i].classList.add("in");
+        } else {
+          var io = new IntersectionObserver(function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add("in");
+                io.unobserve(e.target);
+              }
+            });
+          }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+          revealEls.forEach(function (el) { io.observe(el); });
+        }
+
+        /* ---------- ヒーロー：生成的な夕景Canvas ---------- */
+        var canvas = document.getElementById("sky");
+        var hero = document.getElementById("hero");
+        var heroInner = document.getElementById("heroInner");
+        var ctx = canvas.getContext("2d");
+        var W = 0, H = 0, horizonY = 0, dpr = 1;
+        var motes = [], ripples = [], t = 0, rafId = null, running = false;
+
+        function resize() {
+          dpr = Math.min(window.devicePixelRatio || 1, 2);
+          W = hero.clientWidth;
+          H = hero.clientHeight;
+          canvas.width = Math.round(W * dpr);
+          canvas.height = Math.round(H * dpr);
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          horizonY = H * 0.68;
+          buildScene();
+          if (reduceMotion) drawFrame(0);
+        }
+
+        function buildScene() {
+          motes = [];
+          var n = Math.round(Math.min(90, Math.max(36, W / 9)));
+          for (var i = 0; i < n; i++) {
+            motes.push({
+              x: Math.random() * W,
+              y: Math.random() * horizonY * 0.96,
+              r: 0.6 + Math.random() * 1.5,
+              sp: 1.5 + Math.random() * 5,
+              ph: Math.random() * Math.PI * 2,
+              warm: Math.random() < 0.4
+            });
+          }
+          ripples = [];
+          var rows = 15;
+          for (var j = 0; j < rows; j++) {
+            var p = j / (rows - 1);
+            ripples.push({
+              y: horizonY + 6 + p * (H - horizonY - 14) * (0.35 + p * 0.75),
+              len: 14 + p * 90 + Math.random() * 30,
+              sp: 0.25 + Math.random() * 0.5,
+              ph: Math.random() * Math.PI * 2,
+              a: 0.05 + p * 0.16
+            });
+          }
+        }
+
+        function drawFrame(time) {
+          ctx.clearRect(0, 0, W, H);
+          var cx = W / 2;
+
+          /* 空に漂う光の粒子 */
+          for (var i = 0; i < motes.length; i++) {
+            var m = motes[i];
+            var tw = 0.35 + 0.65 * (0.5 + 0.5 * Math.sin(time * 0.0006 + m.ph));
+            var y = m.y - ((time * 0.001 * m.sp + m.ph * 8) % Math.max(horizonY, 1));
+            if (y < 0) y += horizonY;
+            var x = m.x + Math.sin(time * 0.00012 + m.ph) * 10;
+            ctx.beginPath();
+            ctx.arc(x, y, m.r, 0, Math.PI * 2);
+            ctx.fillStyle = m.warm
+              ? "rgba(255, 205, 150," + (0.5 * tw).toFixed(3) + ")"
+              : "rgba(235, 240, 255," + (0.42 * tw).toFixed(3) + ")";
+            ctx.fill();
+          }
+
+          /* 水面：太陽の反射の柱 */
+          var grad = ctx.createLinearGradient(cx - W * 0.16, 0, cx + W * 0.16, 0);
+          grad.addColorStop(0, "rgba(255, 180, 110, 0)");
+          grad.addColorStop(0.5, "rgba(255, 180, 110, 0.10)");
+          grad.addColorStop(1, "rgba(255, 180, 110, 0)");
+          ctx.fillStyle = grad;
+          ctx.fillRect(cx - W * 0.16, horizonY, W * 0.32, H - horizonY);
+
+          /* 水面のきらめき */
+          ctx.lineCap = "round";
+          for (var j = 0; j < ripples.length; j++) {
+            var r = ripples[j];
+            var p = (r.y - horizonY) / Math.max(H - horizonY, 1);
+            var spread = 26 + p * W * 0.30;
+            var seg = 5;
+            for (var s = 0; s < seg; s++) {
+              var off = Math.sin(time * 0.0004 * r.sp * 3 + r.ph + s * 1.7) * spread * 0.5;
+              var sx = cx + off + (s - (seg - 1) / 2) * (r.len * 0.42);
+              var alpha = r.a * (0.55 + 0.45 * Math.sin(time * 0.0011 * r.sp + r.ph + s * 2.3));
+              if (alpha <= 0.01) continue;
+              ctx.beginPath();
+              ctx.moveTo(sx - r.len / 2, r.y);
+              ctx.lineTo(sx + r.len / 2, r.y);
+              ctx.lineWidth = 1 + p * 1.6;
+              ctx.strokeStyle = "rgba(255, 196, 130," + alpha.toFixed(3) + ")";
+              ctx.stroke();
+            }
+          }
+        }
+
+        function loop(time) {
+          t = time;
+          drawFrame(t);
+          if (running) rafId = requestAnimationFrame(loop);
+        }
+        function start() {
+          if (running || reduceMotion) return;
+          running = true;
+          rafId = requestAnimationFrame(loop);
+        }
+        function stop() {
+          running = false;
+          if (rafId) cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+
+        resize();
+        window.addEventListener("resize", resize, { passive: true });
+
+        if (!reduceMotion) {
+          new IntersectionObserver(function (entries) {
+            if (entries[0].isIntersecting) start(); else stop();
+          }, { threshold: 0 }).observe(hero);
+          document.addEventListener("visibilitychange", function () {
+            if (document.hidden) stop();
+            else if (hero.getBoundingClientRect().bottom > 0) start();
+          });
+
+          /* スクロールに合わせた静かなパララックス */
+          var ticking = false;
+          window.addEventListener("scroll", function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () {
+              var y = window.scrollY || 0;
+              if (y < H * 1.2) {
+                heroInner.style.transform = "translateY(" + (y * 0.22).toFixed(1) + "px)";
+                heroInner.style.opacity = String(Math.max(0, 1 - y / (H * 0.92)));
+                canvas.style.transform = "translateY(" + (y * 0.1).toFixed(1) + "px)";
+              }
+              ticking = false;
+            });
+          }, { passive: true });
+        }
+      })();
+    </script>
   </body>
 </html>
