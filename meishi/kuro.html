@@ -354,6 +354,11 @@
       .rec-n { margin: 2rem 0 -1.4rem; font-weight: 900; font-size: .9rem; letter-spacing: .4em; }
       .rec-top .sleeve b { font-size: calc(var(--s) * .22); }
       .rec-a { margin: .5rem 0 0; font-family: var(--mono); font-size: .78rem; letter-spacing: .24em; color: var(--soft); text-transform: uppercase; }
+      .rec { pointer-events: none; }
+      .rec-buy { margin-top: 1.1rem; padding: .6rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.28); background: rgba(255,255,255,.06); color: var(--ink); font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-decoration: none; }
+      .rec-buy:active { background: rgba(255,255,255,.18); }
+      .rm .rec { pointer-events: auto; }
+      .c-pr { margin-top: 2.2rem; font-size: .7rem; line-height: 1.8; color: var(--faint); }
       .rc-foot { position: absolute; left: 0; right: 0; bottom: max(1.4rem, env(safe-area-inset-bottom)); margin: 0; text-align: center; font-size: .66rem; letter-spacing: .12em; color: var(--faint); }
       .motto { margin: 0 0 3rem; font-weight: 700; font-size: clamp(1.3rem, 5.6vw, 2rem); line-height: 1.6; letter-spacing: .08em; color: var(--soft); }
       .rm #sE .lo-msg2 { opacity: 1; position: relative; transform: none; }
@@ -590,16 +595,16 @@
         <div class="pin rc">
           <h2 class="hb-head" id="rec-h"><span><span class="stamp" aria-hidden="true"></span>人生のベスト盤</span><span class="hb-c" id="recC">01 / 08</span></h2>
           <ul class="rec-list">
-            <li class="rec rec-top" style="--rh:350"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>No.1</b><i>くるり</i></div></div><p class="rec-n foil-text">人生のNo.1</p><p class="rec-t">東京</p><p class="rec-a">くるり</p></li>
-            <li class="rec" style="--rh:330"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>02</b><i>The Postal Service</i></div></div><p class="rec-t">Give Up</p><p class="rec-a">The Postal Service</p></li>
-            <li class="rec" style="--rh:20"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>03</b><i>Eels</i></div></div><p class="rec-t">Beautiful Freak</p><p class="rec-a">Eels</p></li>
-            <li class="rec" style="--rh:210"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>04</b><i>Weezer</i></div></div><p class="rec-t">Weezer（青いアルバム）</p><p class="rec-a">Weezer</p></li>
-            <li class="rec" style="--rh:45"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>05</b><i>くるり</i></div></div><p class="rec-t">さよならストレンジャー</p><p class="rec-a">くるり</p></li>
-            <li class="rec" style="--rh:280"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>06</b><i>Daft Punk</i></div></div><p class="rec-t">Interstella 5555</p><p class="rec-a">Daft Punk</p></li>
-            <li class="rec" style="--rh:180"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>07</b><i>Sigur Rós</i></div></div><p class="rec-t">( )</p><p class="rec-a">Sigur Rós</p></li>
-            <li class="rec" style="--rh:95"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>08</b><i>eastern youth</i></div></div><p class="rec-t">夏の日の午後</p><p class="rec-a">eastern youth</p></li>
+            <li class="rec rec-top" style="--rh:350"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>No.1</b><i>くるり</i></div></div><p class="rec-n foil-text">人生のNo.1</p><p class="rec-t">東京</p><p class="rec-a">くるり</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=%E3%81%8F%E3%82%8B%E3%82%8A%20%E6%9D%B1%E4%BA%AC&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:330"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>02</b><i>The Postal Service</i></div></div><p class="rec-t">Give Up</p><p class="rec-a">The Postal Service</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=The%20Postal%20Service%20Give%20Up&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:20"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>03</b><i>Eels</i></div></div><p class="rec-t">Beautiful Freak</p><p class="rec-a">Eels</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=Eels%20Beautiful%20Freak&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:210"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>04</b><i>Weezer</i></div></div><p class="rec-t">Weezer（青いアルバム）</p><p class="rec-a">Weezer</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=Weezer%20%E3%83%96%E3%83%AB%E3%83%BC%E3%83%BB%E3%82%A2%E3%83%AB%E3%83%90%E3%83%A0&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:45"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>05</b><i>くるり</i></div></div><p class="rec-t">さよならストレンジャー</p><p class="rec-a">くるり</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=%E3%81%8F%E3%82%8B%E3%82%8A%20%E3%81%95%E3%82%88%E3%81%AA%E3%82%89%E3%82%B9%E3%83%88%E3%83%AC%E3%83%B3%E3%82%B8%E3%83%A3%E3%83%BC&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:280"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>06</b><i>Daft Punk</i></div></div><p class="rec-t">Interstella 5555</p><p class="rec-a">Daft Punk</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=Daft%20Punk%20Interstella%205555&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:180"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>07</b><i>Sigur Rós</i></div></div><p class="rec-t">( )</p><p class="rec-a">Sigur Rós</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=Sigur%20Ros%20%28%20%29&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
+            <li class="rec" style="--rh:95"><div class="rec-art"><div class="disc"><div class="disc-in"></div></div><div class="sleeve"><b>08</b><i>eastern youth</i></div></div><p class="rec-t">夏の日の午後</p><p class="rec-a">eastern youth</p><a class="rec-buy" href="https://www.amazon.co.jp/s?k=eastern%20youth%20%E5%A4%8F%E3%81%AE%E6%97%A5%E3%81%AE%E5%8D%88%E5%BE%8C&amp;tag=unkokanri-22" target="_blank" rel="sponsored noopener">Amazonで見る ↗</a></li>
           </ul>
-          <p class="rc-foot">ジャケットはこのページ用に描いた、オリジナルの絵です</p>
+          <p class="rc-foot">ジャケットはこのページ用に描いた、オリジナルの絵です<br>「Amazonで見る」はアフィリエイトリンクです（PR）</p>
         </div>
       </section>
 
@@ -631,6 +636,7 @@
           <li class="reveal"><a href="tel:+817091180935"><span><span class="c-k">電話</span><span class="c-v">070-9118-0935</span></span><span>→</span></a></li>
           <li class="reveal" style="--d:.06s"><a href="mailto:muuu@muse.ai"><span><span class="c-k">メール</span><span class="c-v">muuu@muse.ai</span></span><span>→</span></a></li>
         </ul>
+        <p class="c-note c-pr">このページにはアフィリエイト広告（PR）を含みます。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</p>
       </section>
     </main>
 
@@ -1090,6 +1096,7 @@ void main(){
               else if (l >= 0.2 && (l < 0.8 || i === n - 1)) { o = 1; y = 0; }
               else if (l >= 0.8 && l < 1) { const k = ss(0, 1, (l - 0.8) / 0.2); o = 1 - k; y = -k * 90; }
               r.el.style.opacity = o.toFixed(3);
+              r.el.style.pointerEvents = o > 0.6 ? "auto" : "none";
               if (o > 0) {
                 const out = ss(0.12, 0.42, l);
                 r.el.style.transform = `translateY(${y.toFixed(1)}px)`;
