@@ -4,392 +4,244 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="dark" />
-    <meta name="theme-color" content="#0b0b0a" />
-    <meta name="description" content="サトウ シュンの名刺。お台場で運転の仕事をしています。連絡先の保存、電話、メール、LINE、お台場混雑予報・ART PLAYGROUNDの作品79点のギャラリー。" />
+    <meta name="theme-color" content="#0b0b0d" />
+    <meta name="description" content="サトウ シュンの名刺。お台場で運転の仕事をしています。傾けると光るホロ箔の名刺、ART PLAYGROUNDの作品79点、連絡先。" />
     <link rel="icon" href="data:," />
     <title>サトウ シュン｜名刺</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&display=swap" rel="stylesheet" />
     <style>
+      @property --a { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
       :root {
         color-scheme: dark;
-        --bg: #0b0b0a;
-        --ink: #f2f1ec;
-        --ink-soft: #b4b3ac;
-        --ink-faint: #75746d;
-        --hair: rgba(242, 241, 236, 0.12);
-        --accent: #d7ff3f;
-        --glass: rgba(14, 14, 13, 0.58);
-        --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-        --ease-io: cubic-bezier(0.76, 0, 0.24, 1);
+        --bg: #0b0b0d;
+        --ink: #f4f3ef;
+        --soft: #b9b8b3;
+        --faint: #77767f;
+        --hair: rgba(244, 243, 239, 0.1);
+        --h: 200;
+        --foil: linear-gradient(100deg, hsl(var(--h) 95% 72%), hsl(calc(var(--h) + 70) 95% 74%), hsl(calc(var(--h) + 150) 95% 72%), hsl(calc(var(--h) + 230) 95% 74%));
+        --ease: cubic-bezier(0.16, 1, 0.3, 1);
         --mono: "JetBrains Mono", ui-monospace, Menlo, monospace;
+        --cw: min(78vw, 330px, calc((100svh - 230px) / 1.655));
       }
       * { box-sizing: border-box; }
       html, body { margin: 0; padding: 0; }
-      html { background: var(--bg); }
       body {
-        background: radial-gradient(120% 70% at 50% 62%, #171716 0%, var(--bg) 60%);
-        color: var(--ink);
+        background: var(--bg); color: var(--ink);
         font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
-        -webkit-font-smoothing: antialiased;
-        text-rendering: optimizeLegibility;
-        overflow-x: hidden;
-        min-height: 100svh;
+        -webkit-font-smoothing: antialiased; overflow-x: hidden;
       }
       .is-loading body { overflow: hidden; }
-      ::selection { background: var(--accent); color: #101010; }
-      a { -webkit-tap-highlight-color: transparent; }
-      .mono { font-family: var(--mono); font-weight: 500; letter-spacing: 0.14em; }
+      ::selection { background: hsl(var(--h) 90% 70%); color: #111; }
+      a { color: inherit; -webkit-tap-highlight-color: transparent; }
+      .foil-text { background: var(--foil); -webkit-background-clip: text; background-clip: text; color: transparent; }
 
-      /* ===== 背景：WebGLの東京湾 ===== */
-      #sea {
-        position: fixed;
-        inset: 0;
-        width: 100vw;
-        height: 100lvh;
-        display: block;
-        z-index: 0;
+      /* ================= ローディング：箔押し ================= */
+      #loader {
+        position: fixed; inset: 0; z-index: 100; background: var(--bg);
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.6rem;
+        transition: opacity 0.7s ease 0.15s, visibility 0s linear 0.9s;
+      }
+      #loader.done { opacity: 0; visibility: hidden; }
+      .ld-card {
+        position: relative; width: var(--cw); aspect-ratio: 55 / 91; border-radius: 16px; overflow: hidden;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        transition: transform 0.7s var(--ease), opacity 0.5s ease;
+      }
+      #loader.done .ld-card { transform: scale(1.04); opacity: 0; }
+      .ld-fill {
+        position: absolute; inset: 0; transform-origin: 50% 100%; transform: scaleY(0);
+        background: conic-gradient(from var(--a) at 30% 40%, #ff8ccf, #ffd57a, #9dffc9, #79cfff, #c39bff, #ff8ccf);
+        animation: spin 2.4s linear infinite;
+      }
+      .ld-fill::after {
+        content: ""; position: absolute; inset: 0;
+        background: repeating-linear-gradient(115deg, rgba(0,0,0,.28) 0 2px, transparent 2px 9px), linear-gradient(to bottom, rgba(11,11,13,.0), rgba(11,11,13,.35));
+        mix-blend-mode: multiply;
+      }
+      @keyframes spin { to { --a: 360deg; } }
+      .ld-edge { position: absolute; left: 0; right: 0; height: 2px; background: #fff; box-shadow: 0 0 22px 4px rgba(255,255,255,.6); opacity: .9; bottom: 0; }
+      .ld-name {
+        position: absolute; left: 0; right: 0; bottom: 12%; text-align: center;
+        font-weight: 900; font-size: calc(var(--cw) * 0.13); letter-spacing: 0.12em; color: rgba(255,255,255,.1);
+      }
+      .ld-meta { width: var(--cw); display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
+      .ld-num { font-family: var(--mono); font-weight: 700; font-size: 2.6rem; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+      .ld-num small { font-size: 0.4em; margin-left: 0.15em; color: var(--faint); }
+      .ld-status { font-size: 0.78rem; letter-spacing: 0.16em; color: var(--soft); text-align: right; }
+
+      /* ================= ヒーロー：名刺 ================= */
+      .hero {
+        position: relative; min-height: 100svh; overflow: hidden;
+        display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.5rem;
+        padding: max(1.5rem, env(safe-area-inset-top)) 1.2rem max(1.5rem, env(safe-area-inset-bottom));
+      }
+      .glow {
+        position: absolute; left: 50%; top: 46%; width: 150vmax; height: 150vmax; transform: translate(-50%, -50%);
+        background:
+          radial-gradient(closest-side, hsl(var(--h) 90% 55% / 0.22), transparent 60%),
+          radial-gradient(closest-side at 62% 58%, hsl(calc(var(--h) + 140) 90% 55% / 0.14), transparent 55%);
+        pointer-events: none; filter: blur(10px);
+      }
+      .stage { position: relative; perspective: 1100px; opacity: 0; transition: opacity 0.6s ease; }
+      .is-ready .stage { opacity: 1; }
+      .shadow {
+        position: absolute; left: 8%; right: 8%; bottom: -26px; height: 40px; border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(0,0,0,.75), transparent); filter: blur(8px);
         pointer-events: none;
       }
-      .grain {
-        position: fixed; inset: 0; z-index: 1; pointer-events: none;
-        background: linear-gradient(to bottom, transparent 55%, rgba(11, 11, 10, 0.55) 100%);
+      .card {
+        position: relative; width: var(--cw); aspect-ratio: 55 / 91;
+        transform-style: preserve-3d; cursor: pointer; touch-action: pan-y;
+        -webkit-user-select: none; user-select: none; outline: none;
       }
+      .card:focus-visible .face { box-shadow: 0 0 0 2px hsl(var(--h) 90% 70%); }
+      .face {
+        position: absolute; inset: 0; border-radius: 16px; overflow: hidden;
+        backface-visibility: hidden; -webkit-backface-visibility: hidden;
+        box-shadow: 0 30px 60px -20px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.12);
+      }
+      /* 表：ホロ箔 */
+      .front {
+        background: conic-gradient(from calc(var(--h) * 1deg) at 40% 35%, #3a3f55, #7a5a8a, #4f8a8a, #8a7a4a, #3a3f55);
+      }
+      .front canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+      .f-top {
+        position: absolute; left: 7%; right: 7%; top: 5.5%;
+        display: flex; justify-content: space-between; align-items: center;
+        font-family: var(--mono); font-size: calc(var(--cw) * 0.03); letter-spacing: 0.22em;
+        color: rgba(255,255,255,.88); text-shadow: 0 1px 2px rgba(0,0,0,.6);
+      }
+      .f-panel {
+        position: absolute; left: 0; right: 0; bottom: 0; height: 39%;
+        background: #0d0d0f; padding: 8% 7% 0;
+      }
+      .f-panel::before {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(calc(110deg + var(--tx, 0) * 30deg), transparent 30%, rgba(255,255,255,.07) 48%, transparent 62%);
+      }
+      .f-panel::after { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--foil); opacity: .9; }
+      .f-name { margin: 0; font-weight: 900; font-size: calc(var(--cw) * 0.118); line-height: 1.1; letter-spacing: 0.08em; }
+      .f-roma { margin: 0.5em 0 0; font-family: var(--mono); font-size: calc(var(--cw) * 0.032); letter-spacing: 0.42em; }
+      .f-tag { margin: 1.1em 0 0; font-size: calc(var(--cw) * 0.036); line-height: 1.85; color: var(--soft); }
+      /* 裏：連絡先 */
+      .back {
+        transform: rotateY(180deg); background: #0d0d0f;
+        display: flex; flex-direction: column; padding: 9% 7% 7%;
+      }
+      .back::before {
+        content: ""; position: absolute; inset: 0; pointer-events: none;
+        background: radial-gradient(120% 60% at calc(50% + var(--tx, 0) * 40%) 0%, hsl(var(--h) 80% 60% / .14), transparent 60%);
+      }
+      .b-head { position: relative; display: flex; justify-content: space-between; align-items: baseline; }
+      .b-name { font-weight: 900; font-size: calc(var(--cw) * 0.07); letter-spacing: 0.1em; }
+      .b-serial { font-family: var(--mono); font-size: calc(var(--cw) * 0.03); color: var(--faint); letter-spacing: 0.14em; }
+      .b-rows { position: relative; list-style: none; margin: 8% 0 0; padding: 0; flex: 1; }
+      .b-rows li + li { border-top: 1px solid var(--hair); }
+      .b-rows a { display: block; padding: 0.95em 0; text-decoration: none; }
+      .b-k { display: block; font-size: calc(var(--cw) * 0.03); letter-spacing: 0.24em; color: var(--faint); }
+      .b-v { display: flex; justify-content: space-between; align-items: center; margin-top: 0.35em; font-size: calc(var(--cw) * 0.052); font-weight: 700; letter-spacing: 0.03em; }
+      .b-v i { font-style: normal; color: var(--faint); font-weight: 500; }
+      .b-save {
+        position: relative; display: flex; align-items: center; justify-content: center; gap: 0.6em;
+        padding: 1.05em; border-radius: 10px; text-decoration: none; color: #111;
+        font-weight: 900; font-size: calc(var(--cw) * 0.046); letter-spacing: 0.14em;
+        background: var(--foil); background-size: 200% 100%;
+      }
+      .b-back { position: relative; margin: 0.9em 0 0; text-align: center; font-size: calc(var(--cw) * 0.03); color: var(--faint); letter-spacing: 0.1em; }
 
-      /* ===== スクロール進捗（scroll-driven animations） ===== */
-      .progress {
-        position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 60;
-        background: var(--accent); transform-origin: left; transform: scaleX(0);
+      .controls { display: flex; flex-direction: column; align-items: center; gap: 0.9rem; opacity: 0; transform: translateY(10px); transition: opacity 0.8s ease 1.1s, transform 0.8s var(--ease) 1.1s; }
+      .is-ready .controls { opacity: 1; transform: none; }
+      .hint { margin: 0; font-size: 0.8rem; letter-spacing: 0.14em; color: var(--soft); text-align: center; line-height: 1.8; }
+      .btns { display: flex; gap: 0.6rem; }
+      .pill {
+        appearance: none; border: 1px solid rgba(255,255,255,.18); background: rgba(255,255,255,.04);
+        color: var(--ink); font: inherit; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.12em;
+        padding: 0.7rem 1.1rem; border-radius: 999px; cursor: pointer;
+        -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px);
+        transition: background 0.3s, border-color 0.3s;
       }
-      @supports (animation-timeline: scroll()) {
-        .progress { animation: prog linear both; animation-timeline: scroll(root); }
-        @keyframes prog { to { transform: scaleX(1); } }
-      }
-
-      /* ===== ローディング ===== */
-      #loader {
-        position: fixed; inset: 0; z-index: 100;
-        display: grid; place-items: center;
-      }
-      .ld-half {
-        position: absolute; left: 0; right: 0; height: 50.2%;
-        background: #0b0b0a;
-        transition: transform 1.25s var(--ease-io) 0.45s;
-      }
-      .ld-top { top: 0; }
-      .ld-bot { bottom: 0; }
-      #loader.done .ld-top { transform: translateY(-100%); }
-      #loader.done .ld-bot { transform: translateY(100%); }
-      .ld-line {
-        position: absolute; left: 0; right: 0; top: 50%; height: 1px;
-        background: rgba(242, 241, 236, 0.1);
-        transition: opacity 0.6s ease 1.2s;
-      }
-      .ld-line i {
-        position: absolute; inset: 0; background: var(--accent);
-        transform-origin: left; transform: scaleX(0);
-        box-shadow: 0 0 18px rgba(215, 255, 63, 0.7);
-      }
-      #loader.done .ld-line { opacity: 0; }
-      .ld-ui {
-        position: absolute; inset: 0;
-        padding: max(1.6rem, env(safe-area-inset-top)) clamp(1.4rem, 6vw, 3rem) max(1.6rem, env(safe-area-inset-bottom));
-        display: flex; flex-direction: column; justify-content: space-between;
-        font-family: var(--mono); font-size: 0.68rem; letter-spacing: 0.24em; color: var(--ink-faint);
-        transition: opacity 0.45s ease, filter 0.45s ease;
-      }
-      #loader.done .ld-ui { opacity: 0; filter: blur(8px); }
-      .ld-row { display: flex; justify-content: space-between; gap: 1rem; }
-      .ld-center {
-        position: absolute; left: clamp(1.4rem, 6vw, 3rem); right: clamp(1.4rem, 6vw, 3rem);
-        top: 50%;
-        display: flex; justify-content: space-between; align-items: flex-end;
-        transform: translateY(calc(-100% - 0.9rem));
-      }
-      .ld-count {
-        font-family: var(--mono); font-weight: 700;
-        font-size: clamp(4.6rem, 26vw, 11rem); line-height: 0.82; letter-spacing: -0.04em;
-        color: var(--ink); font-variant-numeric: tabular-nums;
-      }
-      .ld-count small { font-size: 0.22em; letter-spacing: 0; color: var(--accent); margin-left: 0.2em; vertical-align: top; }
-      .ld-name { text-align: right; font-family: "Zen Kaku Gothic New", sans-serif; font-weight: 900; color: var(--ink-soft); font-size: 0.86rem; letter-spacing: 0.4em; line-height: 2; }
-      .ld-status {
-        position: absolute; left: clamp(1.4rem, 6vw, 3rem); top: calc(50% + 1rem);
-        font-family: "Zen Kaku Gothic New", sans-serif; font-size: 0.78rem; letter-spacing: 0.22em; color: var(--ink-soft);
-      }
-      .ld-status::before {
-        content: ""; display: inline-block; width: 6px; height: 6px; margin-right: 0.7rem; vertical-align: 1px;
-        background: var(--accent); animation: blink 0.9s steps(2) infinite;
-      }
-      @keyframes blink { 50% { opacity: 0; } }
-
-      /* ===== ページ ===== */
-      .page { position: relative; z-index: 2; }
-      .wrap { max-width: 720px; margin: 0 auto; padding-inline: clamp(1.4rem, 6vw, 2.5rem); }
-
-      /* ===== ヒーロー ===== */
-      .hero {
-        min-height: 100svh;
-        display: flex; flex-direction: column; justify-content: space-between;
-        padding-top: max(1.6rem, env(safe-area-inset-top));
-        padding-bottom: max(1.6rem, env(safe-area-inset-bottom));
-      }
-      .hero-top, .hero-bottom {
-        display: flex; justify-content: space-between; gap: 1rem;
-        font-size: 0.66rem; color: var(--ink-faint);
-      }
-      .hero-top .live::before {
-        content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%;
-        margin-right: 0.55rem; vertical-align: 1px; background: var(--accent);
-        box-shadow: 0 0 10px var(--accent); animation: pulse 2s ease-in-out infinite;
-      }
-      @keyframes pulse { 50% { opacity: 0.25; } }
-      .hero-main { margin-top: auto; padding-bottom: clamp(2rem, 8svh, 4rem); }
-      .kind { margin: 0 0 1.2rem; font-size: 0.68rem; color: var(--ink-soft); }
-      .kind .bar { display: inline-block; width: 28px; height: 1px; background: var(--accent); vertical-align: 3px; margin-right: 0.8rem; }
-      h1.name {
-        margin: 0;
-        font-size: clamp(3.4rem, 19vw, 7.2rem);
-        font-weight: 900; line-height: 1.04; letter-spacing: 0.06em;
-        text-shadow: 0 2px 30px rgba(0, 0, 0, 0.5);
-      }
-      .name .line { display: block; overflow: hidden; padding-bottom: 0.04em; }
-      .name .ch {
-        display: inline-block;
-        transform: translateY(105%) rotate(6deg);
-        transition: transform 1.1s var(--ease-out);
-        transition-delay: calc(0.08s * var(--i));
-      }
-      .name .ch.sp { width: 0.3em; }
-      .is-ready .name .ch { transform: none; }
-      .name .line:last-child .ch { color: transparent; -webkit-text-stroke: 1.5px var(--ink); }
-      .roma { margin: 1.1rem 0 0; font-size: 0.8rem; color: var(--accent); letter-spacing: 0.5em; }
-      .tagline {
-        margin: 1.2rem 0 0; font-size: 0.96rem; font-weight: 500; line-height: 2.05; color: var(--ink-soft);
-        text-shadow: 0 1px 16px rgba(0, 0, 0, 0.8);
-      }
-      .scroll { display: inline-flex; align-items: center; gap: 0.7rem; }
-      .scroll i { position: relative; width: 1px; height: 30px; background: var(--hair); overflow: hidden; }
-      .scroll i::after {
-        content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--accent);
-        animation: drip 1.8s var(--ease-io) infinite;
-      }
+      .pill:hover { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.35); }
+      .pill .spark { display: inline-block; margin-right: 0.4em; }
+      .down { position: absolute; bottom: max(1.2rem, env(safe-area-inset-bottom)); left: 50%; transform: translateX(-50%); width: 1px; height: 34px; background: var(--hair); overflow: hidden; }
+      .down::after { content: ""; position: absolute; left: 0; top: -40%; width: 1px; height: 40%; background: var(--ink); animation: drip 2s cubic-bezier(.76,0,.24,1) infinite; }
       @keyframes drip { to { top: 100%; } }
 
-      /* ヒーロー内のフェードイン */
-      .fx { opacity: 0; transform: translateY(14px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out); transition-delay: var(--d, 0s); }
-      .is-ready .fx { opacity: 1; transform: none; }
+      /* ================= 本文 ================= */
+      .wrap { max-width: 760px; margin: 0 auto; padding-inline: clamp(1.4rem, 6vw, 2.5rem); }
+      .blk { padding-block: 4.5rem 1rem; }
+      .h { margin: 0 0 1.8rem; }
+      .h-ja { display: block; font-size: clamp(2.4rem, 11vw, 3.6rem); font-weight: 900; letter-spacing: 0.06em; line-height: 1.1; }
+      .h-sub { display: block; margin-top: 0.7rem; font-size: 0.86rem; color: var(--soft); line-height: 1.9; }
+      .rule { height: 1px; background: var(--foil); opacity: 0.7; margin: 0 0 0; }
 
-      /* ===== ガラスのシート ===== */
-      .sheet {
-        position: relative;
-        background: var(--glass);
-        -webkit-backdrop-filter: blur(22px) saturate(1.3);
-        backdrop-filter: blur(22px) saturate(1.3);
-        border-top: 1px solid var(--hair);
-      }
-      .sheet::before {
-        content: ""; position: absolute; top: -1px; left: 0; width: 72px; height: 1px; background: var(--accent);
-        box-shadow: 0 0 14px var(--accent);
-      }
+      .reveal { opacity: 0; transform: translateY(24px); transition: opacity 1s var(--ease), transform 1s var(--ease); transition-delay: var(--d, 0s); }
+      .reveal.in { opacity: 1; transform: none; }
 
-      /* ===== セクション ===== */
-      section {
-        display: grid; grid-template-columns: 6.2rem 1fr; column-gap: clamp(1rem, 4vw, 2rem);
-        padding: 2.4rem 0 2.6rem;
-      }
-      section + section { border-top: 1px solid var(--hair); }
-      main > section:not(.art) { max-width: 720px; margin-inline: auto; padding-inline: clamp(1.4rem, 6vw, 2.5rem); }
-      main > section:not(.art) + section { border-top: 0; box-shadow: 0 -1px 0 var(--hair); }
-      .sec-label { margin: 0; padding-top: 0.2rem; }
-      .sec-label .en { display: block; font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.2em; color: var(--accent); margin-bottom: 0.55rem; }
-      .sec-label .ja { display: block; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.3em; color: var(--ink-faint); white-space: nowrap; }
-
-      .reveal { opacity: 0; transform: translateY(26px); filter: blur(8px); transition: opacity 1s var(--ease-out), transform 1s var(--ease-out), filter 1s var(--ease-out); transition-delay: var(--d, 0s); }
-      .reveal.in { opacity: 1; transform: none; filter: none; }
-
-      /* ===== 趣味 ===== */
-      .hobbies { list-style: none; margin: 0; padding: 0; counter-reset: h; }
-      .hobbies li {
-        counter-increment: h;
-        display: flex; align-items: baseline; gap: 1rem; padding: 0.85rem 0;
-        position: relative;
-      }
-      .hobbies li + li { border-top: 1px solid var(--hair); }
-      .hobbies li:first-child { padding-top: 0.1rem; }
-      .hobbies li::before { content: counter(h, decimal-leading-zero); font-family: var(--mono); font-size: 0.66rem; color: var(--ink-faint); width: 1.6rem; flex: none; }
-      .hobby-name { font-size: 1.22rem; font-weight: 700; letter-spacing: 0.1em; transition: color 0.3s, transform 0.4s var(--ease-out); }
-      .hobbies li:hover .hobby-name { color: var(--accent); transform: translateX(4px); }
-      .hobbies .note { margin-left: auto; font-size: 0.8rem; color: var(--ink-faint); text-align: right; }
-
-      /* ===== 行リンク ===== */
-      .rows { list-style: none; margin: 0; padding: 0; }
-      .rows li + li { border-top: 1px solid var(--hair); }
-      .rows a {
-        position: relative; isolation: isolate;
-        display: flex; align-items: center; gap: 1rem;
-        padding: 1.05rem 0.5rem; margin-inline: -0.5rem;
-        color: var(--ink); text-decoration: none; overflow: hidden;
-      }
-      .rows a::before {
-        content: ""; position: absolute; inset: 0; z-index: -1; opacity: 0;
-        background: radial-gradient(220px circle at var(--mx, 50%) var(--my, 50%), rgba(215, 255, 63, 0.12), transparent 70%);
-        transition: opacity 0.3s;
-      }
-      .rows a:hover::before, .rows a:active::before { opacity: 1; }
-      .rows a:focus-visible { outline: 1px solid var(--accent); outline-offset: -1px; }
-      .r-main { flex: 1; min-width: 0; }
-      .r-title { display: block; font-size: 1.16rem; font-weight: 700; letter-spacing: 0.06em; }
-      .r-desc { display: block; margin-top: 0.35rem; font-size: 0.84rem; line-height: 1.75; color: var(--ink-soft); }
-      .r-value { display: block; font-size: 1.04rem; font-weight: 500; letter-spacing: 0.05em; overflow-wrap: anywhere; }
-      .r-label { display: block; margin-bottom: 0.3rem; font-family: var(--mono); font-size: 0.62rem; font-weight: 500; letter-spacing: 0.22em; color: var(--ink-faint); }
-      .r-arrow {
-        flex: none; width: 38px; height: 38px; display: grid; place-items: center;
-        border: 1px solid var(--hair); border-radius: 50%; color: var(--ink-soft);
-        transition: background 0.35s var(--ease-out), color 0.35s, border-color 0.35s, transform 0.5s var(--ease-out);
-      }
-      .rows a:hover .r-arrow { background: var(--accent); border-color: var(--accent); color: #101010; transform: rotate(-45deg); }
-      .rows a:hover .r-arrow.ext { transform: none; }
-
-      /* ===== 保存ボタン ===== */
-      .save-btn {
-        position: relative; overflow: hidden; isolation: isolate;
-        display: flex; align-items: center; justify-content: center; gap: 0.7rem;
-        width: 100%; min-height: 62px; padding: 1rem 1.2rem;
-        background: var(--ink); color: #101010;
-        font-size: 1rem; font-weight: 900; letter-spacing: 0.18em; text-decoration: none;
-        transition: transform 0.5s var(--ease-out);
-        will-change: transform;
-      }
-      .save-btn::before {
-        content: ""; position: absolute; inset: 0; z-index: -1; background: var(--accent);
-        transform: translateY(101%); transition: transform 0.55s var(--ease-io);
-      }
-      .save-btn:hover::before { transform: none; }
-      .save-btn::after {
-        content: ""; position: absolute; top: 0; bottom: 0; width: 40%; left: -60%; z-index: -1;
-        background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
-        animation: shine 4.5s var(--ease-io) infinite 2s;
-      }
-      @keyframes shine { 0%, 70% { left: -60%; } 100% { left: 130%; } }
-      .save-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-      .save-note { margin: 0.8rem 0 0; font-size: 0.8rem; line-height: 1.8; color: var(--ink-faint); }
-      .contact-rows { margin-top: 1.4rem; }
-
-      /* ===== ART：作品ギャラリー ===== */
-      section.art { display: block; padding: 2.6rem 0 2.8rem; }
-      .art-head { display: grid; grid-template-columns: 6.2rem 1fr; column-gap: clamp(1rem, 4vw, 2rem); }
-      .art-count { margin: 0; display: flex; align-items: baseline; gap: 0.8rem; }
-      .art-count .big {
-        font-family: var(--mono); font-weight: 700; font-size: clamp(4rem, 22vw, 7rem);
-        line-height: 0.85; letter-spacing: -0.05em; font-variant-numeric: tabular-nums;
-        background: linear-gradient(100deg, var(--ink) 30%, var(--accent) 50%, var(--ink) 70%);
-        background-size: 300% 100%; -webkit-background-clip: text; background-clip: text; color: transparent;
-        animation: sheen 6s linear infinite;
-      }
-      @keyframes sheen { from { background-position: 100% 0; } to { background-position: -200% 0; } }
-      .art-count .unit { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.3em; color: var(--ink-soft); }
-      .art-lead { grid-column: 2; margin: 1rem 0 0; font-size: 0.9rem; line-height: 1.95; color: var(--ink-soft); }
-
-      /* いま動いている作品（ライブ埋め込み） */
-      .now {
-        position: relative; display: block; margin: 2rem auto 0;
-        width: min(100% - 2 * clamp(1.4rem, 6vw, 2.5rem), 720px - 2 * clamp(1.4rem, 6vw, 2.5rem));
-        aspect-ratio: 4 / 5; max-height: 72svh;
-        border: 1px solid var(--hair); overflow: hidden; background: #050505;
-        color: var(--ink); text-decoration: none; isolation: isolate;
-      }
-      @media (min-width: 640px) { .now { aspect-ratio: 16 / 10; } }
-      .now iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; pointer-events: none; opacity: 0; transition: opacity 1.2s ease; }
-      .now iframe.on { opacity: 1; }
-      .now img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; filter: blur(2px) brightness(0.7); }
-      .now .cap {
-        position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
-        display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem;
-        padding: 3rem 1.1rem 1rem;
-        background: linear-gradient(transparent, rgba(0, 0, 0, 0.82));
-      }
-      .now .tag { font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.24em; color: var(--accent); }
-      .now .tag::before { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #ff3b30; margin-right: 0.5rem; vertical-align: 1px; animation: pulse 1.4s ease-in-out infinite; }
-      .now .nm { display: block; margin-top: 0.4rem; font-size: 1.3rem; font-weight: 900; letter-spacing: 0.06em; }
-      .now .ln { display: block; margin-top: 0.2rem; font-size: 0.78rem; color: var(--ink-soft); }
-      .now .go { flex: none; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; padding: 0.55rem 0.8rem; border: 1px solid rgba(242,241,236,.35); transition: background .3s, color .3s; }
-      .now:hover .go { background: var(--accent); color: #101010; border-color: var(--accent); }
-      .now::after { content: ""; position: absolute; inset: 0; z-index: 3; pointer-events: none; box-shadow: inset 0 0 0 1px rgba(215,255,63,0); transition: box-shadow .4s; }
-      .now:hover::after { box-shadow: inset 0 0 0 1px rgba(215,255,63,.6); }
-
-      /* カバーフロー */
+      /* 作品 */
+      .count { display: flex; align-items: baseline; gap: 0.8rem; margin: 0 0 0.4rem; }
+      .count b { font-family: var(--mono); font-size: clamp(4.4rem, 24vw, 7.5rem); line-height: 0.85; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+      .count span { font-size: 0.84rem; color: var(--soft); letter-spacing: 0.12em; line-height: 1.6; }
       .rail {
-        display: flex; gap: 14px; margin-top: 1.6rem;
-        overflow-x: auto; overscroll-behavior-x: contain;
-        scroll-snap-type: x mandatory; scrollbar-width: none;
-        padding: 1.4rem calc(50% - min(31vw, 120px)) 1.6rem;
-        cursor: grab; perspective: 900px;
+        display: flex; gap: 14px; margin-top: 1.2rem;
+        overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none;
+        padding: 1.6rem calc(50% - min(31vw, 120px)) 1.4rem; cursor: grab; perspective: 900px;
       }
       .rail::-webkit-scrollbar { display: none; }
       .rail.drag { cursor: grabbing; scroll-snap-type: none; }
-      .card {
-        position: relative; flex: none; width: min(62vw, 240px);
-        scroll-snap-align: center;
-        color: var(--ink); text-decoration: none;
-        transform-style: preserve-3d;
-        -webkit-user-drag: none; user-select: none;
-      }
-      .thumb {
-        position: relative; display: block; overflow: hidden;
-        aspect-ratio: 476 / 630; background: #111;
-        border: 1px solid var(--hair);
-        transition: border-color 0.3s;
-      }
-      .thumb img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; pointer-events: none; transition: transform 0.8s var(--ease-out); }
-      .thumb::after {
-        content: ""; position: absolute; inset: 0; opacity: 0; transition: opacity .3s;
-        background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 30%), rgba(255,255,255,.22), transparent 60%);
-        mix-blend-mode: overlay;
-      }
-      .card:hover .thumb { border-color: rgba(215, 255, 63, 0.6); }
-      .card:hover .thumb img { transform: scale(1.05); }
-      .card:hover .thumb::after { opacity: 1; }
-      .c-no { display: block; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.58rem; letter-spacing: 0.22em; color: var(--accent); }
-      .c-name { display: block; margin-top: 0.35rem; font-size: 1.02rem; font-weight: 900; letter-spacing: 0.06em; }
-      .c-line { display: block; margin-top: 0.3rem; font-size: 0.74rem; line-height: 1.7; color: var(--ink-faint); }
+      .wk { position: relative; flex: none; width: min(62vw, 240px); scroll-snap-align: center; text-decoration: none; transform-style: preserve-3d; -webkit-user-drag: none; user-select: none; }
+      .wk-img { position: relative; display: block; aspect-ratio: 476 / 630; overflow: hidden; border-radius: 12px; background: #151518; box-shadow: inset 0 0 0 1px var(--hair); }
+      .wk-img img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; pointer-events: none; transform: scale(1.02); transition: transform 0.8s var(--ease); }
+      .wk:hover .wk-img img { transform: scale(1.07); }
+      .wk-no { display: block; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.62rem; letter-spacing: 0.2em; color: var(--faint); }
+      .wk-name { display: block; margin-top: 0.3rem; font-size: 1.05rem; font-weight: 900; letter-spacing: 0.05em; }
+      .wk-line { display: block; margin-top: 0.3rem; font-size: 0.76rem; line-height: 1.7; color: var(--faint); }
       @supports (animation-timeline: view(inline)) {
-        .card { animation: flow linear both; animation-timeline: view(inline); }
+        .wk { animation: flow linear both; animation-timeline: view(inline); }
         @keyframes flow {
-          0% { transform: rotateY(38deg) translateZ(-120px) scale(0.86); opacity: 0.35; filter: brightness(0.5); }
-          42%, 58% { transform: none; opacity: 1; filter: none; }
-          100% { transform: rotateY(-38deg) translateZ(-120px) scale(0.86); opacity: 0.35; filter: brightness(0.5); }
+          0% { transform: rotateY(40deg) translateZ(-120px) scale(0.86); opacity: 0.35; }
+          42%, 58% { transform: none; opacity: 1; }
+          100% { transform: rotateY(-40deg) translateZ(-120px) scale(0.86); opacity: 0.35; }
         }
       }
-      .rail-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; font-size: 0.64rem; color: var(--ink-faint); }
-      .rail-foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--accent); padding-bottom: 2px; }
-      .rail-pos { font-variant-numeric: tabular-nums; }
-      @media (max-width: 520px) {
-        .art-head { grid-template-columns: 1fr; row-gap: 1.3rem; }
-        .art-lead { grid-column: 1; margin-top: 0; }
-      }
+      .rail-foot { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+      .rail-pos { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.16em; color: var(--faint); font-variant-numeric: tabular-nums; }
+      .more { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-decoration: none; padding: 0.7rem 1.1rem; border-radius: 999px; border: 1px solid rgba(255,255,255,.18); }
+      .more:hover { background: rgba(255,255,255,.08); }
 
-      /* ローディング中に作品がちらつく窓 */
-      .ld-art {
-        position: absolute; right: clamp(1.4rem, 6vw, 3rem); top: calc(50% + 1rem);
-        width: 66px; aspect-ratio: 476 / 630; overflow: hidden;
-        border: 1px solid rgba(242,241,236,.15); background: #111;
-      }
-      .ld-art img { width: 100%; height: 100%; object-fit: cover; object-position: 0 50%; display: block; }
+      /* サイト */
+      .sites { list-style: none; margin: 0; padding: 0; }
+      .sites a { display: flex; align-items: center; gap: 1rem; padding: 1.5rem 0; text-decoration: none; border-bottom: 1px solid var(--hair); }
+      .sites li:first-child a { border-top: 1px solid var(--hair); }
+      .s-main { flex: 1; min-width: 0; }
+      .s-title { display: block; font-size: clamp(1.25rem, 5.4vw, 1.6rem); font-weight: 900; letter-spacing: 0.04em; transition: letter-spacing 0.5s var(--ease); }
+      .s-desc { display: block; margin-top: 0.4rem; font-size: 0.84rem; line-height: 1.8; color: var(--soft); }
+      .s-arr { flex: none; width: 44px; height: 44px; border-radius: 50%; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.16); transition: background 0.4s, color 0.4s, transform 0.5s var(--ease); }
+      .sites a:hover .s-arr { background: var(--foil); color: #111; border-color: transparent; transform: rotate(45deg); }
+      .sites a:hover .s-title { letter-spacing: 0.08em; }
 
-      /* ===== フッター ===== */
-      footer { padding: 2.4rem 0 max(2.4rem, env(safe-area-inset-bottom)); border-top: 1px solid var(--hair); }
-      .foot { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.64rem; color: var(--ink-faint); }
-
-      @media (max-width: 520px) {
-        section { grid-template-columns: 1fr; row-gap: 1.3rem; }
-        .sec-label { display: flex; align-items: baseline; gap: 0.9rem; }
-        .sec-label .en { margin: 0; }
+      /* 趣味 */
+      .chips { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem; margin: 0; padding: 0; list-style: none; }
+      .chips li {
+        position: relative; padding: 0.9rem 1.3rem; border-radius: 999px;
+        font-size: 1.05rem; font-weight: 700; letter-spacing: 0.08em;
+        background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12);
       }
+      .chips li small { display: block; margin-top: 0.2rem; font-size: 0.7rem; font-weight: 500; color: var(--faint); letter-spacing: 0.06em; }
+
+      /* 連絡先（下） */
+      .c-save { display: flex; align-items: center; justify-content: center; gap: 0.7rem; min-height: 64px; border-radius: 14px; text-decoration: none; color: #111; font-weight: 900; letter-spacing: 0.16em; background: var(--foil); }
+      .c-note { margin: 0.8rem 0 1.4rem; font-size: 0.8rem; line-height: 1.8; color: var(--faint); }
+      .c-rows { list-style: none; margin: 0; padding: 0; }
+      .c-rows a { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 1.15rem 0; text-decoration: none; border-bottom: 1px solid var(--hair); }
+      .c-k { display: block; font-size: 0.7rem; letter-spacing: 0.2em; color: var(--faint); }
+      .c-v { display: block; margin-top: 0.3rem; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.03em; overflow-wrap: anywhere; }
+
+      footer { padding: 4rem 0 max(2.6rem, env(safe-area-inset-bottom)); }
+      .foot { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; font-size: 0.72rem; color: var(--faint); letter-spacing: 0.14em; }
+      .foot b { font-size: 1rem; color: var(--ink); letter-spacing: 0.12em; }
 
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
@@ -398,635 +250,473 @@
     <noscript>
       <style>
         #loader { display: none; }
-        .name .ch, .fx, .reveal { opacity: 1 !important; transform: none !important; filter: none !important; }
+        .stage, .controls, .reveal { opacity: 1 !important; transform: none !important; }
         html.is-loading body { overflow: auto; }
       </style>
     </noscript>
   </head>
   <body>
-    <canvas id="sea" aria-hidden="true"></canvas>
-    <div class="grain" aria-hidden="true"></div>
-    <div class="progress" aria-hidden="true"></div>
-
-    <!-- ===== ローディング ===== -->
+    <!-- ================= ローディング ================= -->
     <div id="loader" role="status" aria-live="polite">
-      <div class="ld-half ld-top"></div>
-      <div class="ld-half ld-bot"></div>
-      <div class="ld-line"><i id="ldBar"></i></div>
-      <div class="ld-ui">
-        <div class="ld-row"><span>名刺 / MEISHI</span><span>No.001</span></div>
-        <div class="ld-center">
-          <div class="ld-count"><span id="ldNum">000</span><small>%</small></div>
-          <div class="ld-name">サトウ<br />シュン</div>
-        </div>
+      <div class="ld-card" aria-hidden="true">
+        <div class="ld-fill" id="ldFill"></div>
+        <div class="ld-name">サトウ シュン</div>
+      </div>
+      <div class="ld-meta">
+        <div class="ld-num"><span id="ldNum">0</span><small>%</small></div>
         <div class="ld-status" id="ldStatus">準備しています</div>
-        <div class="ld-art" aria-hidden="true"><img id="ldArt" alt="" /></div>
-        <div class="ld-row"><span>TOKYO BAY</span><span>35.62°N 139.77°E</span></div>
       </div>
     </div>
 
-    <div class="page">
-      <!-- ===== ヒーロー ===== -->
-      <header class="hero wrap">
-        <div class="hero-top mono fx" style="--d: 0.2s">
-          <span data-scramble>MEISHI — No.001</span>
-          <span class="live"><span id="clock">--:--:--</span> JST</span>
-        </div>
-
-        <div class="hero-main">
-          <p class="kind mono fx" style="--d: 0.1s"><span class="bar"></span><span data-scramble>ODAIBA · TOKYO BAY</span></p>
-          <h1 class="name" aria-label="サトウ シュン">
-            <span class="line" aria-hidden="true"><span class="ch" style="--i:0">サ</span><span class="ch" style="--i:1">ト</span><span class="ch" style="--i:2">ウ</span></span>
-            <span class="line" aria-hidden="true"><span class="ch" style="--i:3">シ</span><span class="ch" style="--i:4">ュ</span><span class="ch" style="--i:5">ン</span></span>
-          </h1>
-          <p class="roma mono fx" style="--d: 0.7s" data-scramble>SATO SHUN</p>
-          <p class="tagline fx" style="--d: 0.85s">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
-        </div>
-
-        <div class="hero-bottom mono fx" style="--d: 1.1s">
-          <span>35.6267°N 139.7756°E</span>
-          <span class="scroll">SCROLL<i></i></span>
-        </div>
-      </header>
-
-      <!-- ===== 本文 ===== -->
-      <div class="sheet">
-        <main>
-          <!-- 作品 -->
-          <section class="art" aria-labelledby="art-title">
-            <div class="wrap art-head">
-              <h2 class="sec-label reveal" id="art-title"><span class="en" data-scramble>01 / ART</span><span class="ja">作品</span></h2>
-              <p class="art-count reveal" style="--d: 0.08s"><span class="big" id="artCount" data-n="79">79</span><span class="unit">WORKS<br />ART PLAYGROUND</span></p>
-              <p class="art-lead reveal" style="--d: 0.16s">コードで描くジェネラティブアート。<br />触ると、世界のルールが変わる。</p>
+    <!-- ================= 名刺 ================= -->
+    <header class="hero">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="stage">
+        <div class="card" id="card" role="button" tabindex="0" aria-label="サトウ シュンの名刺。押すと裏返って連絡先が出ます">
+          <div class="face front">
+            <canvas id="foil" aria-hidden="true"></canvas>
+            <div class="f-top"><span>MEISHI</span><span class="serial">No.0000</span></div>
+            <div class="f-panel">
+              <h1 class="f-name">サトウ シュン</h1>
+              <p class="f-roma foil-text">SATO SHUN</p>
+              <p class="f-tag">お台場で運転の仕事をしています。<br />個人でWebサイトの運営もしています。</p>
             </div>
-
-            <a class="now reveal" href="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html" target="_blank" rel="noopener" aria-label="GLASS RELAY を開く">
-              <img src="https://art-playground.artplayground.workers.dev/og/art-v127-glass-relay.jpg" alt="" />
-              <iframe data-src="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html" title="GLASS RELAY" tabindex="-1" loading="lazy"></iframe>
-              <span class="cap">
-                <span><span class="tag">NOW PLAYING</span><span class="nm">GLASS RELAY</span><span class="ln">倒れきったドミノが、新しい時刻になる</span></span>
-                <span class="go">OPEN ↗</span>
-              </span>
-            </a>
-
-            <div class="rail" id="rail" aria-label="作品一覧">
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v127-glass-relay.jpg" alt="GLASS RELAY" decoding="async" /></span><span class="c-no">No.079</span><span class="c-name">GLASS RELAY</span><span class="c-line">倒れきったドミノが、新しい時刻になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v129-bead-curtain.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v129-bead-curtain.jpg" alt="BEAD CURTAIN" decoding="async" /></span><span class="c-no">No.078</span><span class="c-name">BEAD CURTAIN</span><span class="c-line">光の玉が糸を伝って流れ落ちる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v128-rain-turns.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v128-rain-turns.jpg" alt="RAIN TURNS" decoding="async" /></span><span class="c-no">No.077</span><span class="c-name">RAIN TURNS</span><span class="c-line">光の雨が毎分、降る向きを入れ替える</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v126-ink-rings.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v126-ink-rings.jpg" alt="INK RINGS" decoding="async" /></span><span class="c-no">No.076</span><span class="c-name">INK RINGS</span><span class="c-line">インクは輪になり、分かれて、また輪になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v125-saiun.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v125-saiun.jpg" alt="SAIUN" decoding="async" /></span><span class="c-no">No.075</span><span class="c-name">SAIUN</span><span class="c-line">雲は、薄い縁だけが虹色に光る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v124-scalefall.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v124-scalefall.jpg" alt="SCALEFALL" decoding="async" /></span><span class="c-no">No.074</span><span class="c-name">SCALEFALL</span><span class="c-line">鱗が降り、一分は泥に、一時間は石になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v123-fallen-minutes.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v123-fallen-minutes.jpg" alt="FALLEN MINUTES" decoding="async" /></span><span class="c-no">No.073</span><span class="c-name">FALLEN MINUTES</span><span class="c-line">過ぎた一分は崩れて、砂の地層になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v122-28-shells.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v122-28-shells.jpg" alt="28 SHELLS" decoding="async" /></span><span class="c-no">No.072</span><span class="c-name">28 SHELLS</span><span class="c-line">触れた空が花火を吸い、ときに散らす</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v121-campfire.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v121-campfire.jpg" alt="CAMPFIRE" decoding="async" /></span><span class="c-no">No.071</span><span class="c-name">CAMPFIRE</span><span class="c-line">触れた所だけ、炎の「上」が変わる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v120-deep-hours.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v120-deep-hours.jpg" alt="DEEP HOURS" decoding="async" /></span><span class="c-no">No.070</span><span class="c-name">DEEP HOURS</span><span class="c-line">奥をのぞくほど、過去の時計が見える</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v119-window-fog.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v119-window-fog.jpg" alt="WINDOW FOG" decoding="async" /></span><span class="c-no">No.069</span><span class="c-name">WINDOW FOG</span><span class="c-line">消えた指の跡は、息でまた浮かぶ</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v118-blink-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v118-blink-law.jpg" alt="BLINK LAW" decoding="async" /></span><span class="c-no">No.068</span><span class="c-name">BLINK LAW</span><span class="c-line">見ていない間にだけ、世界は育つ</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v117-gaze-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v117-gaze-law.jpg" loading="lazy" alt="GAZE LAW" decoding="async" /></span><span class="c-no">No.067</span><span class="c-name">GAZE LAW</span><span class="c-line">見つめた場所だけが、結晶になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v116-foil-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v116-foil-law.jpg" loading="lazy" alt="FOIL LAW" decoding="async" /></span><span class="c-no">No.066</span><span class="c-name">FOIL LAW</span><span class="c-line">触れた場所が、箔の新しい法則になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v115-komorebi.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v115-komorebi.jpg" loading="lazy" alt="KOMOREBI" decoding="async" /></span><span class="c-no">No.065</span><span class="c-name">KOMOREBI</span><span class="c-line">木漏れ日は、太陽の形を映している</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v113-ring-dial.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v113-ring-dial.jpg" loading="lazy" alt="RING DIAL" decoding="async" /></span><span class="c-no">No.064</span><span class="c-name">RING DIAL</span><span class="c-line">輪にかかる影が、いまの時刻</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v112-silver-turn.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v112-silver-turn.jpg" loading="lazy" alt="SILVER TURN" decoding="async" /></span><span class="c-no">No.063</span><span class="c-name">SILVER TURN</span><span class="c-line">怯えは銀の閃きになって群れを渡る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v111-sea-sparkle.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v111-sea-sparkle.jpg" loading="lazy" alt="SEA SPARKLE" decoding="async" /></span><span class="c-no">No.062</span><span class="c-name">SEA SPARKLE</span><span class="c-line">光る波を切ると、渦が生まれる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v110-north-draw.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v110-north-draw.jpg" loading="lazy" alt="NORTH DRAW" decoding="async" /></span><span class="c-no">No.061</span><span class="c-name">NORTH DRAW</span><span class="c-line">なぞった線に、オーロラの裾が寄ってくる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v109-next-spring.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v109-next-spring.jpg" loading="lazy" alt="NEXT SPRING" decoding="async" /></span><span class="c-no">No.060</span><span class="c-name">NEXT SPRING</span><span class="c-line">綿毛の落ちた所に、次の春が咲く</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v108-iron-bloom.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v108-iron-bloom.jpg" loading="lazy" alt="IRON BLOOM" decoding="async" /></span><span class="c-no">No.059</span><span class="c-name">IRON BLOOM</span><span class="c-line">黒い液体は、磁石の通った道を覚えている</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v107-eye-loom.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v107-eye-loom.jpg" loading="lazy" alt="EYE LOOM" decoding="async" /></span><span class="c-no">No.058</span><span class="c-name">EYE LOOM</span><span class="c-line">網目は、ひらいた目すべてに従う</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v106-split-dew.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v106-split-dew.jpg" loading="lazy" alt="SPLIT DEW" decoding="async" /></span><span class="c-no">No.057</span><span class="c-name">SPLIT DEW</span><span class="c-line">切った雫は、また手をつなぐ</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v105-strata-sand.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v105-strata-sand.jpg" loading="lazy" alt="STRATA SAND" decoding="async" /></span><span class="c-no">No.056</span><span class="c-name">STRATA SAND</span><span class="c-line">砂は、落ちた順に層を重ねて山を描く</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v104-prism-shell.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v104-prism-shell.jpg" loading="lazy" alt="PRISM SHELL" decoding="async" /></span><span class="c-no">No.055</span><span class="c-name">PRISM SHELL</span><span class="c-line">触れるたび、光の法則が変わる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v103-snow-ledger.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v103-snow-ledger.jpg" loading="lazy" alt="SNOW LEDGER" decoding="async" /></span><span class="c-no">No.054</span><span class="c-name">SNOW LEDGER</span><span class="c-line">結晶は、育つあいだの空を書き残す</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v102-rosary.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v102-rosary.jpg" loading="lazy" alt="ROSARY" decoding="async" /></span><span class="c-no">No.053</span><span class="c-name">ROSARY</span><span class="c-line">数えた珠の数が、次の世界の形になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v101-waterline.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v101-waterline.jpg" loading="lazy" alt="WATERLINE" decoding="async" /></span><span class="c-no">No.052</span><span class="c-name">WATERLINE</span><span class="c-line">深い穴ほど、強く噴き出す水槽</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v100-hairline.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v100-hairline.jpg" loading="lazy" alt="HAIRLINE" decoding="async" /></span><span class="c-no">No.051</span><span class="c-name">HAIRLINE</span><span class="c-line">割りすぎると、足もとのガラスが抜ける</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v99-morphing-fern.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v99-morphing-fern.jpg" loading="lazy" alt="MORPHING FERN" decoding="async" /></span><span class="c-no">No.050</span><span class="c-name">MORPHING FERN</span><span class="c-line">光の粒のシダが、ゆっくり別の生きものになる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v98-swarm-cathedral.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v98-swarm-cathedral.jpg" loading="lazy" alt="SWARM CATHEDRAL" decoding="async" /></span><span class="c-no">No.049</span><span class="c-name">SWARM CATHEDRAL</span><span class="c-line">光の群れが、自己相似のかたちを編み直す</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v97-mirror-pool.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v97-mirror-pool.jpg" loading="lazy" alt="MIRROR POOL" decoding="async" /></span><span class="c-no">No.048</span><span class="c-name">MIRROR POOL</span><span class="c-line">なぞった線が六つに折り返され、曼荼羅になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v96-frost-cathedral.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v96-frost-cathedral.jpg" loading="lazy" alt="FROST CATHEDRAL" decoding="async" /></span><span class="c-no">No.047</span><span class="c-name">FROST CATHEDRAL</span><span class="c-line">霜は風下へ伸び、色の違う結晶が混ざりあう</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v95-droste-rain.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v95-droste-rain.jpg" loading="lazy" alt="DROSTE RAIN" decoding="async" /></span><span class="c-no">No.046</span><span class="c-name">DROSTE RAIN</span><span class="c-line">光のしずくが、無限の入れ子へ落ちてゆく</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v94-attractor-veil.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v94-attractor-veil.jpg" loading="lazy" alt="ATTRACTOR VEIL" decoding="async" /></span><span class="c-no">No.045</span><span class="c-name">ATTRACTOR VEIL</span><span class="c-line">指が式を歪め、光の雲が姿を変える</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v93-living-reef.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v93-living-reef.jpg" loading="lazy" alt="LIVING REEF" decoding="async" /></span><span class="c-no">No.044</span><span class="c-name">LIVING REEF</span><span class="c-line">光の種が胞子を飛ばし、ひとりでに増える珊瑚礁</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v92-heliotrope.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v92-heliotrope.jpg" loading="lazy" alt="HELIOTROPE" decoding="async" /></span><span class="c-no">No.043</span><span class="c-name">HELIOTROPE</span><span class="c-line">選んだ一輪が、次の太陽になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v91-bud-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v91-bud-law.jpg" loading="lazy" alt="BUD LAW" decoding="async" /></span><span class="c-no">No.042</span><span class="c-name">BUD LAW</span><span class="c-line">触れた所に、枚数の違う花が咲く</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v90-nest-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v90-nest-law.jpg" loading="lazy" alt="NEST LAW" decoding="async" /></span><span class="c-no">No.041</span><span class="c-name">NEST LAW</span><span class="c-line">触った段から内側の法則が書き換わる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v89-lamp-fold.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v89-lamp-fold.jpg" loading="lazy" alt="LAMP FOLD" decoding="async" /></span><span class="c-no">No.040</span><span class="c-name">LAMP FOLD</span><span class="c-line">鏡を立てるたび、光の穴が増える</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v88-birthmark.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v88-birthmark.jpg" loading="lazy" alt="BIRTHMARK" decoding="async" /></span><span class="c-no">No.039</span><span class="c-name">BIRTHMARK</span><span class="c-line">輪は生まれた瞬間を覚えている</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v87-light-web.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v87-light-web.jpg" loading="lazy" alt="LIGHT WEB" decoding="async" /></span><span class="c-no">No.038</span><span class="c-name">LIGHT WEB</span><span class="c-line">触った所の水が深くなる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v86-twin-tide.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v86-twin-tide.jpg" loading="lazy" alt="TWIN TIDE" decoding="async" /></span><span class="c-no">No.037</span><span class="c-name">TWIN TIDE</span><span class="c-line">触った場所が第三の潮の生まれ故郷になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v85-animal-mansion.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v85-animal-mansion.jpg" loading="lazy" alt="ANIMAL MANSION" decoding="async" /></span><span class="c-no">No.036</span><span class="c-name">ANIMAL MANSION</span><span class="c-line">部屋は、住む子に似る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v84-hamster-drop.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v84-hamster-drop.jpg" loading="lazy" alt="HAMSTER DROP" decoding="async" /></span><span class="c-no">No.035</span><span class="c-name">HAMSTER DROP</span><span class="c-line">ころがり落ちる家</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v83-palimpsest.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v83-palimpsest.jpg" loading="lazy" alt="PALIMPSEST" decoding="async" /></span><span class="c-no">No.034</span><span class="c-name">PALIMPSEST</span><span class="c-line">読んだ言葉は、紙に沁みる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v82-inner-eye.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v82-inner-eye.jpg" loading="lazy" alt="INNER EYE" decoding="async" /></span><span class="c-no">No.033</span><span class="c-name">INNER EYE</span><span class="c-line">小さな目が、全体を決める</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v81-rain-relay.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v81-rain-relay.jpg" loading="lazy" alt="RAIN RELAY" decoding="async" /></span><span class="c-no">No.032</span><span class="c-name">RAIN RELAY</span><span class="c-line">雨は、水面から降る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v80-rainbow-walk.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v80-rainbow-walk.jpg" loading="lazy" alt="RAINBOW WALK" decoding="async" /></span><span class="c-no">No.031</span><span class="c-name">RAINBOW WALK</span><span class="c-line">猫が渡るぶんだけ、虹になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v79-night-shift.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v79-night-shift.jpg" loading="lazy" alt="NIGHT SHIFT" decoding="async" /></span><span class="c-no">No.030</span><span class="c-name">NIGHT SHIFT</span><span class="c-line">猫たちの星工場</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v78-held-time.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v78-held-time.jpg" loading="lazy" alt="HELD TIME" decoding="async" /></span><span class="c-no">No.029</span><span class="c-name">HELD TIME</span><span class="c-line">押さえた線から、時間が流れ出す</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/prototypes/chroma-grid.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/prototypes__chroma-grid.jpg" loading="lazy" alt="COLOR LATTICE" decoding="async" /></span><span class="c-no">No.028</span><span class="c-name">COLOR LATTICE</span><span class="c-line">色の街が歪む</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v77-kept-warmth.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v77-kept-warmth.jpg" loading="lazy" alt="KEPT WARMTH" decoding="async" /></span><span class="c-no">No.027</span><span class="c-name">KEPT WARMTH</span><span class="c-line">ぬくもり保存の法則</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v76-chroma-drift.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v76-chroma-drift.jpg" loading="lazy" alt="CHROMA DRIFT" decoding="async" /></span><span class="c-no">No.026</span><span class="c-name">CHROMA DRIFT</span><span class="c-line">淡いガラスの花が一面に回りつづける。指で回すと庭全体が回る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v75-mirror-split.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v75-mirror-split.jpg" loading="lazy" alt="MIRROR FRACTURE" decoding="async" /></span><span class="c-no">No.025</span><span class="c-name">MIRROR FRACTURE</span><span class="c-line">鏡が中心の裂け目から自己相似に割れていく。触れた場所が裂け方を決める</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v74-mirror-descent.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v74-mirror-descent.jpg" loading="lazy" alt="MIRROR DESCENT" decoding="async" /></span><span class="c-no">No.024</span><span class="c-name">MIRROR DESCENT</span><span class="c-line">8枚の鏡が映す世界が、絶えず中心へ沈みつづける</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v73-mirror-pressure.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v73-mirror-pressure.jpg" loading="lazy" alt="MIRROR PRESSURE" decoding="async" /></span><span class="c-no">No.023</span><span class="c-name">MIRROR PRESSURE</span><span class="c-line">8枚の鏡の万華鏡。触れた場所が、対称そのものを押し曲げる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v72-lumina.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v72-lumina.jpg" loading="lazy" alt="LUMINA" decoding="async" /></span><span class="c-no">No.022</span><span class="c-name">LUMINA</span><span class="c-line">光の層は切れる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v71-tide-mark.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v71-tide-mark.jpg" loading="lazy" alt="TIDE MARK" decoding="async" /></span><span class="c-no">No.021</span><span class="c-name">TIDE MARK</span><span class="c-line">なぎさの法則</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v70-crystal-strain.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v70-crystal-strain.jpg" loading="lazy" alt="FATIGUE LAW" decoding="async" /></span><span class="c-no">No.020</span><span class="c-name">FATIGUE LAW</span><span class="c-line">結晶はなぞるたび歪みをため、限界で砕ける。割れ跡は次の結晶に残る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v69-opal-marble.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v69-opal-marble.jpg" loading="lazy" alt="OPAL MARBLE" decoding="async" /></span><span class="c-no">No.019</span><span class="c-name">OPAL MARBLE</span><span class="c-line">オパールのような模様の膜。指で押すと沈み、模様が吸い寄せられる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v68-tar-ceiling.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v68-tar-ceiling.jpg" loading="lazy" alt="TAR CEILING" decoding="async" /></span><span class="c-no">No.018</span><span class="c-name">TAR CEILING</span><span class="c-line">天井の漏れ口から雫が育って落ちる。なぞると通り道に漏れ口が並ぶ</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v67-seven-slice.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v67-seven-slice.jpg" loading="lazy" alt="SEVEN SLICE" decoding="async" /></span><span class="c-no">No.017</span><span class="c-name">SEVEN SLICE</span><span class="c-line">7方向の線の束が重なり、準結晶の模様になる。触れるとねじれが刻まれる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v66-holo-compass.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v66-holo-compass.jpg" loading="lazy" alt="HOLO COMPASS" decoding="async" /></span><span class="c-no">No.016</span><span class="c-name">HOLO COMPASS</span><span class="c-line">ホログラム箔の面はバラバラを向いている。なでると揃って一斉に光る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v65-encircle.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v65-encircle.jpg" loading="lazy" alt="ENCIRCLE" decoding="async" /></span><span class="c-no">No.015</span><span class="c-name">ENCIRCLE</span><span class="c-line">薄い膜の球に、触れた場所を一周する帯が刻まれる。法は消えずに重なる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/prototypes/spiral-spectrum-200-v9.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/prototypes__spiral-spectrum-200-v9.jpg" loading="lazy" alt="COLOR BREATH" decoding="async" /></span><span class="c-no">No.014</span><span class="c-name">COLOR BREATH</span><span class="c-line">虹色の渦がゆっくり呼吸している。触れると指の方へたわみ、色が流れる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v64-chromatic-fold.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v64-chromatic-fold.jpg" loading="lazy" alt="CHROMATIC FOLD" decoding="async" /></span><span class="c-no">No.013</span><span class="c-name">CHROMATIC FOLD</span><span class="c-line">色の線が折り重なる一枚の紙。触れると光が移り、折り目が光へ寄る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/prototypes/membrane-rgb.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/prototypes__membrane-rgb.jpg" loading="lazy" alt="RGB MEMBRANE" decoding="async" /></span><span class="c-no">No.012</span><span class="c-name">RGB MEMBRANE</span><span class="c-line">細い線の膜が波打ちつづける。触るたび、うねりの法則が切り替わる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v50-stratum.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v50-stratum.jpg" loading="lazy" alt="STRATUM" decoding="async" /></span><span class="c-no">No.011</span><span class="c-name">STRATUM</span><span class="c-line">6層に折り重なる光の結晶。タップした層を、指でねじって歪められる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/void-field-ii.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/void-field-ii.jpg" loading="lazy" alt="VOID FIELD II" decoding="async" /></span><span class="c-no">No.010</span><span class="c-name">VOID FIELD II</span><span class="c-line">点の海に、触れた場所から渦巻く空白が生まれる。ダブルタップで波が走る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v49-feather-fold.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v49-feather-fold.jpg" loading="lazy" alt="FEATHER FOLD" decoding="async" /></span><span class="c-no">No.009</span><span class="c-name">FEATHER FOLD</span><span class="c-line">羽の形が折りの中に折り重なって広がる。タップで押し、長押しで引く</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v47-infection.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v47-infection.jpg" loading="lazy" alt="INFECTION" decoding="async" /></span><span class="c-no">No.008</span><span class="c-name">INFECTION</span><span class="c-line">点の海が同心円に波打つ。触れた場所からねじれと色が広がっていく</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v36-art-of-becoming.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v36-art-of-becoming.jpg" loading="lazy" alt="ART OF BECOMING" decoding="async" /></span><span class="c-no">No.007</span><span class="c-name">ART OF BECOMING</span><span class="c-line">色の大陸がゆっくり呼吸する、生きたガラスの世界。触れると文法が変わる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v35-one-knot.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v35-one-knot.jpg" loading="lazy" alt="ONE KNOT" decoding="async" /></span><span class="c-no">No.006</span><span class="c-name">ONE KNOT</span><span class="c-line">画面全体が一つの流れで編まれている。なぞると渦ができ、結び目になる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v31-divided-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v31-divided-law.jpg" loading="lazy" alt="DIVIDED LAW" decoding="async" /></span><span class="c-no">No.005</span><span class="c-name">DIVIDED LAW</span><span class="c-line">場所ごとに法則の違う光の領地。指を動かすと、そこの世界の尺度が変わる</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v30-standing-law.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v30-standing-law.jpg" loading="lazy" alt="STANDING LAW" decoding="async" /></span><span class="c-no">No.004</span><span class="c-name">STANDING LAW</span><span class="c-line">なぞった場所にだけ、対称とねじれのルールが書き込まれて残る</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v28-living-order.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v28-living-order.jpg" loading="lazy" alt="LIVING ORDER" decoding="async" /></span><span class="c-no">No.003</span><span class="c-name">LIVING ORDER</span><span class="c-line">ステンドグラスの帯が折り重なってうごめく。触れると座標そのものが歪む</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v27.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v27.jpg" loading="lazy" alt="PARTICLE COSMOS II" decoding="async" /></span><span class="c-no">No.002</span><span class="c-name">PARTICLE COSMOS II</span></a>
-              <a class="card" href="https://art-playground.artplayground.workers.dev/art-v20.html" target="_blank" rel="noopener"><span class="thumb"><img src="https://art-playground.artplayground.workers.dev/og/art-v20.jpg" loading="lazy" alt="ALIVE" decoding="async" /></span><span class="c-no">No.001</span><span class="c-name">ALIVE</span><span class="c-line">光の粒が軌跡を引きながら流れていく。指を置くと、逃げながら周りを渦巻く</span></a>
-            </div>
-            <div class="wrap rail-foot mono">
-              <span><span class="rail-pos" id="railPos">001</span> / 079 — SWIPE</span>
-              <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">全作品を見る ↗</a>
-            </div>
-          </section>
-
-          <!-- リンク -->
-          <section aria-labelledby="works-title">
-            <h2 class="sec-label reveal" id="works-title"><span class="en" data-scramble>02 / SITES</span><span class="ja">サイト</span></h2>
-            <ul class="rows">
-              <li class="reveal" style="--d: 0.05s">
-                <a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener">
-                  <span class="r-main">
-                    <span class="r-title">お台場混雑予報</span>
-                    <span class="r-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span>
-                  </span>
-                  <span class="r-arrow ext"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></span>
-                </a>
-              </li>
-              <li class="reveal" style="--d: 0.14s">
-                <a href="https://shikaku-drill.net" target="_blank" rel="noopener">
-                  <span class="r-main">
-                    <span class="r-title">資格ドリルシリーズ</span>
-                    <span class="r-desc">運行管理者試験と危険物取扱者のドリルを、無料で解けるサイト。</span>
-                  </span>
-                  <span class="r-arrow ext"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></span>
-                </a>
-              </li>
-              <li class="reveal" style="--d: 0.21s">
-                <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">
-                  <span class="r-main">
-                    <span class="r-title">ART PLAYGROUND</span>
-                    <span class="r-desc">上の作品が全部見られるジェネラティブアートのサイト。</span>
-                  </span>
-                  <span class="r-arrow ext"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></span>
-                </a>
-              </li>
+          </div>
+          <div class="face back">
+            <div class="b-head"><span class="b-name foil-text">連絡先</span><span class="b-serial serial">No.0000</span></div>
+            <ul class="b-rows">
+              <li><a href="tel:+819098503262"><span class="b-k">電話</span><span class="b-v">090-9850-3262<i>→</i></span></a></li>
+              <li><a href="mailto:muuu@muse.ai"><span class="b-k">メール</span><span class="b-v">muuu@muse.ai<i>→</i></span></a></li>
+              <li><a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener"><span class="b-k">LINE</span><span class="b-v">LINEで連絡<i>↗</i></span></a></li>
             </ul>
-          </section>
-
-          <!-- 趣味 -->
-          <section aria-labelledby="hobbies-title">
-            <h2 class="sec-label reveal" id="hobbies-title"><span class="en" data-scramble>03 / LIKES</span><span class="ja">趣味</span></h2>
-            <ul class="hobbies">
-              <li class="reveal" style="--d: 0.05s"><span class="hobby-name">音楽鑑賞</span><span class="note">ライブによく行きます</span></li>
-              <li class="reveal" style="--d: 0.12s"><span class="hobby-name">キャンプ</span></li>
-              <li class="reveal" style="--d: 0.19s"><span class="hobby-name">釣り</span></li>
-              <li class="reveal" style="--d: 0.26s"><span class="hobby-name">競馬</span></li>
-            </ul>
-          </section>
-
-          <!-- 連絡先 -->
-          <section aria-labelledby="contact-title">
-            <h2 class="sec-label reveal" id="contact-title"><span class="en" data-scramble>04 / CONTACT</span><span class="ja">連絡先</span></h2>
-            <div>
-              <div class="reveal" style="--d: 0.05s">
-                <a class="save-btn" href="contact.vcf" id="saveBtn">
-                  <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <circle cx="10" cy="8" r="3.6" />
-                    <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
-                    <path d="M17.5 14.5v6M14.5 17.5h6" />
-                  </svg>
-                  連絡先に保存
-                </a>
-                <p class="save-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
-              </div>
-
-              <ul class="rows contact-rows">
-                <li class="reveal" style="--d: 0.1s">
-                  <a href="tel:+819098503262">
-                    <span class="r-main"><span class="r-label">TEL / 電話</span><span class="r-value">090-9850-3262</span></span>
-                    <span class="r-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
-                  </a>
-                </li>
-                <li class="reveal" style="--d: 0.17s">
-                  <a href="mailto:muuu@muse.ai">
-                    <span class="r-main"><span class="r-label">MAIL / メール</span><span class="r-value">muuu@muse.ai</span></span>
-                    <span class="r-arrow"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" /></svg></span>
-                  </a>
-                </li>
-                <li class="reveal" style="--d: 0.24s">
-                  <a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener">
-                    <span class="r-main"><span class="r-label">LINE</span><span class="r-value">LINEで連絡</span></span>
-                    <span class="r-arrow ext"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg></span>
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </section>
-        </main>
-
-        <footer class="wrap" aria-hidden="true">
-          <div class="foot mono"><span>SATO SHUN</span><span>ODAIBA, TOKYO</span></div>
-        </footer>
+            <a class="b-save" href="contact.vcf">＋ 連絡先に保存</a>
+            <p class="b-back">余白に触れると表に戻ります</p>
+          </div>
+        </div>
+        <div class="shadow" id="shadow" aria-hidden="true"></div>
       </div>
-    </div>
+      <div class="controls">
+        <p class="hint" id="hint">傾けると光ります · 触れると裏返ります</p>
+        <div class="btns">
+          <button class="pill" id="flipBtn" type="button">裏返す</button>
+          <button class="pill" id="rollBtn" type="button"><span class="spark">✦</span>模様を変える</button>
+        </div>
+      </div>
+      <div class="down" aria-hidden="true"></div>
+    </header>
+
+    <main>
+      <!-- 作品 -->
+      <section class="blk" aria-labelledby="art-h">
+        <div class="wrap">
+          <h2 class="h reveal" id="art-h"><span class="h-ja">作品</span><span class="h-sub">コードで描くジェネラティブアート「ART PLAYGROUND」。<br />この名刺の箔も、作品「FOIL LAW」の仕組みで光っています。</span></h2>
+          <p class="count reveal" style="--d:.1s"><b class="foil-text" id="artCount" data-n="79">79</b><span>WORKS</span></p>
+        </div>
+        <div class="rail" id="rail" aria-label="作品一覧">
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v127-glass-relay.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v127-glass-relay.jpg" alt="GLASS RELAY" decoding="async" /></span><span class="wk-no">No.079</span><span class="wk-name">GLASS RELAY</span><span class="wk-line">倒れきったドミノが、新しい時刻になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v129-bead-curtain.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v129-bead-curtain.jpg" alt="BEAD CURTAIN" decoding="async" /></span><span class="wk-no">No.078</span><span class="wk-name">BEAD CURTAIN</span><span class="wk-line">光の玉が糸を伝って流れ落ちる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v128-rain-turns.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v128-rain-turns.jpg" alt="RAIN TURNS" decoding="async" /></span><span class="wk-no">No.077</span><span class="wk-name">RAIN TURNS</span><span class="wk-line">光の雨が毎分、降る向きを入れ替える</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v126-ink-rings.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v126-ink-rings.jpg" alt="INK RINGS" decoding="async" /></span><span class="wk-no">No.076</span><span class="wk-name">INK RINGS</span><span class="wk-line">インクは輪になり、分かれて、また輪になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v125-saiun.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v125-saiun.jpg" alt="SAIUN" decoding="async" /></span><span class="wk-no">No.075</span><span class="wk-name">SAIUN</span><span class="wk-line">雲は、薄い縁だけが虹色に光る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v124-scalefall.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v124-scalefall.jpg" alt="SCALEFALL" decoding="async" /></span><span class="wk-no">No.074</span><span class="wk-name">SCALEFALL</span><span class="wk-line">鱗が降り、一分は泥に、一時間は石になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v123-fallen-minutes.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v123-fallen-minutes.jpg" alt="FALLEN MINUTES" decoding="async" /></span><span class="wk-no">No.073</span><span class="wk-name">FALLEN MINUTES</span><span class="wk-line">過ぎた一分は崩れて、砂の地層になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v122-28-shells.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v122-28-shells.jpg" alt="28 SHELLS" decoding="async" /></span><span class="wk-no">No.072</span><span class="wk-name">28 SHELLS</span><span class="wk-line">触れた空が花火を吸い、ときに散らす</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v121-campfire.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v121-campfire.jpg" loading="lazy" alt="CAMPFIRE" decoding="async" /></span><span class="wk-no">No.071</span><span class="wk-name">CAMPFIRE</span><span class="wk-line">触れた所だけ、炎の「上」が変わる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v120-deep-hours.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v120-deep-hours.jpg" loading="lazy" alt="DEEP HOURS" decoding="async" /></span><span class="wk-no">No.070</span><span class="wk-name">DEEP HOURS</span><span class="wk-line">奥をのぞくほど、過去の時計が見える</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v119-window-fog.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v119-window-fog.jpg" loading="lazy" alt="WINDOW FOG" decoding="async" /></span><span class="wk-no">No.069</span><span class="wk-name">WINDOW FOG</span><span class="wk-line">消えた指の跡は、息でまた浮かぶ</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v118-blink-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v118-blink-law.jpg" loading="lazy" alt="BLINK LAW" decoding="async" /></span><span class="wk-no">No.068</span><span class="wk-name">BLINK LAW</span><span class="wk-line">見ていない間にだけ、世界は育つ</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v117-gaze-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v117-gaze-law.jpg" loading="lazy" alt="GAZE LAW" decoding="async" /></span><span class="wk-no">No.067</span><span class="wk-name">GAZE LAW</span><span class="wk-line">見つめた場所だけが、結晶になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v116-foil-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v116-foil-law.jpg" loading="lazy" alt="FOIL LAW" decoding="async" /></span><span class="wk-no">No.066</span><span class="wk-name">FOIL LAW</span><span class="wk-line">触れた場所が、箔の新しい法則になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v115-komorebi.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v115-komorebi.jpg" loading="lazy" alt="KOMOREBI" decoding="async" /></span><span class="wk-no">No.065</span><span class="wk-name">KOMOREBI</span><span class="wk-line">木漏れ日は、太陽の形を映している</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v113-ring-dial.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v113-ring-dial.jpg" loading="lazy" alt="RING DIAL" decoding="async" /></span><span class="wk-no">No.064</span><span class="wk-name">RING DIAL</span><span class="wk-line">輪にかかる影が、いまの時刻</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v112-silver-turn.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v112-silver-turn.jpg" loading="lazy" alt="SILVER TURN" decoding="async" /></span><span class="wk-no">No.063</span><span class="wk-name">SILVER TURN</span><span class="wk-line">怯えは銀の閃きになって群れを渡る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v111-sea-sparkle.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v111-sea-sparkle.jpg" loading="lazy" alt="SEA SPARKLE" decoding="async" /></span><span class="wk-no">No.062</span><span class="wk-name">SEA SPARKLE</span><span class="wk-line">光る波を切ると、渦が生まれる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v110-north-draw.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v110-north-draw.jpg" loading="lazy" alt="NORTH DRAW" decoding="async" /></span><span class="wk-no">No.061</span><span class="wk-name">NORTH DRAW</span><span class="wk-line">なぞった線に、オーロラの裾が寄ってくる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v109-next-spring.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v109-next-spring.jpg" loading="lazy" alt="NEXT SPRING" decoding="async" /></span><span class="wk-no">No.060</span><span class="wk-name">NEXT SPRING</span><span class="wk-line">綿毛の落ちた所に、次の春が咲く</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v108-iron-bloom.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v108-iron-bloom.jpg" loading="lazy" alt="IRON BLOOM" decoding="async" /></span><span class="wk-no">No.059</span><span class="wk-name">IRON BLOOM</span><span class="wk-line">黒い液体は、磁石の通った道を覚えている</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v107-eye-loom.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v107-eye-loom.jpg" loading="lazy" alt="EYE LOOM" decoding="async" /></span><span class="wk-no">No.058</span><span class="wk-name">EYE LOOM</span><span class="wk-line">網目は、ひらいた目すべてに従う</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v106-split-dew.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v106-split-dew.jpg" loading="lazy" alt="SPLIT DEW" decoding="async" /></span><span class="wk-no">No.057</span><span class="wk-name">SPLIT DEW</span><span class="wk-line">切った雫は、また手をつなぐ</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v105-strata-sand.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v105-strata-sand.jpg" loading="lazy" alt="STRATA SAND" decoding="async" /></span><span class="wk-no">No.056</span><span class="wk-name">STRATA SAND</span><span class="wk-line">砂は、落ちた順に層を重ねて山を描く</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v104-prism-shell.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v104-prism-shell.jpg" loading="lazy" alt="PRISM SHELL" decoding="async" /></span><span class="wk-no">No.055</span><span class="wk-name">PRISM SHELL</span><span class="wk-line">触れるたび、光の法則が変わる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v103-snow-ledger.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v103-snow-ledger.jpg" loading="lazy" alt="SNOW LEDGER" decoding="async" /></span><span class="wk-no">No.054</span><span class="wk-name">SNOW LEDGER</span><span class="wk-line">結晶は、育つあいだの空を書き残す</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v102-rosary.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v102-rosary.jpg" loading="lazy" alt="ROSARY" decoding="async" /></span><span class="wk-no">No.053</span><span class="wk-name">ROSARY</span><span class="wk-line">数えた珠の数が、次の世界の形になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v101-waterline.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v101-waterline.jpg" loading="lazy" alt="WATERLINE" decoding="async" /></span><span class="wk-no">No.052</span><span class="wk-name">WATERLINE</span><span class="wk-line">深い穴ほど、強く噴き出す水槽</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v100-hairline.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v100-hairline.jpg" loading="lazy" alt="HAIRLINE" decoding="async" /></span><span class="wk-no">No.051</span><span class="wk-name">HAIRLINE</span><span class="wk-line">割りすぎると、足もとのガラスが抜ける</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v99-morphing-fern.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v99-morphing-fern.jpg" loading="lazy" alt="MORPHING FERN" decoding="async" /></span><span class="wk-no">No.050</span><span class="wk-name">MORPHING FERN</span><span class="wk-line">光の粒のシダが、ゆっくり別の生きものになる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v98-swarm-cathedral.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v98-swarm-cathedral.jpg" loading="lazy" alt="SWARM CATHEDRAL" decoding="async" /></span><span class="wk-no">No.049</span><span class="wk-name">SWARM CATHEDRAL</span><span class="wk-line">光の群れが、自己相似のかたちを編み直す</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v97-mirror-pool.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v97-mirror-pool.jpg" loading="lazy" alt="MIRROR POOL" decoding="async" /></span><span class="wk-no">No.048</span><span class="wk-name">MIRROR POOL</span><span class="wk-line">なぞった線が六つに折り返され、曼荼羅になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v96-frost-cathedral.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v96-frost-cathedral.jpg" loading="lazy" alt="FROST CATHEDRAL" decoding="async" /></span><span class="wk-no">No.047</span><span class="wk-name">FROST CATHEDRAL</span><span class="wk-line">霜は風下へ伸び、色の違う結晶が混ざりあう</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v95-droste-rain.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v95-droste-rain.jpg" loading="lazy" alt="DROSTE RAIN" decoding="async" /></span><span class="wk-no">No.046</span><span class="wk-name">DROSTE RAIN</span><span class="wk-line">光のしずくが、無限の入れ子へ落ちてゆく</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v94-attractor-veil.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v94-attractor-veil.jpg" loading="lazy" alt="ATTRACTOR VEIL" decoding="async" /></span><span class="wk-no">No.045</span><span class="wk-name">ATTRACTOR VEIL</span><span class="wk-line">指が式を歪め、光の雲が姿を変える</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v93-living-reef.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v93-living-reef.jpg" loading="lazy" alt="LIVING REEF" decoding="async" /></span><span class="wk-no">No.044</span><span class="wk-name">LIVING REEF</span><span class="wk-line">光の種が胞子を飛ばし、ひとりでに増える珊瑚礁</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v92-heliotrope.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v92-heliotrope.jpg" loading="lazy" alt="HELIOTROPE" decoding="async" /></span><span class="wk-no">No.043</span><span class="wk-name">HELIOTROPE</span><span class="wk-line">選んだ一輪が、次の太陽になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v91-bud-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v91-bud-law.jpg" loading="lazy" alt="BUD LAW" decoding="async" /></span><span class="wk-no">No.042</span><span class="wk-name">BUD LAW</span><span class="wk-line">触れた所に、枚数の違う花が咲く</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v90-nest-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v90-nest-law.jpg" loading="lazy" alt="NEST LAW" decoding="async" /></span><span class="wk-no">No.041</span><span class="wk-name">NEST LAW</span><span class="wk-line">触った段から内側の法則が書き換わる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v89-lamp-fold.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v89-lamp-fold.jpg" loading="lazy" alt="LAMP FOLD" decoding="async" /></span><span class="wk-no">No.040</span><span class="wk-name">LAMP FOLD</span><span class="wk-line">鏡を立てるたび、光の穴が増える</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v88-birthmark.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v88-birthmark.jpg" loading="lazy" alt="BIRTHMARK" decoding="async" /></span><span class="wk-no">No.039</span><span class="wk-name">BIRTHMARK</span><span class="wk-line">輪は生まれた瞬間を覚えている</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v87-light-web.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v87-light-web.jpg" loading="lazy" alt="LIGHT WEB" decoding="async" /></span><span class="wk-no">No.038</span><span class="wk-name">LIGHT WEB</span><span class="wk-line">触った所の水が深くなる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v86-twin-tide.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v86-twin-tide.jpg" loading="lazy" alt="TWIN TIDE" decoding="async" /></span><span class="wk-no">No.037</span><span class="wk-name">TWIN TIDE</span><span class="wk-line">触った場所が第三の潮の生まれ故郷になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v85-animal-mansion.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v85-animal-mansion.jpg" loading="lazy" alt="ANIMAL MANSION" decoding="async" /></span><span class="wk-no">No.036</span><span class="wk-name">ANIMAL MANSION</span><span class="wk-line">部屋は、住む子に似る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v84-hamster-drop.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v84-hamster-drop.jpg" loading="lazy" alt="HAMSTER DROP" decoding="async" /></span><span class="wk-no">No.035</span><span class="wk-name">HAMSTER DROP</span><span class="wk-line">ころがり落ちる家</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v83-palimpsest.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v83-palimpsest.jpg" loading="lazy" alt="PALIMPSEST" decoding="async" /></span><span class="wk-no">No.034</span><span class="wk-name">PALIMPSEST</span><span class="wk-line">読んだ言葉は、紙に沁みる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v82-inner-eye.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v82-inner-eye.jpg" loading="lazy" alt="INNER EYE" decoding="async" /></span><span class="wk-no">No.033</span><span class="wk-name">INNER EYE</span><span class="wk-line">小さな目が、全体を決める</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v81-rain-relay.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v81-rain-relay.jpg" loading="lazy" alt="RAIN RELAY" decoding="async" /></span><span class="wk-no">No.032</span><span class="wk-name">RAIN RELAY</span><span class="wk-line">雨は、水面から降る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v80-rainbow-walk.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v80-rainbow-walk.jpg" loading="lazy" alt="RAINBOW WALK" decoding="async" /></span><span class="wk-no">No.031</span><span class="wk-name">RAINBOW WALK</span><span class="wk-line">猫が渡るぶんだけ、虹になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v79-night-shift.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v79-night-shift.jpg" loading="lazy" alt="NIGHT SHIFT" decoding="async" /></span><span class="wk-no">No.030</span><span class="wk-name">NIGHT SHIFT</span><span class="wk-line">猫たちの星工場</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v78-held-time.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v78-held-time.jpg" loading="lazy" alt="HELD TIME" decoding="async" /></span><span class="wk-no">No.029</span><span class="wk-name">HELD TIME</span><span class="wk-line">押さえた線から、時間が流れ出す</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/prototypes/chroma-grid.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/prototypes__chroma-grid.jpg" loading="lazy" alt="COLOR LATTICE" decoding="async" /></span><span class="wk-no">No.028</span><span class="wk-name">COLOR LATTICE</span><span class="wk-line">色の街が歪む</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v77-kept-warmth.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v77-kept-warmth.jpg" loading="lazy" alt="KEPT WARMTH" decoding="async" /></span><span class="wk-no">No.027</span><span class="wk-name">KEPT WARMTH</span><span class="wk-line">ぬくもり保存の法則</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v76-chroma-drift.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v76-chroma-drift.jpg" loading="lazy" alt="CHROMA DRIFT" decoding="async" /></span><span class="wk-no">No.026</span><span class="wk-name">CHROMA DRIFT</span><span class="wk-line">淡いガラスの花が一面に回りつづける。指で回すと庭全体が回る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v75-mirror-split.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v75-mirror-split.jpg" loading="lazy" alt="MIRROR FRACTURE" decoding="async" /></span><span class="wk-no">No.025</span><span class="wk-name">MIRROR FRACTURE</span><span class="wk-line">鏡が中心の裂け目から自己相似に割れていく。触れた場所が裂け方を決める</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v74-mirror-descent.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v74-mirror-descent.jpg" loading="lazy" alt="MIRROR DESCENT" decoding="async" /></span><span class="wk-no">No.024</span><span class="wk-name">MIRROR DESCENT</span><span class="wk-line">8枚の鏡が映す世界が、絶えず中心へ沈みつづける</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v73-mirror-pressure.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v73-mirror-pressure.jpg" loading="lazy" alt="MIRROR PRESSURE" decoding="async" /></span><span class="wk-no">No.023</span><span class="wk-name">MIRROR PRESSURE</span><span class="wk-line">8枚の鏡の万華鏡。触れた場所が、対称そのものを押し曲げる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v72-lumina.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v72-lumina.jpg" loading="lazy" alt="LUMINA" decoding="async" /></span><span class="wk-no">No.022</span><span class="wk-name">LUMINA</span><span class="wk-line">光の層は切れる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v71-tide-mark.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v71-tide-mark.jpg" loading="lazy" alt="TIDE MARK" decoding="async" /></span><span class="wk-no">No.021</span><span class="wk-name">TIDE MARK</span><span class="wk-line">なぎさの法則</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v70-crystal-strain.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v70-crystal-strain.jpg" loading="lazy" alt="FATIGUE LAW" decoding="async" /></span><span class="wk-no">No.020</span><span class="wk-name">FATIGUE LAW</span><span class="wk-line">結晶はなぞるたび歪みをため、限界で砕ける。割れ跡は次の結晶に残る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v69-opal-marble.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v69-opal-marble.jpg" loading="lazy" alt="OPAL MARBLE" decoding="async" /></span><span class="wk-no">No.019</span><span class="wk-name">OPAL MARBLE</span><span class="wk-line">オパールのような模様の膜。指で押すと沈み、模様が吸い寄せられる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v68-tar-ceiling.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v68-tar-ceiling.jpg" loading="lazy" alt="TAR CEILING" decoding="async" /></span><span class="wk-no">No.018</span><span class="wk-name">TAR CEILING</span><span class="wk-line">天井の漏れ口から雫が育って落ちる。なぞると通り道に漏れ口が並ぶ</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v67-seven-slice.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v67-seven-slice.jpg" loading="lazy" alt="SEVEN SLICE" decoding="async" /></span><span class="wk-no">No.017</span><span class="wk-name">SEVEN SLICE</span><span class="wk-line">7方向の線の束が重なり、準結晶の模様になる。触れるとねじれが刻まれる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v66-holo-compass.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v66-holo-compass.jpg" loading="lazy" alt="HOLO COMPASS" decoding="async" /></span><span class="wk-no">No.016</span><span class="wk-name">HOLO COMPASS</span><span class="wk-line">ホログラム箔の面はバラバラを向いている。なでると揃って一斉に光る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v65-encircle.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v65-encircle.jpg" loading="lazy" alt="ENCIRCLE" decoding="async" /></span><span class="wk-no">No.015</span><span class="wk-name">ENCIRCLE</span><span class="wk-line">薄い膜の球に、触れた場所を一周する帯が刻まれる。法は消えずに重なる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/prototypes/spiral-spectrum-200-v9.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/prototypes__spiral-spectrum-200-v9.jpg" loading="lazy" alt="COLOR BREATH" decoding="async" /></span><span class="wk-no">No.014</span><span class="wk-name">COLOR BREATH</span><span class="wk-line">虹色の渦がゆっくり呼吸している。触れると指の方へたわみ、色が流れる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v64-chromatic-fold.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v64-chromatic-fold.jpg" loading="lazy" alt="CHROMATIC FOLD" decoding="async" /></span><span class="wk-no">No.013</span><span class="wk-name">CHROMATIC FOLD</span><span class="wk-line">色の線が折り重なる一枚の紙。触れると光が移り、折り目が光へ寄る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/prototypes/membrane-rgb.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/prototypes__membrane-rgb.jpg" loading="lazy" alt="RGB MEMBRANE" decoding="async" /></span><span class="wk-no">No.012</span><span class="wk-name">RGB MEMBRANE</span><span class="wk-line">細い線の膜が波打ちつづける。触るたび、うねりの法則が切り替わる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v50-stratum.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v50-stratum.jpg" loading="lazy" alt="STRATUM" decoding="async" /></span><span class="wk-no">No.011</span><span class="wk-name">STRATUM</span><span class="wk-line">6層に折り重なる光の結晶。タップした層を、指でねじって歪められる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/void-field-ii.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/void-field-ii.jpg" loading="lazy" alt="VOID FIELD II" decoding="async" /></span><span class="wk-no">No.010</span><span class="wk-name">VOID FIELD II</span><span class="wk-line">点の海に、触れた場所から渦巻く空白が生まれる。ダブルタップで波が走る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v49-feather-fold.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v49-feather-fold.jpg" loading="lazy" alt="FEATHER FOLD" decoding="async" /></span><span class="wk-no">No.009</span><span class="wk-name">FEATHER FOLD</span><span class="wk-line">羽の形が折りの中に折り重なって広がる。タップで押し、長押しで引く</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v47-infection.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v47-infection.jpg" loading="lazy" alt="INFECTION" decoding="async" /></span><span class="wk-no">No.008</span><span class="wk-name">INFECTION</span><span class="wk-line">点の海が同心円に波打つ。触れた場所からねじれと色が広がっていく</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v36-art-of-becoming.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v36-art-of-becoming.jpg" loading="lazy" alt="ART OF BECOMING" decoding="async" /></span><span class="wk-no">No.007</span><span class="wk-name">ART OF BECOMING</span><span class="wk-line">色の大陸がゆっくり呼吸する、生きたガラスの世界。触れると文法が変わる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v35-one-knot.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v35-one-knot.jpg" loading="lazy" alt="ONE KNOT" decoding="async" /></span><span class="wk-no">No.006</span><span class="wk-name">ONE KNOT</span><span class="wk-line">画面全体が一つの流れで編まれている。なぞると渦ができ、結び目になる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v31-divided-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v31-divided-law.jpg" loading="lazy" alt="DIVIDED LAW" decoding="async" /></span><span class="wk-no">No.005</span><span class="wk-name">DIVIDED LAW</span><span class="wk-line">場所ごとに法則の違う光の領地。指を動かすと、そこの世界の尺度が変わる</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v30-standing-law.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v30-standing-law.jpg" loading="lazy" alt="STANDING LAW" decoding="async" /></span><span class="wk-no">No.004</span><span class="wk-name">STANDING LAW</span><span class="wk-line">なぞった場所にだけ、対称とねじれのルールが書き込まれて残る</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v28-living-order.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v28-living-order.jpg" loading="lazy" alt="LIVING ORDER" decoding="async" /></span><span class="wk-no">No.003</span><span class="wk-name">LIVING ORDER</span><span class="wk-line">ステンドグラスの帯が折り重なってうごめく。触れると座標そのものが歪む</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v27.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v27.jpg" loading="lazy" alt="PARTICLE COSMOS II" decoding="async" /></span><span class="wk-no">No.002</span><span class="wk-name">PARTICLE COSMOS II</span></a>
+          <a class="wk" href="https://art-playground.artplayground.workers.dev/art-v20.html" target="_blank" rel="noopener"><span class="wk-img"><img src="https://art-playground.artplayground.workers.dev/og/art-v20.jpg" loading="lazy" alt="ALIVE" decoding="async" /></span><span class="wk-no">No.001</span><span class="wk-name">ALIVE</span><span class="wk-line">光の粒が軌跡を引きながら流れていく。指を置くと、逃げながら周りを渦巻く</span></a>
+        </div>
+        <div class="wrap rail-foot">
+          <span class="rail-pos"><span id="railPos">001</span> / 079</span>
+          <a class="more" href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">全作品を見る ↗</a>
+        </div>
+      </section>
+
+      <!-- サイト -->
+      <section class="blk wrap" aria-labelledby="site-h">
+        <h2 class="h reveal" id="site-h"><span class="h-ja">サイト</span><span class="h-sub">ひとりで作って、運営しています。</span></h2>
+        <ul class="sites">
+          <li class="reveal"><a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener"><span class="s-main"><span class="s-title">お台場混雑予報</span><span class="s-desc">イベントや天候から、お台場エリアの混み具合を毎日予報するサイト。</span></span><span class="s-arr">↗</span></a></li>
+          <li class="reveal" style="--d:.08s"><a href="https://shikaku-drill.net" target="_blank" rel="noopener"><span class="s-main"><span class="s-title">資格ドリルシリーズ</span><span class="s-desc">運行管理者試験と危険物取扱者のドリルを、無料で解けるサイト。</span></span><span class="s-arr">↗</span></a></li>
+          <li class="reveal" style="--d:.16s"><a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener"><span class="s-main"><span class="s-title">ART PLAYGROUND</span><span class="s-desc">上の作品がぜんぶ遊べる、ジェネラティブアートのサイト。</span></span><span class="s-arr">↗</span></a></li>
+        </ul>
+      </section>
+
+      <!-- 趣味 -->
+      <section class="blk wrap" aria-labelledby="hob-h">
+        <h2 class="h reveal" id="hob-h"><span class="h-ja">趣味</span></h2>
+        <ul class="chips">
+          <li class="reveal">音楽鑑賞<small>ライブによく行きます</small></li>
+          <li class="reveal" style="--d:.06s">キャンプ</li>
+          <li class="reveal" style="--d:.12s">釣り</li>
+          <li class="reveal" style="--d:.18s">競馬</li>
+        </ul>
+      </section>
+
+      <!-- 連絡先 -->
+      <section class="blk wrap" aria-labelledby="con-h">
+        <h2 class="h reveal" id="con-h"><span class="h-ja">連絡先</span></h2>
+        <div class="reveal">
+          <a class="c-save" href="contact.vcf">＋ 連絡先に保存</a>
+          <p class="c-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
+        </div>
+        <ul class="c-rows">
+          <li class="reveal"><a href="tel:+819098503262"><span><span class="c-k">電話</span><span class="c-v">090-9850-3262</span></span><span>→</span></a></li>
+          <li class="reveal" style="--d:.06s"><a href="mailto:muuu@muse.ai"><span><span class="c-k">メール</span><span class="c-v">muuu@muse.ai</span></span><span>→</span></a></li>
+          <li class="reveal" style="--d:.12s"><a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener"><span><span class="c-k">LINE</span><span class="c-v">LINEで連絡</span></span><span>↗</span></a></li>
+        </ul>
+      </section>
+    </main>
+
+    <footer class="wrap" aria-hidden="true">
+      <div class="rule"></div>
+      <div class="foot" style="margin-top:1.4rem"><b>サトウ シュン</b><span class="serial">No.0000</span></div>
+    </footer>
 
     <script>
       (() => {
+        "use strict";
         const root = document.documentElement;
+        const $ = (s) => document.querySelector(s);
         const RM = matchMedia("(prefers-reduced-motion: reduce)").matches;
         const FINE = matchMedia("(pointer: fine)").matches;
-        const $ = (s) => document.querySelector(s);
+        const clamp = (v, a, b) => Math.min(b, Math.max(a, v));
         const flags = { fonts: false, gl: false, art: 0 };
 
-        /* ============ WebGL：夜の東京湾 ============ */
-        const canvas = $("#sea");
-        const gl = canvas.getContext("webgl", { antialias: false, alpha: false, powerPreference: "high-performance" });
-        const pointer = { x: 0, y: 0, tx: 0, ty: 0 };
-        let scrollK = 0;
+        /* ============ この名刺だけの模様（シリアル番号から決まる） ============ */
+        let serial = 1 + Math.floor(Math.random() * 9999);
+        const S = 6;
+        const A = new Float32Array(S * 4), B = new Float32Array(S * 4);
+        let baseHue = 0;
+        function mulberry(a) { return () => { a |= 0; a = (a + 0x6d2b79f5) | 0; let t = Math.imul(a ^ (a >>> 15), 1 | a); t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t; return ((t ^ (t >>> 14)) >>> 0) / 4294967296; }; }
+        function roll() {
+          const r = mulberry(serial * 7919);
+          baseHue = r();
+          for (let i = 0; i < S; i++) {
+            A.set([(r() - 0.5) * 0.9, (r() - 0.5) * 1.5, 3 + Math.floor(r() * 6), r() * 6.283], i * 4);
+            B.set([baseHue + r() * 0.35, 1.3 + r() * 1.4, 0, 1], i * 4);
+          }
+          const txt = "No." + String(serial).padStart(4, "0");
+          document.querySelectorAll(".serial").forEach((el) => (el.textContent = txt));
+        }
+        roll();
 
-        const VS = "attribute vec2 p;void main(){gl_Position=vec4(p,0.,1.);}";
-        const FS = `
-precision highp float;
-uniform vec2 r;uniform float t;uniform vec2 m;uniform float s;
-float h1(float n){return fract(sin(n*12.9898)*43758.5453);}
-float h2(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
-float ns(vec2 p){vec2 i=floor(p),f=fract(p);f=f*f*(3.-2.*f);
- return mix(mix(h2(i),h2(i+vec2(1.,0.)),f.x),mix(h2(i+vec2(0.,1.)),h2(i+vec2(1.,1.)),f.x),f.y);}
-float city(float x){
- float c=floor(x*38.);float a=h1(c);float b=h1(c+17.3);
- float hg=0.004+pow(a,3.)*0.055+b*0.006;
- hg*=0.35+1.1*exp(-pow((x+0.2)*2.,2.));
- return hg;}
-float lamps(float x,float tt){
- float c=floor(x*140.);float f=fract(x*140.);
- float on=step(0.58,h1(c*3.1));
- float g=smoothstep(0.5,0.,abs(f-0.5));
- float fl=0.75+0.25*sin(tt*(0.6+h1(c)*2.)+c*1.3);
- return on*g*fl*(0.35+0.65*h1(c+5.));}
-void main(){
- vec2 uv=gl_FragCoord.xy/r;float a=r.x/r.y;
- float hz=0.6+m.y*0.012+s*0.16;
- float x=(uv.x-0.5)*min(a,1.6)+m.x*0.03;
- float dy=uv.y-hz;
- vec3 ink=vec3(0.95,0.94,0.9);vec3 warm=vec3(1.,0.88,0.7);vec3 acc=vec3(0.843,1.,0.247);
- float bx=0.3*min(a,1.6)*0.5;
- vec3 col;
- if(dy>0.){
-  col=mix(vec3(0.1,0.1,0.095),vec3(0.028,0.028,0.026),smoothstep(0.,0.45,dy));
-  float hb=city(x*0.7+4.3)*1.25;
-  col=mix(col,vec3(0.055,0.055,0.052),1.-smoothstep(hb-0.0015,hb,dy));
-  float hg=city(x);
-  float b=1.-smoothstep(hg-0.0012,hg,dy);
-  col=mix(col,vec3(0.02),b);
-  vec2 wc=floor(vec2(x*300.,dy*420.));
-  float win=step(0.88,h2(wc))*b*step(0.002,dy)*(0.55+0.45*sin(t*0.4+h2(wc)*40.));
-  col+=warm*win*0.45;
-  col+=warm*lamps(x,t)*exp(-dy*700.)*0.9;
-  float bd=length(vec2(x-bx,(dy-0.035)*1.4));
-  float bp=0.65+0.35*sin(t*2.2);
-  col+=acc*(0.00045/(bd*bd+0.00045))*0.5*bp;
-  float st=step(0.9982,h2(floor(gl_FragCoord.xy/2.)))*smoothstep(0.1,0.35,dy);
-  col+=st*0.4*(0.5+0.5*sin(t*1.7+h2(floor(gl_FragCoord.xy/2.))*30.));
- }else{
-  float d=-dy;
-  float z=0.045/(d+0.003);
-  vec2 p=vec2(x*z*2.,z);
-  float w=ns(vec2(p.x*5.,p.y*9.-t*0.55))*0.6+ns(vec2(p.x*13.,p.y*22.-t*1.1))*0.4;
-  col=mix(vec3(0.065,0.065,0.06),vec3(0.012),smoothstep(0.,0.5,d));
-  float xo=x+(w-0.5)*(0.008+d*0.14);
-  float rip=smoothstep(0.4,0.75,w);
-  col+=warm*lamps(xo,t)*exp(-d*11.)*rip*1.1;
-  col+=ink*0.05*smoothstep(0.,0.03,city(xo))*exp(-d*30.);
-  float sx=abs(xo-bx);
-  col+=acc*exp(-sx*55.)*exp(-d*3.5)*rip*0.6*(0.65+0.35*sin(t*2.2));
-  float ln=smoothstep(0.97,1.,sin(p.y*30.-t*1.4+w*7.));
-  col+=ink*ln*0.035*exp(-d*3.);
- }
- col+=ink*0.08*exp(-abs(dy)*500.);
- vec2 q=uv-0.5;col*=1.-dot(q,q)*0.85;
- col+=(h2(gl_FragCoord.xy+fract(t*0.37)*311.)-0.5)*0.03;
- gl_FragColor=vec4(col,1.);
-}`;
-
-        let draw = null;
+        /* ============ ホロ箔（FOIL LAWの仕組み・WebGL2） ============ */
+        const cv = $("#foil");
+        const gl = cv.getContext("webgl2", { alpha: false, antialias: false, powerPreference: "high-performance" });
+        let U = null;
         if (gl) {
           try {
-            const sh = (type, src) => {
-              const o = gl.createShader(type);
-              gl.shaderSource(o, src);
-              gl.compileShader(o);
-              if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(o);
-              return o;
-            };
+            const VS = `#version 300 es
+void main(){vec2 p=vec2(float((gl_VertexID<<1)&2),float(gl_VertexID&2));gl_Position=vec4(p*2.-1.,0.,1.);}`;
+            const FS = `#version 300 es
+precision highp float;
+out vec4 o;
+uniform vec2 uRes;uniform float uTime;uniform vec2 uTilt;
+uniform vec4 uA[${S}];uniform vec4 uB[${S}];
+const float TAU=6.28318530718;
+float hash(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}
+vec2 facet(vec2 q,float N,float rot){float sec=TAU/N;float u=(atan(q.y,q.x+1e-6)-rot)/sec;float k=floor(u);float hf=step(.5,u-k);float th=(k+.25+.5*hf)*sec+rot;return vec2(cos(th+.7),sin(th+.7));}
+vec2 foldQ(vec2 q,float N,float rot){float sec=TAU/N;float a=mod(atan(q.y,q.x+1e-6)-rot,sec);a=abs(a-.5*sec);return length(q)*vec2(cos(a),sin(a));}
+void main(){
+  vec2 fr=gl_FragCoord.xy;
+  vec2 f0=(fr-.5*uRes)/uRes.x;
+  float px=1./uRes.x;
+  vec2 tl=uTilt;
+  vec2 f=f0+tl*.02;
+  float d1=1e9,d2=1e9;int i1=0;
+  for(int i=0;i<${S};i++){float r=length(f-uA[i].xy);if(r<d1){d2=d1;d1=r;i1=i;}else if(r<d2){d2=r;}}
+  vec4 A=uA[i1],B=uB[i1];
+  vec2 q=(f-A.xy)*B.y;
+  vec2 nT=vec2(0.);float w=1.;vec2 qq=q;
+  for(int k=0;k<4;k++){nT+=w*facet(qq,A.z,A.w+float(k)*.45);qq=foldQ(qq,A.z,A.w)*2.15-vec2(.62,0.);w*=.55;}
+  vec3 Nn=normalize(vec3(nT*.42,1.));
+  vec3 L=normalize(vec3(-tl*.95,1.));
+  vec3 H=normalize(L+vec3(0.,0.,1.));
+  float nh=max(dot(Nn,H),0.);
+  float spec=pow(nh,70.),wide=pow(nh,10.);
+  float phase=dot(nT,tl)*1.1+B.x+length(q)*.35;
+  vec3 rainbow=.5+.5*cos(TAU*(phase+vec3(0.,.33,.67)));
+  vec3 tint=.5+.5*cos(TAU*(B.x+vec3(0.,.33,.67)));
+  vec3 metal=mix(vec3(.5),tint,.3);
+  float diff=.5+.5*dot(Nn,L);
+  vec3 c=metal*(.14+.3*diff);
+  c+=rainbow*(.1+.95*wide);
+  c+=vec3(1.,.96,.88)*spec*.9;
+  c*=mix(.35,1.,smoothstep(0.,px*3.,d2-d1));
+  float bd=dot(f0,normalize(vec2(1.,.6)))+tl.x*.5+tl.y*.3;
+  c+=vec3(1.,.97,.9)*exp(-pow(bd/.2,2.))*.16;
+  vec2 hb=vec2(.5,.5*uRes.y/uRes.x);vec2 e=hb-abs(f0);float edge=min(e.x,e.y);
+  c+=vec3(1.)*exp(-edge*140.)*.25*(.6+.4*dot(normalize(f0+1e-4),normalize(-tl+1e-4)));
+  c+=(hash(fr+fract(uTime))-.5)/255.;
+  o=vec4(c,1.);
+}`;
+            const sh = (t, s) => { const o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); if (!gl.getShaderParameter(o, gl.COMPILE_STATUS)) throw gl.getShaderInfoLog(o); return o; };
             const prog = gl.createProgram();
             gl.attachShader(prog, sh(gl.VERTEX_SHADER, VS));
             gl.attachShader(prog, sh(gl.FRAGMENT_SHADER, FS));
             gl.linkProgram(prog);
             if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) throw gl.getProgramInfoLog(prog);
             gl.useProgram(prog);
-            const buf = gl.createBuffer();
-            gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-            const loc = gl.getAttribLocation(prog, "p");
-            gl.enableVertexAttribArray(loc);
-            gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-            const U = (n) => gl.getUniformLocation(prog, n);
-            const uR = U("r"), uT = U("t"), uM = U("m"), uS = U("s");
+            gl.bindVertexArray(gl.createVertexArray());
+            U = { res: gl.getUniformLocation(prog, "uRes"), time: gl.getUniformLocation(prog, "uTime"), tilt: gl.getUniformLocation(prog, "uTilt"), A: gl.getUniformLocation(prog, "uA"), B: gl.getUniformLocation(prog, "uB") };
+          } catch (e) { U = null; cv.style.display = "none"; }
+        } else cv.style.display = "none";
 
-            const resize = () => {
-              const dpr = Math.min(window.devicePixelRatio || 1, 2) * 0.75;
-              const w = Math.round(canvas.clientWidth * dpr);
-              const h = Math.round(canvas.clientHeight * dpr);
-              if (canvas.width !== w || canvas.height !== h) {
-                canvas.width = w; canvas.height = h;
-                gl.viewport(0, 0, w, h);
-              }
-            };
-            addEventListener("resize", resize);
-            resize();
+        function sizeFoil() {
+          if (!U) return;
+          const dpr = Math.min(devicePixelRatio || 1, 2);
+          const w = Math.round(cv.clientWidth * dpr), h = Math.round(cv.clientHeight * dpr);
+          if (w && (cv.width !== w || cv.height !== h)) { cv.width = w; cv.height = h; gl.viewport(0, 0, w, h); }
+        }
+        function drawFoil(t, tx, ty) {
+          if (!U) return;
+          gl.uniform2f(U.res, cv.width, cv.height);
+          gl.uniform1f(U.time, t);
+          gl.uniform2f(U.tilt, tx, ty);
+          gl.uniform4fv(U.A, A);
+          gl.uniform4fv(U.B, B);
+          gl.drawArrays(gl.TRIANGLES, 0, 3);
+        }
+        addEventListener("resize", sizeFoil);
+        sizeFoil();
+        drawFoil(0, 0.3, 0.2);
+        flags.gl = true;
 
-            const t0 = performance.now();
-            draw = (now) => {
-              pointer.x += (pointer.tx - pointer.x) * 0.05;
-              pointer.y += (pointer.ty - pointer.y) * 0.05;
-              gl.uniform2f(uR, canvas.width, canvas.height);
-              gl.uniform1f(uT, RM ? 12 : (now - t0) / 1000);
-              gl.uniform2f(uM, pointer.x, pointer.y);
-              gl.uniform1f(uS, scrollK);
-              gl.drawArrays(gl.TRIANGLES, 0, 3);
-            };
-            draw(performance.now());
-            flags.gl = true;
-
-            let visible = true;
-            document.addEventListener("visibilitychange", () => (visible = !document.hidden));
-            const loop = (now) => {
-              if (visible) draw(now);
-              requestAnimationFrame(loop);
-            };
-            if (!RM) requestAnimationFrame(loop);
-            else addEventListener("scroll", () => draw(performance.now()), { passive: true });
-          } catch (e) {
-            canvas.style.display = "none";
-            flags.gl = true;
-          }
-        } else {
-          canvas.style.display = "none";
-          flags.gl = true;
+        /* ============ 傾き（ジャイロ / マウス / 指） ============ */
+        const card = $("#card"), shadow = $("#shadow"), hint = $("#hint");
+        const tilt = { x: 0, y: 0 }, target = { x: 0, y: 0 };
+        let gyro = false, lastInput = -10, permAsked = false, permDenied = false;
+        const DOE = window.DeviceOrientationEvent;
+        const needsPerm = !!(DOE && typeof DOE.requestPermission === "function");
+        const coarse = matchMedia("(pointer: coarse)").matches;
+        function onOrient(e) {
+          if (e.gamma == null || e.beta == null) return;
+          if (!gyro) { gyro = true; setHint(); }
+          target.x = clamp(e.gamma / 30, -1.3, 1.3);
+          target.y = clamp((e.beta - 45) / 30, -1.3, 1.3);
+        }
+        if (DOE) addEventListener("deviceorientation", onOrient);
+        function askMotion() {
+          if (!needsPerm || permAsked) return;
+          permAsked = true;
+          DOE.requestPermission().then((s) => {
+            if (s === "granted") addEventListener("deviceorientation", onOrient);
+            else permDenied = true;
+            setHint();
+          }).catch(() => { permDenied = true; setHint(); });
+        }
+        function setHint() {
+          hint.innerHTML = gyro ? "スマホを傾けると、箔が光ります<br>触れると裏返ります"
+            : needsPerm && !permAsked ? "名刺に触れると、傾きで光るようになります"
+            : coarse ? "指でなぞると光が動きます<br>触れると裏返ります"
+            : "マウスで光が動きます · クリックで裏返ります";
+        }
+        setHint();
+        function tiltFrom(e) {
+          if (gyro) return;
+          const b = card.getBoundingClientRect();
+          target.x = clamp(((e.clientX - (b.left + b.width / 2)) / (b.width / 2)) * 0.9, -1.2, 1.2);
+          target.y = clamp((-(e.clientY - (b.top + b.height / 2)) / (b.height / 2)) * 0.9, -1.2, 1.2);
+          lastInput = performance.now() / 1000;
         }
 
-        addEventListener("pointermove", (e) => {
-          pointer.tx = (e.clientX / innerWidth - 0.5) * 2;
-          pointer.ty = -(e.clientY / innerHeight - 0.5) * 2;
-        }, { passive: true });
-        addEventListener("deviceorientation", (e) => {
-          if (e.gamma == null) return;
-          pointer.tx = Math.max(-1, Math.min(1, e.gamma / 35));
-          pointer.ty = Math.max(-1, Math.min(1, (e.beta - 45) / 35));
-        }, { passive: true });
-        addEventListener("scroll", () => {
-          scrollK = Math.min(1, scrollY / innerHeight);
-        }, { passive: true });
+        /* ============ 裏返す ============ */
+        let flipped = false, fa = -200, fv = 0, ready = false;
+        function flip() { flipped = !flipped; if (navigator.vibrate) navigator.vibrate(8); }
+        let down = null;
+        card.addEventListener("pointerdown", (e) => { down = { x: e.clientX, y: e.clientY, moved: false, link: !!e.target.closest("a") }; tiltFrom(e); });
+        card.addEventListener("pointermove", (e) => {
+          if (down && Math.hypot(e.clientX - down.x, e.clientY - down.y) > 14) down.moved = true;
+          if (down || FINE) tiltFrom(e);
+        });
+        card.addEventListener("pointerup", () => {
+          if (!down) return;
+          askMotion();
+          if (!down.moved && !down.link) flip();
+          down = null;
+        });
+        card.addEventListener("pointercancel", () => (down = null));
+        card.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); flip(); } });
+        if (FINE) addEventListener("pointermove", (e) => { if (!down) tiltFrom(e); }, { passive: true });
+        $("#flipBtn").addEventListener("click", () => { askMotion(); flip(); });
+        $("#rollBtn").addEventListener("click", () => {
+          askMotion();
+          serial = 1 + Math.floor(Math.random() * 9999);
+          roll();
+          if (flipped) flipped = false;
+          fv += 260;
+        });
+
+        /* ============ 毎フレーム ============ */
+        let heroOn = true;
+        new IntersectionObserver((es) => (heroOn = es[0].isIntersecting)).observe($(".hero"));
+        let prev = performance.now();
+        function frame(nowMs) {
+          const t = nowMs / 1000, dt = Math.min(0.05, (nowMs - prev) / 1000);
+          prev = nowMs;
+          if (heroOn) {
+            if (!gyro && t - lastInput > 2.5 && !down) { target.x = Math.sin(t * 0.45) * 0.6; target.y = Math.cos(t * 0.37) * 0.5; }
+            const k = 1 - Math.exp(-dt * 8);
+            tilt.x += (target.x - tilt.x) * k;
+            tilt.y += (target.y - tilt.y) * k;
+            // ばねで裏返す（少し行き過ぎて戻る）
+            const goal = ready ? (flipped ? 180 : 0) : -200;
+            fv += ((goal - fa) * 90 - fv * 13) * dt;
+            fa += fv * dt;
+            card.style.transform = `rotateX(${(-tilt.y * 13).toFixed(2)}deg) rotateY(${(fa + tilt.x * 17).toFixed(2)}deg)`;
+            shadow.style.transform = `translateX(${(-tilt.x * 14).toFixed(1)}px) scaleX(${(1 - Math.abs(Math.sin((fa * Math.PI) / 180)) * 0.35).toFixed(3)})`;
+            const hue = (((tilt.x * 70 + tilt.y * 50 + baseHue * 360) % 360) + 360) % 360;
+            root.style.setProperty("--h", hue.toFixed(1));
+            root.style.setProperty("--tx", tilt.x.toFixed(3));
+            if (Math.cos((fa * Math.PI) / 180) > -0.25) drawFoil(t, tilt.x, tilt.y);
+          }
+          if (!RM || !ready) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
 
         /* ============ ローディング ============ */
-        const loader = $("#loader"), num = $("#ldNum"), bar = $("#ldBar"), stat = $("#ldStatus");
-        const start = performance.now();
-        const MIN = RM ? 600 : 3600, MAX = 10000;
-        const msgs = [[0, "フォントを読み込み中"], [22, "東京湾を描画中"], [44, "作品を並べています"], [80, "街の灯りを点けています"], [94, "水平線を合わせています"], [100, "準備完了"]];
-
-        /* 最初の作品サムネイルを先読みして、読めた順にローディングの窓へ映す */
-        const ldArt = $("#ldArt");
-        const pre = [...document.querySelectorAll(".rail .card img")].slice(0, 12).map((i) => i.currentSrc || i.src);
+        const fill = $("#ldFill"), num = $("#ldNum"), stat = $("#ldStatus");
+        const pre = [...document.querySelectorAll(".rail img")].slice(0, 8).map((i) => i.src);
         const ART_N = pre.length || 1;
-        pre.forEach((src) => {
-          const im = new Image();
-          const doneOne = (ok) => {
-            flags.art++;
-            if (ok && ldArt) ldArt.src = src;
-          };
-          im.onload = () => doneOne(true);
-          im.onerror = () => doneOne(false);
-          im.src = src;
-        });
-        setTimeout(() => (flags.art = ART_N), 7000);
-
-        const fontJob = document.fonts
-          ? Promise.all([
-              document.fonts.load('900 1em "Zen Kaku Gothic New"', "サトウシュン"),
-              document.fonts.load('500 1em "Zen Kaku Gothic New"', "お台場"),
-              document.fonts.load('500 1em "JetBrains Mono"', "0123"),
-            ]).then(() => document.fonts.ready)
-          : Promise.resolve();
-        Promise.race([fontJob, new Promise((r) => setTimeout(r, 5000))])
-          .catch(() => {})
-          .finally(() => (flags.fonts = true));
-
+        pre.forEach((src) => { const im = new Image(); im.onload = im.onerror = () => flags.art++; im.src = src; });
+        const fontJob = document.fonts ? Promise.all([
+          document.fonts.load('900 1em "Zen Kaku Gothic New"', "サトウシュン連絡先作品"),
+          document.fonts.load('500 1em "Zen Kaku Gothic New"', "お台場"),
+          document.fonts.load('700 1em "JetBrains Mono"', "0123"),
+        ]).then(() => document.fonts.ready) : Promise.resolve();
+        Promise.race([fontJob, new Promise((r) => setTimeout(r, 5000))]).catch(() => {}).finally(() => (flags.fonts = true));
+        const msgs = [[0, "文字を用意しています"], [25, "箔を流し込んでいます"], [55, "作品を並べています"], [85, "箔を押しています"], [100, "できあがり"]];
+        const t0 = performance.now(), MIN = RM ? 500 : 3400, MAX = 10000;
         let shown = 0, done = false;
-        const tick = () => {
-          const el = performance.now() - start;
-          const tp = Math.min(1, el / MIN);
-          const eased = 1 - Math.pow(1 - tp, 2);
-          let target = eased * 40 + (flags.fonts ? 20 : 0) + (flags.gl ? 10 : 0) + Math.min(1, flags.art / ART_N) * 30;
-          if (tp < 1) target = Math.min(target, eased * 100, 99);
-          if (el > MAX) target = 100;
-          shown += (target - shown) * 0.08;
-          if (Math.abs(target - shown) < 0.35) shown = target;
+        function tick() {
+          const el = performance.now() - t0, tp = Math.min(1, el / MIN), e = 1 - (1 - tp) * (1 - tp);
+          let target2 = e * 40 + (flags.fonts ? 25 : 0) + (flags.gl ? 10 : 0) + Math.min(1, flags.art / ART_N) * 25;
+          if (tp < 1) target2 = Math.min(target2, e * 100, 99);
+          if (el > MAX) target2 = 100;
+          shown += (target2 - shown) * 0.08;
+          if (Math.abs(target2 - shown) < 0.35) shown = target2;
           const v = Math.floor(shown);
-          num.textContent = String(v).padStart(3, "0");
-          bar.style.transform = `scaleX(${shown / 100})`;
+          num.textContent = v;
+          fill.style.transform = `scaleY(${(shown / 100).toFixed(4)})`;
           let m = msgs[0][1];
-          for (const [k, s] of msgs) if (v >= k) m = s;
-          if (m === "作品を並べています") m += `　${String(Math.min(flags.art, ART_N)).padStart(2, "0")}/${ART_N}`;
+          for (const [k2, s] of msgs) if (v >= k2) m = s;
+          if (m === "作品を並べています") m += ` ${Math.min(flags.art, ART_N)}/${ART_N}`;
           if (stat.textContent !== m) stat.textContent = m;
-          if (v >= 100 && !done) { done = true; setTimeout(finish, 280); return; }
+          if (v >= 100 && !done) { done = true; setTimeout(finish, 250); return; }
           requestAnimationFrame(tick);
-        };
+        }
         requestAnimationFrame(tick);
-
         function finish() {
-          loader.classList.add("done");
-          if (navigator.vibrate) navigator.vibrate(10);
-          setTimeout(() => {
-            root.classList.remove("is-loading");
-            root.classList.add("is-ready");
-            document.querySelectorAll(".hero [data-scramble]").forEach((el, i) => setTimeout(() => scramble(el), 300 + i * 160));
-            startReveal();
-          }, 650);
-          setTimeout(() => loader.remove(), 2000);
+          $("#loader").classList.add("done");
+          root.classList.remove("is-loading");
+          root.classList.add("is-ready");
+          sizeFoil();
+          setTimeout(() => { ready = true; if (RM) { fa = 0; requestAnimationFrame(frame); } }, 120);
+          setTimeout(() => $("#loader").remove(), 1200);
+          startReveal();
         }
 
-        /* ============ テキストスクランブル ============ */
-        const CH = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789/#_";
-        function scramble(el) {
-          const fin = el.dataset.text || el.textContent;
-          el.dataset.text = fin;
-          if (RM) { el.textContent = fin; return; }
-          cancelAnimationFrame(el._r);
-          let f = 0;
-          const total = fin.length * 2 + 12;
-          const step = () => {
-            let out = "";
-            for (let i = 0; i < fin.length; i++) {
-              const c = fin[i];
-              out += c === " " || c === "·" || c === "—" || i < (f - 12) / 2 ? c : CH[(Math.random() * CH.length) | 0];
-            }
-            el.textContent = out;
-            if (f++ < total) el._r = requestAnimationFrame(step);
-            else el.textContent = fin;
-          };
-          step();
-        }
-        document.querySelectorAll("[data-scramble]").forEach((el) => {
-          el.addEventListener("pointerenter", () => scramble(el));
-        });
-
-        /* ============ スクロールで出現 ============ */
+        /* ============ スクロールで出す ============ */
         function startReveal() {
-          const io = new IntersectionObserver((ents) => {
-            ents.forEach((e) => {
-              if (!e.isIntersecting) return;
-              e.target.classList.add("in");
-              e.target.querySelectorAll("[data-scramble]").forEach((s) => scramble(s));
-              io.unobserve(e.target);
-            });
-          }, { rootMargin: "0px 0px -8% 0px", threshold: 0.12 });
+          const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { rootMargin: "0px 0px -8% 0px", threshold: 0.1 });
           document.querySelectorAll(".reveal").forEach((el) => io.observe(el));
+          const cnt = $("#artCount");
+          if (cnt && !RM) {
+            const N = +cnt.dataset.n; cnt.textContent = "0";
+            const io3 = new IntersectionObserver((es) => {
+              if (!es[0].isIntersecting) return; io3.disconnect();
+              const s0 = performance.now();
+              const run = (n) => { const k = Math.min(1, (n - s0) / 1400); cnt.textContent = Math.round(N * (1 - Math.pow(1 - k, 3))); if (k < 1) requestAnimationFrame(run); };
+              requestAnimationFrame(run);
+            }, { threshold: 0.5 });
+            io3.observe(cnt);
+          }
         }
 
-        /* ============ 時計（JST） ============ */
-        const clock = $("#clock");
-        const fmt = new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false });
-        const tickClock = () => (clock.textContent = fmt.format(new Date()));
-        tickClock();
-        setInterval(tickClock, 1000);
-
-        /* ============ 行のスポットライト ============ */
-        document.querySelectorAll(".rows a").forEach((a) => {
-          a.addEventListener("pointermove", (e) => {
-            const b = a.getBoundingClientRect();
-            a.style.setProperty("--mx", e.clientX - b.left + "px");
-            a.style.setProperty("--my", e.clientY - b.top + "px");
-          });
-          a.addEventListener("click", () => navigator.vibrate && navigator.vibrate(8));
-        });
-
-        /* ============ マグネットボタン ============ */
-        const btn = $("#saveBtn");
-        if (FINE && !RM) {
-          btn.addEventListener("pointermove", (e) => {
-            const b = btn.getBoundingClientRect();
-            const dx = e.clientX - (b.left + b.width / 2);
-            const dy = e.clientY - (b.top + b.height / 2);
-            btn.style.transform = `translate(${dx * 0.06}px, ${dy * 0.25}px)`;
-          });
-          btn.addEventListener("pointerleave", () => (btn.style.transform = ""));
-        }
-
-        /* ============ 作品ギャラリー ============ */
+        /* ============ 作品のカバーフロー ============ */
         const rail = $("#rail");
         if (rail) {
-          const cards = [...rail.querySelectorAll(".card")];
+          const items = [...rail.querySelectorAll(".wk")];
           const pos = $("#railPos");
-          const updatePos = () => {
+          rail.addEventListener("scroll", () => requestAnimationFrame(() => {
             const mid = rail.scrollLeft + rail.clientWidth / 2;
             let best = 0, bd = 1e9;
-            cards.forEach((c, i) => {
-              const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid);
-              if (d < bd) { bd = d; best = i; }
-            });
+            items.forEach((c, i) => { const d = Math.abs(c.offsetLeft + c.offsetWidth / 2 - mid); if (d < bd) { bd = d; best = i; } });
             pos.textContent = String(best + 1).padStart(3, "0");
-          };
-          rail.addEventListener("scroll", () => requestAnimationFrame(updatePos), { passive: true });
-
-          // マウスでドラッグして流せる
-          let down = false, moved = 0, sx = 0, sl = 0, vx = 0, lx = 0, lt = 0;
-          rail.addEventListener("pointerdown", (e) => {
-            if (e.pointerType !== "mouse") return;
-            down = true; moved = 0; sx = lx = e.clientX; sl = rail.scrollLeft; lt = performance.now();
-            rail.classList.add("drag");
-          });
-          addEventListener("pointermove", (e) => {
-            if (!down) return;
-            const now = performance.now();
-            vx = (e.clientX - lx) / Math.max(1, now - lt); lx = e.clientX; lt = now;
-            moved = Math.max(moved, Math.abs(e.clientX - sx));
-            rail.scrollLeft = sl - (e.clientX - sx);
-          });
-          addEventListener("pointerup", () => {
-            if (!down) return;
-            down = false;
-            let v = vx * 16;
-            const glide = () => {
-              if (Math.abs(v) < 0.4) { rail.classList.remove("drag"); return; }
-              rail.scrollLeft -= v; v *= 0.93; requestAnimationFrame(glide);
-            };
-            glide();
-          });
+          }), { passive: true });
+          let dn = false, moved = 0, sx = 0, sl = 0, vx = 0, lx = 0, lt = 0;
+          rail.addEventListener("pointerdown", (e) => { if (e.pointerType !== "mouse") return; dn = true; moved = 0; sx = lx = e.clientX; sl = rail.scrollLeft; lt = performance.now(); rail.classList.add("drag"); });
+          addEventListener("pointermove", (e) => { if (!dn) return; const n = performance.now(); vx = (e.clientX - lx) / Math.max(1, n - lt); lx = e.clientX; lt = n; moved = Math.max(moved, Math.abs(e.clientX - sx)); rail.scrollLeft = sl - (e.clientX - sx); });
+          addEventListener("pointerup", () => { if (!dn) return; dn = false; let v = vx * 16; const g = () => { if (Math.abs(v) < 0.4) { rail.classList.remove("drag"); return; } rail.scrollLeft -= v; v *= 0.93; requestAnimationFrame(g); }; g(); });
           rail.addEventListener("click", (e) => { if (moved > 6) { e.preventDefault(); e.stopPropagation(); } }, true);
-
-          // サムネイルの光沢
-          cards.forEach((c) => {
-            const t = c.querySelector(".thumb");
-            c.addEventListener("pointermove", (e) => {
-              const b = t.getBoundingClientRect();
-              t.style.setProperty("--mx", e.clientX - b.left + "px");
-              t.style.setProperty("--my", e.clientY - b.top + "px");
-            });
-          });
-        }
-
-        // NOW PLAYING：見える位置に来たら作品を本当に動かす
-        const nowF = document.querySelector(".now iframe");
-        if (nowF) {
-          const io2 = new IntersectionObserver((ents) => {
-            ents.forEach((e) => {
-              if (e.isIntersecting && root.classList.contains("is-ready") && !nowF.src) {
-                nowF.addEventListener("load", () => nowF.classList.add("on"), { once: true });
-                nowF.src = nowF.dataset.src;
-                io2.disconnect();
-              }
-            });
-          }, { rootMargin: "200px 0px" });
-          const startNow = () => io2.observe(nowF.closest(".now"));
-          if (root.classList.contains("is-ready")) startNow();
-          else new MutationObserver((_, mo) => { if (root.classList.contains("is-ready")) { mo.disconnect(); startNow(); } }).observe(root, { attributes: true });
-        }
-
-        // 作品数のカウントアップ
-        const cnt = $("#artCount");
-        if (cnt && !RM) {
-          const N = +cnt.dataset.n;
-          cnt.textContent = "0";
-          const io3 = new IntersectionObserver((ents) => {
-            if (!ents[0].isIntersecting || !root.classList.contains("is-ready")) return;
-            io3.disconnect();
-            const t0c = performance.now();
-            const run = (now) => {
-              const k = Math.min(1, (now - t0c) / 1400);
-              cnt.textContent = Math.round(N * (1 - Math.pow(1 - k, 3)));
-              if (k < 1) requestAnimationFrame(run);
-            };
-            requestAnimationFrame(run);
-          }, { threshold: 0.4 });
-          const go = () => io3.observe(cnt);
-          new MutationObserver((_, mo) => { if (root.classList.contains("is-ready")) { mo.disconnect(); go(); } }).observe(root, { attributes: true });
         }
       })();
     </script>
