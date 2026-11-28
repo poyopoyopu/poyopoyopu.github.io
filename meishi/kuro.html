@@ -347,8 +347,8 @@
       /* 6：ベスト盤 */
       .rc { background: radial-gradient(80% 60% at 50% 45%, #18161c, var(--bg) 75%); }
       .rec-list { list-style: none; margin: 0; padding: 0; }
-      .rec { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
-      .rec-art { --s: min(60vw, 280px); position: relative; width: var(--s); height: var(--s); margin-left: calc(var(--s) * -0.36); }
+      .rec { --s: min(58vw, 270px); position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0; }
+      .rec-art { --s: min(58vw, 270px); position: relative; width: var(--s); height: var(--s); }
       .sleeve { position: absolute; inset: 0; z-index: 2; border-radius: 4px; overflow: hidden;
         background: radial-gradient(circle at 72% 28%, hsl(var(--rh) 85% 62% / .9), transparent 46%), radial-gradient(circle at 20% 85%, hsl(calc(var(--rh) + 150) 80% 55% / .55), transparent 50%), linear-gradient(150deg, hsl(calc(var(--rh) + 30) 45% 20%), #0c0c0e 70%);
         box-shadow: 0 30px 60px -18px rgba(0,0,0,.9), inset 0 0 0 1px rgba(255,255,255,.1); }
@@ -360,9 +360,9 @@
       .disc-in { position: absolute; inset: 0; border-radius: 50%;
         background: radial-gradient(circle, #f4f3ef 0 2.2%, hsl(var(--rh) 80% 58%) 2.4% 16%, hsl(calc(var(--rh) + 40) 70% 40%) 16.5% 17%, transparent 17.2%), repeating-radial-gradient(circle, #101012 0 1.6px, #1d1d21 1.6px 3px);
         box-shadow: 0 20px 40px -10px rgba(0,0,0,.9); }
-      .disc-in::before { content: ""; position: absolute; left: 50%; top: 22%; width: 3%; height: 6%; border-radius: 2px; background: rgba(255,255,255,.55); }
-      .rec-t { margin: 2.2rem 0 0; max-width: 88vw; text-align: center; font-weight: 900; font-size: clamp(1.6rem, 7.4vw, 2.8rem); line-height: 1.25; letter-spacing: .02em; }
-      .rec-n { margin: 2rem 0 -1.4rem; font-weight: 900; font-size: .9rem; letter-spacing: .4em; }
+      .disc-in::after { content: ""; position: absolute; left: 50%; top: 50%; width: 22%; height: 2.6%; transform: translate(-50%, -260%); border-radius: 2px; background: rgba(255,255,255,.8); box-shadow: 0 calc(var(--s) * .06) 0 -1px rgba(0,0,0,.45); }
+      .rec-t { margin: calc(var(--s, 230px) * .12 + 1.5rem) 0 0; max-width: 88vw; text-align: center; font-weight: 900; font-size: clamp(1.6rem, 7.4vw, 2.8rem); line-height: 1.25; letter-spacing: .02em; }
+      .rec-n { margin: calc(var(--s, 230px) * .12 + 1.3rem) 0 calc(var(--s, 230px) * -.12 - 1.4rem); font-weight: 900; font-size: .9rem; letter-spacing: .4em; }
       .rec-top .sleeve b { font-size: calc(var(--s) * .22); }
       .rec-a { margin: .5rem 0 0; font-family: var(--mono); font-size: .78rem; letter-spacing: .24em; color: var(--soft); text-transform: uppercase; }
       .rec { pointer-events: none; }
@@ -373,13 +373,23 @@
       .rm .rec { pointer-events: auto; }
       .c-pr { margin-top: 2.2rem; font-size: .7rem; line-height: 1.8; color: var(--faint); }
       /* トーンアーム（レコードが出きったら針が落ちる） */
-      .arm { position: absolute; z-index: 3; left: calc(var(--s) * 1.443); top: calc(var(--s) * .1); width: calc(var(--s) * .026); height: calc(var(--s) * .51);
-        margin-left: calc(var(--s) * -.013); transform-origin: 50% 0; opacity: 0; transform: rotate(-12deg); pointer-events: none;
+      .arm { position: absolute; z-index: 3; left: calc(var(--s) * 1.04); top: calc(var(--s) * .02); width: calc(var(--s) * .03); height: calc(var(--s) * .7);
+        margin-left: calc(var(--s) * -.015); transform-origin: 50% 0; opacity: 0; transform: rotate(-6deg); pointer-events: none;
         border-radius: 99px; background: linear-gradient(90deg, #6d6c72, #e9e8ee 45%, #8b8a90); box-shadow: 4px 8px 14px rgba(0,0,0,.6); }
-      .arm::before { content: ""; position: absolute; left: 50%; top: 0; width: calc(var(--s) * .11); height: calc(var(--s) * .11); transform: translate(-50%, -50%); border-radius: 50%;
+      .arm::before { content: ""; position: absolute; left: 50%; top: 0; width: calc(var(--s) * .17); height: calc(var(--s) * .17); transform: translate(-50%, -50%); border-radius: 50%;
         background: radial-gradient(circle, #f4f3ef 0 18%, #2a2a2f 20% 52%, #5b5a61 54%); box-shadow: 0 6px 14px rgba(0,0,0,.7); }
-      .arm::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--s) * -.05); width: calc(var(--s) * .06); height: calc(var(--s) * .085); transform: translateX(-50%) rotate(14deg); border-radius: 3px;
+      .arm::after { content: ""; position: absolute; left: 50%; bottom: calc(var(--s) * -.07); width: calc(var(--s) * .075); height: calc(var(--s) * .1); transform: translateX(-50%) rotate(14deg); border-radius: 3px;
         background: linear-gradient(#d9d8de, #7b7a80); }
+      /* ターンテーブル（レコードがジャケットから出て、ここに乗る） */
+      .deck { position: absolute; z-index: 0; left: calc(var(--s) * -.22); top: calc(var(--s) * -.12); width: calc(var(--s) * 1.44); height: calc(var(--s) * 1.24);
+        border-radius: calc(var(--s) * .06); opacity: 0; pointer-events: none; transform-origin: 40% 50%;
+        background: linear-gradient(155deg, #2c2c32, #18181c 55%, #0f0f12);
+        box-shadow: 0 34px 70px -20px rgba(0,0,0,.95), inset 0 1px 0 rgba(255,255,255,.1), inset 0 0 0 1px rgba(255,255,255,.06); }
+      .deck::before { content: ""; position: absolute; left: calc(var(--s) * .09); top: calc(var(--s) * .07); width: calc(var(--s) * 1.1); height: calc(var(--s) * 1.1); border-radius: 50%;
+        background: radial-gradient(circle, #1b1b1f 0 62%, #0b0b0d 63% 91.5%, #8d8c93 92.5%, #e2e1e7 95%, #66656c 98%, transparent 99%); box-shadow: 0 6px 18px rgba(0,0,0,.7); }
+      .deck::after { content: ""; position: absolute; left: calc(var(--s) * .09); bottom: calc(var(--s) * .06); width: calc(var(--s) * .05); height: calc(var(--s) * .05); border-radius: 50%;
+        background: hsl(var(--rh) 95% 62%); opacity: calc(.15 + var(--lit, 0) * .85); box-shadow: 0 0 calc(var(--s) * .05 * var(--lit, 0)) hsl(var(--rh) 95% 62%); }
+      .rm .deck { display: none; }
       .rc-eq { position: absolute; left: 14%; right: 14%; bottom: calc(max(1.4rem, env(safe-area-inset-bottom)) + 3rem); height: min(8svh, 64px); display: flex; align-items: flex-end; gap: 3px; pointer-events: none; }
       .rc-eq i { flex: 1; height: 100%; border-radius: 2px 2px 0 0; transform-origin: 50% 100%; transform: scaleY(.04); opacity: .85;
         background: linear-gradient(to top, hsl(var(--rh, 200) 85% 58%), hsl(calc(var(--rh, 200) + 80) 90% 72%) 65%, #fff); }
@@ -615,7 +625,7 @@
       </section>
 
       <!-- 演出6：人生のベスト盤 -->
-      <section class="scene" id="sF" style="--len:360svh" aria-labelledby="rec-h">
+      <section class="scene" id="sF" style="--len:460svh" aria-labelledby="rec-h">
         <div class="pin rc">
           <h2 class="hb-head" id="rec-h"><span><span class="stamp" aria-hidden="true"></span>人生のベスト5</span><span class="hb-c" id="recC">01 / 05</span></h2>
           <ul class="rec-list">
@@ -993,8 +1003,9 @@ void main(){
         const sF = $("#sF"), recC = $("#recC");
         const recs = [...document.querySelectorAll(".rec")].map((el) => {
           const arm = document.createElement("div"); arm.className = "arm"; arm.setAttribute("aria-hidden", "true");
-          el.querySelector(".rec-art").appendChild(arm);
-          return { el, art: el.querySelector(".rec-art"), disc: el.querySelector(".disc"), inner: el.querySelector(".disc-in"), arm, spin: 0, rh: el.style.getPropertyValue("--rh"),
+          const deck = document.createElement("div"); deck.className = "deck"; deck.setAttribute("aria-hidden", "true");
+          el.querySelector(".rec-art").append(deck, arm);
+          return { el, art: el.querySelector(".rec-art"), disc: el.querySelector(".disc"), inner: el.querySelector(".disc-in"), arm, deck, sleeve: el.querySelector(".sleeve"), spin: 0, rh: el.style.getPropertyValue("--rh"),
             bpm: +el.dataset.bpm || 90, groove: el.dataset.groove || "four", landed: false, drop: -9 };
         });
         const recEq = $("#recEq");
@@ -1158,14 +1169,22 @@ void main(){
               r.el.style.visibility = o > 0 ? "visible" : "hidden";
               r.el.style.pointerEvents = o > 0.6 ? "auto" : "none";
               if (o > 0) {
-                const out = ss(0.12, 0.42, l), down = ss(0.42, 0.52, l) * (1 - ss(0.8, 0.86, i === n - 1 ? 0 : l));
+                // ジャケットから引き出す → ターンテーブルへ運んで大きくする → 針が落ちる
+                const out = ss(0.05, 0.26, l), mv = ss(0.26, 0.44, l), dk = ss(0.22, 0.42, l);
+                const down = ss(0.44, 0.54, l) * (1 - ss(0.8, 0.86, i === n - 1 ? 0 : l));
+                const dx = out * 72 + (-8.5 - out * 72) * mv, lift = -Math.sin(mv * Math.PI) * 7;
                 r.el.style.transform = `translateY(${y.toFixed(1)}px)`;
-                r.disc.style.transform = `translateX(${(out * 62).toFixed(1)}%)`;
+                r.disc.style.transform = `translate(${dx.toFixed(1)}%, ${lift.toFixed(1)}%) scale(${(1 + 0.1 * mv).toFixed(3)})`;
+                r.sleeve.style.transform = `translateX(${(-out * 24 - mv * 70).toFixed(1)}%) rotate(${(-mv * 9).toFixed(1)}deg)`;
+                r.sleeve.style.opacity = (1 - mv).toFixed(3);
+                r.deck.style.opacity = dk.toFixed(3);
+                r.deck.style.transform = `scale(${(0.9 + 0.1 * dk).toFixed(3)})`;
+                r.deck.style.setProperty("--lit", down.toFixed(3));
                 // 針が落ちたら33回転、スクロールした分だけ前後に回る（戻すと逆回転＝スクラッチ）
                 r.spin += down * 200 * dt + dy * 0.9 * out;
                 r.inner.style.transform = `rotate(${r.spin.toFixed(1)}deg)`;
-                r.arm.style.opacity = out.toFixed(3);
-                r.arm.style.transform = `rotate(${(-12 + down * 33).toFixed(2)}deg)`;
+                r.arm.style.opacity = dk.toFixed(3);
+                r.arm.style.transform = `rotate(${(-6 + down * 26).toFixed(2)}deg)`;
                 // 針が溝に乗った瞬間＝ドン
                 if (down > 0.97 && !r.landed) { r.landed = true; r.drop = t; }
                 else if (down < 0.5 && r.landed) r.landed = false;
