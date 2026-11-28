@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="ja">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="サトウ シュンのデジタル名刺。連絡先の保存、メール、お台場混雑予報へのリンク。" />
+    <link rel="icon" href="data:," />
+    <title>デジタル名刺（サトウ シュン）</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Shippori+Mincho+B1:wght@600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light dark;
+        --paper: #fbfaf7;
+        --ink: #1c1a17;
+        --ink-soft: #55504a;
+        --ink-faint: #8a8378;
+        --hairline: #ddd8cf;
+        --accent: #a33327;
+        --btn-bg: #1c1a17;
+        --btn-ink: #fbfaf7;
+        --btn-bg-active: #3a362f;
+        --row-hover: rgba(28, 26, 23, 0.04);
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #16150f;
+          --ink: #ece8df;
+          --ink-soft: #b3ac9f;
+          --ink-faint: #7e776b;
+          --hairline: #35322a;
+          --accent: #d97a6c;
+          --btn-bg: #ece8df;
+          --btn-ink: #16150f;
+          --btn-bg-active: #cfc9ba;
+          --row-hover: rgba(236, 232, 223, 0.05);
+        }
+      }
+
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: "Zen Kaku Gothic New", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      .card {
+        max-width: 540px;
+        margin: 0 auto;
+        min-height: 100dvh;
+        display: flex;
+        flex-direction: column;
+        padding:
+          max(3.5rem, env(safe-area-inset-top))
+          clamp(1.5rem, 7vw, 2.75rem)
+          max(2.5rem, env(safe-area-inset-bottom));
+      }
+
+      /* ---------- 名前 ---------- */
+      .romaji {
+        margin: 0 0 0.9rem;
+        font-size: 0.72rem;
+        font-weight: 500;
+        letter-spacing: 0.42em;
+        color: var(--ink-faint);
+      }
+      h1.name {
+        margin: 0;
+        font-family: "Shippori Mincho B1", "Hiragino Mincho ProN", "Yu Mincho", serif;
+        font-weight: 700;
+        font-size: clamp(2.4rem, 12.2vw, 4.2rem);
+        line-height: 1.18;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
+      }
+      .accent-rule {
+        width: 44px;
+        height: 3px;
+        background: var(--accent);
+        margin: 1.6rem 0 0;
+      }
+      .profile {
+        margin: 1.5rem 0 0;
+        font-size: 1rem;
+        line-height: 2;
+        color: var(--ink-soft);
+      }
+
+      /* ---------- 趣味 ---------- */
+      .hobbies { margin-top: 3.25rem; }
+      .hobbies h2 {
+        margin: 0 0 0.4rem;
+        font-size: 0.78rem;
+        font-weight: 700;
+        letter-spacing: 0.34em;
+        color: var(--ink-faint);
+      }
+      .hobbies ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .hobbies li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        padding: 0.72rem 0.1rem;
+        border-bottom: 1px solid var(--hairline);
+        font-size: 0.98rem;
+        line-height: 1.6;
+      }
+      .hobbies li:first-child { border-top: 1px solid var(--hairline); }
+      .hobbies .note {
+        font-size: 0.82rem;
+        color: var(--ink-faint);
+      }
+
+      /* ---------- アクション ---------- */
+      .actions { margin-top: auto; padding-top: 3.5rem; }
+      .save-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.65rem;
+        width: 100%;
+        min-height: 60px;
+        padding: 1rem 1.5rem;
+        border: none;
+        border-radius: 6px;
+        background: var(--btn-bg);
+        color: var(--btn-ink);
+        font-family: inherit;
+        font-size: 1.06rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        transition: background 0.15s ease, transform 0.1s ease;
+      }
+      .save-btn:active { background: var(--btn-bg-active); transform: scale(0.99); }
+      .save-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      .save-btn svg { flex: none; }
+      .save-note {
+        margin: 0.8rem 0 0;
+        font-size: 0.85rem;
+        line-height: 1.7;
+        color: var(--ink-soft);
+        text-align: center;
+      }
+
+      .links {
+        list-style: none;
+        margin: 2rem 0 0;
+        padding: 0;
+      }
+      .links li { border-bottom: 1px solid var(--hairline); }
+      .links li:first-child { border-top: 1px solid var(--hairline); }
+      .links a {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        min-height: 60px;
+        padding: 0.7rem 0.1rem;
+        color: var(--ink);
+        text-decoration: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+      .links a:active { background: var(--row-hover); }
+      .links a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+      .links .label {
+        flex: none;
+        width: 5.2em;
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.22em;
+        color: var(--ink-faint);
+      }
+      .links .value {
+        flex: 1;
+        font-size: 0.98rem;
+        font-weight: 500;
+        overflow-wrap: anywhere;
+      }
+      .links .desc {
+        display: block;
+        margin-top: 0.2rem;
+        font-size: 0.8rem;
+        font-weight: 400;
+        color: var(--ink-faint);
+      }
+      .links .arrow {
+        flex: none;
+        color: var(--ink-faint);
+      }
+
+      @media (min-width: 700px) {
+        .card { padding-top: 5.5rem; padding-bottom: 4rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <header>
+        <p class="romaji">SATOU SHUN</p>
+        <h1 class="name">サトウ シュン</h1>
+        <div class="accent-rule" aria-hidden="true"></div>
+        <p class="profile">お台場で運転の仕事をしています。個人でWebサイトの運営もしています。</p>
+      </header>
+
+      <section class="hobbies" aria-labelledby="hobbies-title">
+        <h2 id="hobbies-title">趣味</h2>
+        <ul>
+          <li>音楽鑑賞<span class="note">ライブによく行きます</span></li>
+          <li>キャンプ</li>
+          <li>釣り</li>
+          <li>競馬</li>
+        </ul>
+      </section>
+
+      <section class="actions">
+        <button class="save-btn" id="saveContact" type="button">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="10" cy="8" r="3.6" />
+            <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
+            <path d="M17.5 14.5v6M14.5 17.5h6" />
+          </svg>
+          連絡先に保存
+        </button>
+        <p class="save-note" id="saveNote" hidden>連絡先ファイルを用意しました。ダウンロードしたファイルを開くと、連絡先に追加できます。</p>
+
+        <ul class="links">
+          <li>
+            <a href="mailto:muuu@muse.ai">
+              <span class="label">メール</span>
+              <span class="value">muuu@muse.ai</span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://odaibacrowdforecast.com" target="_blank" rel="noopener">
+              <span class="label">サイト</span>
+              <span class="value">お台場混雑予報<span class="desc">お台場の混雑予報サイト</span></span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://art-playground.artplayground.workers.dev/" target="_blank" rel="noopener">
+              <span class="label">アート</span>
+              <span class="value">ART PLAYGROUND<span class="desc">コードで描くアート作品のサイト</span></span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <script>
+      document.getElementById("saveContact").addEventListener("click", function () {
+        var vcard = [
+          "BEGIN:VCARD",
+          "VERSION:3.0",
+          "N:サトウ;シュン;;;",
+          "FN:サトウ シュン",
+          "EMAIL;TYPE=INTERNET:muuu@muse.ai",
+          "URL:https://odaibacrowdforecast.com",
+          "END:VCARD"
+        ].join("\r\n");
+        var blob = new Blob(["\uFEFF" + vcard], { type: "text/vcard;charset=utf-8" });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement("a");
+        a.href = url;
+        a.download = "satou-shun.vcf";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+        document.getElementById("saveNote").hidden = false;
+      });
+    </script>
+  </body>
+</html>
