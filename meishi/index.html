@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <meta name="color-scheme" content="light dark" />
-    <meta name="description" content="サトウ シュンのデジタル名刺。連絡先の保存、メール、お台場混雑予報へのリンク。" />
+    <meta name="description" content="サトウ シュンのデジタル名刺。連絡先の保存、電話、メール、LINE、お台場混雑予報へのリンク。" />
     <link rel="icon" href="data:," />
     <title>デジタル名刺（サトウ シュン）</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -145,6 +145,7 @@
         -webkit-tap-highlight-color: transparent;
         transition: background 0.15s ease, transform 0.1s ease;
       }
+      .save-btn { text-decoration: none; }
       .save-btn:active { background: var(--btn-bg-active); transform: scale(0.99); }
       .save-btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
       .save-btn svg { flex: none; }
@@ -226,22 +227,36 @@
       </section>
 
       <section class="actions">
-        <button class="save-btn" id="saveContact" type="button">
+        <a class="save-btn" href="contact.vcf">
           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <circle cx="10" cy="8" r="3.6" />
             <path d="M3.5 20c.8-3.2 3.4-5 6.5-5 1.5 0 2.9.45 4 1.27" />
             <path d="M17.5 14.5v6M14.5 17.5h6" />
           </svg>
           連絡先に保存
-        </button>
-        <p class="save-note" id="saveNote" hidden>連絡先ファイルを用意しました。ダウンロードしたファイルを開くと、連絡先に追加できます。</p>
+        </a>
+        <p class="save-note">ボタンを押すと連絡先ファイルが開き、そのまま連絡先に追加できます。</p>
 
         <ul class="links">
+          <li>
+            <a href="tel:+819098503262">
+              <span class="label">電話</span>
+              <span class="value">090-9850-3262</span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </li>
           <li>
             <a href="mailto:muuu@muse.ai">
               <span class="label">メール</span>
               <span class="value">muuu@muse.ai</span>
               <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://line.me/ti/p/f_9ne_S9Sb" target="_blank" rel="noopener">
+              <span class="label">LINE</span>
+              <span class="value">LINEで連絡</span>
+              <svg class="arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" /></svg>
             </a>
           </li>
           <li>
@@ -261,29 +276,5 @@
         </ul>
       </section>
     </main>
-
-    <script>
-      document.getElementById("saveContact").addEventListener("click", function () {
-        var vcard = [
-          "BEGIN:VCARD",
-          "VERSION:3.0",
-          "N:サトウ;シュン;;;",
-          "FN:サトウ シュン",
-          "EMAIL;TYPE=INTERNET:muuu@muse.ai",
-          "URL:https://odaibacrowdforecast.com",
-          "END:VCARD"
-        ].join("\r\n");
-        var blob = new Blob(["\uFEFF" + vcard], { type: "text/vcard;charset=utf-8" });
-        var url = URL.createObjectURL(blob);
-        var a = document.createElement("a");
-        a.href = url;
-        a.download = "satou-shun.vcf";
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
-        document.getElementById("saveNote").hidden = false;
-      });
-    </script>
   </body>
 </html>
