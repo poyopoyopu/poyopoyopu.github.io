@@ -312,6 +312,15 @@
       .hb-w { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); text-align: center; white-space: nowrap; will-change: transform, opacity, filter; }
       .hb-w b { display: block; font-weight: 900; font-size: clamp(3.6rem, 20vw, 9rem); letter-spacing: .04em; line-height: 1.15; }
       .hb-w small { display: block; margin-top: .9rem; font-size: .9rem; color: var(--ink); letter-spacing: .24em; opacity: .8; }
+      .hb-ph { position: absolute; inset: 0; z-index: 1; opacity: 0; overflow: hidden; pointer-events: none; }
+      .hb-ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; will-change: transform, opacity; }
+      .hb-ph img:first-child { object-position: 22% 50%; }
+      .hb-ph img + img { opacity: 0; }
+      .hb-ph::after { content: ""; position: absolute; inset: 0; background: radial-gradient(70% 45% at 50% 50%, rgba(8,8,10,.62), rgba(8,8,10,.25) 70%), linear-gradient(to bottom, rgba(8,8,10,.55), transparent 22%, transparent 78%, rgba(8,8,10,.6)); }
+      .hb-list { position: absolute; inset: 0; z-index: 2; }
+      .rm .hb-list { position: relative; inset: auto; }
+      .hb-w small.hb-best { margin-top: .5rem; font-weight: 700; color: #fff; opacity: 1; text-shadow: 0 1px 10px rgba(0,0,0,.8); }
+      .hb-w small { text-shadow: 0 1px 10px rgba(0,0,0,.7); }
       /* 5：音楽 */
       .lo { background: #070708; }
       .lo-in { position: absolute; inset: 0; will-change: transform; }
@@ -359,6 +368,7 @@
       .rm .hz-panel { width: 100%; min-height: 80svh; }
       .rm .hb-list { padding: 7rem 1.4rem 3rem; display: grid; gap: 2rem; }
       .rm .hb-w { position: static; transform: none; }
+      .rm .hb-ph { display: none; }
       @media (prefers-reduced-motion: reduce) {
         *, *::before, *::after { animation: none !important; transition-duration: 0.01ms !important; transition-delay: 0s !important; }
       }
@@ -597,9 +607,10 @@
       <section class="scene" id="sD" style="--len:360svh" aria-labelledby="hob-h">
         <div class="pin hb">
           <div class="hb-ring" id="hbRing" aria-hidden="true"></div>
+          <div class="hb-ph" id="hbPh" aria-hidden="true"><img src="img/camp-621-1.jpg" alt="" decoding="async" loading="lazy"><img src="img/camp-621-2.jpg" alt="" decoding="async" loading="lazy"></div>
           <h2 class="hb-head" id="hob-h"><span><span class="stamp" aria-hidden="true"></span>趣味</span><span class="hb-c" id="hbC">01 / 04</span></h2>
           <ul class="hb-list">
-            <li class="hb-w"><b class="foil-text">キャンプ</b><small>ふもとっぱらで、焚き火</small></li>
+            <li class="hb-w"><b class="foil-text">キャンプ</b><small>ふもとっぱらで、焚き火</small><small class="hb-best">人生最高は、青森の621野営場</small></li>
             <li class="hb-w"><b class="foil-text">競馬</b><small>データで予想して、現地で観る</small></li>
             <li class="hb-w"><b class="foil-text">釣り</b><small>のんびり、糸を垂らす</small></li>
             <li class="hb-w"><b class="foil-text">カード</b><small>ポケカと遊戯王のイラスト集め</small></li>
@@ -943,6 +954,7 @@ void main(){
         const panels = [...track.querySelectorAll(".hz-panel")].map((el) => ({ el, no: el.querySelector(".hz-no"), ti: el.querySelector(".hz-title") }));
         // 趣味
         const words = [...document.querySelectorAll(".hb-w")], hbRing = $("#hbRing"), hbC = $("#hbC");
+        const hbPh = $("#hbPh"), hbImgs = hbPh ? [...hbPh.querySelectorAll("img")] : [];
         const span = (el) => { const r = el.getBoundingClientRect(); const len = r.height - innerHeight; return { r, p: len > 0 ? clamp(-r.top / len, 0, 1) : 0, on: r.top < innerHeight && r.bottom > 0 }; };
         // 音楽
         const sE = $("#sE"), loIn = $("#loIn"), loFlash = $("#loFlash"), loMsg = $("#loMsg"), loMsg2 = $("#loMsg2");
@@ -1031,6 +1043,15 @@ void main(){
               w.style.opacity = o.toFixed(3);
               w.style.transform = `translate(-50%,-50%) scale(${s.toFixed(3)})`;
               w.style.filter = b > 0.05 && o > 0 ? `blur(${b.toFixed(1)}px)` : "none";
+              if (i === 0 && hbPh) {
+                // キャンプの間だけ、621野営場の写真（夕日→焚き火）
+                const ph = clamp(l, 0, 1);
+                hbPh.style.opacity = (l < 0 ? 0 : o).toFixed(3);
+                const k2 = ss(0.5, 0.7, ph);
+                hbImgs[1].style.opacity = k2.toFixed(3);
+                hbImgs[0].style.transform = `scale(${(1.08 + ph * 0.12).toFixed(3)})`;
+                hbImgs[1].style.transform = `scale(${(1.15 - ph * 0.1).toFixed(3)})`;
+              }
             });
           }
           // 5：音楽（静かに始まって、轟音で爆発）
