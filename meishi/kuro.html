@@ -652,12 +652,12 @@
       </section>
 
       <!-- 演出7：2026年のライブ（半券が積み重なる） -->
-      <section class="scene" id="sG" style="--len:620svh" aria-labelledby="live-h">
+      <section class="scene" id="sG" style="--len:760svh" aria-labelledby="live-h">
         <div class="pin lv">
-          <h2 class="hb-head" id="live-h"><span><span class="stamp" aria-hidden="true"></span>2026年のライブ</span><span class="hb-c" id="lvC">00 / 22</span></h2>
+          <h2 class="hb-head" id="live-h"><span><span class="stamp" aria-hidden="true"></span>2026年のライブ</span><span class="hb-c" id="lvC">00 / 27</span></h2>
           <p class="lv-big" aria-hidden="true"><b id="lvN">0</b><small>本</small></p>
           <ol class="lv-list" id="lvList"></ol>
-          <p class="lv-fin" id="lvFin">2026年、ここまで<b>22本</b>。</p>
+          <p class="lv-fin" id="lvFin">2026年、ここまで<b>27本</b>。</p>
         </div>
       </section>
 
@@ -1040,10 +1040,11 @@ void main(){
         const LIVES = [
           ["02.04", "Autechre", "Zepp DiverCity"], ["02.15", "yubiori", "渋谷WWW X"], ["03.07", "DEEP DIVE／攻殻機動隊", "TOKYO NODE"], ["03.25", "toe／Daichi Yamamoto", "O-EAST"],
           ["04.03", "D.A.N.「Resonance」／羊文学", "O-EAST"], ["04.18", "ひとひら／くだらない1日", "新代田FEVER"], ["05.12", "くるり／マカロニえんぴつ", "SGC HALL ARIAKE"], ["05.19", "羊文学", "MoN Takanawa"],
-          ["05.21", "STUTS", "MoN Takanawa"], ["06.04", "Tortoise", "Zepp Shinjuku"], ["06.27", "NU Festival 2026", "高輪ゲートウェイ"], ["07.06", "Kings of Convenience", "Zepp DiverCity"],
+          ["05.21", "STUTS", "MoN Takanawa"], ["06.04", "Tortoise", "Zepp Shinjuku"], ["06.27", "NU Festival 2026", "高輪ゲートウェイ（6/27・28）"], ["07.06", "Kings of Convenience", "Zepp DiverCity"],
           ["07.11", "Future Frequencies Festival 2026", "MoN Takanawa"], ["08.03", "Nikoん", "LIQUIDROOM"], ["08.14", "SUMMER SONIC 2026", "TOKYO"], ["09.10", "Hedigan's／Texas 3000", "LIQUIDROOM"],
           ["09.22", "ロク漫祭", "有明アリーナ"], ["09.24", "Belle & Sebastian", "Kanadevia Hall"], ["10.10", "SHIN-ONSAI 2026", "新宿文化センター"], ["10.17", "kurayamisaka", "Zepp DiverCity"],
-          ["10.25", "THE ARGUMENT", "O-EAST／O-WEST"], ["11.01", "揺れる", ""],
+          ["10.25", "THE ARGUMENT", "O-EAST／O-WEST"], ["11.01", "揺れるは幽霊／スーパー登山部", "東京キネマ倶楽部"], ["11.03", "sidenerds／ひとひら", "新宿LOFT"], ["11.10", "羊文学", "代々木第一体育館"],
+          ["11.20", "MUTEK.JP Max Cooper", "MoN Takanawa"], ["11.23", "BAHAMAS FEST 2026", "新宿MARZ／Marble"], ["11.28", "heaven in her arms／the cabs／downy", "渋谷CLUB QUATTRO"],
         ];
         const sG = $("#sG"), lvList = $("#lvList"), lvN = $("#lvN"), lvC = $("#lvC"), lvFin = $("#lvFin");
         const rnd = (i, k) => { const x = Math.sin(i * 127.1 + k * 311.7) * 43758.5453; return (x - Math.floor(x)) * 2 - 1; };
